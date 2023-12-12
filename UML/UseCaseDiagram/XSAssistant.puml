@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+left to right direction
+
+actor : 用户: as account <<Account>>
+rectangle xs-assistant{
+    usecase 管理笔记 as note_management
+    usecase 笔记创建 as note_creation
+    usecase 笔记发布 as note_publishing
+    usecase 笔记删除 as note_delete
+    usecase 笔记修改 as note_update
+    usecase 保存笔记 as note_save
+
+    usecase 提醒事项管理 as reminder_management
+    usecase 创建提醒事项 as reminder_creation
+    usecase 修改提醒事项 as reminder_update
+
+    usecase 个人管理 as account_management
+    usecase 修改用户名 as account_name_update
+    usecase 修改头像 as account_img_update
+    usecase 修改地区 as account_area_update
+    usecase 修改个人信息 as account_info_update
+    usecase 查看 as account_view_information
+    usecase 查看勋章 as account_view_icon
+    usecase 查看个人基础信息 as account_view_account_info
+}
+
+account --> note_management
+account --> reminder_management
+account --> account_management
+note_management --> note_creation
+note_management --> note_publishing
+note_management --> note_delete
+note_management --> note_update
+note_creation .-> note_save : <<include>>
+note_update .-> note_save : <<include>>
+reminder_management --> reminder_creation
+reminder_management --> reminder_update
+account_management --> account_name_update
+account_management --> account_img_update
+account_management --> account_area_update
+account_management --> account_view_icon
+account_management --> account_view_account_info
+account_view_icon .-> account_view_information : <<include>>
+account_view_account_info .-> account_view_information : <<include>>
+account_name_update .-> account_info_update : <<include>>
+account_area_update .-> account_info_update : <<include>>
+account_img_update .-> account_info_update : <<include>>
+@enduml

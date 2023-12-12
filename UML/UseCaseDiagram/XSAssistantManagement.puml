@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+actor : 管理员: as admin
+rectangle xs-assistant-management{
+    usecase 管理笔记 as management_note
+    usecase 下架笔记 as management_note_offline
+    usecase 审核笔记 as management_note_audit
+    usecase 认证笔记 as management_note_authentication
+    usecase 发布笔记 as management_note_publishing
+    usecase 管理用户 as management_account
+    usecase 封禁用户 as management_account_prohibit
+}
+admin --> management_account
+admin --> management_note
+management_note --> management_note_offline
+management_note --> management_note_audit
+management_note_audit <-. management_note_authentication : <<extend>>
+management_note_audit <-. management_note_publishing : <<extend>>
+management_account --> management_account_prohibit
+
+@enduml
