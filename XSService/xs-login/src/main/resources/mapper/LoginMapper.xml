@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xs.assistant.login.DAO.LoginDAO">
-    <select id="selectCustomer" resultType="com.xs.DAO.customer.DO.CustomerDO">
+    <select id="login" resultType="java.lang.Integer">
         SELECT
-            Id,FirstName,LastName,Email,Password,Birth,IdNumber,AreaId
+            Id
         FROM
             customer
         WHERE
@@ -12,4 +12,5 @@
         AND
             Password = #{password}
     </select>
+
 </mapper>

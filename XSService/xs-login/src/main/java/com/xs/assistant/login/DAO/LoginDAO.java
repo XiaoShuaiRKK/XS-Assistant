@@ -6,6 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface LoginDAO {
-    CustomerDO selectCustomer(@Param("nameOrEmail")String name,
+    Integer login(@Param("nameOrEmail")String name,
                      @Param("password")String password);
 }

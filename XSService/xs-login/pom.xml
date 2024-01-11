@@ -6,10 +6,7 @@
         <artifactId>XSService</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
-    <groupId>org.xs.assistant</groupId>
     <artifactId>Login</artifactId>
-    <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,6 +18,12 @@
             <artifactId>Bean</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -42,7 +45,6 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.2.12</version>
         </dependency>
 
         <dependency>

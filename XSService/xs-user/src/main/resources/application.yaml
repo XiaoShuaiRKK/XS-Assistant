@@ -1,0 +1,41 @@
+server:
+  port: 13577
+  servlet:
+    context-path: /xs_assistant
+spring:
+  application:
+    name: xs-service-user #服务名
+  datasource:
+    url: jdbc:mysql://localhost:3306/xs?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+eureka:
+  client:
+    register-with-eureka: true
+    #是否从EurekaServer中抓取已有的注册信息，默认为true，单点无所谓，集群必须设置true才能和ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:12577/eureka
+#####################spring cloud 使用 Spring Boot actuator 监控完善信息###########################################
+# Spring Boot 2.50对 actuator 监控屏蔽了大多数的节点，只暴露了 heath 节点，本段配置（*）就是为了开启所有的节点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+info:
+  app.name: xs-service-user
+  company.name: com.xs.assistant
+hystrix:
+  metrics:
+    enabled: true
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 1000

@@ -1,0 +1,28 @@
+server:
+  port: 11577
+  servlet:
+    context-path: /xs_assistant
+spring:
+  application:
+    name: xs-account
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:12577/eureka
+ribbon:
+  ReadTimeOut: 6000
+  ConnectionTimeout: 6000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 8000
+    DeptHystrixService#deptInfo_Timerout(Integer):
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000

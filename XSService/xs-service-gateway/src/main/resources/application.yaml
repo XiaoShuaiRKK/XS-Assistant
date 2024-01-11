@@ -1,0 +1,32 @@
+server:
+  port: 20577
+spring:
+  application:
+    name: xs-service-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: xs-service-login-gateway
+          uri: lb://XS-LOGIN
+          predicates:
+            - Path=/xs_assistant/login/**
+        - id: xs-service-user
+          uri: lb://XS-SERVICE-USER
+          predicates:
+            - Path=/xs_assistant/user/**
+        - id: xs-account
+          uri: lb://XS-ACCOUNT
+          predicates:
+            - Path=/xs_assistant/account/**
+
+eureka:
+  instance:
+    hostname: xs-service-gateway
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:12577/eureka

@@ -1,0 +1,16 @@
+#bootstrap.yml 是系统级别的，加载优先级高于 application.yml ，负责从外部加载配置并解析
+server:
+  port: 22578
+spring:
+  application:
+    name: xs-config-client
+  cloud:
+    config:
+      name: config
+      profile: dev
+      uri: http://127.0.0.1:22577
+      label: main
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:12577/eureka

@@ -1,0 +1,18 @@
+server:
+  port: 22577
+spring:
+  application:
+    name: xs-config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/XiaoShuaiRKK/XS-Assistant-Config-Repo
+          search-paths:
+            - XS-Assistant-Config-Repo
+          force-pull: true
+          default-label: main
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:12577/eureka
