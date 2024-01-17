@@ -1,6 +1,5 @@
 package com.xs.assistant.service.user.Controller;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.customer.DO.CustomerDO;
 import com.xs.assistant.service.user.Service.UserInfoService;

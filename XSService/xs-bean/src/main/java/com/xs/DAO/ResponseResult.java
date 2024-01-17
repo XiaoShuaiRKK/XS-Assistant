@@ -46,7 +46,7 @@ public class ResponseResult<T> implements Serializable {
         return error(null,message);
     }
 
-    public static <T> ResponseResult<T> error(T data,String message){
+    public static <T extends Serializable> ResponseResult<T> error(T data,String message){
         return new ResponseResult<>(System.currentTimeMillis(),
                 ResponseStatus.HTTP_STATUS_400.getResponseCode(),
                 message,

@@ -62,6 +62,29 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+        <!--        一个基于Micrometer的规测模块，用于收集应用程序的度量数据-->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-observation</artifactId>
+        </dependency>
+        <!--        一个Micrometer模块，用于与分布式跟踪工具Brave集成，以收集应用程序的分布式跟踪数据-->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing-bridge-brave</artifactId>
+        </dependency>
+        <!--        一个Feign HTTP客户端的Micrometer模块,用于收集客户端请求的度量数据-->
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-micrometer</artifactId>
+            <version>12.3</version>
+        </dependency>
+        <!--        一个用于将Brave跟踪数据报告到Zipkin跟踪系统的库-->
+        <dependency>
+            <groupId>io.zipkin.reporter2</groupId>
+            <artifactId>zipkin-reporter-brave</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

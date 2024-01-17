@@ -1,14 +1,16 @@
 package com.xs.assistant.account.service.Impl;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.customer.DO.CustomerDO;
 import com.xs.assistant.account.service.remote.AccountInfoService;
 import com.xs.assistant.account.service.remote.AccountService;
 import com.xs.assistant.account.service.RestAccountService;
+import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Slf4j
@@ -21,25 +23,21 @@ public class RestAccountServiceImpl implements RestAccountService {
     AccountInfoService accountInfoService;
 
     @Override
-    @HystrixCommand(fallbackMethod = "accountTimeoutHandler")
+    //@Retry 将方法执行2次 如果2次都执行失败才会执行报错方法
+    @Retry(name = "login-api", fallbackMethod = "systemFallback")
     public ResponseResult<CustomerDO> restLogin(String name, String password) {
         ResponseResult<CustomerDO> result = null;
         int id;
-        try {
-            ResponseResult<Integer> loginResult = accountService.accountLogin(name,password);
-            if((id = loginResult.getData()) < 0)
-                result = ResponseResult.success(null,loginResult.getMessage());
-            else
-                result = accountInfoService.getCustomer(id);
-        }catch (Exception e){
-            result = ResponseResult.fail(e.getMessage());
-            log.error(e.getMessage());
-        }
+        ResponseResult<Integer> loginResult = accountService.accountLogin(name,password);
+        if((id = loginResult.getData()) < 0)
+            result = ResponseResult.success(null,loginResult.getMessage());
+        else
+            result = accountInfoService.getCustomer(id);
         return result;
     }
 
-    public <T> ResponseResult<T> accountTimeoutHandler(){
-        log.info("Level Down");
-        return ResponseResult.unavailable("系统繁忙请稍后再试" + Thread.currentThread().getName());
+    private <T> ResponseResult<T> systemFallback(Exception e){
+        log.error(e.getMessage());
+        return ResponseResult.unavailable("系统繁忙请稍后再试");
     }
 }

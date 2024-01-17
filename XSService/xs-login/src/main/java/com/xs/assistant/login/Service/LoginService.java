@@ -8,5 +8,4 @@ import org.springframework.stereotype.Service;
 public interface LoginService {
     ResponseResult<Integer> login(String name,String password);
 
-
 }

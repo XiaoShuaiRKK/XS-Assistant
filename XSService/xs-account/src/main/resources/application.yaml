@@ -5,24 +5,31 @@ server:
 spring:
   application:
     name: xs-account
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+  devtools:
+    restart:
+      enabled: true
+  freemarker:
+    cache: false
 eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
       defaultZone: http://127.0.0.1:12577/eureka
-ribbon:
-  ReadTimeOut: 6000
-  ConnectionTimeout: 6000
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 8000
-    DeptHystrixService#deptInfo_Timerout(Integer):
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 3000
+resilience4j.retry:
+    instances:
+      login-api:
+        max-attempts: 2
+        wait-duration: 1s
+############### Micrometer Tracing + Zipkin 链路追踪 ###############
+management:
+  tracing:
+    sampling:
+      probability: 1.0 #设置跟踪采样的概率为100%(1.0),这意味着应用程序处理的所有请求都被跟踪,如果是10%(0.1)则为10条请求只有1条跟踪
+logging:
+  pattern:
+    level: ${spring.application.name:},%X{traceId:-},%X{spanId:-} #日志记录格式
