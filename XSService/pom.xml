@@ -16,6 +16,8 @@
         <module>xs-user</module>
         <module>config-center</module>
         <module>config-client</module>
+        <module>xs-code</module>
+        <module>xs-util</module>
     </modules>
     <version>1.0-SNAPSHOT</version>
 

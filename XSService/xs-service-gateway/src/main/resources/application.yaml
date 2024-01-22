@@ -3,6 +3,9 @@ server:
 spring:
   application:
     name: xs-service-gateway
+  banner:
+    charset: UTF-8
+    location: ../../../../XS-Assistant-Banner.txt
   cloud:
     gateway:
       discovery:

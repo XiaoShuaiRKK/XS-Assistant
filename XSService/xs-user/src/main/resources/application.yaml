@@ -5,11 +5,18 @@ server:
 spring:
   application:
     name: xs-service-user #服务名
+  banner:
+    charset: UTF-8
+    location: ../../../../XS-Assistant-Banner.txt
   datasource:
     url: jdbc:mysql://localhost:3306/xs?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 5050
   devtools:
     restart:
       enabled: true
@@ -43,6 +50,9 @@ resilience4j:
     instances:
       user-info-api:
         max-attempts: 2
+        wait-duration: 1s
+      user-customer-register-api:
+        max-attempts: 3
         wait-duration: 1s
   #熔断器
   circuitbreaker:

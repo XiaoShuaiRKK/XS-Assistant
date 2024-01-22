@@ -1,0 +1,17 @@
+server:
+  port: 14577
+spring:
+  application:
+    name: xs-code
+  rabbitmq:
+    host: 127.0.0.1
+    username: xs
+    password: xs1114
+    virtual-host: xs-assistant-virtual
+  banner:
+    charset: UTF-8
+    location: ../../../../XS-Assistant-Banner.txt
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true

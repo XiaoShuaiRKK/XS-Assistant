@@ -8,6 +8,7 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -35,6 +36,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
+    @Cacheable(cacheNames = "customer",key = "#id")
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
 //    @RateLimiter(name = "user-flow-limit-api",fallbackMethod = "timeoutHandler")
     public ResponseResult<CustomerDO> getCustomer(Integer id) {

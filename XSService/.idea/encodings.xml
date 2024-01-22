@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/Assistant/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Assistant/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config-center/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config-center/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config-client/src/main/java" charset="UTF-8" />
@@ -13,16 +11,17 @@
     <file url="file://$PROJECT_DIR$/xs-account/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-bean/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-bean/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/xs-login-gateway/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/xs-login-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-code/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-code/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-login/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-login/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-mcroservice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-mcroservice/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-service-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-service-gateway/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/xs-user/lib" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-user/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-user/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-util/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-util/src/main/resources" charset="UTF-8" />
   </component>
 </project>

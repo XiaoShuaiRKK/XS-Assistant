@@ -14,6 +14,9 @@ spring:
       enabled: true
   freemarker:
     cache: false
+  banner:
+    charset: UTF-8
+    location: ../../../../XS-Assistant-Banner.txt
 eureka:
   client:
     fetch-registry: true

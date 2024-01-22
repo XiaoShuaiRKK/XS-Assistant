@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: xs-config-client
+  banner:
+    charset: UTF-8
+    location: ../../../../XS-Assistant-Banner.txt
   cloud:
     config:
       name: config

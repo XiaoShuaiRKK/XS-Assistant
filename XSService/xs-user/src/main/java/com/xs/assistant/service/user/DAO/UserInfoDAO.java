@@ -10,6 +10,6 @@ import java.util.List;
 @Mapper
 public interface UserInfoDAO {
     List<CustomerDO> getAllCustomer();
-
     CustomerDO selectCustomer(@Param("id")Integer id);
+
 }

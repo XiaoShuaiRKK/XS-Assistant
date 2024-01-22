@@ -11,3 +11,6 @@ eureka:
 spring:
   application:
     name: xseurekaserver
+  banner:
+    charset: UTF-8
+    location: ../../../../XS-Assistant-Banner.txt
