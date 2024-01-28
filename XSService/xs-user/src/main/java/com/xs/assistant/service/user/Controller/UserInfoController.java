@@ -29,4 +29,9 @@ public class UserInfoController {
         return userInfoService.getCustomer(id);
     }
 
+    @GetMapping("/checkCustomer")
+    public ResponseResult<Boolean> checkCustomer(@RequestParam("email")String email){
+        return userInfoService.hasCustomer(email);
+    }
+
 }

@@ -16,7 +16,7 @@ spring:
     cache: false
   banner:
     charset: UTF-8
-    location: ../../../../XS-Assistant-Banner.txt
+    location: Banner/XS-Assistant-Banner.txt
 eureka:
   client:
     fetch-registry: true

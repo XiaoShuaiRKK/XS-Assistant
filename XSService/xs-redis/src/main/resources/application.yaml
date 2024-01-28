@@ -1,0 +1,25 @@
+server:
+  port: 25577
+spring:
+  banner:
+    location: Banner/XS-Assistant-Banner.txt
+  application:
+    name: xs-redis
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 5050
+      jedis:
+        pool:
+          enabled: true
+          max-active: -1
+          max-wait: 8s
+          max-idle: 100
+          min-idle: 0
+      timeout: 2400
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:12577/eureka

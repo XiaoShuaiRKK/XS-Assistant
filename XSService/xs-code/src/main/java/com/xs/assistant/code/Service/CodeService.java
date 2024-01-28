@@ -5,5 +5,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface CodeService {
-    ResponseResult<Object> sendCode(String email);
+    ResponseResult<String> sendCode(String email);
+
+    ResponseResult<String> sendRegisterSuccess(String email);
+
+    ResponseResult<Boolean> checkCode(String code,String email);
 }

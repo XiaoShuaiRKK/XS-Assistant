@@ -15,7 +15,7 @@ public class CommonUtil extends AbstractCodeUtil implements IAssistantUtil {
         Random random = new Random();
         StringBuilder sb = new StringBuilder();
         for(int i = 0;i < length;i++)
-            sb.append(random.nextInt(0,10));
+            sb.append(random.nextInt(10));
         return sb.toString();
     }
 }

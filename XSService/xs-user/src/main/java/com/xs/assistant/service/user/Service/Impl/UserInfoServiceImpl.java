@@ -45,6 +45,13 @@ public class UserInfoServiceImpl implements UserInfoService {
         return result;
     }
 
+    @Override
+    public ResponseResult<Boolean> hasCustomer(String email) {
+        boolean has;
+        String msg = (has = (userInfoDAO.selectCustomer(email) <= 0)) ? null : "此邮箱已注册过";
+        return ResponseResult.success(!has,msg);
+    }
+
 
     private <T extends Serializable> ResponseResult<T> systemFailHandler(Exception e){
         log.error(e.getMessage());

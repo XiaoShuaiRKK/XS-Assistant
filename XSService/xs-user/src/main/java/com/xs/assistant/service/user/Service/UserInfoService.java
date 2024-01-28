@@ -11,4 +11,6 @@ public interface UserInfoService {
     ResponseResult<List<CustomerDO>> getCustomers();
 
     ResponseResult<CustomerDO> getCustomer(Integer id);
+
+    ResponseResult<Boolean> hasCustomer(String email);
 }

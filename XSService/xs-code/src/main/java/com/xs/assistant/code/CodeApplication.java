@@ -2,6 +2,7 @@ package com.xs.assistant.code;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(scanBasePackages = "com.xs.assistant")
 public class CodeApplication {

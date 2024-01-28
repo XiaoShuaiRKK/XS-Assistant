@@ -19,9 +19,18 @@ public class CodeController {
     CodeService codeService;
 
     @PostMapping("/send")
-    public ResponseResult<Object> sendCode(@Valid @Email(message = "invalid email")
+    public ResponseResult<String> sendCode(@Valid @Email(message = "invalid email")
                                                @RequestParam("email")String email){
         return codeService.sendCode(email);
     }
 
+    @PostMapping("/register/success")
+    public ResponseResult<String> sendRegisterSuccess(@RequestParam("email")String email){
+        return codeService.sendRegisterSuccess(email);
+    }
+
+    @PostMapping("/check")
+    public ResponseResult<Boolean> checkCode(@RequestParam("code")String code,@RequestParam("email")String email){
+        return codeService.checkCode(code,email);
+    }
 }

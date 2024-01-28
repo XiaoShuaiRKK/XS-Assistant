@@ -8,4 +8,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public interface RestAccountService {
     ResponseResult<CustomerDO> restLogin(String name,String password);
+
+    ResponseResult<String> sendCode(String email);
+
+    ResponseResult<Integer> restRegister(String code,CustomerDO customer);
+
+    ResponseResult<Boolean> checkCustomer(String email);
 }

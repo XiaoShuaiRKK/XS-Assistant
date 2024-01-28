@@ -1,5 +1,7 @@
 server:
   port: 14577
+  servlet:
+    context-path: /xs_assistant
 spring:
   application:
     name: xs-code
@@ -8,10 +10,13 @@ spring:
     username: xs
     password: xs1114
     virtual-host: xs-assistant-virtual
+    port: 5672
   banner:
     charset: UTF-8
-    location: ../../../../XS-Assistant-Banner.txt
+    location: Banner/XS-Assistant-Banner.txt
 eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:12577/eureka

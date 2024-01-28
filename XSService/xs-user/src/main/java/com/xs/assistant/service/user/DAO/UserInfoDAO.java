@@ -11,5 +11,5 @@ import java.util.List;
 public interface UserInfoDAO {
     List<CustomerDO> getAllCustomer();
     CustomerDO selectCustomer(@Param("id")Integer id);
-
+    Integer selectCustomer(@Param("email")String email);
 }
