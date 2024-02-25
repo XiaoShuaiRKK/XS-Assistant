@@ -29,7 +29,8 @@ public class UIDCodeUtil extends AbstractCodeUtil implements IAssistantUtil {
     }
 
     public String createCode(int length,int count){
-        StringBuilder code = new StringBuilder(DateUtil.getNowStr("yyyyMMdd"));
+        StringBuilder code = new StringBuilder("XS");
+        code.append(DateUtil.getNowStr("yyyyMMdd"));
         StringBuilder c = new StringBuilder(String.valueOf(count));
         if(c.length() <= length){
             int n = length - c.length();
@@ -69,4 +70,12 @@ public class UIDCodeUtil extends AbstractCodeUtil implements IAssistantUtil {
         return sb.toString();
     }
 
+    public String createCodeWithArticle(long articleCount){
+        String count = String.valueOf(articleCount);
+        StringBuilder sb = new StringBuilder("XSA");
+        for(int i=0;i<11-count.length();i++)
+            sb.append("0");
+        sb.append(count);
+        return sb.toString();
+    }
 }

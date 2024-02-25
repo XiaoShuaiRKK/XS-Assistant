@@ -9,7 +9,7 @@
             customer
     </select>
 
-    <select id="selectCustomer" resultType="com.xs.DAO.customer.DO.CustomerDO">
+    <select id="selectCustomer" parameterType="java.lang.Integer" resultType="com.xs.DAO.customer.DO.CustomerDO">
         SELECT
             Id,FirstName,LastName,Email,Birth,IdNumber,AreaId
         FROM
@@ -18,7 +18,7 @@
             Id = #{id}
     </select>
 
-    <select id="selectCustomer" resultType="java.lang.Integer">
+    <select id="selectCustomerByEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
         SELECT
             Id
         FROM

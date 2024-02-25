@@ -48,7 +48,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public ResponseResult<Boolean> hasCustomer(String email) {
         boolean has;
-        String msg = (has = (userInfoDAO.selectCustomer(email) <= 0)) ? null : "此邮箱已注册过";
+        String msg = (has = (userInfoDAO.selectCustomerByEmail(email) <= 0)) ? null : "此邮箱已注册过";
         return ResponseResult.success(!has,msg);
     }
 

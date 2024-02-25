@@ -24,6 +24,10 @@ spring:
           uri: lb://XS-ACCOUNT
           predicates:
             - Path=/xs_assistant/account/**
+        - id: xs-article-gateway
+          uri: lb://XS-ARTICLE
+          predicates:
+            - Path=/xs_assistant/article/**
 
 eureka:
   instance:

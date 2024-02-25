@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="">
-    
+<mapper namespace="com.xs.assistant.article.DAO.ArticleDAO">
+    <insert id="insertArticle" parameterType="com.xs.DAO.article.DO.Article">
+        INSERT INTO
+            note
+        VALUES
+            (NULL,#{article.background},#{article.image},#{article.logo},#{article.authorId},#{article.articleId})
+    </insert>
+
+    <select id="selectArticleByArticleId" resultType="com.xs.DAO.article.DO.Article">
+        SELECT
+            Id,Background,Image,Logo,AuthorId,ArticleId
+        FROM
+            note
+        WHERE
+            ArticleId = #{articleId}
+    </select>
+
+    <select id="selectArticlesByArticleId" resultType="com.xs.DAO.article.DO.Article">
+        SELECT
+            Id,Background,Image,Logo,AuthorId,ArticleId
+        FROM
+            note
+        WHERE
+            ArticleId IN
+        <foreach collection="articleIds" item="articleId" open="(" close=")" separator=",">
+            #{articleId}
+        </foreach>
+    </select>
 </mapper>

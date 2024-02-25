@@ -1,0 +1,38 @@
+server:
+  port: 15577
+  servlet:
+    context-path: /xs_assistant
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:12577/eureka
+spring:
+  application:
+    name: xs-article
+  datasource:
+    url: jdbc:mysql://localhost:3306/xs?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: xs-assistant
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    org.springframework.data.mongodb.core: debug
+resilience4j:
+  circuitbreaker:
+    instances:
+      article-mongodb:
+        wait-duration-in-open-state: 3s
+        failure-rate-threshold: 20
+        event-consumer-buffer-size: 10
+        sliding-window-size: 10
+        sliding-window-type: TIME_BASED
+        permitted-number-of-calls-in-half-open-state: 10

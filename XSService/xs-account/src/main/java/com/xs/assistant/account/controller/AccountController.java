@@ -15,7 +15,7 @@ public class AccountController {
     @Autowired
     RestAccountService accountService;
 
-    @GetMapping("checkCustomer")
+    @GetMapping("/checkCustomer")
     public ResponseResult<Boolean> checkCustomer(@RequestParam("email")String email){
         return accountService.checkCustomer(email);
     }

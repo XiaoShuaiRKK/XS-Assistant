@@ -1,2 +1,14 @@
-package com.xs.assistant.article.DAO;public interface ArticleDAO {
+package com.xs.assistant.article.DAO;
+
+import com.xs.DAO.article.DO.Article;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+@Mapper
+public interface ArticleDAO {
+    Integer insertArticle(@Param("article")Article article);
+    Article selectArticleByArticleId(@Param("articleId")String articleId);
+    List<Article> selectArticlesByArticleId(@Param("articleIds")List<String> articleIds);
 }
