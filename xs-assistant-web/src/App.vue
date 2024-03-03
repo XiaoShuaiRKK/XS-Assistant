@@ -8,7 +8,6 @@ import TheWelcome from './components/Welcome.vue'
 
 <style scoped>
   #welcome_form{
-    position: relative;
-    width: 80vw;
+    width: 100%;
   }
 </style>
