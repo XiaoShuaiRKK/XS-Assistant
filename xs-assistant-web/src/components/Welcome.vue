@@ -11,23 +11,32 @@ import MainForm from "@/components/MainForm.vue";
       <SIcon/>
     </div>
     <div class="form-box">
-      <MainForm/>
+      <MainForm id="main-form"/>
     </div>
   </div>
 </template>
-<style scoped>
+<style>
 .all{
   width: 100%;
 }
 .icon-box{
-  width: 80vw;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
   display: flex;
   justify-content: space-around;
   animation: ferry 3s linear forwards;
 }
 .form-box{
   width: 100%;
+  height: 100%;
   animation: main-ferry 4s linear forwards;
+}
+#main-form{
+  width: 100%;
+  height: 100%;
 }
 @keyframes ferry {
   80%{
