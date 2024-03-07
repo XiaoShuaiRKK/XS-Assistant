@@ -1,0 +1,37 @@
+server:
+  port: 16577
+  servlet:
+    context-path: /xs_assistant
+spring:
+  application:
+    name: xs-article-liked
+  banner:
+    charset: UTF-8
+    location: Banner/XS-Assistant-Banner.txt
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/xs?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    redis:
+      port: 5050
+      host: 127.0.0.1
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+resilience4j:
+  circuitbreaker:
+    instances:
+      liked-api:
+        register-health-indicator: true
+        sliding-window-size: 10
+        sliding-window-type: TIME_BASED
+        failure-rate-threshold: 20
+        wait-duration-in-open-state: 3s
+        event-consumer-buffer-size: 10
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:12577/eureka

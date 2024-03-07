@@ -46,10 +46,19 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
+    @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
     public ResponseResult<Boolean> hasCustomer(String email) {
-        boolean has;
-        String msg = (has = (userInfoDAO.selectCustomerByEmail(email) <= 0)) ? null : "此邮箱已注册过";
+        boolean has = (userInfoDAO.selectCustomerByEmail(email) <= 0);
+        String msg = has ? null : "此邮箱已注册过";
         return ResponseResult.success(!has,msg);
+    }
+
+    @Override
+    @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
+    public ResponseResult<Boolean> hashCustomerByID(String accountId) {
+        boolean has = (userInfoDAO.selectCustomerByID(accountId) > 0);
+        String msg = has ? "用户存在" : "用户不存在";
+        return ResponseResult.success(has,msg);
     }
 
 

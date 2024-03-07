@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Article implements Serializable {
+public class Article implements Serializable,Comparable<Article> {
     Integer id;
     String articleId;
     @NotEmpty(message = "Author ID cannot be empty")
@@ -18,4 +18,11 @@ public class Article implements Serializable {
     String background;
     String image;
     String logo;
+
+    @Override
+    public int compareTo(Article o) {
+        long oId = Long.parseLong(o.articleId.substring(0, 4));
+        long mId = Long.parseLong(this.articleId.substring(0, 4));
+        return mId > oId ? 1 : 0;
+    }
 }

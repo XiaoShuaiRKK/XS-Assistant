@@ -18,13 +18,22 @@
             Id = #{id}
     </select>
 
-    <select id="selectCustomerByEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
+    <select id="selectCustomerByEmail" parameterType="java.lang.String" resultType="java.lang.Long">
         SELECT
             Id
         FROM
             customer
         WHERE
             Email = #{email}
+    </select>
+
+    <select id="selectCustomerByID" parameterType="java.lang.String" resultType="java.lang.Long">
+        SELECT
+            Id
+        FROM
+            customer
+        WHERE
+            IdNumber = #{accountId}
     </select>
 
 </mapper>

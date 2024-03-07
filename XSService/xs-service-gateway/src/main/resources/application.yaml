@@ -6,11 +6,24 @@ spring:
   banner:
     charset: UTF-8
     location: Banner/XS-Assistant-Banner.txt
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 5050
+      jedis:
+        pool:
+          enabled: true
+          max-active: -1
+          max-wait: 8s
+          max-idle: 100
+          min-idle: 0
+      timeout: 2400
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true
+          lower-case-service-id: true
       routes:
         - id: xs-service-login-gateway
           uri: lb://XS-LOGIN
@@ -28,7 +41,10 @@ spring:
           uri: lb://XS-ARTICLE
           predicates:
             - Path=/xs_assistant/article/**
-
+        - id: xs-article-liked-gateway
+          uri: lb://XS-ARTICLE
+          predicates:
+            - Path=/xs_assistant/liked/**
 eureka:
   instance:
     hostname: xs-service-gateway

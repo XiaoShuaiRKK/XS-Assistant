@@ -16,12 +16,12 @@ public class LoginServiceImpl implements LoginService {
     LoginDAO loginDAO;
 
     @Override
-    public ResponseResult<Integer> login(String name, String password) {
-        ResponseResult<Integer> result;
+    public ResponseResult<CustomerDO> login(String name, String password) {
+        ResponseResult<CustomerDO> result;
         try{
-            int id = loginDAO.login(name,password);
-            String msg = id > 0 ? "登录成功" : "账号或者密码错误";
-            result = ResponseResult.success(id,msg);
+            CustomerDO customer = loginDAO.login(name,password);
+            String msg = customer != null ? "登录成功" : "账号或者密码错误";
+            result = ResponseResult.success(customer,msg);
         }catch (Exception e){
             log.info(e.getMessage());
             result = ResponseResult.fail("server error");

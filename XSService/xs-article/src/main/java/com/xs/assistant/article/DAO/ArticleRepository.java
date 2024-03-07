@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface ArticleRepository extends MongoRepository<ArticleMongoDO,String> {
     Page<ArticleMongoDO> findByTitle(String title, Pageable pageable);
     Page<ArticleMongoDO> findAllByTitleLike(String title,Pageable pageable);
+    Page<ArticleMongoDO> findAllByTitleLikeOrSubTitleLike(String title,Pageable pageable);
 }

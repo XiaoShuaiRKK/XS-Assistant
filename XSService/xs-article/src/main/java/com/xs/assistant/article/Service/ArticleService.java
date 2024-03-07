@@ -16,7 +16,14 @@ import java.util.List;
 
 public interface ArticleService {
 
+    /**
+     *
+     * @param articleId
+     * @return
+     */
     ResponseResult<ArticleVO> findArticleByArticleId(@Nullable String articleId);
+    ResponseResult<List<ArticleVO>> findArticlesByAritcleIds(@Nullable List<String> articleIds);
     ResponseResult<List<ArticleVO>> findArticleByTitle(@Nullable String title,int page, int size);
+    ResponseResult<List<ArticleVO>> findArticleByTitleAndSubTitle(String title,int page,int size);
     ResponseResult<Boolean> addArticle(@Nullable ArticleVO article);
 }

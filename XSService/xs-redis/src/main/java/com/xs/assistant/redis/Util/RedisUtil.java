@@ -3,8 +3,10 @@ package com.xs.assistant.redis.Util;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
+import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -95,6 +97,16 @@ public class RedisUtil {
         return true;
     }
 
+    public boolean setHashForever(String key,String itemKey,Object value){
+        try {
+            redisTemplate.opsForHash().put(key,itemKey,value);
+        }catch (Exception e){
+            log.error(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
     public boolean setHashMap(String key,Map<String,Object> value){
         return setHashMap(key,value,DEFAULT_EXPIRE_TIME);
     }
@@ -128,6 +140,42 @@ public class RedisUtil {
         }catch (Exception e){
             log.error(e.getMessage());
         }
+    }
+
+    public double setOrUpdateZSet(String key,String value){
+        return setOrUpdateZSet(key,value,1D);
+    }
+
+    public double setMinusScore(String key,String value){
+        return setOrUpdateZSet(key,value,-1D);
+    }
+
+    public double setOrUpdateZSet(String key,String value,double score){
+        return redisTemplate.opsForZSet().incrementScore(key,value,score);
+    }
+
+    public Set<Object> getZSet(String key, long s, long e){
+        return redisTemplate.opsForZSet().reverseRange(key,s,e);
+    }
+
+    public Object getZSetScoreByKey(String key,String value){
+        return redisTemplate.opsForZSet().score(key,value);
+    }
+
+    public Set<ZSetOperations.TypedTuple<Object>> getZSetScoresByKey(String key,long s,long e){
+        return redisTemplate.opsForZSet().reverseRangeWithScores(key,s,e);
+    }
+
+    public Set<ZSetOperations.TypedTuple<Object>> getAllZSetScoresByKey(String key){
+        return getZSetScoresByKey(key,0L,-1L);
+    }
+
+    public List<Double> getZSetScoreByKey(String key,Object... value){
+        return redisTemplate.opsForZSet().score(key,value);
+    }
+
+    public Set<Object> getAllZSet(String key){
+        return getZSet(key,0,-1);
     }
 
     public Long increment(String key){
@@ -182,14 +230,8 @@ public class RedisUtil {
         return redisTemplate.opsForHash().entries(key);
     }
 
-    public boolean deleteHash(String key,String itemKey){
-        try {
-            redisTemplate.opsForHash().delete(key,itemKey);
-        }catch (Exception e){
-            log.error(e.getMessage());
-            return false;
-        }
-        return true;
+    public Long deleteHash(String key,String itemKey) {
+        return redisTemplate.opsForHash().delete(key,itemKey);
     }
 
     /**
@@ -214,6 +256,5 @@ public class RedisUtil {
         }
         return true;
     }
-
 
 }

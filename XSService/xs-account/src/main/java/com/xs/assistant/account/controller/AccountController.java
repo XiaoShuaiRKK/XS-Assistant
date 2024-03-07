@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @Slf4j
 @RequestMapping("/account")
@@ -21,8 +23,8 @@ public class AccountController {
     }
 
     @PostMapping("/login")
-    public ResponseResult<CustomerDO> login(@RequestParam("nameOrEmail")String name,
-                                            @RequestParam("password")String password){
+    public ResponseResult<Map<String,Object>> login(@RequestParam("nameOrEmail")String name,
+                                     @RequestParam("password")String password){
         return accountService.restLogin(name,password);
     }
 

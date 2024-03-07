@@ -34,4 +34,9 @@ public class UserInfoController {
         return userInfoService.hasCustomer(email);
     }
 
+    @GetMapping("/checkCustomer/byID")
+    public ResponseResult<Boolean> checkCustomerByID(@RequestParam("accountId")String accountId){
+        return userInfoService.hashCustomerByID(accountId);
+    }
+
 }

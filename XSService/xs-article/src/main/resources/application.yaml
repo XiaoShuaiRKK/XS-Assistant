@@ -21,6 +21,9 @@ spring:
       host: 127.0.0.1
       port: 27017
       database: xs-assistant
+  banner:
+    charset: UTF-8
+    location: Banner/XS-Assistant-Banner.txt
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 logging:

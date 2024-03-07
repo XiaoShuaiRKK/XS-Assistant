@@ -14,6 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "XS-LOGIN",path = "/xs_assistant")
 public interface AccountService {
     @PostMapping("/login/customer")
-    ResponseResult<Integer> accountLogin(@RequestParam("nameOrEmail")String name,
+    ResponseResult<CustomerDO> accountLogin(@RequestParam("nameOrEmail")String name,
                                                    @RequestParam("password")String password);
 }

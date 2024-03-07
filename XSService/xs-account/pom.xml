@@ -109,6 +109,12 @@
             <artifactId>zipkin-reporter-brave</artifactId>
         </dependency>
 
+<!--        Redis-->
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>xs-redis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>

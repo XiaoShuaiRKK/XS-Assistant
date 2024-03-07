@@ -15,16 +15,14 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -48,15 +46,48 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     @CircuitBreaker(name = "article-mongodb",fallbackMethod = "mongodbFail")
+    @Transactional(rollbackFor = Exception.class)
+    public ResponseResult<List<ArticleVO>> findArticlesByAritcleIds(List<String> articleIds) {
+        List<Article> articles = articleDAO.selectArticlesByArticleId(articleIds)
+                .stream()
+                .sorted(Comparator.comparing(Article::getArticleId).reversed())
+                .toList();
+        List<ArticleMongoDO> articleMongos = articleRepository.findAllById(articleIds)
+                .stream()
+                .sorted(Comparator.comparing(ArticleMongoDO::getId).reversed())
+                .toList();
+        List<ArticleVO> articleVOS = new LinkedList<>();
+        for(int i=0;i < articleIds.size();i++)
+            articleVOS.add(new ArticleVO(articleMongos.get(i),articles.get(i)));
+        return ResponseResult.success(articleVOS);
+    }
+
+    @Override
+    @CircuitBreaker(name = "article-mongodb",fallbackMethod = "mongodbFail")
     @SuppressWarnings("all")
     public ResponseResult<List<ArticleVO>> findArticleByTitle(String title,int page, int size) {
-        PageRequest pageRequest = PageRequest.of(Math.max(page,0), size);
+        PageRequest pageRequest = pageSet(page,size);
         Page<ArticleMongoDO> articles = articleRepository.findAllByTitleLike(title,pageRequest);
-        if(articles.isEmpty())
+        return articleCollectionResult(articles);
+    }
+
+    @Override
+    public ResponseResult<List<ArticleVO>> findArticleByTitleAndSubTitle(String title, int page, int size) {
+        PageRequest pageRequest = pageSet(page,size);
+        Page<ArticleMongoDO> articles = articleRepository.findAllByTitleLikeOrSubTitleLike(title,pageRequest);
+        return articleCollectionResult(articles);
+    }
+
+    private PageRequest pageSet(int page,int size){
+        return PageRequest.of(Math.max(page,0),size);
+    }
+
+    private ResponseResult<List<ArticleVO>> articleCollectionResult(Page<ArticleMongoDO> articles){
+        if (articles.isEmpty())
             return articleNull();
-        List<ArticleVO> articleVOS = articles.stream()
-                .map(articleMongoDO -> findArticleById(articleMongoDO).get()).toList();
-        return ResponseResult.success(articleVOS);
+        List<ArticleVO> result = articles.stream()
+                .map(article -> findArticleById(article).orElseThrow(NullPointerException::new)).toList();
+        return ResponseResult.success(result);
     }
 
     private Optional<ArticleVO> findArticleById(ArticleMongoDO article){

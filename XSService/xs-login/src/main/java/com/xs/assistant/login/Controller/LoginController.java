@@ -13,7 +13,7 @@ public class LoginController {
     LoginService loginService;
 
     @PostMapping("/customer")
-    public ResponseResult<Integer> login(@RequestParam("nameOrEmail")String name,
+    public ResponseResult<CustomerDO> login(@RequestParam("nameOrEmail")String name,
                                             @RequestParam("password")String password){
         return loginService.login(name,password);
     }

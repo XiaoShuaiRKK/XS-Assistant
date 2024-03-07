@@ -13,4 +13,5 @@ public interface UserInfoService {
     ResponseResult<CustomerDO> getCustomer(Integer id);
 
     ResponseResult<Boolean> hasCustomer(String email);
+    ResponseResult<Boolean> hashCustomerByID(String accountId);
 }

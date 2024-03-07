@@ -2,6 +2,8 @@ package com.xs.assistant.account.service.Impl;
 
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.customer.DO.CustomerDO;
+import com.xs.assistant.redis.Util.RedisUtil;
+import com.xs.assistant.util.Impl.JWTUtil;
 import com.xs.assistant.account.service.remote.AccountInfoService;
 import com.xs.assistant.account.service.remote.AccountService;
 import com.xs.assistant.account.service.RestAccountService;
@@ -12,6 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -24,20 +28,28 @@ public class RestAccountServiceImpl implements RestAccountService {
     AccountInfoService accountInfoService;
     @Autowired
     RemoteCodeService remoteCodeService;
-
+    @Resource
+    RedisUtil redisUtil;
 
     @Override
     //@Retry 将方法执行2次 如果2次都执行失败才会执行报错方法
     @Retry(name = "login-api", fallbackMethod = "systemFallback")
-    public ResponseResult<CustomerDO> restLogin(String name, String password) {
-        ResponseResult<CustomerDO> result = null;
-        int id;
-        ResponseResult<Integer> loginResult = accountService.accountLogin(name,password);
-        if((id = loginResult.getData()) < 0)
-            result = ResponseResult.success(null,loginResult.getMessage());
-        else
-            result = accountInfoService.getCustomer(id);
-        return result;
+    public ResponseResult<Map<String,Object>> restLogin(String name, String password) {
+        String token;
+        Map<String,Object> result = new HashMap<>();
+        ResponseResult<CustomerDO> customerPack = accountService.accountLogin(name,password);
+        CustomerDO customer = customerPack.getData();
+        if(customer == null)
+            return ResponseResult.success(null,customerPack.getMessage());
+        if((token = checkAccountHasToken(customer.getIdNumber())) != null)
+            return loginSuccess(result,customer,token);
+        Map<String,String> payload = new HashMap<>();
+        payload.put(JWTUtil.JWTKey.ID_NUMBER_KEY,customer.getIdNumber());
+        payload.put(JWTUtil.JWTKey.NAME_KEY,customer.getFirstName() + customer.getLastName());
+        token = JWTUtil.getToken(payload);
+        redisUtil.setHash(JWTUtil.JWTKey.REDIS_KEY,customer.getIdNumber(),token,
+                Long.valueOf(JWTUtil.TIME_OUT_DAY), TimeUnit.DAYS);
+        return loginSuccess(result,customer,token);
     }
 
     @Override
@@ -56,6 +68,17 @@ public class RestAccountServiceImpl implements RestAccountService {
     @Override
     public ResponseResult<Boolean> checkCustomer(String email) {
         return accountInfoService.checkCustomer(email);
+    }
+
+    private String checkAccountHasToken(String number){
+        Object tokenObject = redisUtil.getHash(JWTUtil.JWTKey.REDIS_KEY,number);
+        return tokenObject != null ? (String) tokenObject : null;
+    }
+
+    private <T extends Map<String,Object>> ResponseResult<T> loginSuccess(T result,CustomerDO customer,String token){
+        result.put("customer",customer);
+        result.put("token",token);
+        return ResponseResult.success(result,"登录成功");
     }
 
     private <T> ResponseResult<T> systemFallback(Exception e){
