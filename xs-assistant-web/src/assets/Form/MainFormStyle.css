@@ -1,0 +1,140 @@
+.main-all-box{
+    position: absolute;
+    width: 100%;
+}
+.main-all-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.main-all-container el-header{
+    height: 50px;
+}
+el-aside{
+    position: fixed;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 10%;
+    height: 100%;
+    padding: 0 1%;
+    background: black;
+    .nav-icon{
+        margin: 0 auto;
+        width: 50%;
+        img{
+            width: 100%;
+        }
+    }
+    .nav-header-btn{
+        width: 100%;
+        height: 40%;
+    }
+    .nav-header-share{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+}
+.nav-header-share p{
+    font-size: 20px;
+    writing-mode: vertical-lr;
+}
+.nav-header-btn_inner{
+    height: 35px;
+    width: auto;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    div{
+        width: 2px;
+        height: 100%;
+        margin: 0 2px;
+        border: white 2px solid;
+    }
+}
+.main-main-box{
+}
+.main-background-box{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+}
+.main-background{
+    width: 100%;
+    height: 100%;
+    position: static;
+    z-index: -2;
+    left: -20em;
+}
+.red{
+    width: 100%;
+    height: 120%;
+    top: -150px;
+    position: absolute;
+}
+.yellow{
+    width: 100%;
+    height: 120%;
+    top: -80px;
+    left: 50vw;
+    position: absolute;
+}
+.green{
+    width: 100%;
+    height: 120%;
+    top: -50px;
+    position: absolute;
+}
+.blue{
+    width: 100%;
+    height: 120%;
+    top: -50px;
+    left: 30vw;
+    position: absolute;
+}
+.main-title{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-15%,-15%);
+    z-index: 5;
+}
+.main-title p{
+    font-size: 100px;
+    font-weight: bolder;
+    color: #ffffff;
+}
+
+.main-container{
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    padding-left: 10%;
+}
+
+.main-container-title{
+    padding: 5%;
+    transform: rotateY(90deg);
+    animation: none;
+    span{
+        display: inline-block;
+        padding: 0 0.05em;
+        font-size: 58px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+}
+
+@keyframes span-rotate {
+    100%{
+        transform: rotateY(0deg);
+    }
+}
