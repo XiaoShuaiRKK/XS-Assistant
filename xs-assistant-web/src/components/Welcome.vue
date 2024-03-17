@@ -63,3 +63,7 @@ import MainForm from "@/components/MainForm.vue";
   }
 }
 </style>
+
+<script>
+
+</script>

@@ -3,7 +3,7 @@ import TheWelcome from './components/Welcome.vue'
 </script>
 
 <template>
-  <TheWelcome id="welcome_form"/>
+  <router-view style="height: 100%"/>
 </template>
 
 <style>
