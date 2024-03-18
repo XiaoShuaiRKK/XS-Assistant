@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xs.assistant.service.user.DAO.UserUpdateDAO">
 
-    <insert id="insertCustomer" parameterType="com.xs.DAO.customer.DO.CustomerDO">
+    <insert id="insertCustomer" parameterType="com.xs.DAO.DO.customer.CustomerDO">
         INSERT INTO
             customer
         VALUES

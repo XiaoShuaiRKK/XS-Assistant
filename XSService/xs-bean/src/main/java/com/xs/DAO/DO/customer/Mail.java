@@ -1,4 +1,4 @@
-package com.xs.DAO.customer.DO;
+package com.xs.DAO.DO.customer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

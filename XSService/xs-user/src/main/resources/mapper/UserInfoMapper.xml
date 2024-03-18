@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xs.assistant.service.user.DAO.UserInfoDAO">
-    <select id="getAllCustomer" resultType="com.xs.DAO.customer.DO.CustomerDO">
+    <select id="getAllCustomer" resultType="com.xs.DAO.DO.customer.CustomerDO">
         SELECT
             Id,FirstName,LastName,Email,Birth,IdNumber,AreaId
         FROM
             customer
     </select>
 
-    <select id="selectCustomer" parameterType="java.lang.Integer" resultType="com.xs.DAO.customer.DO.CustomerDO">
+    <select id="selectCustomer" parameterType="java.lang.Integer" resultType="com.xs.DAO.DO.customer.CustomerDO">
         SELECT
             Id,FirstName,LastName,Email,Birth,IdNumber,AreaId
         FROM

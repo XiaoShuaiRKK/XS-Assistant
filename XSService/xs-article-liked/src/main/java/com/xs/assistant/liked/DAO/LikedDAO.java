@@ -1,6 +1,6 @@
 package com.xs.assistant.liked.DAO;
 
-import com.xs.DAO.liked.DO.LikedDO;
+import com.xs.DAO.DO.liked.LikedDO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

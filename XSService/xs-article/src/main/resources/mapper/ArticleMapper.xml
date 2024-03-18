@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xs.assistant.article.DAO.ArticleDAO">
-    <insert id="insertArticle" parameterType="com.xs.DAO.article.DO.Article">
+    <insert id="insertArticle" parameterType="com.xs.DAO.DO.article.Article">
         INSERT INTO
             note
         VALUES
             (NULL,#{article.background},#{article.image},#{article.logo},#{article.authorId},#{article.articleId})
     </insert>
 
-    <select id="selectArticleByArticleId" resultType="com.xs.DAO.article.DO.Article">
+    <select id="selectArticleByArticleId" resultType="com.xs.DAO.DO.article.Article">
         SELECT
             Id,Background,Image,Logo,AuthorId,ArticleId
         FROM
@@ -18,7 +18,7 @@
             ArticleId = #{articleId}
     </select>
 
-    <select id="selectArticlesByArticleId" resultType="com.xs.DAO.article.DO.Article">
+    <select id="selectArticlesByArticleId" resultType="com.xs.DAO.DO.article.Article">
         SELECT
             Id,Background,Image,Logo,AuthorId,ArticleId
         FROM

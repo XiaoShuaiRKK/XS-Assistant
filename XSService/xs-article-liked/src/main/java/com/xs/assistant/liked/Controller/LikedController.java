@@ -1,10 +1,9 @@
 package com.xs.assistant.liked.Controller;
 
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.liked.DO.LikedDO;
+import com.xs.DAO.DO.liked.LikedDO;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;

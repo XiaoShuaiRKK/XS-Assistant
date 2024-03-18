@@ -1,9 +1,7 @@
 package com.xs.assistant.account.service;
 
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.customer.DO.CustomerDO;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.xs.DAO.DO.customer.CustomerDO;
 
 import java.util.Map;
 

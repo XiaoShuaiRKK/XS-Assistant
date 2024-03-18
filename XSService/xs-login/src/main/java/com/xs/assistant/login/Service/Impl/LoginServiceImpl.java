@@ -1,7 +1,7 @@
 package com.xs.assistant.login.Service.Impl;
 
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.customer.DO.CustomerDO;
+import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.assistant.login.DAO.LoginDAO;
 import com.xs.assistant.login.Service.LoginService;
 import lombok.extern.slf4j.Slf4j;

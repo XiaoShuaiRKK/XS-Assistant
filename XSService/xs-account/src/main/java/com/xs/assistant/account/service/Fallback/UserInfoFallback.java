@@ -1,7 +1,7 @@
 package com.xs.assistant.account.service.Fallback;
 
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.customer.DO.CustomerDO;
+import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.assistant.account.service.remote.AccountInfoService;
 import org.springframework.stereotype.Component;
 

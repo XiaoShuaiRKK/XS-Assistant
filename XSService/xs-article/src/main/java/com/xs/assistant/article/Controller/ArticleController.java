@@ -1,18 +1,16 @@
 package com.xs.assistant.article.Controller;
 
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.article.VO.ArticleVO;
-import com.xs.DAO.liked.DO.LikedDO;
+import com.xs.DAO.VO.article.ArticleVO;
+import com.xs.DAO.DO.liked.LikedDO;
 import com.xs.assistant.article.Service.ArticleService;
 import com.xs.assistant.article.Service.Remote.ArticleLikedRemoteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/article")

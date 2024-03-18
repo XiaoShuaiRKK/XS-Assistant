@@ -1,11 +1,10 @@
 package com.xs.assistant.service.user.Service.Impl;
 
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.customer.DO.CustomerDO;
+import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.assistant.service.user.DAO.UserInfoDAO;
 import com.xs.assistant.service.user.Service.UserInfoService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -13,8 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 @Service
 @Slf4j

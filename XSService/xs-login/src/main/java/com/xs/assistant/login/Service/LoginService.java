@@ -1,7 +1,7 @@
 package com.xs.assistant.login.Service;
 
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.customer.DO.CustomerDO;
+import com.xs.DAO.DO.customer.CustomerDO;
 import org.springframework.stereotype.Service;
 
 @Service

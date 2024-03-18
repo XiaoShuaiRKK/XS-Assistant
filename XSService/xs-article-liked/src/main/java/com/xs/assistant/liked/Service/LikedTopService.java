@@ -1,8 +1,7 @@
 package com.xs.assistant.liked.Service;
 
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.article.VO.ArticleVO;
-import com.xs.DAO.liked.DO.LikedDO;
+import com.xs.DAO.DO.liked.LikedDO;
 
 import java.util.List;
 

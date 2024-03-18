@@ -1,7 +1,7 @@
 package com.xs.assistant.mail.Service;
 
-import com.xs.DAO.customer.DO.Mail;
-import com.xs.DAO.customer.DO.MailCode;
+import com.xs.DAO.DO.customer.Mail;
+import com.xs.DAO.DO.customer.MailCode;
 import com.xs.assistant.mail.Templates.MailTemplates;
 import com.xs.assistant.util.Impl.DateUtil;
 import com.xs.assistant.util.Impl.JsonUtil;

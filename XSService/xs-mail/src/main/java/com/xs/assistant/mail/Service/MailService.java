@@ -1,7 +1,7 @@
 package com.xs.assistant.mail.Service;
 
 
-import com.xs.DAO.customer.DO.Mail;
+import com.xs.DAO.DO.customer.Mail;
 import com.xs.assistant.mail.Templates.MailTemplates;
 import jakarta.mail.MessagingException;
 import org.springframework.mail.javamail.MimeMessageHelper;

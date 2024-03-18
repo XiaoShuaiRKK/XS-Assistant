@@ -1,8 +1,7 @@
 package com.xs.assistant.liked.Service.Impl;
 
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.article.VO.ArticleVO;
-import com.xs.DAO.liked.DO.LikedDO;
+import com.xs.DAO.DO.liked.LikedDO;
 import com.xs.assistant.liked.Service.Abstract.AbstractLikedService;
 import com.xs.assistant.liked.Service.LikedTopService;
 import com.xs.assistant.redis.Util.RedisUtil;

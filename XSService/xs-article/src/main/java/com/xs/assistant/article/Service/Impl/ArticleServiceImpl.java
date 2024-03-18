@@ -1,25 +1,19 @@
 package com.xs.assistant.article.Service.Impl;
 
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.article.DO.Article;
-import com.xs.DAO.article.DO.ArticleMongoDO;
-import com.xs.DAO.article.VO.ArticleVO;
+import com.xs.DAO.DO.article.Article;
+import com.xs.DAO.DO.article.ArticleMongoDO;
+import com.xs.DAO.VO.article.ArticleVO;
 import com.xs.assistant.article.DAO.ArticleDAO;
 import com.xs.assistant.article.DAO.ArticleRepository;
 import com.xs.assistant.article.Service.ArticleService;
-import com.xs.assistant.util.Impl.CommonUtil;
 import com.xs.assistant.util.Impl.UIDCodeUtil;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.annotation.Validated;
 
 import java.io.Serializable;
 import java.util.*;

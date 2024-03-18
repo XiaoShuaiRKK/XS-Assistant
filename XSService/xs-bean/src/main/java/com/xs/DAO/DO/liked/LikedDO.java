@@ -1,4 +1,4 @@
-package com.xs.DAO.liked.DO;
+package com.xs.DAO.DO.liked;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

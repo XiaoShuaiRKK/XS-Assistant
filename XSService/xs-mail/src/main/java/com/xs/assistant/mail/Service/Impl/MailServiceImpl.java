@@ -1,6 +1,6 @@
 package com.xs.assistant.mail.Service.Impl;
 
-import com.xs.DAO.customer.DO.Mail;
+import com.xs.DAO.DO.customer.Mail;
 import com.xs.assistant.mail.Service.MailService;
 import com.xs.assistant.mail.Templates.MailTemplates;
 import freemarker.template.Template;
@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.thymeleaf.TemplateEngine;

@@ -1,4 +1,4 @@
-package com.xs.DAO.article.DO;
+package com.xs.DAO.DO.article;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;

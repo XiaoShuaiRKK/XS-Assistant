@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xs.assistant.login.DAO.LoginDAO">
-    <select id="login" resultType="com.xs.DAO.customer.DO.CustomerDO">
+    <select id="login" resultType="com.xs.DAO.DO.customer.CustomerDO">
         SELECT
             Id,FirstName,LastName,Email,Birth,IdNumber,AreaId
         FROM

@@ -1,16 +1,14 @@
 package com.xs.assistant.liked.Service.Impl;
 
-import com.xs.DAO.liked.DO.LikedDO;
+import com.xs.DAO.DO.liked.LikedDO;
 import com.xs.assistant.liked.DAO.LikedDAO;
 import com.xs.assistant.liked.Service.Abstract.AbstractLikedService;
-import com.xs.assistant.liked.Service.Impl.LikedServiceImpl;
 import com.xs.assistant.redis.Util.RedisUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.*;
 

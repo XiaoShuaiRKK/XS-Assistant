@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xs.assistant.liked.DAO.LikedDAO">
-    <insert id="batchSaveOrUpdate" parameterType="com.xs.DAO.liked.DO.LikedDO">
+    <insert id="batchSaveOrUpdate" parameterType="com.xs.DAO.DO.liked.LikedDO">
         INSERT INTO article_liked
         VALUES
         <foreach collection="likedItems" item="liked" separator=",">

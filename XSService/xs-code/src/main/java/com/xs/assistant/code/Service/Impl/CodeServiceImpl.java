@@ -1,19 +1,15 @@
 package com.xs.assistant.code.Service.Impl;
 
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.customer.DO.MailCode;
+import com.xs.DAO.DO.customer.MailCode;
 import com.xs.assistant.code.Service.CodeService;
 import com.xs.assistant.redis.Util.RedisUtil;
-import com.xs.assistant.util.AbstractCodeUtil;
 import com.xs.assistant.util.Impl.CommonUtil;
 import com.xs.assistant.util.Impl.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 @Service
 @Slf4j

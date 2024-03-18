@@ -1,24 +1,19 @@
 package com.xs.assistant.service.user.Service.Impl;
 
-import com.netflix.discovery.converters.Auto;
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.customer.DO.CustomerDO;
+import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.assistant.redis.Util.RedisUtil;
 import com.xs.assistant.service.user.DAO.UserUpdateDAO;
 import com.xs.assistant.service.user.Service.UserUpdateService;
-import com.xs.assistant.util.Impl.DateUtil;
 import com.xs.assistant.util.Impl.UIDCodeUtil;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
-import java.util.concurrent.TimeUnit;
 
 @Service
 @Slf4j

@@ -1,7 +1,7 @@
-package com.xs.DAO.article.VO;
+package com.xs.DAO.VO.article;
 
-import com.xs.DAO.article.DO.Article;
-import com.xs.DAO.article.DO.ArticleMongoDO;
+import com.xs.DAO.DO.article.Article;
+import com.xs.DAO.DO.article.ArticleMongoDO;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
