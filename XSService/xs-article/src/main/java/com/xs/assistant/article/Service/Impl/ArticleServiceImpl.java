@@ -41,7 +41,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @CircuitBreaker(name = "article-mongodb",fallbackMethod = "mongodbFail")
     @Transactional(rollbackFor = Exception.class)
-    public ResponseResult<List<ArticleVO>> findArticlesByAritcleIds(List<String> articleIds) {
+    public ResponseResult<List<ArticleVO>> findArticlesByArticleIds(List<String> articleIds) {
         List<Article> articles = articleDAO.selectArticlesByArticleId(articleIds)
                 .stream()
                 .sorted(Comparator.comparing(Article::getArticleId).reversed())
@@ -66,14 +66,22 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public ResponseResult<List<ArticleVO>> findArticleByTitleAndSubTitle(String title, int page, int size) {
+    @CircuitBreaker(name = "article-mongodb",fallbackMethod = "mongodbFail")
+    public ResponseResult<List<ArticleVO>> findArticleBySubTitle(String title, int page, int size) {
         PageRequest pageRequest = pageSet(page,size);
-        Page<ArticleMongoDO> articles = articleRepository.findAllByTitleLikeOrSubTitleLike(title,pageRequest);
+        Page<ArticleMongoDO> articles = articleRepository.findAllBySubTitleLike(title,pageRequest);
+        return articleCollectionResult(articles);
+    }
+
+    @Override
+    public ResponseResult<List<ArticleVO>> findArticleByTitleOrSubTilte(String title, int page, int size) {
+        PageRequest pageRequest = pageSet(page,size);
+        Page<ArticleMongoDO> articles = articleRepository.findByTitleOrSubTitleContainingIgnoreCase(title,pageRequest);
         return articleCollectionResult(articles);
     }
 
     private PageRequest pageSet(int page,int size){
-        return PageRequest.of(Math.max(page,0),size);
+        return PageRequest.of(Math.max(page,0),Math.max(size,1));
     }
 
     private ResponseResult<List<ArticleVO>> articleCollectionResult(Page<ArticleMongoDO> articles){

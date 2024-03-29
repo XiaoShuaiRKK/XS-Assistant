@@ -5,6 +5,8 @@
       <option name="customHeaders">
         <set>
           <option value="token" />
+          <option value="Proxy-Client-IP" />
+          <option value="WL-Proxy-Client-IP" />
         </set>
       </option>
     </inspection_tool>

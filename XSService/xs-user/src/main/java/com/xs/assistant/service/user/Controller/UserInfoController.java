@@ -29,6 +29,11 @@ public class UserInfoController {
         return userInfoService.getCustomer(id);
     }
 
+    /**
+     * 检查此邮箱是否有用户注册了
+     * @param email email
+     * @return true 已被注册
+     */
     @GetMapping("/checkCustomer")
     public ResponseResult<Boolean> checkCustomer(@RequestParam("email")String email){
         return userInfoService.hasCustomer(email);

@@ -1,13 +1,13 @@
 server:
-  port: 26577
+  port: 23577
 spring:
   application:
     name: xs-mail
   rabbitmq:
     host: 127.0.0.1
     username: xs
-    password: xs1114
-    virtual-host: xs-assistant-virtual
+    password: xs0628
+    virtual-host: /xs-assistant-virtual
     port: 5672
   banner:
     charset: UTF-8

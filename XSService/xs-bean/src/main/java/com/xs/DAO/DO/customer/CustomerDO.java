@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -19,9 +20,11 @@ import java.sql.Date;
 public class CustomerDO implements Serializable {
     Integer id;
     @NotEmpty(message = "FirstName could not be empty")
+    @Length(min = 1,max = 20,message = "FirstName must be no less than one and more characters")
     String firstName;
 
     @NotEmpty(message = "LastName could not be empty")
+    @Length(min = 1,max = 20,message = "LastName must be no less than one and more characters")
     String lastName;
 
     @NotEmpty(message = "Email could not be empty")

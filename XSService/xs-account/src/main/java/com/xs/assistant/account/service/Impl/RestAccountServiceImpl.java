@@ -54,6 +54,9 @@ public class RestAccountServiceImpl implements RestAccountService {
 
     @Override
     public ResponseResult<String> sendCode(String email) {
+        ResponseResult<Boolean> hasCustomer = accountInfoService.checkCustomer(email);
+        if(hasCustomer.getData())
+            return ResponseResult.success(null,hasCustomer.getMessage());
         return remoteCodeService.sendCode(email);
     }
 

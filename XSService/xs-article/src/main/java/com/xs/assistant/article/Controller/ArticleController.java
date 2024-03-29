@@ -31,18 +31,24 @@ public class ArticleController {
         return articleService.findArticleByArticleId(articleId);
     }
 
-    @PostMapping("/get/articles/byTitle")
+    @PostMapping("/get/articles/bySubTitle")
     public ResponseResult<List<ArticleVO>> findArticleByTitle(@RequestParam("title")String title,
                                                               @RequestParam("page")Integer page,
                                                               @RequestParam("size")Integer size){
-        return articleService.findArticleByTitleAndSubTitle(title,page,size);
+        return articleService.findArticleBySubTitle(title,page,size);
+    }
+    @PostMapping("/get/articles/byTitleOrSubTitle")
+    public ResponseResult<List<ArticleVO>> findArticleByTitleOrSubTitle(@RequestParam("title")String title,
+                                                              @RequestParam("page")Integer page,
+                                                              @RequestParam("size")Integer size){
+        return articleService.findArticleByTitleOrSubTilte(title,page,size);
     }
 
     @GetMapping("/get/top/getTop")
     public ResponseResult<Map<String, Object>> getTopArticle(@RequestParam("count")Long count){
         List<LikedDO> articleLikedTop = articleLikedRemoteService.getTop(count).getData();
         List<String> articleIds = articleLikedTop.stream().map(LikedDO::getArticleId).toList();
-        List<ArticleVO> articleVOS = articleService.findArticlesByAritcleIds(articleIds).getData();
+        List<ArticleVO> articleVOS = articleService.findArticlesByArticleIds(articleIds).getData();
         return ResponseResult.success(Map.of("liked",articleLikedTop,"articles",articleVOS));
     }
 }

@@ -2,7 +2,10 @@ package com.xs.assistant.redis.Util;
 
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
@@ -16,8 +19,8 @@ import java.util.concurrent.TimeUnit;
 @Component
 @Slf4j
 public class RedisUtil {
-    @Resource
-    RedisTemplate<String,Object> redisTemplate;
+    @Autowired
+    RedisTemplate<Object,Object> redisTemplate;
 
     public static final long DEFAULT_EXPIRE_TIME = 60L;
 
@@ -25,7 +28,7 @@ public class RedisUtil {
      * The data set in redis
      * default expiration time of 60s
      * @param key key
-     * @param value vaule
+     * @param value value
      * @return boolean
      */
     public boolean set(String key,Object value){
@@ -142,6 +145,22 @@ public class RedisUtil {
         }
     }
 
+    public void setIfPresent(String key,Object value){
+        setIfPresent(key,value,DEFAULT_EXPIRE_TIME);
+    }
+
+    public void setIfPresent(String key,Object value,Long time){
+        setIfPresent(key,value,time,TimeUnit.SECONDS);
+    }
+
+    public void setIfPresent(String key,Object value,Long time,TimeUnit timeUnit){
+        try {
+            redisTemplate.opsForValue().setIfPresent(key,value,time,timeUnit);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
+    }
+
     public double setOrUpdateZSet(String key,String value){
         return setOrUpdateZSet(key,value,1D);
     }
@@ -151,7 +170,8 @@ public class RedisUtil {
     }
 
     public double setOrUpdateZSet(String key,String value,double score){
-        return redisTemplate.opsForZSet().incrementScore(key,value,score);
+        Double d = redisTemplate.opsForZSet().incrementScore(key,value,score);
+        return d == null ? 0D : d;
     }
 
     public Set<Object> getZSet(String key, long s, long e){

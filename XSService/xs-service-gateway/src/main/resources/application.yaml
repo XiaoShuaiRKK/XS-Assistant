@@ -53,6 +53,10 @@ spring:
           uri: lb://XS-ARTICLE
           predicates:
             - Path=/xs_assistant/liked/**
+        - id: xs-ip-address-gateway
+          uri: lb://XS-ADDRESS
+          predicates:
+            - Path=/xs_assistant/ip/**
 eureka:
   instance:
     hostname: xs-service-gateway

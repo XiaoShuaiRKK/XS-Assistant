@@ -2,6 +2,7 @@ package com.xs.assistant.service.user.Service.Impl;
 
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
+import com.xs.assistant.redis.Util.RedisUtil;
 import com.xs.assistant.service.user.DAO.UserInfoDAO;
 import com.xs.assistant.service.user.Service.UserInfoService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -17,9 +18,19 @@ import java.util.List;
 @Slf4j
 public class UserInfoServiceImpl implements UserInfoService {
 
+    private static final String REDIS_CUSTOMER_KEY = "customer:";
+    private static final String REDIS_CUSTOMER_EMAIL_KEY = "customerEmail:";
+    private static final Long DEFAULT_KEY_TIME = 360L;
+
     @Autowired
     UserInfoDAO userInfoDAO;
+    @Autowired
+    RedisUtil redisUtil;
 
+    /**
+     * 获取用户
+     * @return list<account>
+     */
     @Override
     public ResponseResult<List<CustomerDO>> getCustomers() {
         ResponseResult<List<CustomerDO>> result = null;
@@ -32,24 +43,47 @@ public class UserInfoServiceImpl implements UserInfoService {
         return result;
     }
 
+    /**
+     * 根据id查询用户
+     * @param id id
+     * @return account
+     */
     @Override
-    @Cacheable(cacheNames = "customer",key = "#id")
+//    @Cacheable(cacheNames = "customer",key = "#id")
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
 //    @RateLimiter(name = "user-flow-limit-api",fallbackMethod = "timeoutHandler")
     public ResponseResult<CustomerDO> getCustomer(Integer id) {
-        ResponseResult<CustomerDO> result = null;
-        result = ResponseResult.success(userInfoDAO.selectCustomer(id));
-        return result;
+        String number = String.valueOf(id);
+        if(redisUtil.hasKey(REDIS_CUSTOMER_KEY,number))
+            return ResponseResult.success((CustomerDO) redisUtil.getHash(REDIS_CUSTOMER_KEY,number));
+        CustomerDO customer = userInfoDAO.selectCustomer(id);
+        redisUtil.setHash(REDIS_CUSTOMER_KEY,number,customer,DEFAULT_KEY_TIME);
+        return ResponseResult.success(customer);
     }
 
+    /**
+     * 检查邮箱是否已被注册
+     * @param email email
+     * @return true 已被注册
+     */
     @Override
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
     public ResponseResult<Boolean> hasCustomer(String email) {
-        boolean has = (userInfoDAO.selectCustomerByEmail(email) <= 0);
-        String msg = has ? null : "此邮箱已注册过";
-        return ResponseResult.success(!has,msg);
+        if(redisUtil.hasKey(REDIS_CUSTOMER_EMAIL_KEY,email))
+            return ResponseResult.success(true,"此邮箱已注册过");
+        long id = userInfoDAO.selectCustomerByEmail(email) <= 0 ? 0 : 1;
+        boolean has = id == 1;
+        if(has)
+            redisUtil.setHash(REDIS_CUSTOMER_EMAIL_KEY,email,id,DEFAULT_KEY_TIME);
+        String msg = has ? "此邮箱已注册过" : null;
+        return ResponseResult.success(has,msg);
     }
 
+    /**
+     * 根据用户id 检查此用户是否存在
+     * @param accountId ID Number
+     * @return true 存在
+     */
     @Override
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
     public ResponseResult<Boolean> hashCustomerByID(String accountId) {

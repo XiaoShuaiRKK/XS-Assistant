@@ -22,22 +22,23 @@ import java.util.Objects;
 
 @Component
 @Slf4j
-public class TokenAuthFilter implements GlobalFilter, Ordered {
+public class TokenAuthFilter extends BaseFilter implements GlobalFilter, Ordered {
+
     @Resource
     RedisUtil redisUtil;
-    @Resource
-    JsonUtil jsonUtil;
+
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        if(checkPath(exchange.getRequest().getURI().getPath()))
+        if(checkReleasePath(exchange.getRequest().getURI().getPath()) != -1) {
             return chain.filter(exchange);
+        }
         String token = exchange.getRequest().getHeaders().getFirst("token");
         String number = JWTUtil.getIDNumber(token);
         if(!Objects.requireNonNull(token)
                 .equals(redisUtil.getHash(JWTUtil.JWTKey.REDIS_KEY,number))){
             log.error("Token 验证失败" + token);
-            return writeResponse(exchange.getResponse(),"Token 验证失败");
+            return writeResponse(ResponseStatus.HTTP_STATUS_401,exchange.getResponse(),"Token 验证失败");
         }
         log.info("Token 验证成功" + token);
         return chain.filter(exchange);
@@ -48,22 +49,4 @@ public class TokenAuthFilter implements GlobalFilter, Ordered {
         return 0;
     }
 
-    protected Mono<Void> writeResponse(ServerHttpResponse response, String msg){
-       String json = jsonUtil.beanToJson(new ResponseResult<Object>(System.currentTimeMillis(),
-               ResponseStatus.HTTP_STATUS_401.getResponseCode(),null,msg));
-       byte[] bits = json.getBytes(StandardCharsets.UTF_8);
-       DataBuffer buffer = response.bufferFactory().wrap(bits);
-       response.setStatusCode(HttpStatus.OK);
-       response.getHeaders().add("Content-Type","application/json;charset=UTF-8");
-       return response.writeWith(Mono.just(buffer));
-    }
-
-    private boolean checkPath(String path){
-        return switch (path) {
-            case "/xs_assistant/account/login",
-                    "/xs_assistant/account/sendCode",
-                    "/xs_assistant/account/register" -> true;
-            default -> false;
-        };
-    }
 }
