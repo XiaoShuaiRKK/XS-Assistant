@@ -20,6 +20,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     private static final String REDIS_CUSTOMER_KEY = "customer:";
     private static final String REDIS_CUSTOMER_EMAIL_KEY = "customerEmail:";
+    private static final String REDIS_CUSTOMER_ID_NUMBER_KEY = "customerIdNumber:";
     private static final Long DEFAULT_KEY_TIME = 360L;
 
     @Autowired
@@ -71,8 +72,8 @@ public class UserInfoServiceImpl implements UserInfoService {
     public ResponseResult<Boolean> hasCustomer(String email) {
         if(redisUtil.hasKey(REDIS_CUSTOMER_EMAIL_KEY,email))
             return ResponseResult.success(true,"此邮箱已注册过");
-        long id = userInfoDAO.selectCustomerByEmail(email) <= 0 ? 0 : 1;
-        boolean has = id == 1;
+        long id;
+        boolean has = (id = userInfoDAO.selectCustomerByEmail(email)) > 0;
         if(has)
             redisUtil.setHash(REDIS_CUSTOMER_EMAIL_KEY,email,id,DEFAULT_KEY_TIME);
         String msg = has ? "此邮箱已注册过" : null;
@@ -87,7 +88,12 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
     public ResponseResult<Boolean> hashCustomerByID(String accountId) {
-        boolean has = (userInfoDAO.selectCustomerByID(accountId) > 0);
+        if(redisUtil.hasKey(REDIS_CUSTOMER_ID_NUMBER_KEY,accountId))
+            return ResponseResult.success(true);
+        long id;
+        boolean has = (id = userInfoDAO.selectCustomerByID(accountId)) > 0;
+        if(has)
+            redisUtil.setHash(REDIS_CUSTOMER_ID_NUMBER_KEY,accountId, id,DEFAULT_KEY_TIME);
         String msg = has ? "用户存在" : "用户不存在";
         return ResponseResult.success(has,msg);
     }

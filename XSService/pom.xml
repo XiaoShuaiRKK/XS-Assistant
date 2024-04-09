@@ -23,6 +23,8 @@
         <module>xs-article</module>
         <module>xs-article-liked</module>
         <module>xs-address</module>
+        <module>xs-encryption</module>
+        <module>xs-encryption</module>
     </modules>
     <version>1.0-SNAPSHOT</version>
 
