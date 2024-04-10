@@ -1,5 +1,7 @@
 server:
   port: 24577
+  servlet:
+    context-path: /xs_assistant
 spring:
   application:
     name: xs-encryption
@@ -31,3 +33,5 @@ management:
 logging:
   pattern:
     level: ${spring.application.name},%X{traceId:-},%X{traceId:-}
+  level:
+    org.springframework.cloud.openfeign.FeignLoggerFactory: DEBUG

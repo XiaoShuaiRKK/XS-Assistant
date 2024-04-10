@@ -57,6 +57,10 @@ spring:
           uri: lb://XS-ADDRESS
           predicates:
             - Path=/xs_assistant/ip/**
+        - id: xs-ip-encryption-gateway
+          uri: lb://XS-ENCRYPTION
+          predicates:
+            - Path=/xs_assistant/encryption/**
 eureka:
   instance:
     hostname: xs-service-gateway

@@ -8,9 +8,18 @@
         FROM
             customer
         WHERE
-            (IdNumber = #{nameOrEmail} OR Email = #{nameOrEmail})
-        AND
-            Password = #{password}
+            Email = #{nameOrEmail}
+        OR
+            IdNumber = #{nameOrEmail}
+    </select>
+
+    <select id="getCustomerPassword" resultType="java.lang.String">
+        SELECT
+            Password
+        FROM
+            customer
+        WHERE
+            Email = #{email}
     </select>
 
 </mapper>

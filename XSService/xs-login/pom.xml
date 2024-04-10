@@ -63,6 +63,19 @@
             <optional>true</optional>
         </dependency>
 
+        <!--        Spring Cloud Ribbon-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+            <version>2.2.10.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
         <!--        一个基于Micrometer的规测模块，用于收集应用程序的度量数据-->
         <dependency>
             <groupId>io.micrometer</groupId>

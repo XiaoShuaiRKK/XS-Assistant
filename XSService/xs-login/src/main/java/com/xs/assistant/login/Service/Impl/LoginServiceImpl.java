@@ -4,6 +4,7 @@ import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.assistant.login.DAO.LoginDAO;
 import com.xs.assistant.login.Service.LoginService;
+import com.xs.assistant.login.Service.Remote.EncryptionRemoteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,16 +15,21 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     LoginDAO loginDAO;
+    @Autowired
+    EncryptionRemoteService encryptionService;
 
     @Override
     public ResponseResult<CustomerDO> login(String name, String password) {
         ResponseResult<CustomerDO> result;
         try{
-            CustomerDO customer = loginDAO.login(name,password);
-            String msg = customer != null ? "登录成功" : "账号或者密码错误";
-            result = ResponseResult.success(customer,msg);
+            String encodedPassword = loginDAO.getCustomerPassword(name);
+            if(!encryptionService.checkEncodePassword(password,encodedPassword))
+                return ResponseResult.success(null,"登录失败");
+            CustomerDO customer = loginDAO.login(name);
+            result = ResponseResult.success(customer,"登录成功");
         }catch (Exception e){
-            log.info(e.getMessage());
+            e.printStackTrace();
+            log.error(e.getMessage());
             result = ResponseResult.fail("server error");
         }
         return result;

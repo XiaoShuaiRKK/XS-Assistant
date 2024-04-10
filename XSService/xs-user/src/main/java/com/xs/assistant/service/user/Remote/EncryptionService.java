@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+@FeignClient(value = "XS-ENCRYPTION",path = "/xs_assistant/encryption")
 @Service
-@FeignClient(name = "XS-ENCRYPTION",path = "/xs_assistant/encryption")
 public interface EncryptionService {
     @GetMapping("/encode")
     String getEncodePassword(@RequestParam("password")String password);

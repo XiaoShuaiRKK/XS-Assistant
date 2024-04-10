@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@Service
 @FeignClient(value = "XS-LOGIN",path = "/xs_assistant")
 public interface AccountService {
     @PostMapping("/login/customer")

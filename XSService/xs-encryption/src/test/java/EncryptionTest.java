@@ -19,11 +19,11 @@ public class EncryptionTest {
 
     @Test
     public void testEncode(){
-        long time = System.currentTimeMillis();
-        String encodedPassword;
-        System.out.println(encodedPassword = controller.getEncodePassword("Ab123456"));
-        System.out.println(System.currentTimeMillis() - time + "ms");
-        System.out.println(controller.checkEncodePassword("Ab123456",encodedPassword));
-        System.out.println();
+//        long time = System.currentTimeMillis();
+//        String encodedPassword;
+//        System.out.println(encodedPassword = controller.getEncodePassword("Ab123456"));
+//        System.out.println(System.currentTimeMillis() - time + "ms");
+//        System.out.println(controller.checkEncodePassword("Ab123456",encodedPassword));
+//        System.out.println();
     }
 }

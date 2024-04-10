@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@Service
+
 @FeignClient(value = "XS-SERVICE-USER",path = "/xs_assistant")
 public interface AccountInfoService {
     @GetMapping("/user/getCustomers")

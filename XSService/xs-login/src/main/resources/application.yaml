@@ -13,6 +13,10 @@ spring:
   banner:
     charset: UTF-8
     location: Banner/XS-Assistant-Banner.txt
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 eureka:
@@ -30,3 +34,5 @@ management:
 logging:
   pattern:
     level: ${spring.application.name:},%X{traceId:-},%X{spanId:-} #日志记录格式
+  level:
+    org.springframework.cloud.openfeign.FeignLoggerFactory: DEBUG
