@@ -40,4 +40,5 @@ public class CustomerDO implements Serializable {
     Date birth;
     String idNumber;
     Integer areaId;
+    Integer stateId;
 }

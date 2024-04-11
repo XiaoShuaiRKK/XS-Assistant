@@ -29,6 +29,11 @@ public class UserInfoController {
         return userInfoService.getCustomer(id);
     }
 
+    @GetMapping("/getCustomer/ByNumberID")
+    public ResponseResult<CustomerDO> getCustomerByNumberId(@RequestParam("ID")String id){
+        return userInfoService.getCustomer(id);
+    }
+
     /**
      * 检查此邮箱是否有用户注册了
      * @param email email

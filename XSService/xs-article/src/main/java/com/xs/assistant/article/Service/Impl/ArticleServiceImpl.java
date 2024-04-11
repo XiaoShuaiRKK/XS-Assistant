@@ -7,6 +7,7 @@ import com.xs.DAO.VO.article.ArticleVO;
 import com.xs.assistant.article.DAO.ArticleDAO;
 import com.xs.assistant.article.DAO.ArticleRepository;
 import com.xs.assistant.article.Service.ArticleService;
+import com.xs.assistant.redis.Util.RedisUtil;
 import com.xs.assistant.util.Impl.UIDCodeUtil;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +28,25 @@ public class ArticleServiceImpl implements ArticleService {
     ArticleDAO articleDAO;
     @Autowired
     UIDCodeUtil codeUtil;
+    @Autowired
+    RedisUtil redisUtil;
+
+    private static final Long DEFALUT_TIME = 360L;
+    private static final Long DEFALUT_HOT_TIME = 1200L;
+    private static final String REDIS_ARTICLE_ID_KEY = "articleById:";
 
     @Override
     @CircuitBreaker(name = "article-mongodb",fallbackMethod = "mongodbFail")
     @Transactional(rollbackFor = Exception.class)
     public ResponseResult<ArticleVO> findArticleByArticleId(String articleId) {
+        if (redisUtil.hasKey(REDIS_ARTICLE_ID_KEY,articleId))
+            return ResponseResult.success((ArticleVO) redisUtil.getHash(REDIS_ARTICLE_ID_KEY,articleId));
         Optional<ArticleMongoDO> article = articleRepository.findById(articleId);
         return article.map(articleMongoDO -> findArticleById(articleMongoDO)
-                .map(ResponseResult::success).orElseGet(this::articleNull))
+                .map((articleResult)->{
+                    redisUtil.setHash(REDIS_ARTICLE_ID_KEY,articleId,articleResult,DEFALUT_TIME);
+                    return ResponseResult.success(articleResult);
+                }).orElseGet(this::articleNull))
                 .orElseGet(this::articleNull);
     }
 

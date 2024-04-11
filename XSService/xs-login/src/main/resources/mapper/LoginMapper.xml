@@ -4,7 +4,7 @@
 <mapper namespace="com.xs.assistant.login.DAO.LoginDAO">
     <select id="login" resultType="com.xs.DAO.DO.customer.CustomerDO">
         SELECT
-            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId
+            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId
         FROM
             customer
         WHERE

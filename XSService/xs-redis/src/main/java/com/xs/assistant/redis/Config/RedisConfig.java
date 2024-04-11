@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -29,6 +30,14 @@ public class RedisConfig {
         template.setHashValueSerializer(valueSerializer());
         template.afterPropertiesSet();
         return template;
+    }
+
+    @Bean
+    public RedisCacheManager redisCacheManager(RedisTemplate redisTemplate){
+        RedisCacheWriter redisCacheWriter = RedisCacheWriter.nonLockingRedisCacheWriter(redisTemplate.getConnectionFactory());
+        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
+                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(redisTemplate.getValueSerializer()));
+        return new RedisConfigCacheManager(redisCacheWriter,redisCacheConfiguration);
     }
 
     private RedisSerializer<String> keySerializer(){

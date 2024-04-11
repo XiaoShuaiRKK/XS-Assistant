@@ -41,10 +41,10 @@ spring:
           uri: lb://XS-SERVICE-USER
           predicates:
             - Path=/xs_assistant/user/**
-        - id: xs-account
+        - id: xs-account-login-gateway
           uri: lb://XS-ACCOUNT
           predicates:
-            - Path=/xs_assistant/account/**
+            - Path=/xs_assistant/**
         - id: xs-article-gateway
           uri: lb://XS-ARTICLE
           predicates:
@@ -57,10 +57,6 @@ spring:
           uri: lb://XS-ADDRESS
           predicates:
             - Path=/xs_assistant/ip/**
-        - id: xs-ip-encryption-gateway
-          uri: lb://XS-ENCRYPTION
-          predicates:
-            - Path=/xs_assistant/encryption/**
 eureka:
   instance:
     hostname: xs-service-gateway

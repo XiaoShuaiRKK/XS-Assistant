@@ -9,9 +9,8 @@ import java.util.List;
 @Service
 public interface UserInfoService {
     ResponseResult<List<CustomerDO>> getCustomers();
-
     ResponseResult<CustomerDO> getCustomer(Integer id);
-
+    ResponseResult<CustomerDO> getCustomer(String numberID);
     ResponseResult<Boolean> hasCustomer(String email);
     ResponseResult<Boolean> hashCustomerByID(String accountId);
 }

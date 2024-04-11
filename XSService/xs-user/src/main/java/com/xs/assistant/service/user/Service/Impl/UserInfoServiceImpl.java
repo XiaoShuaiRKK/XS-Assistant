@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -50,16 +51,26 @@ public class UserInfoServiceImpl implements UserInfoService {
      * @return account
      */
     @Override
-//    @Cacheable(cacheNames = "customer",key = "#id")
+    @Cacheable(cacheNames = "customer#10#s",key = "#id")
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
 //    @RateLimiter(name = "user-flow-limit-api",fallbackMethod = "timeoutHandler")
     public ResponseResult<CustomerDO> getCustomer(Integer id) {
-        String number = String.valueOf(id);
-        if(redisUtil.hasKey(REDIS_CUSTOMER_KEY,number))
-            return ResponseResult.success((CustomerDO) redisUtil.getHash(REDIS_CUSTOMER_KEY,number));
+//        String number = String.valueOf(id);
+//        if(redisUtil.hasKey(REDIS_CUSTOMER_KEY,number))
+//            return ResponseResult.success((CustomerDO) redisUtil.getHash(REDIS_CUSTOMER_KEY,number));
         CustomerDO customer = userInfoDAO.selectCustomer(id);
-        redisUtil.setHash(REDIS_CUSTOMER_KEY,number,customer,DEFAULT_KEY_TIME);
+//        redisUtil.setHash(REDIS_CUSTOMER_KEY,number,customer,DEFAULT_KEY_TIME);
         return ResponseResult.success(customer);
+    }
+
+    @Override
+    @Cacheable(cacheNames = "customerByNumberID#10#s",key = "#numberID")
+    @Transactional(rollbackFor = Exception.class)
+    @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
+    public ResponseResult<CustomerDO> getCustomer(String numberID) {
+        CustomerDO customer = userInfoDAO.selectCustomerByNumberId(numberID);
+        return customer == null ? ResponseResult.success(null,"用户不存在")
+                : ResponseResult.success(customer,"查询成功");
     }
 
     /**

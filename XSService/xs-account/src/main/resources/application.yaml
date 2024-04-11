@@ -30,7 +30,7 @@ eureka:
 resilience4j.retry:
     instances:
       login-api:
-        max-attempts: 2
+        max-attempts: 3
         wait-duration: 1s
 ############### Micrometer Tracing + Zipkin 链路追踪 ###############
 management:

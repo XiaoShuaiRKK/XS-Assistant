@@ -4,18 +4,27 @@
 <mapper namespace="com.xs.assistant.service.user.DAO.UserInfoDAO">
     <select id="getAllCustomer" resultType="com.xs.DAO.DO.customer.CustomerDO">
         SELECT
-            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId
+            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId
         FROM
             customer
     </select>
 
     <select id="selectCustomer" parameterType="java.lang.Integer" resultType="com.xs.DAO.DO.customer.CustomerDO">
         SELECT
-            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId
+            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId
         FROM
             customer
         WHERE
             Id = #{id}
+    </select>
+
+    <select id="selectCustomerByNumberId" parameterType="java.lang.String" resultType="com.xs.DAO.DO.customer.CustomerDO">
+        SELECT
+            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId
+        FROM
+            customer
+        WHERE
+            IdNumber = #{numberID}
     </select>
 
     <select id="selectCustomerByEmail" parameterType="java.lang.String" resultType="java.lang.Long">
