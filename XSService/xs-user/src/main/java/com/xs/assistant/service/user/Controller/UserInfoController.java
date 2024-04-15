@@ -21,17 +21,17 @@ public class UserInfoController {
 
     @GetMapping("/getCustomers")
     public ResponseResult<List<CustomerDO>> getAllCustomer(){
-        return userInfoService.getCustomers();
+        return packageResult(userInfoService.getCustomers());
     }
 
     @GetMapping("/getCustomer")
     public ResponseResult<CustomerDO> getCustomer(@RequestParam("id")Integer id){
-        return userInfoService.getCustomer(id);
+        return packageResult(userInfoService.getCustomer(id));
     }
 
     @GetMapping("/getCustomer/ByNumberID")
     public ResponseResult<CustomerDO> getCustomerByNumberId(@RequestParam("ID")String id){
-        return userInfoService.getCustomer(id);
+        return packageResult(userInfoService.getCustomer(id));
     }
 
     /**
@@ -41,12 +41,16 @@ public class UserInfoController {
      */
     @GetMapping("/checkCustomer")
     public ResponseResult<Boolean> checkCustomer(@RequestParam("email")String email){
-        return userInfoService.hasCustomer(email);
+        return packageResult(userInfoService.hasCustomer(email));
     }
 
     @GetMapping("/checkCustomer/byID")
     public ResponseResult<Boolean> checkCustomerByID(@RequestParam("accountId")String accountId){
-        return userInfoService.hashCustomerByID(accountId);
+        return packageResult(userInfoService.hashCustomerByID(accountId));
+    }
+
+    private <T> ResponseResult<T> packageResult(T data){
+        return data == null ? ResponseResult.fail(null,"无查询结果") : ResponseResult.success(data);
     }
 
 }

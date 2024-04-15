@@ -2,6 +2,9 @@ package com.xs.assistant.service.user.Service.Impl;
 
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
+import com.xs.assistant.redis.Aspect.Annotation.RedisSet;
+import com.xs.assistant.redis.Aspect.Annotation.RedisSetHash;
+import com.xs.assistant.redis.Aspect.Annotation.RedisSetHashValues;
 import com.xs.assistant.redis.Util.RedisUtil;
 import com.xs.assistant.service.user.DAO.UserInfoDAO;
 import com.xs.assistant.service.user.Service.UserInfoService;
@@ -14,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Slf4j
@@ -22,6 +26,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     private static final String REDIS_CUSTOMER_KEY = "customer:";
     private static final String REDIS_CUSTOMER_EMAIL_KEY = "customerEmail:";
     private static final String REDIS_CUSTOMER_ID_NUMBER_KEY = "customerIdNumber:";
+    private static final String REDIS_CUSTOMER_ID_KEY = "customerId:";
     private static final Long DEFAULT_KEY_TIME = 360L;
 
     @Autowired
@@ -34,15 +39,13 @@ public class UserInfoServiceImpl implements UserInfoService {
      * @return list<account>
      */
     @Override
-    public ResponseResult<List<CustomerDO>> getCustomers() {
-        ResponseResult<List<CustomerDO>> result = null;
+    public List<CustomerDO> getCustomers() {
         try{
-            result = ResponseResult.success(userInfoDAO.getAllCustomer());
+            return userInfoDAO.getAllCustomer();
         }catch (Exception e){
-            result = ResponseResult.fail(e.getMessage());
             log.error(e.getMessage());
         }
-        return result;
+        return null;
     }
 
     /**
@@ -51,26 +54,27 @@ public class UserInfoServiceImpl implements UserInfoService {
      * @return account
      */
     @Override
-    @Cacheable(cacheNames = "customer#10#s",key = "#id")
+    @RedisSetHashValues(baseKey = REDIS_CUSTOMER_KEY,keyName = REDIS_CUSTOMER_ID_KEY,
+            key = "#id",time = 5,timeStyle = TimeUnit.MINUTES)
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
-//    @RateLimiter(name = "user-flow-limit-api",fallbackMethod = "timeoutHandler")
-    public ResponseResult<CustomerDO> getCustomer(Integer id) {
-//        String number = String.valueOf(id);
-//        if(redisUtil.hasKey(REDIS_CUSTOMER_KEY,number))
-//            return ResponseResult.success((CustomerDO) redisUtil.getHash(REDIS_CUSTOMER_KEY,number));
-        CustomerDO customer = userInfoDAO.selectCustomer(id);
-//        redisUtil.setHash(REDIS_CUSTOMER_KEY,number,customer,DEFAULT_KEY_TIME);
-        return ResponseResult.success(customer);
+    public CustomerDO getCustomer(Integer id) {
+        return userInfoDAO.selectCustomer(id);
     }
 
     @Override
-    @Cacheable(cacheNames = "customerByNumberID#10#s",key = "#numberID")
+    @RedisSetHashValues(baseKey = REDIS_CUSTOMER_KEY,keyName = REDIS_CUSTOMER_ID_NUMBER_KEY,
+            key = "#numberID",time = 5,timeStyle = TimeUnit.MINUTES)
     @Transactional(rollbackFor = Exception.class)
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
-    public ResponseResult<CustomerDO> getCustomer(String numberID) {
-        CustomerDO customer = userInfoDAO.selectCustomerByNumberId(numberID);
-        return customer == null ? ResponseResult.success(null,"用户不存在")
-                : ResponseResult.success(customer,"查询成功");
+    public CustomerDO getCustomer(String numberID) {
+        return userInfoDAO.selectCustomerByNumberId(numberID);
+    }
+
+    @Override
+    @RedisSetHashValues(baseKey = REDIS_CUSTOMER_KEY,keyName = REDIS_CUSTOMER_EMAIL_KEY,
+            key = "#numberID",time = 5,timeStyle = TimeUnit.MINUTES)
+    public CustomerDO getCustomerByEmail(String email) {
+        return userInfoDAO.selectCustomerInfoByEmail(email);
     }
 
     /**
@@ -80,15 +84,9 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     @Override
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
-    public ResponseResult<Boolean> hasCustomer(String email) {
-        if(redisUtil.hasKey(REDIS_CUSTOMER_EMAIL_KEY,email))
-            return ResponseResult.success(true,"此邮箱已注册过");
-        long id;
-        boolean has = (id = userInfoDAO.selectCustomerByEmail(email)) > 0;
-        if(has)
-            redisUtil.setHash(REDIS_CUSTOMER_EMAIL_KEY,email,id,DEFAULT_KEY_TIME);
-        String msg = has ? "此邮箱已注册过" : null;
-        return ResponseResult.success(has,msg);
+    @RedisSetHash(keyName = REDIS_CUSTOMER_EMAIL_KEY,key = "#email",time = 3,timeStyle = TimeUnit.MINUTES)
+    public Boolean hasCustomer(String email) {
+        return userInfoDAO.selectCustomerByEmail(email) > 0;
     }
 
     /**
@@ -98,15 +96,9 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     @Override
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
-    public ResponseResult<Boolean> hashCustomerByID(String accountId) {
-        if(redisUtil.hasKey(REDIS_CUSTOMER_ID_NUMBER_KEY,accountId))
-            return ResponseResult.success(true);
-        long id;
-        boolean has = (id = userInfoDAO.selectCustomerByID(accountId)) > 0;
-        if(has)
-            redisUtil.setHash(REDIS_CUSTOMER_ID_NUMBER_KEY,accountId, id,DEFAULT_KEY_TIME);
-        String msg = has ? "用户存在" : "用户不存在";
-        return ResponseResult.success(has,msg);
+    @RedisSetHash(keyName = REDIS_CUSTOMER_ID_NUMBER_KEY,key = "#email",time = 3,timeStyle = TimeUnit.MINUTES)
+    public Boolean hashCustomerByID(String accountId) {
+        return userInfoDAO.selectCustomerByID(accountId) > 0;
     }
 
 
