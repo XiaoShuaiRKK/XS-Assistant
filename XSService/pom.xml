@@ -25,6 +25,7 @@
         <module>xs-address</module>
         <module>xs-encryption</module>
         <module>xs-encryption</module>
+        <module>xs-area</module>
     </modules>
     <version>1.0-SNAPSHOT</version>
 

@@ -16,11 +16,14 @@ import java.util.List;
 @FeignClient(value = "XS-SERVICE-USER",path = "/xs_assistant",fallback = UserInfoFallback.class)
 public interface AccountInfoService {
     @GetMapping("/user/getCustomers")
-    ResponseResult<List<CustomerDO>> getAllCustomer();
+    ResponseResult<List<CustomerDO>> getCustomers(@RequestParam("page")Integer page,
+                                                          @RequestParam("size")Integer size);
     @GetMapping("/user/getCustomer")
     ResponseResult<CustomerDO> getCustomer(@RequestParam("id")Integer id);
-    @GetMapping("/user/getCustomer/ByNumberID")
+    @GetMapping("/user/getCustomer/byNumberID")
     ResponseResult<CustomerDO> getCustomerByNumberId(@RequestParam("ID")String id);
+    @GetMapping("/user/getCustomer/byEmail")
+    ResponseResult<CustomerDO> getCustomerByEmail(@RequestParam("email")String email);
     @GetMapping("/user/checkCustomer")
     ResponseResult<Boolean> checkCustomer(@RequestParam("email")String email);
     @PostMapping("/user/register")

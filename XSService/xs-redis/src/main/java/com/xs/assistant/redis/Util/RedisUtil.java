@@ -4,13 +4,18 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.redis.connection.ReturnType;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
+import org.springframework.scripting.support.ResourceScriptSource;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -275,6 +280,24 @@ public class RedisUtil {
             return false;
         }
         return true;
+    }
+
+    public <T> T scriptLua(String scriptPath,Class<T> clz,String[] key,String args){
+        DefaultRedisScript<T> redisScript = new DefaultRedisScript<>();
+        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource(scriptPath)));
+        redisScript.setResultType(clz);
+        return redisTemplate.execute(redisScript, Collections.singletonList(key),args);
+    }
+
+    public <T> T scriptLua(String script,String key,String field,int incrementBy){
+        return redisTemplate.execute((RedisCallback<? extends T>) connection -> (T)connection.eval(
+                script.getBytes(),
+                ReturnType.INTEGER,
+                incrementBy,
+                key.getBytes(),
+                field.getBytes(),
+                String.valueOf(incrementBy).getBytes()
+        ));
     }
 
 }

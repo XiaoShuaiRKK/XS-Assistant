@@ -5,6 +5,7 @@ import com.xs.assistant.article.Service.Remote.ArticleLikedRemoteService;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/liked")
+@Validated
 public class ArticleLikedController {
     @Autowired
     ArticleLikedRemoteService likedService;

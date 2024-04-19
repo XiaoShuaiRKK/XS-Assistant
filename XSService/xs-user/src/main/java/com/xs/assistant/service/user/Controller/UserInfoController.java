@@ -1,5 +1,6 @@
 package com.xs.assistant.service.user.Controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.assistant.service.user.Service.UserInfoService;
@@ -20,8 +21,9 @@ public class UserInfoController {
     UserInfoService userInfoService;
 
     @GetMapping("/getCustomers")
-    public ResponseResult<List<CustomerDO>> getAllCustomer(){
-        return packageResult(userInfoService.getCustomers());
+    public ResponseResult<List<CustomerDO>> getCustomers(@RequestParam("page")Integer page,
+                                                          @RequestParam("size")Integer size){
+        return packageResult(userInfoService.getCustomers(page,size).getRecords());
     }
 
     @GetMapping("/getCustomer")
@@ -29,9 +31,14 @@ public class UserInfoController {
         return packageResult(userInfoService.getCustomer(id));
     }
 
-    @GetMapping("/getCustomer/ByNumberID")
+    @GetMapping("/getCustomer/byNumberID")
     public ResponseResult<CustomerDO> getCustomerByNumberId(@RequestParam("ID")String id){
         return packageResult(userInfoService.getCustomer(id));
+    }
+
+    @GetMapping("/getCustomer/byEmail")
+    public ResponseResult<CustomerDO> getCustomerByEmail(@RequestParam("email")String email){
+        return packageResult(userInfoService.getCustomerByEmail(email));
     }
 
     /**

@@ -6,12 +6,15 @@ import com.xs.DAO.DO.liked.LikedDO;
 import com.xs.assistant.article.Service.ArticleService;
 import com.xs.assistant.article.Service.Remote.ArticleLikedRemoteService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
+@Validated
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
@@ -20,6 +23,14 @@ public class ArticleController {
     ArticleService articleService;
     @Autowired
     ArticleLikedRemoteService articleLikedRemoteService;
+
+    @GetMapping("/getArticles")
+    public ResponseResult<List<ArticleVO>> getArticles(@Min(value = 1,message = "Please enter the correct value")
+                                                           @RequestParam("page") Integer page,
+                                                       @Min(value = 1,message = "Please enter the correct value")
+                                                       @RequestParam("size") Integer size){
+        return articleService.getArticles(page,size);
+    }
 
     @PostMapping("/addArticle")
     public ResponseResult<Boolean> addArticle(@Valid @RequestBody ArticleVO articleVO){

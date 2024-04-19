@@ -76,6 +76,10 @@ public class IPFilter extends BaseFilter implements GlobalFilter, Ordered {
         return 0;
     }
 
+//    private Long hashIncrementValue(String key,String field){
+//
+//    }
+
     /**
      * 获取真实ip地址
      * @param serverHttpRequest

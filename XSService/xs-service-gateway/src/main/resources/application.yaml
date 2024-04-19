@@ -33,30 +33,37 @@ spring:
             allowCredentials: true
         add-to-simple-url-handler-mapping: true
       routes:
-        - id: xs-service-login-gateway
-          uri: lb://XS-LOGIN
+        - id: xs-area-router
+          uri:
+            lb://XS-AREA
           predicates:
-            - Path=/xs_assistant/login/**
-        - id: xs-service-user
-          uri: lb://XS-SERVICE-USER
-          predicates:
-            - Path=/xs_assistant/user/**
-        - id: xs-account-login-gateway
-          uri: lb://XS-ACCOUNT
-          predicates:
-            - Path=/xs_assistant/**
-        - id: xs-article-gateway
-          uri: lb://XS-ARTICLE
+            - Path=/xs_assistant/area/**
+        - id: xs-articles-router
+          uri:
+            lb://XS-ARTICLE
           predicates:
             - Path=/xs_assistant/article/**
-        - id: xs-article-liked-gateway
-          uri: lb://XS-ARTICLE
+            - Path=/xs_assistant/like/**
+        - id: xs-login-router
+          uri:
+            lb://XS-LOGIN
           predicates:
-            - Path=/xs_assistant/liked/**
-        - id: xs-ip-address-gateway
-          uri: lb://XS-ADDRESS
+            - Path=/xs_assistant/login/**
+        - id: xs-user-router
+          uri:
+            lb://XS-SERVICE-USER
+          predicates:
+            - Path=/xs_assistant/user/**
+        - id: xs-ip-address-router
+          uri:
+            lb://XS-ADDRESS
           predicates:
             - Path=/xs_assistant/ip/**
+        - id: xs-account-router
+          uri:
+            lb://XS-ACCOUNT
+          predicates:
+            - Path=/xs_assistant/**
 eureka:
   instance:
     hostname: xs-service-gateway

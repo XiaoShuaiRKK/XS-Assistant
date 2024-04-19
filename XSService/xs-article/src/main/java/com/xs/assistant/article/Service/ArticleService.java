@@ -8,12 +8,7 @@ import java.util.List;
 
 
 public interface ArticleService {
-
-    /**
-     *
-     * @param articleId
-     * @return
-     */
+    ResponseResult<List<ArticleVO>> getArticles(int page,int size);
     ResponseResult<ArticleVO> findArticleByArticleId(@Nullable String articleId);
     ResponseResult<List<ArticleVO>> findArticlesByArticleIds(@Nullable List<String> articleIds);
     ResponseResult<List<ArticleVO>> findArticleByTitle(@Nullable String title,int page, int size);

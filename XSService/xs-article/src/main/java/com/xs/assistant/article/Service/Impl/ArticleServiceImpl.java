@@ -13,6 +13,7 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +35,14 @@ public class ArticleServiceImpl implements ArticleService {
     private static final Long DEFALUT_TIME = 360L;
     private static final Long DEFALUT_HOT_TIME = 1200L;
     private static final String REDIS_ARTICLE_ID_KEY = "articleById:";
+
+    @Override
+    @CircuitBreaker(name = "article-mongodb",fallbackMethod = "mongodbFail")
+    @Transactional(rollbackFor = Exception.class)
+    public ResponseResult<List<ArticleVO>> getArticles(int page, int size) {
+        Page<ArticleMongoDO> all = articleRepository.findAll(pageSet(page, size));
+        return ResponseResult.success(all.map(articleMongoDO -> new ArticleVO(articleMongoDO,null)).stream().toList());
+    }
 
     @Override
     @CircuitBreaker(name = "article-mongodb",fallbackMethod = "mongodbFail")

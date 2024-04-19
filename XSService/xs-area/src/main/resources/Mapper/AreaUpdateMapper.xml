@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xs.assistant.area.DAO.AreaUpdateRepository">
+    <insert id="importLoad" parameterType="com.xs.DAO.DO.Area.Area">
+        INSERT INTO
+            area
+        (AreaName,AreaNameChinese)
+        VALUES
+        <foreach collection="areas" item="area" separator=",">
+            (#{area.areaName},#{area.areaNameChinese})
+        </foreach>
+    </insert>
+</mapper>

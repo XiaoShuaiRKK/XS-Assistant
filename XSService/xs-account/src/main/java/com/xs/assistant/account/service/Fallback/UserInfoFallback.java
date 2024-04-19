@@ -9,9 +9,8 @@ import java.util.List;
 
 @Component
 public class UserInfoFallback implements AccountInfoService {
-
     @Override
-    public ResponseResult<List<CustomerDO>> getAllCustomer() {
+    public ResponseResult<List<CustomerDO>> getCustomers(Integer page, Integer size) {
         return ResponseResult.unavailable("用户信息系统正忙");
     }
 
@@ -22,6 +21,11 @@ public class UserInfoFallback implements AccountInfoService {
 
     @Override
     public ResponseResult<CustomerDO> getCustomerByNumberId(String id) {
+        return ResponseResult.unavailable("用户信息系统正忙");
+    }
+
+    @Override
+    public ResponseResult<CustomerDO> getCustomerByEmail(String email) {
         return ResponseResult.unavailable("用户信息系统正忙");
     }
 

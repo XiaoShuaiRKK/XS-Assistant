@@ -1,5 +1,7 @@
 package com.xs.assistant.service.user.Service.Impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.assistant.redis.Aspect.Annotation.RedisSet;
@@ -7,10 +9,12 @@ import com.xs.assistant.redis.Aspect.Annotation.RedisSetHash;
 import com.xs.assistant.redis.Aspect.Annotation.RedisSetHashValues;
 import com.xs.assistant.redis.Util.RedisUtil;
 import com.xs.assistant.service.user.DAO.UserInfoDAO;
+import com.xs.assistant.service.user.DAO.UserMapper;
 import com.xs.assistant.service.user.Service.UserInfoService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,12 +31,16 @@ public class UserInfoServiceImpl implements UserInfoService {
     private static final String REDIS_CUSTOMER_EMAIL_KEY = "customerEmail:";
     private static final String REDIS_CUSTOMER_ID_NUMBER_KEY = "customerIdNumber:";
     private static final String REDIS_CUSTOMER_ID_KEY = "customerId:";
-    private static final Long DEFAULT_KEY_TIME = 360L;
+    private static final Long DEFAULT_KEY_TIME_S = 360L;
+    private static final int DEFAULT_KEY_TIME_M = 5;
 
     @Autowired
     UserInfoDAO userInfoDAO;
     @Autowired
+    UserMapper userMapper;
+    @Autowired
     RedisUtil redisUtil;
+    @Qualifier("userInfoService")
 
     /**
      * 获取用户
@@ -48,6 +56,11 @@ public class UserInfoServiceImpl implements UserInfoService {
         return null;
     }
 
+    @Override
+    public IPage<CustomerDO> getCustomers(Integer page, Integer size) {
+        return userMapper.selectPage(Page.of(page,size));
+    }
+
     /**
      * 根据id查询用户
      * @param id id
@@ -55,7 +68,7 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     @Override
     @RedisSetHashValues(baseKey = REDIS_CUSTOMER_KEY,keyName = REDIS_CUSTOMER_ID_KEY,
-            key = "#id",time = 5,timeStyle = TimeUnit.MINUTES)
+            key = "#id",time = DEFAULT_KEY_TIME_M,timeStyle = TimeUnit.MINUTES)
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
     public CustomerDO getCustomer(Integer id) {
         return userInfoDAO.selectCustomer(id);
@@ -63,7 +76,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     @RedisSetHashValues(baseKey = REDIS_CUSTOMER_KEY,keyName = REDIS_CUSTOMER_ID_NUMBER_KEY,
-            key = "#numberID",time = 5,timeStyle = TimeUnit.MINUTES)
+            key = "#numberID",time = DEFAULT_KEY_TIME_M,timeStyle = TimeUnit.MINUTES)
     @Transactional(rollbackFor = Exception.class)
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
     public CustomerDO getCustomer(String numberID) {
@@ -72,7 +85,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     @RedisSetHashValues(baseKey = REDIS_CUSTOMER_KEY,keyName = REDIS_CUSTOMER_EMAIL_KEY,
-            key = "#numberID",time = 5,timeStyle = TimeUnit.MINUTES)
+            key = "#email",time = DEFAULT_KEY_TIME_M,timeStyle = TimeUnit.MINUTES)
     public CustomerDO getCustomerByEmail(String email) {
         return userInfoDAO.selectCustomerInfoByEmail(email);
     }
