@@ -155,25 +155,33 @@ config客户端
 XiaoShuaiRKK@github.com
 
 <!-- readme: collaborators,contributors -start -->
+<table>
+    <tr>
+        <td align="center">
+            <a href="https://github.com/XiaoShuaiRKK">
 
-<a href="https://github.com/XiaoShuaiRKK">
+            ​    <img src="https://avatars.githubusercontent.com/u/111045365?s=400&u=a38028f043bc13a48ff6e0dbcf8225a1518f5edd&v=4"/>
 
-​	<img src="https://avatars.githubusercontent.com/u/111045365?s=400&u=a38028f043bc13a48ff6e0dbcf8225a1518f5edd&v=4"/>
-
-</a>
-
+            </a>
+        </td>
+    </tr>
+</table>
 <!-- readme: collaborators,contributors -end -->
 
 ## 作者
 
 <!-- readme: collaborators,contributors -start -->
+<table>
+    <tr>
+        <td align="center">
+            <a href="https://github.com/XiaoShuaiRKK">
 
-<a href="https://github.com/XiaoShuaiRKK">
+            ​    <img src="https://avatars.githubusercontent.com/u/111045365?s=400&u=a38028f043bc13a48ff6e0dbcf8225a1518f5edd&v=4"/>
 
-​	<img src="https://avatars.githubusercontent.com/u/111045365?s=400&u=a38028f043bc13a48ff6e0dbcf8225a1518f5edd&v=4"/>
-
-</a>
-
+            </a>
+        </td>
+    </tr>
+</table>
 <!-- readme: collaborators,contributors -end -->
 
 Github: XiaoShuaiRKK@github.com
