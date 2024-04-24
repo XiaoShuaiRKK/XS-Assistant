@@ -26,6 +26,7 @@
         <module>xs-encryption</module>
         <module>xs-encryption</module>
         <module>xs-area</module>
+        <module>xs-article-search</module>
     </modules>
     <version>1.0-SNAPSHOT</version>
 

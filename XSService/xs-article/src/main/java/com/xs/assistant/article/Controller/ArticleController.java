@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Validated
 @RestController
-@RequestMapping("/article")
+@RequestMapping
 public class ArticleController {
 
     @Autowired
@@ -30,11 +30,6 @@ public class ArticleController {
                                                        @Min(value = 1,message = "Please enter the correct value")
                                                        @RequestParam("size") Integer size){
         return articleService.getArticles(page,size);
-    }
-
-    @PostMapping("/addArticle")
-    public ResponseResult<Boolean> addArticle(@Valid @RequestBody ArticleVO articleVO){
-        return articleService.addArticle(articleVO);
     }
 
     @PostMapping("/get/byArticleID")

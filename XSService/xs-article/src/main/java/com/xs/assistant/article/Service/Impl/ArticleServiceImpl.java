@@ -7,17 +7,16 @@ import com.xs.DAO.VO.article.ArticleVO;
 import com.xs.assistant.article.DAO.ArticleDAO;
 import com.xs.assistant.article.DAO.ArticleRepository;
 import com.xs.assistant.article.Service.ArticleService;
+import com.xs.assistant.article.Service.Remote.ESArticleRemoteService;
 import com.xs.assistant.redis.Util.RedisUtil;
 import com.xs.assistant.util.Impl.UIDCodeUtil;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.Serializable;
 import java.util.*;
 
 @Service
@@ -31,6 +30,9 @@ public class ArticleServiceImpl implements ArticleService {
     UIDCodeUtil codeUtil;
     @Autowired
     RedisUtil redisUtil;
+    @Autowired
+    ESArticleRemoteService esArticleRemoteService;
+
 
     private static final Long DEFALUT_TIME = 360L;
     private static final Long DEFALUT_HOT_TIME = 1200L;
@@ -41,6 +43,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Transactional(rollbackFor = Exception.class)
     public ResponseResult<List<ArticleVO>> getArticles(int page, int size) {
         Page<ArticleMongoDO> all = articleRepository.findAll(pageSet(page, size));
+        esArticleRemoteService.insertArticleArray(all.stream().toList());
         return ResponseResult.success(all.map(articleMongoDO -> new ArticleVO(articleMongoDO,null)).stream().toList());
     }
 
@@ -122,23 +125,9 @@ public class ArticleServiceImpl implements ArticleService {
         return ResponseResult.success(null,"未找到文章");
     }
 
-    @Override
-    @CircuitBreaker(name = "article-mongodb",fallbackMethod = "mongodbFail")
-    @Transactional(rollbackFor = Exception.class)
-    public ResponseResult<Boolean> addArticle(ArticleVO article) {
-        String articleId = codeUtil.createCodeWithArticle(articleRepository.count());
-        ArticleMongoDO articleMongo = article.getContext();
-        Article articleInfo = article.getArticle();
-        articleInfo.setArticleId(articleId);
-        articleMongo.setId(articleId);
-        articleRepository.insert(articleMongo);
-        int rs = articleDAO.insertArticle(articleInfo);
-        if(rs <= 0)
-            throw new RuntimeException();
-        return ResponseResult.success(true);
-    }
 
-    private <T extends Serializable> ResponseResult<T> mongodbFail(Exception e){
+
+    private <T> ResponseResult<T> mongodbFail(Exception e){
         return ResponseResult.error(null,"操作失败,请稍后重试");
     }
 }

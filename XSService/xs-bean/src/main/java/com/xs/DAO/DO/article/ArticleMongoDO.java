@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -25,4 +26,8 @@ public class ArticleMongoDO implements Serializable {
     private String title;
     @NotEmpty(message = "sub title cannot be empty")
     private String subTitle;
+    @NotEmpty(message = "author id cannot be empty")
+    @Length(min = 14,max = 14,message = "The id format is incorrect")
+    private String authorId;
+    private Integer stateId;
 }

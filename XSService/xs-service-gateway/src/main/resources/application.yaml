@@ -43,7 +43,6 @@ spring:
             lb://XS-ARTICLE
           predicates:
             - Path=/xs_assistant/article/**
-            - Path=/xs_assistant/like/**
         - id: xs-login-router
           uri:
             lb://XS-LOGIN

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 @Data
 @NoArgsConstructor
@@ -18,6 +19,8 @@ public class Article implements Serializable,Comparable<Article> {
     String background;
     String image;
     String logo;
+    Date createTime;
+    Integer stateId;
 
     @Override
     public int compareTo(Article o) {

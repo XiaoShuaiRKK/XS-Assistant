@@ -6,7 +6,7 @@
         INSERT INTO
             note
         VALUES
-            (NULL,#{article.background},#{article.image},#{article.logo},#{article.authorId},#{article.articleId})
+            (NULL,#{article.background},#{article.image},#{article.logo},#{article.authorId},#{article.articleId},now(),1)
     </insert>
 
     <select id="selectArticleByArticleId" resultType="com.xs.DAO.DO.article.Article">

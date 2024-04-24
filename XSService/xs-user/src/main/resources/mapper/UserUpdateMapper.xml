@@ -8,7 +8,7 @@
             customer
         VALUES
             (NULL,#{customer.firstName},#{customer.lastName},#{customer.email},
-             #{customer.password},#{customer.birth},#{customer.idNumber},#{customer.areaId})
+             #{customer.password},#{customer.birth},#{customer.idNumber},#{customer.areaId},0,now())
     </insert>
 
 </mapper>
