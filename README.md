@@ -156,9 +156,13 @@ XiaoShuaiRKK@github.com
 
 <!-- readme: collaborators,contributors -start -->
 
- <a href="https://github.com/XiaoShuaiRKK">
+<a href="https://github.com/XiaoShuaiRKK">
 
-​	<img src="https://avatars.githubusercontent.com/u/111045365?s=400&u=a38028f043bc13a48ff6e0dbcf8225a1518f5edd&v=4"/>
+​	<img src="https://avatars.githubusercontent.com/u/111045365?s=400&u=a38028f043bc13a48ff6e0dbcf8225a1518f5edd&v=4" width="100"/>
+
+<br/>
+
+<sub><b>XiaoShuaiRKK</b></sub>
 
 </a>
 
@@ -170,9 +174,13 @@ XiaoShuaiRKK@github.com
 
 
 
- <a href="https://github.com/XiaoShuaiRKK">
+<a href="https://github.com/XiaoShuaiRKK">
 
-​	<img src="https://avatars.githubusercontent.com/u/111045365?s=400&u=a38028f043bc13a48ff6e0dbcf8225a1518f5edd&v=4"/>
+​	<img src="https://avatars.githubusercontent.com/u/111045365?s=400&u=a38028f043bc13a48ff6e0dbcf8225a1518f5edd&v=4" width="100"/>
+
+<br/>
+
+<sub><b>XiaoShuaiRKK</b></sub>
 
 </a>
 
