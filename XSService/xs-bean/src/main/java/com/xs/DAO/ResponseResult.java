@@ -31,6 +31,10 @@ public class ResponseResult<T> implements Serializable {
                 data);
     }
 
+    public static <T> ResponseResult<T> none(T data){
+        return new ResponseResult<>(0,null,null,data);
+    }
+
     public static <T> ResponseResult<T> fail(String message){
         return fail(null,message);
     }

@@ -1,10 +1,8 @@
 package com.xs.assistant.article.Service.Impl;
 
-import com.xs.DAO.DO.article.Article;
-import com.xs.DAO.DO.article.ArticleMongoDO;
+import com.xs.DAO.DO.article.ArticleContext;
 import com.xs.DAO.Factory.ArticleFactory;
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.VO.article.ArticleVO;
 import com.xs.assistant.article.DAO.ArticleDAO;
 import com.xs.assistant.article.DAO.ArticleRepository;
 import com.xs.assistant.article.Service.ArticleAddService;
@@ -32,7 +30,7 @@ public class ArticleAddServiceImpl implements ArticleAddService {
     @Override
     @CircuitBreaker(name = "article-mongodb",fallbackMethod = "failMethod")
     @Transactional(rollbackFor = Exception.class)
-    public ResponseResult<Boolean> addArticle(ArticleMongoDO article) {
+    public ResponseResult<Boolean> addArticle(ArticleContext article) {
         try {
             String articleId = codeUtil.createCodeWithArticle(articleRepository.count());
             if(articleId == null)

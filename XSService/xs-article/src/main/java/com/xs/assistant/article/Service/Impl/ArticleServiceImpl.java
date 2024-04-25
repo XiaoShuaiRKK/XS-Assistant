@@ -2,7 +2,7 @@ package com.xs.assistant.article.Service.Impl;
 
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.article.Article;
-import com.xs.DAO.DO.article.ArticleMongoDO;
+import com.xs.DAO.DO.article.ArticleContext;
 import com.xs.DAO.VO.article.ArticleVO;
 import com.xs.assistant.article.DAO.ArticleDAO;
 import com.xs.assistant.article.DAO.ArticleRepository;
@@ -42,7 +42,7 @@ public class ArticleServiceImpl implements ArticleService {
     @CircuitBreaker(name = "article-mongodb",fallbackMethod = "mongodbFail")
     @Transactional(rollbackFor = Exception.class)
     public ResponseResult<List<ArticleVO>> getArticles(int page, int size) {
-        Page<ArticleMongoDO> all = articleRepository.findAll(pageSet(page, size));
+        Page<ArticleContext> all = articleRepository.findAll(pageSet(page, size));
         esArticleRemoteService.insertArticleArray(all.stream().toList());
         return ResponseResult.success(all.map(articleMongoDO -> new ArticleVO(articleMongoDO,null)).stream().toList());
     }
@@ -53,7 +53,7 @@ public class ArticleServiceImpl implements ArticleService {
     public ResponseResult<ArticleVO> findArticleByArticleId(String articleId) {
         if (redisUtil.hasKey(REDIS_ARTICLE_ID_KEY,articleId))
             return ResponseResult.success((ArticleVO) redisUtil.getHash(REDIS_ARTICLE_ID_KEY,articleId));
-        Optional<ArticleMongoDO> article = articleRepository.findById(articleId);
+        Optional<ArticleContext> article = articleRepository.findById(articleId);
         return article.map(articleMongoDO -> findArticleById(articleMongoDO)
                 .map((articleResult)->{
                     redisUtil.setHash(REDIS_ARTICLE_ID_KEY,articleId,articleResult,DEFALUT_TIME);
@@ -70,9 +70,9 @@ public class ArticleServiceImpl implements ArticleService {
                 .stream()
                 .sorted(Comparator.comparing(Article::getArticleId).reversed())
                 .toList();
-        List<ArticleMongoDO> articleMongos = articleRepository.findAllById(articleIds)
+        List<ArticleContext> articleMongos = articleRepository.findAllById(articleIds)
                 .stream()
-                .sorted(Comparator.comparing(ArticleMongoDO::getId).reversed())
+                .sorted(Comparator.comparing(ArticleContext::getId).reversed())
                 .toList();
         List<ArticleVO> articleVOS = new LinkedList<>();
         for(int i=0;i < articleIds.size();i++)
@@ -85,7 +85,7 @@ public class ArticleServiceImpl implements ArticleService {
     @SuppressWarnings("all")
     public ResponseResult<List<ArticleVO>> findArticleByTitle(String title,int page, int size) {
         PageRequest pageRequest = pageSet(page,size);
-        Page<ArticleMongoDO> articles = articleRepository.findAllByTitleLike(title,pageRequest);
+        Page<ArticleContext> articles = articleRepository.findAllByTitleLike(title,pageRequest);
         return articleCollectionResult(articles);
     }
 
@@ -93,14 +93,14 @@ public class ArticleServiceImpl implements ArticleService {
     @CircuitBreaker(name = "article-mongodb",fallbackMethod = "mongodbFail")
     public ResponseResult<List<ArticleVO>> findArticleBySubTitle(String title, int page, int size) {
         PageRequest pageRequest = pageSet(page,size);
-        Page<ArticleMongoDO> articles = articleRepository.findAllBySubTitleLike(title,pageRequest);
+        Page<ArticleContext> articles = articleRepository.findAllBySubTitleLike(title,pageRequest);
         return articleCollectionResult(articles);
     }
 
     @Override
     public ResponseResult<List<ArticleVO>> findArticleByTitleOrSubTilte(String title, int page, int size) {
         PageRequest pageRequest = pageSet(page,size);
-        Page<ArticleMongoDO> articles = articleRepository.findByTitleOrSubTitleContainingIgnoreCase(title,pageRequest);
+        Page<ArticleContext> articles = articleRepository.findByTitleOrSubTitleContainingIgnoreCase(title,pageRequest);
         return articleCollectionResult(articles);
     }
 
@@ -108,7 +108,7 @@ public class ArticleServiceImpl implements ArticleService {
         return PageRequest.of(Math.max(page,0),Math.max(size,1));
     }
 
-    private ResponseResult<List<ArticleVO>> articleCollectionResult(Page<ArticleMongoDO> articles){
+    private ResponseResult<List<ArticleVO>> articleCollectionResult(Page<ArticleContext> articles){
         if (articles.isEmpty())
             return articleNull();
         List<ArticleVO> result = articles.stream()
@@ -116,7 +116,7 @@ public class ArticleServiceImpl implements ArticleService {
         return ResponseResult.success(result);
     }
 
-    private Optional<ArticleVO> findArticleById(ArticleMongoDO article){
+    private Optional<ArticleVO> findArticleById(ArticleContext article){
          Optional<Article> articleInfo = Optional.ofNullable(articleDAO.selectArticleByArticleId(article.getId()));
         return articleInfo.map(value -> new ArticleVO(article, value));
     }

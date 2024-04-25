@@ -13,11 +13,12 @@ import java.io.Serializable;
 
 //将该对象声明为要持久化到MongoDB中的文档
 @Document(value = "article")
+@org.springframework.data.elasticsearch.annotations.Document(indexName = "article")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ArticleMongoDO implements Serializable {
+public class ArticleContext implements Serializable {
     @Id
     private String id;
     @NotEmpty(message = "context cannot be empty")

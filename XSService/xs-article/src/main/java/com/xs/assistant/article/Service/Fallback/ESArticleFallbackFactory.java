@@ -1,11 +1,10 @@
 package com.xs.assistant.article.Service.Fallback;
 
-import com.xs.DAO.DO.article.ArticleMongoDO;
+import com.xs.DAO.DO.article.ArticleContext;
 import com.xs.assistant.article.Service.Remote.ESArticleRemoteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,13 +14,33 @@ public class ESArticleFallbackFactory implements FallbackFactory<ESArticleRemote
 
     ESArticleRemoteService esFallback = new ESArticleRemoteService() {
         @Override
-        public Boolean insertArticleArray(List<ArticleMongoDO> articles) {
+        public Boolean insertArticleArray(List<ArticleContext> articles) {
             return false;
         }
 
         @Override
-        public List<ArticleMongoDO> getArticlesAll() {
-            return List.of();
+        public List<ArticleContext> getArticlesAll() {
+            return null;
+        }
+
+        @Override
+        public List<ArticleContext> getArticlesByPage(Integer page, Integer size) {
+            return null;
+        }
+
+        @Override
+        public List<ArticleContext> getArticlesQuery(Integer page, Integer size, String field, String target) {
+            return null;
+        }
+
+        @Override
+        public List<ArticleContext> getArticleAllQuery(String target, Integer page, Integer size) {
+            return null;
+        }
+
+        @Override
+        public List<ArticleContext> getArticleScoreQuery(String field, String target, Integer page, Integer size) {
+            return null;
         }
     };
 

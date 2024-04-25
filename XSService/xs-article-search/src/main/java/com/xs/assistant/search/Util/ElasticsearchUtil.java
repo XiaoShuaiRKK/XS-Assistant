@@ -7,9 +7,8 @@ import co.elastic.clients.elasticsearch.core.GetResponse;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.bulk.BulkOperation;
 import co.elastic.clients.elasticsearch.core.search.Hit;
-import co.elastic.clients.elasticsearch.indices.CreateIndexRequest;
 import co.elastic.clients.elasticsearch.indices.CreateIndexResponse;
-import co.elastic.clients.transport.endpoints.BooleanResponse;
+import com.xs.assistant.util.Impl.BeanFieldUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,6 +23,8 @@ import java.util.Map;
 public class ElasticsearchUtil {
     @Autowired
     ElasticsearchClient client;
+    @Autowired
+    BeanFieldUtil beanFieldUtil;
 
     /**
      * 判断索引是否存在
@@ -142,12 +143,44 @@ public class ElasticsearchUtil {
     }
 
 
-    public <T> List<Hit<T>> searchDocumentsQuery(String indexName,String field,String orderField,String target,Class<T> tClass){
-        return searchDocumentsQuery(indexName,field,orderField,SortOrder.Asc,target,tClass,0,10);
+    public <T> List<Hit<T>> searchDocumentsOrderSortQuery(String indexName,String field,String orderField,String target,Class<T> tClass){
+        return searchDocumentsOrderSortQuery(indexName,field,orderField,SortOrder.Asc,target,0,10,tClass);
+    }
+
+
+    public <T> List<Hit<T>> searchDocumentsMaxScore(String indexName, String field, String target,
+                                                    int page,int size, Class<T> tClass){
+        try {
+            return client.search(s -> s.index(indexName).query(
+                    q -> q.bool(
+                            b -> b.must(
+                                    m -> m.match(
+                                            match -> match.field(field)
+                                    )
+                            )
+                    )
+            ).from(page).size(size),tClass).hits().hits();
+        } catch (IOException e) {
+            log.error("Elasticsearch bool 查询异常: {}",e.getMessage());
+        }
+        return null;
+    }
+
+    public <T> List<Hit<T>> searchDocumentsMultiQuery(String indexName,String target,int page,int size,Class<T> tClass){
+        try {
+            return client.search(s -> s.index(indexName).query(
+                    q -> q.multiMatch(
+                            m -> m.fields(beanFieldUtil.getFieldsNameArray(tClass)).query(target)
+                    )
+            ).from(page).size(size),tClass).hits().hits();
+        } catch (IOException e) {
+            log.error("Elasticsearch Multi 查询异常: {}",e.getMessage());
+        }
+        return null;
     }
 
     /**
-     * 查询数据
+     * 排序查询数据
      * @param indexName 索引
      * @param field 字段
      * @param orderField 排列字段
@@ -157,8 +190,8 @@ public class ElasticsearchUtil {
      * @return
      * @param <T>
      */
-    public <T> List<Hit<T>> searchDocumentsQuery(String indexName, String field, String orderField,
-                                            SortOrder sortOrder, String target, Class<T> tClass,int page,int size){
+    public <T> List<Hit<T>> searchDocumentsOrderSortQuery(String indexName, String field, String orderField,
+                                            SortOrder sortOrder, String target,int page,int size,Class<T> tClass){
         try {
             SearchResponse<T> search = client.search(s -> s.index(indexName)
                     .query(q -> q.term(
@@ -166,6 +199,32 @@ public class ElasticsearchUtil {
                     ))
                     .from(page).size(size)
                     .sort(f -> f.field(o -> o.field(orderField).order(sortOrder))),tClass);
+            return search.hits().hits();
+        } catch (IOException e) {
+            log.error("ElasticSearch 排序条件查询异常: {}",e.getMessage());
+        }
+        return null;
+    }
+
+    /**
+     * 查询
+     * @param indexName
+     * @param field
+     * @param target
+     * @param tClass
+     * @param page
+     * @param size
+     * @return
+     * @param <T>
+     */
+    public <T> List<Hit<T>> searchDocumentsQuery(String indexName, String field,
+                                                 String target, int page,int size,Class<T> tClass){
+        try {
+            SearchResponse<T> search = client.search(s -> s.index(indexName)
+                    .query(q -> q.term(
+                            t -> t.field(field).value(target)
+                    ))
+                    .from(page).size(size),tClass);
             return search.hits().hits();
         } catch (IOException e) {
             log.error("ElasticSearch 条件查询异常: {}",e.getMessage());

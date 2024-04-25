@@ -1,10 +1,8 @@
 package com.xs.assistant.article.Controller;
 
-import com.xs.DAO.DO.article.ArticleMongoDO;
+import com.xs.DAO.DO.article.ArticleContext;
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.VO.article.ArticleVO;
 import com.xs.assistant.article.Service.ArticleAddService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +18,7 @@ public class ArticleInsertController {
     ArticleAddService addArticle;
 
     @PostMapping("/addArticle")
-    public ResponseResult<Boolean> addArticle(@RequestBody ArticleMongoDO article){
+    public ResponseResult<Boolean> addArticle(@RequestBody ArticleContext article){
         return addArticle.addArticle(article);
     }
 }

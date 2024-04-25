@@ -1,6 +1,6 @@
 package com.xs.assistant.search.Controller;
 
-import com.xs.DAO.DO.article.ArticleMongoDO;
+import com.xs.DAO.DO.article.ArticleContext;
 import com.xs.assistant.search.Service.ESInsertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ public class ESInsertController {
     ESInsertService esInsertService;
 
     @PostMapping("/addArticleArray")
-    public Boolean insertArticleArray(@RequestBody List<ArticleMongoDO> articles){
+    public Boolean insertArticleArray(@RequestBody List<ArticleContext> articles){
         return esInsertService.insert(articles);
     }
 }
