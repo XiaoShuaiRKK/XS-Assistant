@@ -1,0 +1,6 @@
+
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‹£J$94f307ee-a940-4ffc-9fc2-6e25d0be414a
+~
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$4a692658-9587-42a4-b370-4ebb47ec32fe
+Š
+java:S1128"IRemove this unused import 'com.baomidou.mybatisplus.core.metadata.IPage'.(¯à½ıÿÿÿÿJ$68ad5d46-d843-4c18-a412-1bcb0ad8c956

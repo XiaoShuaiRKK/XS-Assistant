@@ -1,6 +1,6 @@
 package com.xs.assistant.search.Service;
 
-import com.xs.assistant.search.Util.ElasticsearchUtil;
+import com.xs.assistant.util.ElasticsearchUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

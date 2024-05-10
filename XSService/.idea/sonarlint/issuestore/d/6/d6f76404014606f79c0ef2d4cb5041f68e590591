@@ -1,0 +1,18 @@
+
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ˆ‡Öùøÿÿÿÿ8ü½ÆÁõ1J$21c146e8-f9fd-4860-98fa-5e65afff3fae
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¾ÆÁõ1J$fe4ff8f5-05b0-4945-bb5f-6f954f5dc4c4
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¾ÆÁõ1J$c5178dc6-5715-4e7e-b84d-52a3db711f89
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¾ÆÁõ1J$3c692113-9a65-4271-a162-f1bc62737499
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¾ÆÁõ1J$3cdf5902-35e2-461e-8a51-ff5aed4bd71e
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¾ÆÁõ1J$5a22b831-c80c-4133-be54-5c4a43e9d97d
+›
+java:S21393"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8”¾ÆÁõ1J$c3a46200-97af-40b2-8797-821e168ba553
+p
+java:S1172:"(Remove this unused method parameter "e".(Âöïôûÿÿÿÿ8•¾ÆÁõ1J$53606d41-f4a2-451f-ac92-73a326afad4a
+w
+java:S1144:"/Remove this unused private "failMethod" method.(Âöïôûÿÿÿÿ8–¾ÆÁõ1J$5f3e6900-c242-4b1a-8cd2-de227e3193d0

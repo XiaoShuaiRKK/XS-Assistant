@@ -9,6 +9,5 @@ import java.util.List;
 @Mapper
 public interface ArticleDAO {
     Integer insertArticle(@Param("article")Article article);
-    Article selectArticleByArticleId(@Param("articleId")String articleId);
-    List<Article> selectArticlesByArticleId(@Param("articleIds")List<String> articleIds);
+    Long count();
 }

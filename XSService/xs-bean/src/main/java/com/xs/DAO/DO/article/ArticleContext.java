@@ -13,7 +13,6 @@ import java.io.Serializable;
 
 //将该对象声明为要持久化到MongoDB中的文档
 @Document(value = "article")
-@org.springframework.data.elasticsearch.annotations.Document(indexName = "article")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,5 +29,7 @@ public class ArticleContext implements Serializable {
     @NotEmpty(message = "author id cannot be empty")
     @Length(min = 14,max = 14,message = "The id format is incorrect")
     private String authorId;
+    private String description;
     private Integer stateId;
+    private Double hot;
 }

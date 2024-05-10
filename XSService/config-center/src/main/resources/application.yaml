@@ -10,7 +10,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/XiaoShuaiRKK/XS-Assistant-Config-Repo
+          uri: https://github.com/XiaoShuaiRKK/XS-Assistant-Config-Repo.git
           search-paths:
             - XS-Assistant-Config-Repo
           force-pull: true

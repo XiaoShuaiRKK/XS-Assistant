@@ -1,10 +1,11 @@
 package com.xs.assistant.article.Service.Impl;
 
 import com.xs.DAO.DO.article.ArticleContext;
-import com.xs.DAO.Factory.ArticleFactory;
+import com.xs.DAO.factory.ArticleFactory;
 import com.xs.DAO.ResponseResult;
 import com.xs.assistant.article.DAO.ArticleDAO;
-import com.xs.assistant.article.DAO.ArticleRepository;
+import com.xs.assistant.article.DAO.ArticleMongodbRepository;
+import com.xs.assistant.article.DAO.ArticleSearchRepository;
 import com.xs.assistant.article.Service.ArticleAddService;
 import com.xs.assistant.util.Impl.UIDCodeUtil;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -21,9 +22,11 @@ public class ArticleAddServiceImpl implements ArticleAddService {
     @Autowired
     UIDCodeUtil codeUtil;
     @Autowired
-    ArticleRepository articleRepository;
+    ArticleMongodbRepository articleRepository;
     @Autowired
     ArticleDAO articleDAO;
+    @Autowired
+    ArticleSearchRepository articleSearchRepository;
     @Autowired
     ArticleAmqp articleAmqp;
 
@@ -32,15 +35,18 @@ public class ArticleAddServiceImpl implements ArticleAddService {
     @Transactional(rollbackFor = Exception.class)
     public ResponseResult<Boolean> addArticle(ArticleContext article) {
         try {
-            String articleId = codeUtil.createCodeWithArticle(articleRepository.count());
-            if(articleId == null)
-                throw new RuntimeException();
+            String articleId = codeUtil.createCodeWithArticle(articleDAO.count());
             article.setId(articleId);
-            articleRepository.insert(article);
-            articleAmqp.uploadArticle(article);
+            article.setHot(0D);
+            article.setStateId(1);
+            //mysql
             int rs = articleDAO.insertArticle(ArticleFactory.defaultArticle(article.getAuthorId(),articleId));
             if(rs <= 0)
                 throw new RuntimeException();
+            //mongodb
+            articleRepository.insert(article);
+            articleAmqp.uploadArticle(article);
+            articleAmqp.insertHotArticle(articleId);
             return ResponseResult.success(true);
         }catch (Exception e){
             log.error(e.getMessage());

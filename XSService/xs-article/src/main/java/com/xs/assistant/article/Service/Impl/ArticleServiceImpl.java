@@ -5,7 +5,8 @@ import com.xs.DAO.DO.article.Article;
 import com.xs.DAO.DO.article.ArticleContext;
 import com.xs.DAO.VO.article.ArticleVO;
 import com.xs.assistant.article.DAO.ArticleDAO;
-import com.xs.assistant.article.DAO.ArticleRepository;
+import com.xs.assistant.article.DAO.ArticleMongodbRepository;
+import com.xs.assistant.article.DAO.ArticleSearchDAO;
 import com.xs.assistant.article.Service.ArticleService;
 import com.xs.assistant.article.Service.Remote.ESArticleRemoteService;
 import com.xs.assistant.redis.Util.RedisUtil;
@@ -23,9 +24,9 @@ import java.util.*;
 public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
-    ArticleRepository articleRepository;
+    ArticleMongodbRepository articleRepository;
     @Autowired
-    ArticleDAO articleDAO;
+    ArticleSearchDAO articleDAO;
     @Autowired
     UIDCodeUtil codeUtil;
     @Autowired

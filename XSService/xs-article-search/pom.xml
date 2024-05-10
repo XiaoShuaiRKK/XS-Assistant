@@ -10,12 +10,17 @@
     <dependencies>
         <dependency>
             <groupId>org.xs.assistant</groupId>
-            <artifactId>Bean</artifactId>
+            <artifactId>xs-bean</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>xs-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xs.assistant</groupId>
+            <artifactId>xs-elasticsearch</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
@@ -34,15 +39,7 @@
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
 
-        <!-- 和第一个依赖是一起的,为了解决springboot项目和es的兼容性问题  -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -64,6 +61,23 @@
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
             <version>2.2.10.RELEASE</version>
         </dependency>
+
+<!--        elasticsearch-->
+        <!-- 和第一个依赖是一起的,为了解决springboot项目和es的兼容性问题  -->
+<!--        <dependency>-->
+<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--            <artifactId>jackson-databind</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.elasticsearch.client</groupId>-->
+<!--            <artifactId>elasticsearch-rest-high-level-client</artifactId>-->
+<!--            <version>7.12.1</version>-->
+<!--        </dependency>-->
+
 
         <dependency>
             <groupId>io.github.openfeign</groupId>
@@ -92,4 +106,25 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>xs-article-search</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.2.4</version>
+                <configuration>
+                    <mainClass>com.xs.assistant.search.SearchApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -17,6 +17,7 @@ spring:
           max-idle: 100
           min-idle: 0
       timeout: 2400
+      password: xs0628
 eureka:
   client:
     register-with-eureka: true

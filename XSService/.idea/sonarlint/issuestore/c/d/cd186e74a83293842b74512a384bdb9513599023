@@ -1,0 +1,18 @@
+
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷˜ÈªúÿÿÿÿJ$171a86ba-0003-4a42-89f9-0b3ead74c576
+~
+java:S6813%"BRemove this field injection and use constructor injection instead.(êæÄŞJ$158ccb37-c851-41db-b4b4-7b4cf63ee2d0
+~
+java:S6813'"BRemove this field injection and use constructor injection instead.(êæÄŞJ$b2fe75a9-bcfb-47c2-b267-5083e8e474f0
+~
+java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞJ$e3ef7f9d-d203-400a-86ec-0cebfce5cac4
+g
+java:S11688"+Return an empty collection instead of null.(¥¹ïJ$1e0a1ac3-bf27-4da5-ae8a-770cd586e3b4
+j
+java:S1172{")Remove this unused method parameter "id".(³ŠŸÆøÿÿÿÿJ$2c19df7f-771b-4bc5-8934-ca4146d864d2
+w
+java:S1068""6Remove this unused "DEFAULT_KEY_TIME_S" private field.(şØÃ¯ıÿÿÿÿJ$f684d57c-388a-41f4-8989-2c61509d8fcb
+w
+java:S1144v"6Remove this unused private "systemFailHandler" method.(àçŸùÿÿÿÿJ$ed1fec69-bffc-4b14-8042-73b0866b3045
+t
+java:S1144{"3Remove this unused private "timeoutHandler" method.(³ŠŸÆøÿÿÿÿJ$4bfb9d96-792e-4c01-846f-d88db7611d64

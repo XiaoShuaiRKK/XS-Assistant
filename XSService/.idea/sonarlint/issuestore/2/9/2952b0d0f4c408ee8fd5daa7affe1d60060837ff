@@ -1,0 +1,25 @@
+
+q
+java:S1121%".Extract the assignment out of this expression.(—®‰«8˜’²†õ1J$77f24a8d-efa9-4d9d-8e08-f2631ac0eb03
+v
+java:S11213".Extract the assignment out of this expression.(Úœòúÿÿÿÿ8˜’²†õ1J$9aab103f-674b-4bd3-b819-61c7fa821a0d
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñçÑ“úÿÿÿÿ8š’²†õ1J$bcaf5c3c-d606-46dc-b585-f9f3380d121d
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¥’²†õ1J$87d44d76-dd74-4f79-9cb5-40dd9132d757
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¥’²†õ1J$e3ed0431-e6a1-4cdf-a604-22da7d70341f
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¥’²†õ1J$98bee808-48ed-456b-bc88-bf4c2ce21b5d
+z
+java:S1854%"7Remove this useless assignment to local variable "key".(—®‰«8ÓË²†õ1J$23e9cf16-fb29-4574-81c8-00582f5f8ba8
+p
+java:S1481$"(Remove this unused "key" local variable.(ú´Ïïıÿÿÿÿ8ÔË²†õ1J$fc1d8e7e-743a-4c9a-954e-2a927cd9fd83
+~	java:S125*"<This block of commented-out lines of code should be removed.(Ö–˜8ÖË²†õ1J$7e1c0ee6-2218-405b-9727-efff247b16b2
+‹
+java:S6355<"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8®’²†õ1J$544d30cc-ffed-41ad-8e2c-892d9d409dbb
+x
+java:S1133="5Do not forget to remove this deprecated code someday.(´¼Óá8¯’²†õ1J$c45612b1-63a9-4167-acdc-81e6499fd05c
+k
+java:S1123="(Add the missing @deprecated Javadoc tag.(´¼Óá8¯’²†õ1J$5980ed02-4538-4c23-8eed-032c3ff63a17
+m
+java:S1128"*Remove this unused import 'java.sql.Date'.(ÙÀ½Ê8±’²†õ1J$dedc965a-ea92-4420-b253-473d54c86ec6

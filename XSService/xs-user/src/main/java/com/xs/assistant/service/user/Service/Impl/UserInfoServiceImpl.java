@@ -109,7 +109,7 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     @Override
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
-    @RedisSetHash(keyName = REDIS_CUSTOMER_ID_NUMBER_KEY,key = "#email",time = 3,timeStyle = TimeUnit.MINUTES)
+    @RedisSetHash(keyName = REDIS_CUSTOMER_ID_NUMBER_KEY,key = "#accountId",time = 3,timeStyle = TimeUnit.MINUTES)
     public Boolean hashCustomerByID(String accountId) {
         return userInfoDAO.selectCustomerByID(accountId) > 0;
     }

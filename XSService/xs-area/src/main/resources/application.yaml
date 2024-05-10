@@ -17,6 +17,7 @@ spring:
           max-idle: 100
           min-idle: 0
       timeout: 2400
+      password: xs0628
   datasource:
     url: jdbc:mysql://localhost:3306/xs?useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver

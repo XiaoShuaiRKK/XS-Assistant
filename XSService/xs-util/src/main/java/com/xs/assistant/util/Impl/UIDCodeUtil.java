@@ -72,10 +72,7 @@ public class UIDCodeUtil extends AbstractCodeUtil implements IAssistantUtil {
 
     public String createCodeWithArticle(long articleCount){
         String count = String.valueOf(articleCount);
-        StringBuilder sb = new StringBuilder("XSA");
-        for(int i=0;i<11-count.length();i++)
-            sb.append("0");
-        sb.append(count);
-        return sb.toString();
+        return "XSA" + "0".repeat(Math.max(0, 11 - count.length())) +
+                count;
     }
 }

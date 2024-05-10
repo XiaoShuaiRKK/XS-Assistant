@@ -11,7 +11,7 @@
  Target Server Version : 80036 (8.0.36)
  File Encoding         : 65001
 
- Date: 19/04/2024 16:32:35
+ Date: 28/04/2024 15:34:19
 */
 
 SET NAMES utf8mb4;
@@ -279,6 +279,27 @@ INSERT INTO `area` (`Id`, `AreaName`, `AreaNameChinese`) VALUES (244, 'Zimbabwe'
 COMMIT;
 
 -- ----------------------------
+-- Table structure for article_state
+-- ----------------------------
+DROP TABLE IF EXISTS `article_state`;
+CREATE TABLE `article_state` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `stateName` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- ----------------------------
+-- Records of article_state
+-- ----------------------------
+BEGIN;
+INSERT INTO `article_state` (`id`, `stateName`) VALUES (1, '正常');
+INSERT INTO `article_state` (`id`, `stateName`) VALUES (2, '违规');
+INSERT INTO `article_state` (`id`, `stateName`) VALUES (3, '热点');
+INSERT INTO `article_state` (`id`, `stateName`) VALUES (4, '限流');
+INSERT INTO `article_state` (`id`, `stateName`) VALUES (5, '下架');
+COMMIT;
+
+-- ----------------------------
 -- Table structure for customer
 -- ----------------------------
 DROP TABLE IF EXISTS `customer`;
@@ -292,6 +313,7 @@ CREATE TABLE `customer` (
   `IdNumber` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
   `AreaId` int NOT NULL,
   `StateId` int NOT NULL,
+  `CreateTime` datetime NOT NULL,
   PRIMARY KEY (`Id`) USING BTREE,
   KEY `Area` (`AreaId`) USING BTREE,
   KEY `state_id_key` (`StateId`)
@@ -301,19 +323,19 @@ CREATE TABLE `customer` (
 -- Records of customer
 -- ----------------------------
 BEGIN;
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (1, 'Xiao', 'Shuai', '1298372143@qq.com', '4b40f76076748bd8c2634a85287b25a0d92a442141102b26a58d3b8f65b590ecbffa0cd07eb703bc', '2012-06-28', 'XS0000000001', 1, 0);
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (2, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0);
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (3, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0);
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (4, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0);
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (5, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0);
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (6, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0);
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (7, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0);
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (8, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0);
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (9, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', 'XS202401280000', 1, 0);
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (10, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', 'XS202401280001', 1, 0);
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (11, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', 'XS202401280001', 1, 0);
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (12, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', 'XS202401280001', 1, 0);
-INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`) VALUES (13, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', 'XS202401280003', 1, 0);
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (1, 'Xiao', 'Shuai', '1298372143@qq.com', '4b40f76076748bd8c2634a85287b25a0d92a442141102b26a58d3b8f65b590ecbffa0cd07eb703bc', '2012-06-28', 'XS0000000001', 1, 0, '2024-04-22 19:56:50');
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (2, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0, '2024-04-22 19:56:55');
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (3, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0, '2024-04-22 19:56:58');
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (4, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0, '2024-04-22 19:57:00');
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (5, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0, '2024-04-22 19:57:03');
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (6, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0, '2024-04-22 19:57:06');
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (7, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0, '2024-04-22 19:57:08');
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (8, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', '202401280000', 1, 0, '2024-04-22 19:57:11');
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (9, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', 'XS202401280000', 1, 0, '2024-04-22 19:57:14');
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (10, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', 'XS202401280001', 1, 0, '2024-04-22 19:57:16');
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (11, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', 'XS202401280001', 1, 0, '2024-04-22 19:57:18');
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (12, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', 'XS202401280001', 1, 0, '2024-04-22 19:57:21');
+INSERT INTO `customer` (`Id`, `FirstName`, `LastName`, `Email`, `Password`, `Birth`, `IdNumber`, `AreaId`, `StateId`, `CreateTime`) VALUES (13, 'Watson', 'Yu', 'xxsrkk@gmail.com', '5567789', '2004-06-28', 'XS202401280003', 1, 0, '2024-04-22 19:57:24');
 COMMIT;
 
 -- ----------------------------
@@ -346,20 +368,26 @@ CREATE TABLE `note` (
   `Logo` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
   `AuthorId` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
   `ArticleId` varchar(14) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
+  `CreateTime` datetime NOT NULL,
+  `StateId` int NOT NULL,
   PRIMARY KEY (`Id`) USING BTREE,
-  KEY `AuthorId` (`AuthorId`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin ROW_FORMAT=DYNAMIC;
+  KEY `AuthorId` (`AuthorId`) USING BTREE,
+  KEY `article_state_key` (`StateId`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of note
 -- ----------------------------
 BEGIN;
-INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`) VALUES (1, 'Background 5', 'Illustration 1', 'Logo 2', '1', '');
-INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`) VALUES (2, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000004');
-INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`) VALUES (3, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000003');
-INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`) VALUES (4, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000002');
-INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`) VALUES (5, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000001');
-INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`) VALUES (6, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000000');
+INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`, `CreateTime`, `StateId`) VALUES (1, 'Background 5', 'Illustration 1', 'Logo 2', '1', '', '2024-04-22 19:58:16', 1);
+INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`, `CreateTime`, `StateId`) VALUES (2, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000004', '2024-04-22 19:58:18', 1);
+INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`, `CreateTime`, `StateId`) VALUES (3, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000003', '2024-04-22 19:58:21', 1);
+INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`, `CreateTime`, `StateId`) VALUES (4, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000002', '2024-04-22 19:58:23', 1);
+INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`, `CreateTime`, `StateId`) VALUES (5, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000001', '2024-04-22 19:58:25', 1);
+INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`, `CreateTime`, `StateId`) VALUES (6, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000000', '2024-04-22 19:58:27', 1);
+INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`, `CreateTime`, `StateId`) VALUES (7, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000006', '2024-04-24 09:50:06', 1);
+INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`, `CreateTime`, `StateId`) VALUES (8, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000007', '2024-04-24 10:06:06', 1);
+INSERT INTO `note` (`Id`, `Background`, `Image`, `Logo`, `AuthorId`, `ArticleId`, `CreateTime`, `StateId`) VALUES (9, 'Background 5', 'Illustration 1', 'Logo 2', 'XS0000000001', 'XSA00000000013', '2024-04-24 18:39:28', 1);
 COMMIT;
 
 -- ----------------------------

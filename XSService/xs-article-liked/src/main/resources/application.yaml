@@ -15,8 +15,17 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   data:
     redis:
-      port: 5050
       host: 127.0.0.1
+      port: 5050
+      jedis:
+        pool:
+          enabled: true
+          max-active: -1
+          max-wait: 8s
+          max-idle: 100
+          min-idle: 0
+      timeout: 2400
+      password: xs0628
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 resilience4j:

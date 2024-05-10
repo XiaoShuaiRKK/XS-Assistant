@@ -22,13 +22,12 @@ public class LoginServiceImpl implements LoginService {
     public ResponseResult<CustomerDO> login(String name, String password) {
         ResponseResult<CustomerDO> result;
         try{
+
             String encodedPassword = loginDAO.getCustomerPassword(name);
             if(!encryptionService.checkEncodePassword(password,encodedPassword))
                 return ResponseResult.success(null,"登录失败");
-            CustomerDO customer = loginDAO.login(name);
-            result = ResponseResult.success(customer,"登录成功");
+            result = ResponseResult.success(loginDAO.login(name),"登录成功");
         }catch (Exception e){
-            e.printStackTrace();
             log.error(e.getMessage());
             result = ResponseResult.fail("server error");
         }

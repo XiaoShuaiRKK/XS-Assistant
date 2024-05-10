@@ -11,4 +11,6 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper extends BaseMapper<CustomerDO> {
     @Select("SELECT Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId FROM customer")
     IPage<CustomerDO> selectPage(Page<CustomerDO> page);
+    @Select("SELECT count(*) FROM customer")
+    Long selectAllCount();
 }

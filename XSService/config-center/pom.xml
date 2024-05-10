@@ -8,7 +8,7 @@
     </parent>
     <groupId>org.xs.assistant</groupId>
     <artifactId>config-center</artifactId>
-    <name>Archetype - config-center</name>
+    <name>config-center</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
@@ -46,10 +46,30 @@
     </dependencies>
 
     <build>
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <includes>-->
+<!--                    <include>**/*.xml</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+<!--        </resources>-->
+        <finalName>xs-config-center</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.2.4</version>
+                <configuration>
+                    <mainClass>com.xs.assistant.config.ConfigCenterApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

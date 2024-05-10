@@ -6,8 +6,15 @@
         INSERT INTO
             note
         VALUES
-            (NULL,#{article.background},#{article.image},#{article.logo},#{article.authorId},#{article.articleId},now(),1)
+            (NULL,#{article.background},#{article.image},#{article.logo},#{article.authorId},#{article.articleId},now(),1,0)
     </insert>
+
+    <select id="count" resultType="java.lang.Long">
+        SELECT
+            count(*)
+        FROM
+            note
+    </select>
 
     <select id="selectArticleByArticleId" resultType="com.xs.DAO.DO.article.Article">
         SELECT

@@ -1,0 +1,16 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ø¹Õ¾ûÿÿÿÿ
+Z
+java:S2259ó"DA "NullPointerException" could be thrown; "hasKey" is nullable here.(òè
+X
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
+B
+java:S1452Ú"&Remove usage of generic wildcard type.(ºìÕˆÿÿÿÿÿ
+B
+java:S1452ê"&Remove usage of generic wildcard type.(¸êïŒüÿÿÿÿ
+=
+java:S1452ö"&Remove usage of generic wildcard type.(‚äÿ
+=
+java:S1452ú"&Remove usage of generic wildcard type.(²Ï½ë
+C
+java:S1874¥",Remove this use of "eval"; it is deprecated.(¥»ª¦

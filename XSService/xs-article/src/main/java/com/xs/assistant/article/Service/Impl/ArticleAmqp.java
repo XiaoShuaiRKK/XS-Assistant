@@ -13,9 +13,14 @@ public class ArticleAmqp {
     @Autowired
     private JsonUtil jsonUtil;
 
-    private static final String RABBITMQ_EXCHANGE_NAME = "articleChange";
+    private static final String RABBITMQ_EXCHANGE_NAME_ARTICLE = "articleChange";
+    private static final String RABBITMQ_EXCHANGE_NAME_ARTICLE_HOT_VALUE = "articleHotValueExchange";
 
     public void uploadArticle(ArticleContext article){
-        rabbitTemplate.convertAndSend(RABBITMQ_EXCHANGE_NAME,"article.single",jsonUtil.beanToJson(article));
+        rabbitTemplate.convertAndSend(RABBITMQ_EXCHANGE_NAME_ARTICLE,"article.single",jsonUtil.beanToJson(article));
+    }
+
+    public void insertHotArticle(String articleId){
+        rabbitTemplate.convertAndSend(RABBITMQ_EXCHANGE_NAME_ARTICLE_HOT_VALUE,"article.hot.value.default",articleId);
     }
 }
