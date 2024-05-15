@@ -1,4 +1,4 @@
 
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ´Ç¨ýÿÿÿÿ
-u
-java:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(žôŒÚ
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ´Ç¨ýÿÿÿÿJ$0ed63d33-d969-4ec7-9574-42b07605e5fc
+›
+java:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(žôŒÚJ$02fd5fec-53cd-43c2-9808-f8594a606ff8

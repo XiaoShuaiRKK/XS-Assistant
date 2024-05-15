@@ -99,7 +99,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
     @RedisSetHash(keyName = REDIS_CUSTOMER_EMAIL_KEY,key = "#email",time = 3,timeStyle = TimeUnit.MINUTES)
     public Boolean hasCustomer(String email) {
-        return userInfoDAO.selectCustomerByEmail(email) > 0;
+        return userInfoDAO.selectCustomerByEmail(email) != null;
     }
 
     /**

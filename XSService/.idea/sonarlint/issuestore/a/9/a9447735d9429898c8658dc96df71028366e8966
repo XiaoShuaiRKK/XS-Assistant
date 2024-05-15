@@ -1,23 +1,18 @@
 
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8À¯šö1J$71acd4f3-4c10-4a70-acd4-f4591988387a
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8óÎá·÷1J$8c7930cf-13d6-4afa-a7f7-a3061fd61677
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8À¯šö1J$fead6472-b5f6-4a79-9e70-be679c3f9eef
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ôÎá·÷1J$d3c080a7-f68b-4268-a7e2-69c6eee9a6f6
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8À¯šö1J$fc722d0c-e12f-4f1b-b5c7-e782e55acb12
+java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ8ôÎá·÷1J$c513a1c8-a1e6-4cb3-9e66-c595d2bd51fa
 …
-java:S6813!"BRemove this field injection and use constructor injection instead.(êæÄŞ8Á¯šö1J$b2e1412b-6761-4da5-bdf2-b490bda9c120
-„	java:S107Ù"<Method has 8 parameters, which is greater than 7 authorized.(Ä Îúÿÿÿÿ8Â¯šö1J$7982c921-e0d1-42fc-87e6-b1130849eccb
-„	java:S125‡"<This block of commented-out lines of code should be removed.(´³îÿÿÿÿÿ8É¯šö1J$f0686f9d-9ce0-4302-82f2-de62a856e22c
-v
-java:S1172¯"-Remove this unused method parameter "target".(ÇÑÑûÿÿÿÿ8Ë¯šö1J$85101d1c-a0a2-4ad0-ba41-5105dc7d560c
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8ôÎá·÷1J$3fa9a813-4fb8-491c-8bc6-be1132589e40
+„	java:S107÷"<Method has 8 parameters, which is greater than 7 authorized.(Ä Îúÿÿÿÿ8ùÎá·÷1J$b12252d8-f269-48d8-8b60-b4c466f6d1b0
+~	java:S107‡"<Method has 8 parameters, which is greater than 7 authorized.(ô’š_8úÎá·÷1J$cd551507-e9a3-4fd1-b8a2-2e96a224169a
+„	java:S125—"<This block of commented-out lines of code should be removed.(´³îÿÿÿÿÿ8Ïá·÷1J$9c3d0d39-3d7f-4736-8cc8-13926b5aae2b
 o
-java:S1168¾"+Return an empty collection instead of null.(¥¹ï8Ì¯šö1J$2f68f550-5ae6-45ac-b3ec-6756065a6683
+java:S1168­"+Return an empty collection instead of null.(¥¹ï8œÏá·÷1J$05082e20-820c-4bf8-a61b-307d9255f07b
 o
-java:S1168Ë"+Return an empty collection instead of null.(¥¹ï8Í¯šö1J$db2d3e9e-69f8-4c48-bc37-acb8027329f0
-o
-java:S1168æ"+Return an empty collection instead of null.(¥¹ï8Ï¯šö1J$6a926096-73dc-4e1c-bda5-19a5cd4ff104
-o
-java:S1168€"+Return an empty collection instead of null.(¥¹ï8Ğ¯šö1J$c5f60bdb-9a09-41b0-bce0-b8b175c9c2bd
-o
-java:S1168Š"+Return an empty collection instead of null.(¥¹ï8Ñ¯šö1J$0582d2a9-229f-4ada-aacc-b1e043c5d0bd
+java:S1168·"+Return an empty collection instead of null.(¥¹ï8Ïá·÷1J$ccfbb051-acdb-4c33-8ec5-f7c1fc1a3a7d
+~
+java:S1118ã":Add a private constructor to hide the implicit public one.(ãª³8¤Ïá·÷1J$bd205be4-66e8-461b-9346-13c8fc31881e

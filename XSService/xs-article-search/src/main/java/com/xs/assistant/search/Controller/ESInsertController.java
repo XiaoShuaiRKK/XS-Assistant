@@ -10,9 +10,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/insert")
 public class ESInsertController {
-    @Autowired
-    ESInsertService esInsertService;
+    final ESInsertService esInsertService;
 
+    public ESInsertController(ESInsertService esInsertService) {
+        this.esInsertService = esInsertService;
+    }
+
+    /**
+     * 添加文章
+     * @param articles 文章
+     * @return 是否成功
+     */
     @PostMapping("/addArticleArray")
     public Boolean insertArticleArray(@RequestBody List<ArticleContext> articles){
         return esInsertService.insert(articles);

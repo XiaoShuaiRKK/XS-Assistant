@@ -1,6 +1,6 @@
 
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÑŠıªùÿÿÿÿ
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
-U
-java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(ú¤$
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÑŠıªùÿÿÿÿJ$af6c708e-21ab-4cb5-9670-0ec965189417
+~
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$c6bb2cc4-2cad-4923-ba58-9761aefdb090
+{
+java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(ú¤$J$23b6045f-567c-4c6a-866c-1193c7b14c78

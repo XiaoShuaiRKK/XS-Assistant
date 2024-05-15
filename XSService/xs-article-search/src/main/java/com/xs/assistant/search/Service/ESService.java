@@ -8,5 +8,4 @@ import org.springframework.stereotype.Service;
 public abstract class ESService {
     @Autowired
     protected ElasticsearchUtil elasticsearchUtil;
-    protected static final String ES_ARTICLE_INDEX_NAME = "article";
 }

@@ -9,6 +9,15 @@
             (NULL,#{article.background},#{article.image},#{article.logo},#{article.authorId},#{article.articleId},now(),1,0)
     </insert>
 
+    <select id="selectArticleByArticleId" resultType="java.lang.Integer">
+        SELECT
+            count(*)
+        FROM
+            note
+        WHERE
+            ArticleId = #{ArticleId}
+    </select>
+
     <select id="count" resultType="java.lang.Long">
         SELECT
             count(*)

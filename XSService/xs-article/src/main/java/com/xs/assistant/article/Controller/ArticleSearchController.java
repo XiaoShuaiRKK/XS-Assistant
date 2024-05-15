@@ -18,9 +18,10 @@ public class ArticleSearchController {
     @Autowired
     ESArticleService esArticleService;
 
-    @GetMapping("/getAll")
-    public ResponseResult<List<ArticleContextVO>> searchArticleArray(){
-        return esArticleService.getArticlesAll();
+    @GetMapping("/get/page")
+    public ResponseResult<List<ArticleContextVO>> searchArticleArray(@RequestParam("page")Integer page,
+                                                                     @RequestParam("size")Integer size){
+        return esArticleService.getArticlesByPage(page,size);
     }
 
     @GetMapping("/get/byAllQuery")

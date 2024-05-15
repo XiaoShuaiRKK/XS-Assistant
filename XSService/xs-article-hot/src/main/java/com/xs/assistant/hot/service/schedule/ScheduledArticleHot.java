@@ -2,7 +2,6 @@ package com.xs.assistant.hot.service.schedule;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xs.DAO.DO.article.ArticleContext;
 import com.xs.DAO.DO.article.ArticleHot;
 import com.xs.DAO.repository.ElasticRepositoryKeyEnum;
 import com.xs.assistant.hot.DAO.ArticleHotKey;
@@ -12,7 +11,6 @@ import com.xs.assistant.redis.Util.RedisUtil;
 import com.xs.assistant.util.ElasticsearchUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.bulk.BulkRequest;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -35,6 +33,11 @@ public class ScheduledArticleHot {
         this.redisUtil = redisUtil;
     }
 
+    /**
+     * 定时更新
+     * 将mysql中的article_hot 中的评论 点赞 收藏 转换成热度
+     * 并存储在elasticsearch中 方便做热度排序
+     */
     @Scheduled(fixedRate = 1000 * 60 * 3)
     public void runArticleHotCalculate(){
         log.info("scheduled run article hot calculate...");

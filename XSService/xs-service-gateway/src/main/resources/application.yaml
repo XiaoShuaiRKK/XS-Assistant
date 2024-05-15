@@ -34,11 +34,11 @@ spring:
             allowCredentials: true
         add-to-simple-url-handler-mapping: true
       routes:
-        - id: xs-article-hot-router
+        - id: xs-article-search-router
           uri:
-            lb://XS-ARTICLE-HOT
+            lb://XS-ARTICLE-SEARCH
           predicates:
-            - Path=/xs_assistant/article/hot/search
+            - Path=/xs_assistant/search/**
         - id: xs-area-router
           uri:
             lb://XS-AREA

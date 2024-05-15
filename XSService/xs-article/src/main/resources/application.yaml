@@ -43,6 +43,8 @@ spring:
   banner:
     charset: UTF-8
     location: Banner/XS-Assistant-Banner.txt
+  main:
+    allow-bean-definition-overriding: true
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 resilience4j:

@@ -1,15 +1,15 @@
 
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(â¿¶¬
-Q	java:S125"<This block of commented-out lines of code should be removed.(ÎÒíÿ
-g
-java:S1128"QRemove this unused import 'co.elastic.clients.elasticsearch.ElasticsearchClient'.(À×©é
-e
-java:S1128"ORemove this unused import 'co.elastic.clients.json.jackson.JacksonJsonpMapper'.(·—œ¼
-n
-java:S1128"YRemove this unused import 'co.elastic.clients.transport.rest_client.RestClientTransport'.(§ÚÒ
-K
-java:S1128"5Remove this unused import 'org.apache.http.HttpHost'.(õÑ‰¯
-U
-java:S1128"@Remove this unused import 'org.elasticsearch.client.RestClient'.(ìþÇT
-^
-java:S1128	"HRemove this unused import 'org.springframework.context.annotation.Bean'.(‚î‰Þ
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(â¿¶¬J$65937b8b-384f-4aee-afd1-5d484d4bb775
+w	java:S125"<This block of commented-out lines of code should be removed.(ÎÒíÿJ$c1afbac3-6958-4784-83b9-db204efe5c44
+
+java:S1128"QRemove this unused import 'co.elastic.clients.elasticsearch.ElasticsearchClient'.(À×©éJ$4f8a8809-9e4a-497c-bf94-633bd3ed4e60
+‹
+java:S1128"ORemove this unused import 'co.elastic.clients.json.jackson.JacksonJsonpMapper'.(·—œ¼J$5c93657e-af49-4e0d-ad1a-fd206c79426f
+”
+java:S1128"YRemove this unused import 'co.elastic.clients.transport.rest_client.RestClientTransport'.(§ÚÒJ$4da25f55-9e03-4ae7-8b84-769603aab780
+q
+java:S1128"5Remove this unused import 'org.apache.http.HttpHost'.(õÑ‰¯J$208af5e2-b4fa-4078-92b7-af08bb34a224
+{
+java:S1128"@Remove this unused import 'org.elasticsearch.client.RestClient'.(ìþÇTJ$8a4174fc-3d28-4c1e-a85b-9977076c6311
+„
+java:S1128	"HRemove this unused import 'org.springframework.context.annotation.Bean'.(‚î‰ÞJ$69ce5518-e8f2-485b-a489-b7542f786ac3

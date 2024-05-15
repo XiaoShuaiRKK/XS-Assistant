@@ -31,9 +31,7 @@ public class ArticleHotListener {
             exchange = @Exchange(name = ArticleHotKey.RABBITMQ_EXCHANGE_NAME,type = "topic"),
             key = ArticleHotKey.RABBITMQ_EXCHANGE_KEY_COLUMN))
     private void hotListening(String articleId){
-        System.out.println("Listen ....");
         ArticleHot articleHot = articleHotMapper.selectByArticleId(articleId);
-        System.out.println(articleHot.toString());
         double hotValue = hotValueUtil.calculateHotValue(articleHot,1);
         elasticsearchUtil.insertDocument(ArticleHotKey.ES_ARTICLE_INDEX_NAME,articleId,
                 ArticleContext.builder().id(articleId).hot(hotValue).build());

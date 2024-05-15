@@ -21,22 +21,22 @@ public class ESArticleServiceImpl implements ESArticleService {
 
     @Override
     @ResultPackage
-    public ResponseResult<List<ArticleContextVO>> getArticlesAll() {
-        return ResponseResult.none(esArticleRemoteService.getArticlesAll().stream()
-                .map(a -> ArticleContextMapper.INSTANCE.articleContextToArticleContextVO(a,new Article())).toList());
+    public ResponseResult<List<ArticleContextVO>> getArticlesByPage(int page,int size) {
+        return ResponseResult.none(esArticleRemoteService.getArticlesByPage(page,size).stream()
+                .map(a -> ArticleContextMapper.INSTANCE.articleToArticleContextVO(a,new Article())).toList());
     }
 
     @Override
     @ResultPackage
     public ResponseResult<List<ArticleContextVO>> getArticlesByAllField(String target, int page, int size) {
         return ResponseResult.none(esArticleRemoteService.getArticleAllQuery(target,page,size).stream()
-                .map(a -> ArticleContextMapper.INSTANCE.articleContextToArticleContextVO(a,new Article())).toList());
+                .map(a -> ArticleContextMapper.INSTANCE.articleToArticleContextVO(a,new Article())).toList());
     }
 
     @Override
     @ResultPackage
     public ResponseResult<List<ArticleContextVO>> getArticlesByScore(String field, String target, int page, int size) {
         return ResponseResult.none(esArticleRemoteService.getArticleScoreQuery(field,target,page,size).stream()
-                .map(a -> ArticleContextMapper.INSTANCE.articleContextToArticleContextVO(a,new Article())).toList());
+                .map(a -> ArticleContextMapper.INSTANCE.articleToArticleContextVO(a,new Article())).toList());
     }
 }

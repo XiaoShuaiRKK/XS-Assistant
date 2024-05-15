@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.Set;
 
+/**
+ * 报错代理
+ */
 @RestControllerAdvice
 @Slf4j
 public class ValidationAdvice {

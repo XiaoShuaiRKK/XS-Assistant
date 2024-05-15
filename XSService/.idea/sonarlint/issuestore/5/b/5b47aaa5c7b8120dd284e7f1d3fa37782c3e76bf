@@ -1,0 +1,7 @@
+
+
+java:S1128"TRemove this unused import 'com.xs.assistant.account.service.RestAccountInfoService'.(Ã¦ÖJ$7c5a4388-71d8-49cf-8d30-7faa9ceeea75
+
+java:S1128"SRemove this unused import 'com.xs.assistant.account.service.remote.AccountService'.(Œš®¤J$6550e5f8-5a9a-4ce2-a3cf-b806a2515875
+›
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8›šôÊ÷1J$210a0ea5-538e-43c1-b649-a624788370fd

@@ -15,10 +15,14 @@ import java.util.*;
 @Component
 @Slf4j
 public class LikedScheduled extends AbstractLikedService implements Runnable{
-    @Autowired
-    LikedDAO likedDAO;
+    final LikedDAO likedDAO;
     @Resource
     RedisUtil redisUtil;
+
+    public LikedScheduled(LikedDAO likedDAO) {
+        this.likedDAO = likedDAO;
+    }
+
     @Override
     @SuppressWarnings("all")
     public void run() {

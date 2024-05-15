@@ -9,9 +9,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RestAccountInfoServiceImpl implements RestAccountInfoService {
-    @Autowired
-    AccountInfoService accountInfoService;
+    final AccountInfoService accountInfoService;
 
+    public RestAccountInfoServiceImpl(AccountInfoService accountInfoService) {
+        this.accountInfoService = accountInfoService;
+    }
+
+    /**
+     * 根据id获取用户
+     * @param id id
+     * @return 用户
+     */
     @Override
     public ResponseResult<CustomerDO> getCustomerByNumberId(String id) {
         return accountInfoService.getCustomerByNumberId(id);

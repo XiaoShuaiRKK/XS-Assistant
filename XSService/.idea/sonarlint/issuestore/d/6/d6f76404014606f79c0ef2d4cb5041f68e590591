@@ -1,18 +1,12 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ˆ‡Öùøÿÿÿÿ8ü½ÆÁõ1J$21c146e8-f9fd-4860-98fa-5e65afff3fae
-…
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¾ÆÁõ1J$fe4ff8f5-05b0-4945-bb5f-6f954f5dc4c4
-…
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¾ÆÁõ1J$c5178dc6-5715-4e7e-b84d-52a3db711f89
-…
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¾ÆÁõ1J$3c692113-9a65-4271-a162-f1bc62737499
-…
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¾ÆÁõ1J$3cdf5902-35e2-461e-8a51-ff5aed4bd71e
-…
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¾ÆÁõ1J$5a22b831-c80c-4133-be54-5c4a43e9d97d
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ˆ‡Öùøÿÿÿÿ8£ÁÂ°÷1J$b01965a2-345d-4e5b-b5a3-17dc717bd2bd
 ›
-java:S21393"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8”¾ÆÁõ1J$c3a46200-97af-40b2-8797-821e168ba553
+java:S2139C"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8ÔÁÂ°÷1J$c20a0b08-d674-4bf2-9d06-f9e1b39ae189
 p
-java:S1172:"(Remove this unused method parameter "e".(Âöïôûÿÿÿÿ8•¾ÆÁõ1J$53606d41-f4a2-451f-ac92-73a326afad4a
+java:S1172J"(Remove this unused method parameter "e".(Âöïôûÿÿÿÿ8ØÁÂ°÷1J$50ed6d8b-185c-4c96-b558-36586c07aa47
+›
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8ˆÅ°÷1J$8f32d1a3-9ad0-4678-ae23-c1452872f3e4
+›
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Qualifier'.(íàÄ®ıÿÿÿÿ8ƒˆÅ°÷1J$0815ee82-ee12-4b5a-a009-f513f1cd64f3
 w
-java:S1144:"/Remove this unused private "failMethod" method.(Âöïôûÿÿÿÿ8–¾ÆÁõ1J$5f3e6900-c242-4b1a-8cd2-de227e3193d0
+java:S1144J"/Remove this unused private "failMethod" method.(Âöïôûÿÿÿÿ8æÁÂ°÷1J$e5b762f8-6bb3-4ad6-a0ea-282b7d4b1069

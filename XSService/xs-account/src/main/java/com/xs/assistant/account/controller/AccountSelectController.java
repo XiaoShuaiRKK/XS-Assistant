@@ -22,9 +22,18 @@ import java.util.List;
 @RequestMapping("/query")
 public class AccountSelectController {
 
-    @Autowired
-    AccountInfoService accountInfoService;
+    final AccountInfoService accountInfoService;
 
+    public AccountSelectController(AccountInfoService accountInfoService) {
+        this.accountInfoService = accountInfoService;
+    }
+
+    /**
+     * 获得用户列表
+     * @param page 页数
+     * @param size 大小
+     * @return 用户列表
+     */
     @GetMapping("/customers")
     public ResponseResult<List<CustomerDO>> getAccounts(@Min(value = 1,message = "Please enter the correct value")
                                                             @RequestParam("page")Integer page,
@@ -33,12 +42,22 @@ public class AccountSelectController {
         return accountInfoService.getCustomers(page, size);
     }
 
+    /**
+     * 根据id获取用户
+     * @param id id
+     * @return 用户
+     */
     @GetMapping("/byNumberId")
     public ResponseResult<CustomerDO> getAccountById(@Length(min = 14,max = 14,message = "The Number ID format error")
                                                          @RequestParam("ID")String id){
         return accountInfoService.getCustomerByNumberId(id);
     }
 
+    /**
+     * 根据电子邮箱获取用户
+     * @param email 电子邮箱
+     * @return 用户
+     */
     @GetMapping("/byEmail")
     public ResponseResult<CustomerDO> getAccountByEmail(@Email(message = "invalid email")
                                                             @RequestParam("email")String email){

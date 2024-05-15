@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -132,6 +133,21 @@ public class ElasticsearchUtil {
         return true;
     }
 
+    public <T> boolean insertDocuments(String indexName,List<String> ids,List<T> array){
+        List<BulkOperation> bulkOperations = new ArrayList<>();
+        for(int i=0;i<ids.size();i++){
+            int finalI = i;
+            bulkOperations.add(BulkOperation.of(b ->b.index(index -> index.id(ids.get(finalI)).document(array.get(finalI)))));
+        }
+        try {
+            client.bulk(b -> b.index(indexName).operations(bulkOperations));
+        } catch (IOException e) {
+            log.error("ElasticSearch 批量插入异常: {}",e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
 //    public boolean putMappingAddField(String index,String field,String fieldType){
 //        try {
 //            XContentBuilder mapping = XContentFactory.jsonBuilder()
@@ -172,7 +188,7 @@ public class ElasticsearchUtil {
     }
 
 
-    public <T> List<Hit<T>> searchDocumentsMaxScore(String indexName, String field, String target,
+    public <T> List<Hit<T>> searchDocumentsMaxScore(String indexName, String field,
                                                     int page,int size, Class<T> tClass){
         try {
             return client.search(s -> s.index(indexName).query(
@@ -187,20 +203,34 @@ public class ElasticsearchUtil {
         } catch (IOException e) {
             log.error("Elasticsearch bool 查询异常: {}",e.getMessage());
         }
-        return null;
+        return Collections.emptyList();
     }
 
     public <T> List<Hit<T>> searchDocumentsMultiQuery(String indexName,String target,int page,int size,Class<T> tClass){
         try {
             return client.search(s -> s.index(indexName).query(
                     q -> q.multiMatch(
-                            m -> m.fields(beanFieldUtil.getFieldsNameArray(tClass)).query(target)
+                            m -> m.query(target).fields(beanFieldUtil.getFieldsNameArray(tClass)).query(target)
                     )
             ).from(page).size(size),tClass).hits().hits();
         } catch (IOException e) {
             log.error("Elasticsearch Multi 查询异常: {}",e.getMessage());
         }
-        return null;
+        return Collections.emptyList();
+    }
+
+    public <T> List<Hit<T>> searchDocumentsMultiQuery(String indexName,String target,int page,int size,Class<T> tClass,
+                                                      String... fields){
+        try {
+            return client.search(s -> s.index(indexName).query(
+                    q -> q.multiMatch(
+                            m -> m.query(target).fields(target,fields).query(target)
+                    )
+            ).from(page).size(size),tClass).hits().hits();
+        } catch (IOException e) {
+            log.error("Elasticsearch Multi 查询异常: {}",e.getMessage());
+        }
+        return Collections.emptyList();
     }
 
     /**
@@ -227,8 +257,23 @@ public class ElasticsearchUtil {
         } catch (IOException e) {
             log.error("ElasticSearch 排序条件查询异常: {}",e.getMessage());
         }
-        return null;
+        return Collections.emptyList();
     }
+
+    public <T> List<Hit<T>> searchDocumentsMultiOrderSortQueryFields(String indexName,String orderField,
+                                                                SortOrder sortOrder,String target,int page,int size,Class<T> tClass,
+                                                                String... fields){
+        SearchRequest.Builder multiMatchSearchFields = RequestBuilder.getMultiMatchSearchFields(indexName, target, page, size, fields);
+        multiMatchSearchFields = RequestBuilder.addOrderby(multiMatchSearchFields,sortOrder,orderField);
+        try {
+            SearchResponse<T> search = client.search(multiMatchSearchFields.build(), tClass);
+            return search.hits().hits();
+        } catch (IOException e) {
+            log.error(e.getMessage());
+        }
+        return Collections.emptyList();
+    }
+
 
     /**
      * 查询
@@ -285,7 +330,7 @@ public class ElasticsearchUtil {
 
     public <T> boolean updateByDocumentId(String index,String id,String field,T fieldValue){
         try {
-            elasticsearchTemplate.update(getUpdateSingleField(index,id,field,fieldValue));
+            elasticsearchTemplate.update(RequestBuilder.getUpdateSingleField(index,id,field,fieldValue));
         }catch (Exception e){
             log.error(e.getMessage());
             return false;
@@ -307,7 +352,21 @@ public class ElasticsearchUtil {
         return new org.elasticsearch.action.update.UpdateRequest(index,id).doc(Map.of(field,fieldValue)).upsert();
     }
 
-    private <T> UpdateRequest<?,?> getUpdateSingleField(String index,String id,String field,T fieldValue){
-        return new UpdateRequest.Builder<>().index(index).id(id).doc(Map.of(field, fieldValue)).build();
+    static class RequestBuilder{
+        private static  <T> UpdateRequest<?,?> getUpdateSingleField(String index,String id,String field,T fieldValue){
+            return new UpdateRequest.Builder<>().index(index).id(id).doc(Map.of(field, fieldValue)).build();
+        }
+
+        private static SearchRequest.Builder getMultiMatchSearchFields(String index,String target,int page,int size, String... fields){
+            return new SearchRequest.Builder().index(index).query(
+                    q -> q.multiMatch(m -> m.fields(target,fields).query(target))
+            ).from(page).size(size);
+        }
+
+        private static SearchRequest.Builder addOrderby(SearchRequest.Builder builder,SortOrder sortOrder,String field){
+            return builder.sort(s -> s.field(f -> f.field(field).order(sortOrder)));
+        }
     }
+
+
 }

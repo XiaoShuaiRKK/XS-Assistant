@@ -10,4 +10,5 @@ public interface ESSearchService {
     List<ArticleContext> searchArticlesQuery(String field, String target, int page, int size);
     List<ArticleContext> searchArticlesAllQuery(String target, int page, int size);
     List<ArticleContext> searchArticlesScoreQuery(String field, String target, int page, int size);
+    List<ArticleContext> searchArticlesByTargetOrderByHot(int page,int size,String target);
 }

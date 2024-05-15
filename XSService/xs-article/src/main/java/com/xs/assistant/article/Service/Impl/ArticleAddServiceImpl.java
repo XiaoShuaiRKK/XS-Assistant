@@ -8,10 +8,12 @@ import com.xs.assistant.article.DAO.ArticleMongodbRepository;
 import com.xs.assistant.article.DAO.ArticleSearchRepository;
 import com.xs.assistant.article.Service.ArticleAddService;
 import com.xs.assistant.util.Impl.UIDCodeUtil;
+import com.xs.assistant.util.uid.Impl.SnowflakeDistributeId;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
@@ -19,23 +21,37 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 @Service
 public class ArticleAddServiceImpl implements ArticleAddService {
     private static final Logger log = LoggerFactory.getLogger(ArticleAddServiceImpl.class);
-    @Autowired
-    UIDCodeUtil codeUtil;
-    @Autowired
-    ArticleMongodbRepository articleRepository;
-    @Autowired
-    ArticleDAO articleDAO;
-    @Autowired
-    ArticleSearchRepository articleSearchRepository;
-    @Autowired
-    ArticleAmqp articleAmqp;
+    /**
+     * id默认长度
+     * “xsa” + 64 = 67
+     * 长度为67
+     */
+    private static final int MYSQL_DEFAULT_ID_SIZE = 64;
+    final UIDCodeUtil codeUtil;
+    final ArticleMongodbRepository articleRepository;
+    final ArticleDAO articleDAO;
+    final ArticleSearchRepository articleSearchRepository;
+    final ArticleAmqp articleAmqp;
+    final SnowflakeDistributeId snowflakeDistributeId;
+
+    public ArticleAddServiceImpl(UIDCodeUtil codeUtil, ArticleMongodbRepository articleRepository,
+                                 ArticleDAO articleDAO, ArticleSearchRepository articleSearchRepository,
+                                 ArticleAmqp articleAmqp) {
+        this.codeUtil = codeUtil;
+        this.articleRepository = articleRepository;
+        this.articleDAO = articleDAO;
+        this.articleSearchRepository = articleSearchRepository;
+        this.articleAmqp = articleAmqp;
+        this.snowflakeDistributeId = new SnowflakeDistributeId(0,0);
+    }
 
     @Override
     @CircuitBreaker(name = "article-mongodb",fallbackMethod = "failMethod")
     @Transactional(rollbackFor = Exception.class)
     public ResponseResult<Boolean> addArticle(ArticleContext article) {
         try {
-            String articleId = codeUtil.createCodeWithArticle(articleDAO.count());
+            //根据雪花算法生成唯一ID
+            String articleId = codeUtil.createCodeWithArticle(snowflakeDistributeId.nextId(),MYSQL_DEFAULT_ID_SIZE);
             article.setId(articleId);
             article.setHot(0D);
             article.setStateId(1);

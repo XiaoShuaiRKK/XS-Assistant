@@ -1,0 +1,10 @@
+
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–åž¸ûÿÿÿÿ8ªŠÐ”ö1J$6679610d-a6ab-47c7-923c-a40987b2dfb9
+‹
+java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8Üˆþ”ö1J$c28ebf51-ba52-47f5-83e2-365041f41075
+x
+java:S1133"5Do not forget to remove this deprecated code someday.(Äó’Û8Üˆþ”ö1J$3d39f702-d868-44f3-b6d7-3901f814a2a6
+k
+java:S1123"(Add the missing @deprecated Javadoc tag.(Äó’Û8Üˆþ”ö1J$83d20b1c-b4a6-4b16-9e53-dd157d2b356e
+d
+java:S3864"!Remove this use of "Stream.peek".(®ò¾ 8´ŠÐ”ö1J$9623c8e5-0473-45e8-9b77-4a84103668fa

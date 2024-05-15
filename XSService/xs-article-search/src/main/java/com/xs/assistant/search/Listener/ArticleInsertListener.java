@@ -12,11 +12,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ArticleInsertListener {
-    @Autowired
-    JsonUtil jsonUtil;
-    @Autowired
-    ESInsertService esInsertService;
+    final JsonUtil jsonUtil;
+    final ESInsertService esInsertService;
 
+    public ArticleInsertListener(JsonUtil jsonUtil, ESInsertService esInsertService) {
+        this.jsonUtil = jsonUtil;
+        this.esInsertService = esInsertService;
+    }
+
+    /**
+     * 监听文章插入
+     * @param articleJson json
+     */
     @RabbitListener(bindings = @QueueBinding(value = @Queue,
             exchange = @Exchange(name = "articleChange",type = "topic"),
             key = "article.single"))

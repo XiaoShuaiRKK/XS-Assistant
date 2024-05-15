@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * feign remote 错误处理
+ */
 @Component
 public class UserInfoFallback implements AccountInfoService {
     @Override
