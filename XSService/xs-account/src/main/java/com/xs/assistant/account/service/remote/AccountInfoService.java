@@ -2,7 +2,7 @@ package com.xs.assistant.account.service.remote;
 
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
-import com.xs.assistant.account.service.Fallback.UserInfoFallback;
+import com.xs.assistant.account.service.fallback.UserInfoFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;

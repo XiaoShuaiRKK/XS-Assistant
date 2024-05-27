@@ -1,0 +1,8 @@
+
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(îÂôàJ$87696726-4fd6-47a5-b55a-19b6cb6929c2
+–
+java:S5843"TSimplify this regular expression to reduce its complexity from 25 to the 20 allowed.(œÂÑ8©“¼ƒø1J$70245aa4-3485-4846-871b-cc4c58066237
+t
+java:S1068",Remove this unused "IP_LOCAL" private field.(Â¨Î‚øÿÿÿÿ8£Š³ƒø1J$deaa575c-1489-4a75-8cd1-a256f5141e3e
+m
+java:S1068"1Remove this unused "IP_LOCAL_AREA" private field.(â‚“—J$42a2e9f4-cdd8-4046-8fb9-fb66ff216629

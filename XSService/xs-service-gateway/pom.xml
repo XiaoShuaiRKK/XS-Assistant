@@ -2,25 +2,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.example</groupId>
+        <groupId>com.xs.assistant</groupId>
         <artifactId>XSService</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.2.1</version>
     </parent>
-    <groupId>org.xs.assistant</groupId>
     <artifactId>xs-service-gateway</artifactId>
-    <name>Archetype - xs-service-gateway</name>
-    <url>http://maven.apache.org</url>
+    <name>xs-service-gateway</name>
+    <version>1.2.1</version>
 
     <dependencies>
         <dependency>
-            <groupId>org.xs.assistant</groupId>
+            <groupId>com.xs.assistant</groupId>
             <artifactId>xs-bean</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2.1</version>
         </dependency>
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>com.xs.assistant</groupId>
             <artifactId>xs-util</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2.1</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -33,9 +32,9 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>com.xs.assistant</groupId>
             <artifactId>xs-redis</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2.1</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -79,4 +78,34 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}-application-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.2.4</version>
+                <configuration>
+                    <mainClass>com.xs.assistant.gateway.ServiceGatewayApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>application.yaml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>

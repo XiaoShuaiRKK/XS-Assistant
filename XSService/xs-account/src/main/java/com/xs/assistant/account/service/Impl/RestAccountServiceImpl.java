@@ -2,7 +2,7 @@ package com.xs.assistant.account.service.Impl;
 
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
-import com.xs.assistant.redis.Util.RedisUtil;
+import com.xs.assistant.redis.util.RedisUtil;
 import com.xs.assistant.util.Impl.JWTUtil;
 import com.xs.assistant.account.service.remote.AccountInfoService;
 import com.xs.assistant.account.service.remote.AccountService;
@@ -11,7 +11,6 @@ import com.xs.assistant.account.service.remote.RemoteCodeService;
 import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

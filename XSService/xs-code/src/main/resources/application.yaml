@@ -7,15 +7,18 @@ spring:
     name: xs-code
   data:
     redis:
-      port: 5050
-      host: 127.0.0.1
+#      port: 5050
+#      host: 127.0.0.1
       password: xs0628
+      host: 172.16.10.88
+      port: 6379
   rabbitmq:
-    host: 127.0.0.1
+#    host: 127.0.0.1
     username: xs
     password: xs0628
     virtual-host: /xs-assistant-virtual
     port: 5672
+    host: 172.16.10.88
   banner:
     charset: UTF-8
     location: Banner/XS-Assistant-Banner.txt
@@ -24,4 +27,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://127.0.0.1:12577/eureka
+#      defaultZone: http://127.0.0.1:12577/eureka
+      defaultZone: http://172.16.10.88:12577/eureka
+  instance:
+    prefer-ip-address: true

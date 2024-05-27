@@ -1,11 +1,10 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñ·“şÿÿÿÿ8ê®åÚõ1J$4fba5f38-16a9-488c-a9dc-c8cd32ecea57
-~	java:S1251"<This block of commented-out lines of code should be removed.(Ö–˜8ó®åÚõ1J$04db7939-06d3-405a-b89e-6446aaffa813
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñ·“şÿÿÿÿ8ê®åÚõ1J$2b947c15-98e0-4bd6-b7c2-a1cf9b6e8fd3
 ‹
-java:S6355E"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8ö®åÚõ1J$326bc72d-915a-4634-aba5-d857cdb5c4a5
+java:S6355W"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8ö®åÚõ1J$f40a2bc4-fbae-43bf-bd82-0bea3501b7b2
 x
-java:S1133F"5Do not forget to remove this deprecated code someday.(´¼Óá8ö®åÚõ1J$483e4f04-e1da-4b99-ab05-b9854fc8834a
+java:S1133X"5Do not forget to remove this deprecated code someday.(´¼Óá8ö®åÚõ1J$a6ed730f-ba36-442b-bae0-e0a973e4d37e
 k
-java:S1123F"(Add the missing @deprecated Javadoc tag.(´¼Óá8ö®åÚõ1J$9d1fa9ef-d3d5-479f-a83e-d6ffb7d5ca5b
+java:S1123X"(Add the missing @deprecated Javadoc tag.(´¼Óá8ö®åÚõ1J$97af9653-aa61-4451-b2ab-7a83aa0f5310
 ›
-java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8û¯ªàõ1J$56fd57d0-497c-4bd4-a3ed-06c7390d1314
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8û¯ªàõ1J$28df7af9-7805-40e7-b302-161349961aee

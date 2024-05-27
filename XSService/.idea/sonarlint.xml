@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SonarLintProjectSettings">
+    <option name="moduleMapping">
+      <map>
+        <entry key="xs-account" value="Account" />
+        <entry key="xs-config-center" value="config-center" />
+        <entry key="xs-config-client" value="config-client" />
+      </map>
+    </option>
+  </component>
+</project>

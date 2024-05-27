@@ -1,6 +1,6 @@
 
-•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‹£J$b43c1dea-14c9-475d-a8ac-a565a49962d5
-~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$ce7583d6-112e-4c8c-9d17-7aedbfa81460
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‹£J$94b6a9f3-dbf6-49aa-ad37-a454ac31ae19
 Š
-java:S1128"IRemove this unused import 'com.baomidou.mybatisplus.core.metadata.IPage'.(¯à½ıÿÿÿÿJ$32d8d6f1-0aa2-4352-919b-466bbb2fe5fa
+java:S1128"IRemove this unused import 'com.baomidou.mybatisplus.core.metadata.IPage'.(¯à½ıÿÿÿÿJ$7c66a266-c23e-4d45-a593-cfa540a7b231
+u
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8‘•“Œø1

@@ -2,17 +2,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.example</groupId>
+        <groupId>com.xs.assistant</groupId>
         <artifactId>XSService</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.2.1</version>
     </parent>
-
-    <groupId>com.xs.assistant</groupId>
     <artifactId>xs-article-hot</artifactId>
-    <packaging>jar</packaging>
-
     <name>article-hot</name>
-    <url>http://maven.apache.org</url>
+    <packaging>jar</packaging>
+    <version>1.2.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,19 +17,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.xs.assistant</groupId>
+            <groupId>com.xs.assistant</groupId>
             <artifactId>xs-bean</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2.1</version>
         </dependency>
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>com.xs.assistant</groupId>
             <artifactId>xs-redis</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>com.xs.assistant</groupId>
             <artifactId>xs-elasticsearch</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2.1</version>
         </dependency>
 
         <dependency>
@@ -65,11 +62,11 @@
         </dependency>
 
 <!--        elasticsearch-->
-        <dependency>
-            <groupId>org.elasticsearch.client</groupId>
-            <artifactId>elasticsearch-rest-high-level-client</artifactId>
-            <version>7.12.1</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.elasticsearch.client</groupId>-->
+<!--            <artifactId>elasticsearch-rest-high-level-client</artifactId>-->
+<!--            <version>7.12.1</version>-->
+<!--        </dependency>-->
 <!--        redis-->
         <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
         <dependency>
@@ -131,4 +128,25 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}-application-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.2.4</version>
+                <configuration>
+                    <mainClass>com.xs.assistant.hot.ArticleHotApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -1,0 +1,21 @@
+
+›	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ş®Ş8İŞƒø1J$c6aff0ac-358b-48df-9180-890ea523986e
+~
+java:S1128"6Remove this unused import 'com.xs.DAO.ResponseResult'.(«µˆ‚úÿÿÿÿ8ÀİŞƒø1J$4e8bf016-f5af-4cda-98dc-2c652c9c0eab
+–
+java:S1128"NRemove this unused import 'com.xs.assistant.redis.Aspect.Annotation.RedisSet'.(øÑı³ûÿÿÿÿ8ÁİŞƒø1J$ef72ad76-e20e-483a-b13c-01ac358f8f54
+Ÿ
+java:S1128
+"\Remove this unused import 'io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker'.(›èÌÇ8ÁİŞƒø1J$333ed097-c078-4689-8aa2-3081afd194e0
+’
+java:S1128"JRemove this unused import 'io.github.resilience4j.retry.annotation.Retry'.(Ä³ß¾úÿÿÿÿ8ÁİŞƒø1J$09913227-3623-43da-9293-103fac58cfac
+m
+java:S1128"*Remove this unused import 'lombok.Getter'.(ùÒµÙ8ÁİŞƒø1J$dcc4013f-e57f-4499-a471-09895d94b4f0
+m
+java:S1128"*Remove this unused import 'lombok.Setter'.(ó¸çµ8ÁİŞƒø1J$c4ca5803-b94d-44fb-8bf9-e4a3d013b560
+›
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8ÁİŞƒø1J$884ec457-7328-4758-9327-06f597bea2c6
+
+java:S1128"ERemove this unused import 'org.springframework.stereotype.Component'.(Ş÷Ñ¸ÿÿÿÿÿ8ÁİŞƒø1J$af77c268-5c13-4b09-bad0-8b075851775e
+
+java:S1128"URemove this unused import 'org.springframework.transaction.annotation.Transactional'.(ğùçøùÿÿÿÿ8ÁİŞƒø1J$294991bb-e856-4cb1-b732-9eb7d367c88a

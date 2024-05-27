@@ -18,11 +18,21 @@ public class ArticleHotSearchController {
         this.searchArticleHot = searchArticleHot;
     }
 
+    /**
+     * 获取热度排行
+     * @return 热度排行
+     */
     @GetMapping("/all")
     public Set<Object> getAllHotTop(){
         return searchArticleHot.getHotTop();
     }
 
+    /**
+     * 获取热度排行
+     * @param start 起始排行
+     * @param end 结束排行
+     * @return 热度排行
+     */
     @GetMapping("/top")
     public Set<Object> getHotTop(@RequestParam("start")Long start,@RequestParam("end")Long end){
         return searchArticleHot.getHotTop(start,end);

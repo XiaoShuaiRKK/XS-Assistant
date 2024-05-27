@@ -7,7 +7,7 @@ import com.xs.DAO.repository.ElasticRepositoryKeyEnum;
 import com.xs.assistant.hot.DAO.ArticleHotKey;
 import com.xs.assistant.hot.DAO.ArticleHotMapper;
 import com.xs.assistant.hot.service.util.HotValueUtil;
-import com.xs.assistant.redis.Util.RedisUtil;
+import com.xs.assistant.redis.util.RedisUtil;
 import com.xs.assistant.util.ElasticsearchUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.bulk.BulkRequest;

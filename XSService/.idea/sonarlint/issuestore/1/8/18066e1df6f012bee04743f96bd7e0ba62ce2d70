@@ -1,8 +1,7 @@
 
-š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÑŠýªùÿÿÿÿJ$5e9dbd07-f502-44d4-888e-74b0c66f270f
-~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞJ$46452291-e924-4918-87f5-1b3275136ed4
-~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞJ$d1592ba9-ca1e-43ee-84b9-67c2ba814aad
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÑŠýªùÿÿÿÿJ$bd987a0a-7137-4366-8faf-11af78bd70a6
 v
-java:S1128"5Remove this unused import 'jakarta.validation.Valid'.(ÀãÅ”ûÿÿÿÿJ$4913afc2-85f9-49b3-9e3c-29d71bd5fab5
+java:S1128"5Remove this unused import 'jakarta.validation.Valid'.(ÀãÅ”ûÿÿÿÿJ$47c88a8a-4be6-4310-b49d-74cf1a24558e
+›
+java:S1128
+"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡ž¸Îùÿÿÿÿ8™¸¾‡ø1J$2b729bbc-c9d7-4f32-b1de-584b0421f072

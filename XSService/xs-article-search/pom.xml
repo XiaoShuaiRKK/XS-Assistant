@@ -2,26 +2,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.example</groupId>
+        <groupId>com.xs.assistant</groupId>
         <artifactId>XSService</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.2.1</version>
     </parent>
     <artifactId>xs-article-search</artifactId>
+    <name>xs-article-search</name>
+    <version>1.2.1</version>
+
     <dependencies>
         <dependency>
-            <groupId>org.xs.assistant</groupId>
+            <groupId>com.xs.assistant</groupId>
             <artifactId>xs-bean</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2.1</version>
         </dependency>
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>com.xs.assistant</groupId>
             <artifactId>xs-util</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>com.xs.assistant</groupId>
             <artifactId>xs-elasticsearch</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2.1</version>
         </dependency>
 
         <dependency>
@@ -108,7 +111,7 @@
     </dependencies>
 
     <build>
-        <finalName>xs-article-search</finalName>
+        <finalName>${project.artifactId}-application-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

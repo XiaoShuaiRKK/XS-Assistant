@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.example</groupId>
+        <groupId>com.xs.assistant</groupId>
         <artifactId>XSService</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.2.1</version>
     </parent>
-    <groupId>org.xs.assistant</groupId>
     <artifactId>xs-user</artifactId>
+    <version>1.2.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,21 +15,21 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.xs.assistant</groupId>
+            <groupId>com.xs.assistant</groupId>
             <artifactId>xs-bean</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2.1</version>
         </dependency>
 
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>com.xs.assistant</groupId>
             <artifactId>xs-util</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2.1</version>
         </dependency>
-
+        <!--        redis-->
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>com.xs.assistant</groupId>
             <artifactId>xs-redis</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2.1</version>
         </dependency>
 
         <dependency>
@@ -68,13 +68,6 @@
 <!--            <groupId>org.springframework.cloud</groupId>-->
 <!--            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>-->
 <!--        </dependency>-->
-
-
-<!--        redis-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -143,6 +136,24 @@
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}-application-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.2.4</version>
+                <configuration>
+                    <mainClass>com.xs.assistant.service.user.UserServiceApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
         <resources>
             <resource>
                 <directory>src/main/java</directory>

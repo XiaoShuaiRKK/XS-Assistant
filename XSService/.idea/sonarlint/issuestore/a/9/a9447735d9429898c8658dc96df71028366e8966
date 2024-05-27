@@ -1,18 +1,4 @@
 
-…
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8óÎá·÷1J$8c7930cf-13d6-4afa-a7f7-a3061fd61677
-…
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ôÎá·÷1J$d3c080a7-f68b-4268-a7e2-69c6eee9a6f6
-…
-java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ8ôÎá·÷1J$c513a1c8-a1e6-4cb3-9e66-c595d2bd51fa
-…
-java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8ôÎá·÷1J$3fa9a813-4fb8-491c-8bc6-be1132589e40
-„	java:S107÷"<Method has 8 parameters, which is greater than 7 authorized.(Ä Îúÿÿÿÿ8ùÎá·÷1J$b12252d8-f269-48d8-8b60-b4c466f6d1b0
-~	java:S107‡"<Method has 8 parameters, which is greater than 7 authorized.(ô’š_8úÎá·÷1J$cd551507-e9a3-4fd1-b8a2-2e96a224169a
-„	java:S125—"<This block of commented-out lines of code should be removed.(´³îÿÿÿÿÿ8Ïá·÷1J$9c3d0d39-3d7f-4736-8cc8-13926b5aae2b
-o
-java:S1168­"+Return an empty collection instead of null.(¥¹ï8œÏá·÷1J$05082e20-820c-4bf8-a61b-307d9255f07b
-o
-java:S1168·"+Return an empty collection instead of null.(¥¹ï8Ïá·÷1J$ccfbb051-acdb-4c33-8ec5-f7c1fc1a3a7d
-~
-java:S1118ã":Add a private constructor to hide the implicit public one.(ãª³8¤Ïá·÷1J$bd205be4-66e8-461b-9346-13c8fc31881e
+„	java:S107¸"<Method has 8 parameters, which is greater than 7 authorized.(Ä Îúÿÿÿÿ8ùÎá·÷1J$0a3223a1-7535-41c1-8570-29bd98ef7a03
+~	java:S107Õ"<Method has 8 parameters, which is greater than 7 authorized.(ô’š_8úÎá·÷1J$9dbf40ff-076e-41b3-8b89-c82b735a246e
+„	java:S125¯"<This block of commented-out lines of code should be removed.(´³îÿÿÿÿÿ8Ïá·÷1J$e0d91ad8-631b-4702-9ae6-3e3f197f62dd

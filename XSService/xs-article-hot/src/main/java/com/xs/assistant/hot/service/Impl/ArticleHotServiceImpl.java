@@ -5,7 +5,6 @@ import com.xs.DAO.DO.article.ArticleHot;
 import com.xs.DAO.factory.ArticleHotFactory;
 import com.xs.DAO.option.OperatorEnum;
 import com.xs.DAO.option.OperatorFactory;
-import com.xs.assistant.hot.DAO.ArticleHotKey;
 import com.xs.assistant.hot.DAO.ArticleHotMapper;
 import com.xs.assistant.hot.service.ArticleHotService;
 import io.github.resilience4j.retry.annotation.Retry;
@@ -111,11 +110,11 @@ public class ArticleHotServiceImpl implements ArticleHotService {
      */
     public boolean articleHotOperation(long oldValue, String articleId, OperatorEnum operator, ArticleHotFactory.ArticleHotKey articleHotKey){
         long operationValue = OperatorFactory.getOperation(operator).orElseThrow().apply(oldValue);
+        //判断操作前的旧值和操作后的新值是否一致
         ArticleHot articleHot = ArticleHotFactory.getArticleHotSaveValue(articleHotKey, operationValue).orElseThrow();
         int rows = articleHotMapper.update(articleHot, getUpdateWrapper(articleHotKey.getColumnName(),oldValue,articleId));
         if(rows <= 0)
             throw new RuntimeException();
-//        rabbitTemplate.convertAndSend(ArticleHotKey.RABBITMQ_EXCHANGE_NAME,ArticleHotKey.RABBITMQ_EXCHANGE_KEY_COLUMN,articleId);
         return true;
     }
 

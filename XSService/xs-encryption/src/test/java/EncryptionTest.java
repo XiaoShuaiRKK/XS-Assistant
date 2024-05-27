@@ -1,14 +1,9 @@
-import com.xs.assistant.encryption.Controller.EncryptionController;
+import com.xs.assistant.encryption.controller.EncryptionController;
 import com.xs.assistant.encryption.EncryptionApplication;
 import org.junit.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.actuate.autoconfigure.wavefront.WavefrontProperties;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)

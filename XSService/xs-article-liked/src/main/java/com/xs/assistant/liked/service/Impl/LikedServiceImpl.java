@@ -6,10 +6,9 @@ import com.xs.assistant.liked.service.abstracts.AbstractLikedService;
 import com.xs.assistant.liked.service.*;
 import com.xs.assistant.liked.service.remote.AccountRemoteService;
 import com.xs.assistant.liked.service.remote.ArticleHotRemoteService;
-import com.xs.assistant.redis.Util.RedisUtil;
+import com.xs.assistant.redis.util.RedisUtil;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import jakarta.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +33,12 @@ public class LikedServiceImpl extends AbstractLikedService implements LikedServi
         this.articleHotRemoteService = articleHotRemoteService;
     }
 
+    /**
+     * 点赞
+     * @param articleId 文章id
+     * @param accountId 用户id
+     * @return 是否成功
+     */
     @Override
     @Transactional(rollbackFor = Exception.class)
     @CircuitBreaker(name = "liked-api",fallbackMethod = "fallLiked")
@@ -46,10 +51,15 @@ public class LikedServiceImpl extends AbstractLikedService implements LikedServi
         articleHotRemoteService.addLiked(articleId);
         redisUtil.setHashForever(key,accountId,1);
         redisUtil.setOrUpdateZSet(REDIS_LIKED_KEY,articleId);
-//        oldLikedFunction(key,accountId,articleId);
         return successLiked("点赞成功");
     }
 
+    /**
+     * 取消点赞
+     * @param articleId 文章id
+     * @param accountId 用户id
+     * @return 是否成功
+     */
     @Override
     @Transactional(rollbackFor = Exception.class)
     @CircuitBreaker(name = "liked-api",fallbackMethod = "fallLiked")
@@ -66,6 +76,13 @@ public class LikedServiceImpl extends AbstractLikedService implements LikedServi
         return successLiked("取消成功");
     }
 
+    /**
+     * 旧的存入方法
+     * 已弃用
+     * @param key key
+     * @param accountId 用户id
+     * @param articleId 用户id
+     */
     @Deprecated
     private void oldLikedFunction(String key,String accountId,String articleId){
         redisUtil.setHashForever(key,accountId,1);

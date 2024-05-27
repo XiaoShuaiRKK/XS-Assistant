@@ -7,7 +7,10 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://127.0.0.1:12577/eureka
+      defaultZone: http://172.16.10.88:12577/eureka
+  instance:
+    prefer-ip-address: true
+#      defaultZone: http://127.0.0.1:12577/eureka
 spring:
   main:
     lazy-initialization: true
@@ -20,10 +23,12 @@ spring:
     config:
       name: config
       profile: dev
-      uri: http://127.0.0.1:22577
+#      uri: http://127.0.0.1:22577
       label: main
+      uri: http://172.16.10.88:22577
   rabbitmq:
-    host: 127.0.0.1
+#    host: 127.0.0.1
     port: 5672
-    username: guest
-    password: guest
+    username: xsAssistant
+    password: xs-assistant
+    host: 172.16.10.88

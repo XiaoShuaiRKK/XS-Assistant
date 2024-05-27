@@ -11,8 +11,8 @@ spring:
         enabled: true
   data:
     redis:
-      host: 127.0.0.1
-      port: 5050
+#      host: 127.0.0.1
+#      port: 5050
       jedis:
         pool:
           enabled: true
@@ -22,6 +22,8 @@ spring:
           min-idle: 0
       timeout: 2400
       password: xs0628
+      host: 172.16.10.88
+      port: 6379
   devtools:
     restart:
       enabled: true
@@ -35,7 +37,10 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://127.0.0.1:12577/eureka
+      defaultZone: http://172.16.10.88:12577/eureka
+  instance:
+    prefer-ip-address: true
+#      defaultZone: http://127.0.0.1:12577/eureka
 resilience4j.retry:
     instances:
       login-api:
@@ -46,6 +51,9 @@ management:
   tracing:
     sampling:
       probability: 1.0 #设置跟踪采样的概率为100%(1.0),这意味着应用程序处理的所有请求都被跟踪,如果是10%(0.1)则为10条请求只有1条跟踪
+  zipkin:
+    tracing:
+      endpoint: http://172.16.10.88:9411
 logging:
   pattern:
     level: ${spring.application.name:},%X{traceId:-},%X{spanId:-} #日志记录格式

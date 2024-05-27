@@ -1,8 +1,8 @@
 
-š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÑŠıªùÿÿÿÿJ$35cef6cb-779b-49c6-95ef-94fe395d4e16
-~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$6e12af62-a61c-4535-88fd-4d17bd08eff7
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÑŠıªùÿÿÿÿJ$91a81619-ec17-46bf-845b-476dfaa31c37
 y
-java:S1128"8Remove this unused import 'jakarta.annotation.Resource'.(ÄĞÛûÿÿÿÿJ$0af05a6d-e4e0-4b83-930c-9b195f7f33a5
+java:S1128"8Remove this unused import 'jakarta.annotation.Resource'.(ÄĞÛûÿÿÿÿJ$fa406bb7-8b10-45b2-92af-5d4d59ab969d
+›
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8ÍÖü‡ø1J$07cd0cca-2fc4-48c9-b0ce-779b7bc5ebad
 ”
-java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Qualifier'.(íàÄ®ıÿÿÿÿJ$9658786b-ccae-4afb-9d35-d78ac256053f
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Qualifier'.(íàÄ®ıÿÿÿÿJ$72489bcc-adbf-44e5-97ca-f2f7716d5177

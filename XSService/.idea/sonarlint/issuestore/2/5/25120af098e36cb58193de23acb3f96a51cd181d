@@ -1,6 +1,6 @@
 
-š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÑŠıªùÿÿÿÿJ$af6c708e-21ab-4cb5-9670-0ec965189417
-~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$c6bb2cc4-2cad-4923-ba58-9761aefdb090
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÑŠıªùÿÿÿÿJ$29bd6b73-c1a5-4978-b4e1-da37d4a41685
 {
-java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(ú¤$J$23b6045f-567c-4c6a-866c-1193c7b14c78
+java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(ú¤$J$ced6b4d8-2fdd-4278-9928-af7df1cacd9f
+›
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8˜¬Ñ‡ø1J$5dd7cd27-49f4-4d31-a891-e7bc7ec9cfca

@@ -4,9 +4,8 @@ import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.liked.LikedDO;
 import com.xs.assistant.liked.service.abstracts.AbstractLikedService;
 import com.xs.assistant.liked.service.LikedTopService;
-import com.xs.assistant.redis.Util.RedisUtil;
+import com.xs.assistant.redis.util.RedisUtil;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,15 +13,22 @@ import java.util.List;
 
 @Service
 public class LikedTopServiceImpl extends AbstractLikedService implements LikedTopService {
+    final RedisUtil redisUtil;
 
-    @Autowired
-    RedisUtil redisUtil;
+    public LikedTopServiceImpl(RedisUtil redisUtil) {
+        this.redisUtil = redisUtil;
+    }
 
     @Override
     public ResponseResult<List<LikedDO>> getTop() {
         return null;
     }
 
+    /**
+     * 获取点赞排行榜
+     * @param count
+     * @return
+     */
     @Override
     @SuppressWarnings("all")
     @CircuitBreaker(name = "liked-api",fallbackMethod = "fallLiked")

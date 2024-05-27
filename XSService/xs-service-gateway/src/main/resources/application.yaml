@@ -8,8 +8,8 @@ spring:
     location: Banner/XS-Assistant-Banner.txt
   data:
     redis:
-      host: 127.0.0.1
-      port: 5050
+#      host: 127.0.0.1
+#      port: 5050
       jedis:
         pool:
           enabled: true
@@ -19,6 +19,8 @@ spring:
           min-idle: 0
       timeout: 2400
       password: xs0628
+      host: 172.16.10.88
+      port: 6379
   cloud:
     gateway:
       discovery:
@@ -72,9 +74,13 @@ spring:
 eureka:
   instance:
     hostname: xs-service-gateway
+    prefer-ip-address: true
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://127.0.0.1:12577/eureka
-#      defaultZone: http://172.16.10.88:12577/eureka
+#      defaultZone: http://127.0.0.1:12577/eureka
+      defaultZone: http://172.16.10.88:12577/eureka
+assistant:
+  project:
+    version: @project.version@

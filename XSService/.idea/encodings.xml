@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/config-center/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/config-center/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/config-client/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/config-client/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-account/src/main/java" charset="UTF-8" />
@@ -23,8 +19,14 @@
     <file url="file://$PROJECT_DIR$/xs-article/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-bean/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-bean/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-cloud-eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-cloud-eureka/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-code/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-code/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-config-center/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-config-center/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-config-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-config-client/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-elasticsearch/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-elasticsearch/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-encryption/src/main/java" charset="UTF-8" />
@@ -35,8 +37,6 @@
     <file url="file://$PROJECT_DIR$/xs-login/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-mail/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-mail/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/xs-mcroservice/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/xs-mcroservice/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-redis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-redis/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-service-gateway/src/main/java" charset="UTF-8" />

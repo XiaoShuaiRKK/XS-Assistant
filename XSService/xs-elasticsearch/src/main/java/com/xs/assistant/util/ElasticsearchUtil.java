@@ -25,14 +25,17 @@ import java.util.Map;
 @Component
 @Slf4j
 public class ElasticsearchUtil {
-    @Autowired
-    ElasticsearchClient client;
-    @Autowired
-    RestHighLevelClient restHighLevelClient;
-    @Autowired
-    ElasticsearchTemplate elasticsearchTemplate;
-    @Autowired
-    BeanFieldUtil beanFieldUtil;
+    final ElasticsearchClient client;
+    final RestHighLevelClient restHighLevelClient;
+    final ElasticsearchTemplate elasticsearchTemplate;
+    final BeanFieldUtil beanFieldUtil;
+
+    public ElasticsearchUtil(ElasticsearchClient client, RestHighLevelClient restHighLevelClient, ElasticsearchTemplate elasticsearchTemplate, BeanFieldUtil beanFieldUtil) {
+        this.client = client;
+        this.restHighLevelClient = restHighLevelClient;
+        this.elasticsearchTemplate = elasticsearchTemplate;
+        this.beanFieldUtil = beanFieldUtil;
+    }
 
     /**
      * 判断索引是否存在
@@ -44,6 +47,11 @@ public class ElasticsearchUtil {
         return client.indices().exists(d -> d.index(indexName)).value();
     }
 
+    /**
+     * 删除索引
+     * @param indexName 索引
+     * @return 是否成功
+     */
     public boolean deleteIndex(String indexName){
         try {
             client.indices().delete(d -> d.index(indexName));
@@ -56,8 +64,8 @@ public class ElasticsearchUtil {
 
     /**
      * 创建索引
-     * @param indexName
-     * @return
+     * @param indexName 索引
+     * @return 是否成功
      */
     public boolean createIndex(String indexName){
         try {
@@ -69,10 +77,10 @@ public class ElasticsearchUtil {
     }
 
     /**
-     * 创建索引,不允许外部直接调用
-     * @param indexName
-     * @param mapping
-     * @return
+     * 创建索引
+     * @param indexName 索引
+     * @param mapping 字段和类型
+     * @return 是否成功
      */
     public boolean createIndex(String indexName, Map<String, Property> mapping){
         try {
@@ -89,8 +97,8 @@ public class ElasticsearchUtil {
 
     /**
      * 如果存在则先删除原本的再创建
-     * @param indexName
-     * @param map
+     * @param indexName 索引
+     * @param map 字段和类型
      */
     public void ifCreateIndex(String indexName,Map<String,Property> map){
         try {
@@ -104,10 +112,10 @@ public class ElasticsearchUtil {
 
     /**
      * 新增数据
-     * @param indexName
-     * @param id
-     * @param obj
-     * @return
+     * @param indexName 索引
+     * @param id id
+     * @param obj 文档
+     * @return 是否成功
      */
     public boolean insertDocument(String indexName,String id,Object obj){
         try {
@@ -121,6 +129,13 @@ public class ElasticsearchUtil {
         return true;
     }
 
+    /**
+     * 批量插入数据
+     * @param indexName 索引
+     * @param array 文档集合
+     * @return 是否成功
+     * @param <T> 文档
+     */
     public <T> boolean insertDocuments(String indexName,List<T> array){
         List<BulkOperation> bulkOperations = new ArrayList<>();
         array.forEach(o -> bulkOperations.add(BulkOperation.of(b -> b.index(i -> i.document(o)))));
@@ -133,6 +148,15 @@ public class ElasticsearchUtil {
         return true;
     }
 
+    /**
+     * 根据文档对应id来批量插入
+     * 必须要是互相对应的
+     * @param indexName 索引
+     * @param ids 文档对应id
+     * @param array 文档集合
+     * @return 是否成功
+     * @param <T> 文档
+     */
     public <T> boolean insertDocuments(String indexName,List<String> ids,List<T> array){
         List<BulkOperation> bulkOperations = new ArrayList<>();
         for(int i=0;i<ids.size();i++){
@@ -167,11 +191,11 @@ public class ElasticsearchUtil {
 
     /**
      * 查询数据
-     * @param indexName
-     * @param id
-     * @param tClass
-     * @return
-     * @param <T>
+     * @param indexName 索引
+     * @param id id
+     * @param tClass 类模版
+     * @return 文档
+     * @param <T> 文档
      */
     public <T> GetResponse<T> searchDocument(String indexName,String id,Class<T> tClass){
         try {
@@ -182,12 +206,30 @@ public class ElasticsearchUtil {
         return null;
     }
 
-
+    /**
+     * 根据关键字查询对应字段的文档 并 根据排序字段进行排序
+     * @param indexName 索引
+     * @param field 字段
+     * @param orderField 排序字段
+     * @param target 关键字
+     * @param tClass 类模版
+     * @return 文档
+     * @param <T> 文档
+     */
     public <T> List<Hit<T>> searchDocumentsOrderSortQuery(String indexName,String field,String orderField,String target,Class<T> tClass){
         return searchDocumentsOrderSortQuery(indexName,field,orderField,SortOrder.Asc,target,0,10,tClass);
     }
 
-
+    /**
+     * 根据关键字对应的字段的匹配程度来查找文档
+     * @param indexName 索引
+     * @param field 字段
+     * @param page 页数
+     * @param size 大小
+     * @param tClass 类模版
+     * @return 文档
+     * @param <T> 文档
+     */
     public <T> List<Hit<T>> searchDocumentsMaxScore(String indexName, String field,
                                                     int page,int size, Class<T> tClass){
         try {
@@ -206,6 +248,17 @@ public class ElasticsearchUtil {
         return Collections.emptyList();
     }
 
+    /**
+     * multi_match_query
+     * 根据关键字来查询文档
+     * @param indexName 索引
+     * @param target 关键字
+     * @param page 页数
+     * @param size 大小
+     * @param tClass 类模版
+     * @return 文档
+     * @param <T> 文档
+     */
     public <T> List<Hit<T>> searchDocumentsMultiQuery(String indexName,String target,int page,int size,Class<T> tClass){
         try {
             return client.search(s -> s.index(indexName).query(
@@ -219,6 +272,18 @@ public class ElasticsearchUtil {
         return Collections.emptyList();
     }
 
+    /**
+     * multi_match_query
+     * 根据关键字和指定的字段来进行查询文档
+     * @param indexName 索引
+     * @param target 关键字
+     * @param page 页数
+     * @param size 大小
+     * @param tClass 类模版
+     * @param fields 字段
+     * @return 文档
+     * @param <T> 文档
+     */
     public <T> List<Hit<T>> searchDocumentsMultiQuery(String indexName,String target,int page,int size,Class<T> tClass,
                                                       String... fields){
         try {
@@ -241,8 +306,8 @@ public class ElasticsearchUtil {
      * @param sortOrder 排序
      * @param target 关键字
      * @param tClass 类型
-     * @return
-     * @param <T>
+     * @return 文档
+     * @param <T> 文档
      */
     public <T> List<Hit<T>> searchDocumentsOrderSortQuery(String indexName, String field, String orderField,
                                             SortOrder sortOrder, String target,int page,int size,Class<T> tClass){
@@ -260,11 +325,24 @@ public class ElasticsearchUtil {
         return Collections.emptyList();
     }
 
+    /**
+     * 根据关键字进行查询 并 根据排序字段进行排序
+     * @param indexName 索引
+     * @param orderField 排序字段
+     * @param sortOrder 排序方式
+     * @param target 关键字
+     * @param page 页数
+     * @param size 大小
+     * @param tClass 类模版
+     * @param fields 字段
+     * @return 文档
+     * @param <T> 文档
+     */
     public <T> List<Hit<T>> searchDocumentsMultiOrderSortQueryFields(String indexName,String orderField,
                                                                 SortOrder sortOrder,String target,int page,int size,Class<T> tClass,
                                                                 String... fields){
         SearchRequest.Builder multiMatchSearchFields = RequestBuilder.getMultiMatchSearchFields(indexName, target, page, size, fields);
-        multiMatchSearchFields = RequestBuilder.addOrderby(multiMatchSearchFields,sortOrder,orderField);
+        multiMatchSearchFields = RequestBuilder.addOrderBy(multiMatchSearchFields,sortOrder,orderField);
         try {
             SearchResponse<T> search = client.search(multiMatchSearchFields.build(), tClass);
             return search.hits().hits();
@@ -277,14 +355,14 @@ public class ElasticsearchUtil {
 
     /**
      * 查询
-     * @param indexName
-     * @param field
-     * @param target
-     * @param tClass
-     * @param page
-     * @param size
-     * @return
-     * @param <T>
+     * @param indexName 索引
+     * @param field 字段
+     * @param target 关键字
+     * @param tClass 类模版
+     * @param page 页数
+     * @param size 大小
+     * @return 文档
+     * @param <T> 文档
      */
     public <T> List<Hit<T>> searchDocumentsQuery(String indexName, String field,
                                                  String target, int page,int size,Class<T> tClass){
@@ -298,9 +376,18 @@ public class ElasticsearchUtil {
         } catch (IOException e) {
             log.error("ElasticSearch 条件查询异常: {}",e.getMessage());
         }
-        return null;
+        return Collections.emptyList();
     }
 
+    /**
+     * 查询文档
+     * @param indexName 索引
+     * @param page 页数
+     * @param size 大小
+     * @param tClass 类模版
+     * @return 文档
+     * @param <T> 文档
+     */
     public <T> List<Hit<T>> searchDocuments(String indexName,int page,int size,Class<T> tClass){
         try {
             return client.search(s -> s.index(indexName).query(q -> q.matchAll(m -> m)).from(page).size(size),tClass)
@@ -308,14 +395,14 @@ public class ElasticsearchUtil {
         } catch (IOException e) {
             log.error("ElasticSearch index: {} 查询全部异常: {}",indexName,e.getMessage());
         }
-        return null;
+        return Collections.emptyList();
     }
 
     /**
      * 删除数据
-     * @param indexName
-     * @param id
-     * @return
+     * @param indexName 索引
+     * @param id id
+     * @return 是否成功
      */
     public boolean deleteDocument(String indexName,String id){
         try {
@@ -327,7 +414,15 @@ public class ElasticsearchUtil {
         return false;
     }
 
-
+    /**
+     * 根据文档id进行更新
+     * @param index 索引
+     * @param id id
+     * @param field 需要更新的字段
+     * @param fieldValue 更新的值
+     * @return 是否成功
+     * @param <T> 值
+     */
     public <T> boolean updateByDocumentId(String index,String id,String field,T fieldValue){
         try {
             elasticsearchTemplate.update(RequestBuilder.getUpdateSingleField(index,id,field,fieldValue));
@@ -338,6 +433,11 @@ public class ElasticsearchUtil {
         return true;
     }
 
+    /**
+     * 批量更新
+     * @param bulkRequest 批量操作
+     * @return 是否成功
+     */
     public boolean bulkUpdate(BulkRequest bulkRequest){
         try {
             restHighLevelClient.bulk(bulkRequest,RequestOptions.DEFAULT);
@@ -352,18 +452,48 @@ public class ElasticsearchUtil {
         return new org.elasticsearch.action.update.UpdateRequest(index,id).doc(Map.of(field,fieldValue)).upsert();
     }
 
+    /**
+     * 操作生成器
+     */
     static class RequestBuilder{
+        private RequestBuilder(){}
+
+        /**
+         * 更新操作
+         * @param index 索引
+         * @param id id
+         * @param field 更新的字段
+         * @param fieldValue 对应字段的值
+         * @return 更新操作 UpdateRequest
+         * @param <T> 值类型
+         */
         private static  <T> UpdateRequest<?,?> getUpdateSingleField(String index,String id,String field,T fieldValue){
             return new UpdateRequest.Builder<>().index(index).id(id).doc(Map.of(field, fieldValue)).build();
         }
 
+        /**
+         * 查询操作
+         * @param index 索引
+         * @param target 关键字
+         * @param page 页数
+         * @param size 大小
+         * @param fields 字段
+         * @return SearchRequest.Builder
+         */
         private static SearchRequest.Builder getMultiMatchSearchFields(String index,String target,int page,int size, String... fields){
             return new SearchRequest.Builder().index(index).query(
                     q -> q.multiMatch(m -> m.fields(target,fields).query(target))
             ).from(page).size(size);
         }
 
-        private static SearchRequest.Builder addOrderby(SearchRequest.Builder builder,SortOrder sortOrder,String field){
+        /**
+         * 查询操作添加排序
+         * @param builder 查询操作
+         * @param sortOrder 排序方式
+         * @param field 排序字段
+         * @return 查询操作 SearchRequest.Builder
+         */
+        private static SearchRequest.Builder addOrderBy(SearchRequest.Builder builder,SortOrder sortOrder,String field){
             return builder.sort(s -> s.field(f -> f.field(field).order(sortOrder)));
         }
     }

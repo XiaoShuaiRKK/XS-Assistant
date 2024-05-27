@@ -6,7 +6,8 @@ spring:
   application:
     name: xs-login #服务名
   datasource:
-    url: jdbc:mysql://localhost:3306/xs?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://172.16.10.88:3306/xs?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+#    url: jdbc:mysql://localhost:3306/xs?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: xiaoshuai0628
@@ -25,12 +26,18 @@ eureka:
     #是否从EurekaServer中抓取已有的注册信息，默认为true，单点无所谓，集群必须设置true才能和ribbon使用负载均衡
     fetch-registry: true
     service-url:
-      defaultZone: http://127.0.0.1:12577/eureka
+#      defaultZone: http://127.0.0.1:12577/eureka
+      defaultZone: http://172.16.10.88:12577/eureka
+  instance:
+    prefer-ip-address: true
 ############### Micrometer Tracing + Zipkin 链路追踪 ###############
 management:
   tracing:
     sampling:
       probability: 1.0 #设置跟踪采样的概率为100%(1.0),这意味着应用程序处理的所有请求都被跟踪,如果是10%(0.1)则为10条请求只有1条跟踪
+  zipkin:
+    tracing:
+      endpoint: http://172.16.10.88:9411
 logging:
   pattern:
     level: ${spring.application.name:},%X{traceId:-},%X{spanId:-} #日志记录格式

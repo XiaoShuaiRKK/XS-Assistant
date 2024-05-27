@@ -1,4 +1,4 @@
 
-š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ˆ‡ÖùøÿÿÿÿJ$a9b1b63e-8fe2-47b9-8e81-1d970179b873
-~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞJ$680dfb28-7aa8-4286-8585-a000a26fc4d4
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ˆ‡ÖùøÿÿÿÿJ$09e98e30-5a82-4e2f-944d-7afcc129591d
+›
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡ž¸Îùÿÿÿÿ8Ö¾¼ˆø1J$4498ab30-2692-4f61-81cd-20d148e5fa84

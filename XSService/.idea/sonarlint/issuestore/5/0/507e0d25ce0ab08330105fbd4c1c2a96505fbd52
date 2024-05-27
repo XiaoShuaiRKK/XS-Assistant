@@ -1,22 +1,14 @@
 
-š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ˆ‡ÖùøÿÿÿÿJ$12c6a00a-cd87-4292-93e8-a28916f23e90
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ˆ‡ÖùøÿÿÿÿJ$ae0be43c-8cd3-45be-a420-5999b879393e
 ~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$f4997fac-f641-4604-b190-9be2e109bef4
-~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$9d984509-2096-4c54-a704-36dc1fc30b1a
-~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$a7d94229-b623-43d6-bfbb-0bf5091e3813
-~
-java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞJ$4831a656-8e5d-40da-b599-5bc7090b0f1e
-~
-java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞJ$2088a1b4-78e8-4a0e-86de-0988072d425a
-w
-java:S1611;";Remove the parentheses around the "articleResult" parameter(ÿù¦¶J$cb46c50c-bd3f-4d13-900b-f805e5882a3f
-j
-java:S1172ƒ"(Remove this unused method parameter "e".(šï…ƒÿÿÿÿÿJ$aa57e045-7fc0-4b95-ad03-d3720e703dcb
+java:S1611L";Remove the parentheses around the "articleResult" parameter(ÿù¦¶8‚¦ˆø1J$114640b9-c1c9-4c25-9d9c-3ae5ffac1bd2
+q
+java:S1172¼"(Remove this unused method parameter "e".(šï…ƒÿÿÿÿÿ8Š¦ˆø1J$85449b17-945c-4a7e-9a66-b287634371db
 €
-java:S1128"DRemove this unused import 'com.xs.assistant.article.DAO.ArticleDAO'.(ÚŞ¡J$f819679e-09fa-4c0a-ae79-e3886b39ec70
-u
-java:S1068'"4Remove this unused "DEFALUT_HOT_TIME" private field.(Ğ§¯æıÿÿÿÿJ$86c81d04-3df5-4b29-809f-5e296639bcbe
-r
-java:S1144ƒ"0Remove this unused private "mongodbFail" method.(šï…ƒÿÿÿÿÿJ$efc12bbc-231a-480c-ab05-3d99af4d8e2c
+java:S1128"DRemove this unused import 'com.xs.assistant.article.DAO.ArticleDAO'.(ÚŞ¡J$91d8b59a-c771-440f-8d35-92f6a1f9f817
+›
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8­€ˆø1J$d72fa8b8-c008-4006-b2f8-6a6ecd977994
+|
+java:S1068%"4Remove this unused "DEFALUT_HOT_TIME" private field.(Ğ§¯æıÿÿÿÿ8Œ¦ˆø1J$ea0c4015-fa42-4625-9d99-8c8d68bb4101
+y
+java:S1144¼"0Remove this unused private "mongodbFail" method.(šï…ƒÿÿÿÿÿ8Œ¦ˆø1J$b13770e5-8497-4edd-ae9f-e6426c3b85ac
