@@ -17,6 +17,7 @@ struct CardInfo: Identifiable,Codable{
     var image: String
     var background: String
     var description: String
+    var stateId: Int?
 }
 
 class CardInfoModel: ObservableObject{
@@ -32,7 +33,7 @@ class CardInfoModel: ObservableObject{
         var request = URLRequest(url: url)
         request.addValue(UserManger.shared.currentToken!, forHTTPHeaderField: "token")
         request.httpMethod = "GET"
-        let task = URLSession.shared.dataTask(with: request){ data, response, error in
+        _ = URLSession.shared.dataTask(with: request){ data, response, error in
             DispatchQueue.main.async{
                 do{
                     let data = try JSONDecoder().decode(Result<[CardInfo]>.self, from: data!)

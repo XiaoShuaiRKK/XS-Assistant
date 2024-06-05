@@ -13,7 +13,7 @@ class UserManger{
     private let tokenKey = "MyToken"
     
     static let shared = UserManger()
-    var currentAccount: Account?{
+    var currentAccount: Account!{
         get{
             if let data = UserDefaults.standard.data(forKey: userKey){
                 if let userInfo = try? JSONDecoder().decode(Account.self, from: data){
