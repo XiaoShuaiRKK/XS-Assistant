@@ -67,7 +67,7 @@ struct TabBar: View {
         HStack {
             if selectedTab == .LIBRARY {Spacer()}
             if selectedTab == .EXPLORE {Spacer()}
-            if selectedTab == .NOTIFICATIONS {
+            if selectedTab == .CREATE {
                 Spacer()
                 Spacer()
             }
@@ -78,7 +78,7 @@ struct TabBar: View {
                 .frame(width: tabItemWidth)
                 .frame(maxHeight: .infinity,alignment: .top)
             if selectedTab == .HOME {Spacer()}
-            if selectedTab == .NOTIFICATIONS{Spacer()}
+            if selectedTab == .CREATE{Spacer()}
             if selectedTab == .EXPLORE {
                 Spacer()
                 Spacer()
@@ -91,13 +91,13 @@ struct TabBar: View {
         HStack {
             if selectedTab == .LIBRARY {Spacer()}
             if selectedTab == .EXPLORE {Spacer()}
-            if selectedTab == .NOTIFICATIONS {
+            if selectedTab == .CREATE {
                 Spacer()
                 Spacer()
             }
             Circle().fill(color).frame(width: tabItemWidth)
             if selectedTab == .HOME {Spacer()}
-            if selectedTab == .NOTIFICATIONS{Spacer()}
+            if selectedTab == .CREATE{Spacer()}
             if selectedTab == .EXPLORE {
                 Spacer()
                 Spacer()

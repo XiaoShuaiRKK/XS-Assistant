@@ -13,7 +13,7 @@ struct AccountView: View {
     @State var address: Address = Address(id: 0, areaName: "", areaNameChinese: "")
     var account: Account = UserManger.shared.currentAccount ?? UserManger.shared.emptyAccount
     @Environment(\.dismiss) var dismiss
-    @AppStorage("isLogged") var isLogged = true
+    @AppStorage("isLogged") var isLogged = false
     @ObservedObject var coinModael = CoinModel()
     
     func fetchAddress() async{

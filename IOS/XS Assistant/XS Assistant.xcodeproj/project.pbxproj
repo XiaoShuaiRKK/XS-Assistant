@@ -54,6 +54,8 @@
 		15E011482B147517005797DF /* PreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E011472B147517005797DF /* PreferenceKeys.swift */; };
 		15E0114A2B147AF5005797DF /* AnimatableFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E011492B147AF5005797DF /* AnimatableFontModifier.swift */; };
 		15E8D71D2BCF5F1600497D7A /* UserManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E8D71C2BCF5F1600497D7A /* UserManger.swift */; };
+		15F054172C0FED8300950A1A /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F054162C0FED8300950A1A /* CreateView.swift */; };
+		15F0541B2C1014F800950A1A /* ArticleManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F0541A2C1014F800950A1A /* ArticleManger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +107,8 @@
 		15E011472B147517005797DF /* PreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKeys.swift; sourceTree = "<group>"; };
 		15E011492B147AF5005797DF /* AnimatableFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableFontModifier.swift; sourceTree = "<group>"; };
 		15E8D71C2BCF5F1600497D7A /* UserManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManger.swift; sourceTree = "<group>"; };
+		15F054162C0FED8300950A1A /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
+		15F0541A2C1014F800950A1A /* ArticleManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 			children = (
 				15ABAB522B14338100FF4301 /* HomeView.swift */,
 				15A4551D2B2051DE00772EED /* ExploreView.swift */,
+				15F054162C0FED8300950A1A /* CreateView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 			children = (
 				15E8D71C2BCF5F1600497D7A /* UserManger.swift */,
 				156382022BD24B1600C7A65A /* AddressManger.swift */,
+				15F0541A2C1014F800950A1A /* ArticleManger.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				15A4551C2B201D3400772EED /* SectionView.swift in Sources */,
 				15A4550E2B20016600772EED /* AvatarView.swift in Sources */,
 				15A455222B20571A00772EED /* Handbook.swift in Sources */,
+				15F0541B2C1014F800950A1A /* ArticleManger.swift in Sources */,
 				15ABAB4F2B10F17C00FF4301 /* TabBar.swift in Sources */,
 				154BF10E2B16D06E00C7DAC5 /* CourseView.swift in Sources */,
 				154BF1122B1718CD00C7DAC5 /* Model.swift in Sources */,
@@ -410,6 +417,7 @@
 				15ABAB552B1433FC00FF4301 /* CardView.swift in Sources */,
 				15836C4B2BD0FB8F005ACA90 /* ResultAccount.swift in Sources */,
 				153C52152B1DB0E800F1D95C /* SignUpView.swift in Sources */,
+				15F054172C0FED8300950A1A /* CreateView.swift in Sources */,
 				15E011482B147517005797DF /* PreferenceKeys.swift in Sources */,
 				15A455162B201AAA00772EED /* CourseSection.swift in Sources */,
 				15ABAB4D2B10DF0800FF4301 /* BlobView.swift in Sources */,

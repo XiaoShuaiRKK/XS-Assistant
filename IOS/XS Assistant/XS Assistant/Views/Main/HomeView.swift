@@ -19,6 +19,7 @@ struct HomeView: View {
     @State var showCourses: [CardInfo] = []
     @EnvironmentObject var model: Model
     @ObservedObject var cardInfoModel = CardInfoModel()
+    @AppStorage("isLogged") var isLogged = false
     
     var body: some View {
         ZStack {
@@ -52,12 +53,16 @@ struct HomeView: View {
                 .padding(.horizontal,20)
             }
             .task { 
-                await cardInfoModel.cardsLoad()
-                showCourses = cardInfoModel.cards
+                if isLogged{
+                    await cardInfoModel.cardsLoad()
+                    showCourses = cardInfoModel.cards
+                }
             }
             .refreshable {
-                await cardInfoModel.cardsLoad()
-                showCourses = cardInfoModel.cards
+                if isLogged{
+                    await cardInfoModel.cardsLoad()
+                    showCourses = cardInfoModel.cards
+                }
             }
             .coordinateSpace(name: "scroll")
             .safeAreaInset(edge: .top, content: {

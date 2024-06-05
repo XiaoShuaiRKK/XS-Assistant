@@ -28,8 +28,8 @@ struct ContentView: View{
                 HomeView()
             case .EXPLORE:
                 ExploreView()
-            case .NOTIFICATIONS:
-                AccountView()
+            case .CREATE:
+                CreateView()
             case .LIBRARY:
                 AccountView()
             }
