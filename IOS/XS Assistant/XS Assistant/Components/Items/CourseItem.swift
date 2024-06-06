@@ -38,14 +38,14 @@ struct CourseItem: View {
         }
         .foregroundStyle(.white)
         .background(
-            Image(course.image)
+            Image(course.image!)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .padding(20)
             .matchedGeometryEffect(id: "img\(course.id)", in: namespace)
         )
         .background(
-            Image(course.background)
+            Image(course.background!)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .matchedGeometryEffect(id: "background\(course.id)", in: namespace)

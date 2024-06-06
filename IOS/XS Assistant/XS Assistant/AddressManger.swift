@@ -7,22 +7,17 @@
 
 import Foundation
 
-class AddressManger{
+class AddressManger: ObservableObject{
     private let userDefault = UserDefaults.standard
     private var addressList: [Address] = [Address(id: 0, areaName: "", areaNameChinese: ""),Address(id: 0, areaName: "", areaNameChinese: "")]
     static let shared = AddressManger()
-    var addressInfo: [Address]{
-        get{
-            return addressList
-        }set{
-            addressList = newValue
-        }
+    @Published var addressInfo: [Address] = [Address(id: 0, areaName: "", areaNameChinese: ""),Address(id: 0, areaName: "", areaNameChinese: "")]
+    
+    func getAddress(index: Int) -> Address{
+        return self.addressInfo[index - 1]
     }
     
-    func getAddress(id: Int) -> Address{
-        if(id == 0){
-            return addressList[0]
-        }
+    func getAddress(id: Int){
         if(addressInfo.count < 3){
             let path = "/area/info/getAll"
             let url = URL(string: ServerHttp.shared.getPath(path: path))!
@@ -47,6 +42,5 @@ class AddressManger{
             }
             task.resume()
         }
-        return addressInfo[id - 1]
     }
 }

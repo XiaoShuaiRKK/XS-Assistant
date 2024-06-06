@@ -66,7 +66,7 @@ struct CourseView: View {
             .frame(height: scrollY > 0 ?  500 + scrollY : 500)
             .foregroundStyle(.black)
             .background(
-                Image(course.image)
+                Image(course.image!)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(20)
@@ -75,7 +75,7 @@ struct CourseView: View {
                 .offset(y: scrollY > 0 ? scrollY * -0.8 : 0)
             )
             .background(
-                Image(course.background)
+                Image(course.background!)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .matchedGeometryEffect(id: "background\(course.id)", in: namespace)

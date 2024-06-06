@@ -14,7 +14,7 @@ struct SmallCourseItem: View {
             RoundedRectangle(cornerRadius: 20,style: .continuous)
                 .fill(.black.opacity(0.1))
                 .overlay(
-                    Image(course.image)
+                    Image(course.image!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 150,height: 105)

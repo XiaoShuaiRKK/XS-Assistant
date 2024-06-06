@@ -14,6 +14,7 @@ struct SearchView: View {
     @State var selectedCourse = courses[0]
     @Namespace var namespace
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var cardModel = CardInfoModel()
     
     var results: [CardInfo]{
         if text.isEmpty{

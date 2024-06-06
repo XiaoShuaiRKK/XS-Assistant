@@ -15,6 +15,7 @@ struct CreateView: View {
     @State var showAlert = false
     @State var isSuccess = false
     @AppStorage("isLogged") var isLogged = false
+    @ObservedObject var articleManger = ArticleManger.shared
     var body: some View {
         ZStack{
             Color("Background").ignoresSafeArea()
@@ -153,15 +154,19 @@ struct CreateView: View {
     var createButton: some View{
         Button{
             Task{
-                isSuccess = ArticleManger.shared.createArticle(title: title, subTitle: subTitle, description: description, context: context)
+                ArticleManger.shared.createArticle(title: title, subTitle: subTitle, description: description, context: context)
+                showAlert = true
+                title = ""
+                subTitle = ""
+                description = ""
+                context = ""
             }
         }label: {
             Text("Create")
                 .frame(maxWidth: .infinity)
         }
         .alert(isPresented: $showAlert){
-            var message = isSuccess ? "创建成功" : "创建失败"
-            return Alert(title: Text(message),dismissButton: .default(Text("OK")))
+            return Alert(title: Text(articleManger.message),dismissButton: .default(Text("OK")))
         }
         .font(.headline)
         .blendMode(.overlay)

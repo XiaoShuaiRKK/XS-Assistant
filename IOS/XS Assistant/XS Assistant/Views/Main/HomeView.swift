@@ -120,7 +120,7 @@ struct HomeView: View {
                         .blur(radius: abs(minX / 50))
                         .shadow(color: Color("Shoadow").opacity(0.3), radius: 10,x: 0,y: 5)
                         .overlay(
-                            Image(item.image)
+                            Image(item.image!)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(height: 230)

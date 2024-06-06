@@ -14,8 +14,8 @@ struct CardInfo: Identifiable,Codable{
     var subTitle: String
     var context: String
     var authorId: String
-    var image: String
-    var background: String
+    var image: String?
+    var background: String?
     var description: String
     var stateId: Int?
 }
@@ -27,7 +27,7 @@ class CardInfoModel: ObservableObject{
     @Published var searchCards: [CardInfo] = []
     
     @MainActor
-    func searchCardsLoad(target: String) async{
+    func searchCardsLoad(target: String){
         let path = "/search/query/get/orderHot"
         let url = URL(string: ServerHttp.shared.getPath(path: path))!
         var request = URLRequest(url: url)
@@ -36,6 +36,7 @@ class CardInfoModel: ObservableObject{
         _ = URLSession.shared.dataTask(with: request){ data, response, error in
             DispatchQueue.main.async{
                 do{
+                    print(String(decoding: data!, as: UTF8.self))
                     let data = try JSONDecoder().decode(Result<[CardInfo]>.self, from: data!)
                     self.searchCards = data.data
                 }catch{

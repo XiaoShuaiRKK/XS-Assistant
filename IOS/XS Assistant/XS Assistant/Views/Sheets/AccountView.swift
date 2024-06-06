@@ -10,14 +10,14 @@ import SwiftUI
 struct AccountView: View {
     @State var isDeleted = false
     @State var isPinned = false
-    @State var address: Address = Address(id: 0, areaName: "", areaNameChinese: "")
     var account: Account = UserManger.shared.currentAccount ?? UserManger.shared.emptyAccount
     @Environment(\.dismiss) var dismiss
     @AppStorage("isLogged") var isLogged = false
     @ObservedObject var coinModael = CoinModel()
+    @ObservedObject var addressManger = AddressManger.shared
     
     func fetchAddress() async{
-        address = AddressManger.shared.getAddress(id: account.areaId!)
+        AddressManger.shared.getAddress(id: account.areaId!)
     }
     
     var body: some View {
@@ -66,12 +66,12 @@ struct AccountView: View {
                     BlobView()
                         .scaleEffect(0.7)
                 )
-            Text(account.firstName + account.lastName)
+            Text(account.firstName  + " " + account.lastName)
                 .font(.title.weight(.semibold))
             HStack {
                 Image(systemName: "location.circle.fill")
                     .foregroundColor(.blue)
-                Text(address.areaName)
+                Text(addressManger.addressInfo[account.areaId! - 1].areaName)
                     .foregroundColor(.secondary)
             }
         }
