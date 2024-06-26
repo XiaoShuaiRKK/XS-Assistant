@@ -1,0 +1,32 @@
+server:
+  port: 26577
+  servlet:
+    context-path: /xs_assistant
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://10.10.100.88:12577/eureka
+  instance:
+    prefer-ip-address: true
+
+spring:
+  main:
+    lazy-initialization: true
+  application:
+    name: xs-address
+  banner:
+    charset: UTF-8
+    location: Banner/XS-Assistant-Banner.txt
+  cloud:
+    config:
+      name: config
+      profile: dev
+      label: main
+      uri: http://10.10.100.88:22577
+  rabbitmq:
+    port: 5672
+    username: xsAssistant
+    password: xs-assistant
+    host: 10.10.100.105

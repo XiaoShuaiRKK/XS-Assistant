@@ -11,21 +11,22 @@ import java.util.Date;
 import java.util.Map;
 
 public class JWTUtil {
-    private final static String SECRET = "!XS@577#_)++151da2wd1d25x15j";
-    public final static Integer TIME_OUT_DAY = 7;
-    public final static Integer NEED_CREATE_DAY = 3;
+    private static final String SECRET = "!XS@577#_)++151da2wd1d25x15j";
+    public static final Integer TIME_OUT_DAY = 7;
+    public static final Integer TIME_OUT_SECONDS = 10;
+    public static final Integer NEED_CREATE_DAY = 3;
 
-    public final static class JWTKey{
-        public final static String REDIS_KEY = "jwt:";
-        public final static String ID_NUMBER_KEY = "IDNumber";
-        public final static String NAME_KEY = "Name";
+    public static final class JWTKey{
+        public static final String REDIS_KEY = "jwt:";
+        public static final String ID_NUMBER_KEY = "IDNumber";
+        public static final String NAME_KEY = "Name";
     }
 
-    public static String getToken(Map<String,String> map){
+    public static String getToken(Map<String,String> map,Integer calendar,Integer amount){
         JWTCreator.Builder builder = JWT.create();
         map.forEach(builder::withClaim);
         Calendar instance = Calendar.getInstance();
-        instance.add(Calendar.DATE,3);
+        instance.add(calendar,amount);
         builder.withExpiresAt(instance.getTime());
         return builder.sign(Algorithm.HMAC256(SECRET));
     }

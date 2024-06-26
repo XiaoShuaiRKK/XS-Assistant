@@ -15,28 +15,14 @@ spring:
             - XS-Assistant-Config-Repo
           force-pull: true
           default-label: main
-  rabbitmq:
-#    host: 127.0.0.1
-#    port: 5672
-#    username: guest
-#    password: guest
-    port: 5672
-    username: xsAssistant
-    password: xs-assistant
-    host: 172.16.10.88
+  profiles:
+    active: local
 # Spring Boot 2.50对 actuator 监控屏蔽了大多数的节点，只暴露了 heath 节点，本段配置（*）就是为了开启所有的节点
 management:
   endpoints:
     web:
       exposure:
         include: 'bus-refresh'
-  zipkin:
-    tracing:
-      endpoint: http://172.16.10.88:9411
 eureka:
-  client:
-    service-url:
-      defaultZone: http://172.16.10.88:12577/eureka
   instance:
     prefer-ip-address: true
-#      defaultZone: http://127.0.0.1:12577/eureka

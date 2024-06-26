@@ -1,0 +1,29 @@
+server:
+  port: 14577
+  servlet:
+    context-path: /xs_assistant
+spring:
+  application:
+    name: xs-code
+  data:
+    redis:
+      password: xs0628
+      host: 10.10.100.105
+      port: 6379
+  rabbitmq:
+    username: xs
+    password: xs0628
+    virtual-host: /xs-assistant-virtual
+    port: 5672
+    host: 10.10.100.105
+  banner:
+    charset: UTF-8
+    location: Banner/XS-Assistant-Banner.txt
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://10.10.100.88:12577/eureka
+  instance:
+    prefer-ip-address: true

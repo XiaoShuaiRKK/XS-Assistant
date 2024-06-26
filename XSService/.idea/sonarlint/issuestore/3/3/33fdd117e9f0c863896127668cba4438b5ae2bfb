@@ -1,24 +1,10 @@
 
-•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(üå´êJ$2edd2698-5908-4636-bd69-58d4b5f99fca
-v
-java:S1118":Add a private constructor to hide the implicit public one.(Ş‹ıJ$1690fbf2-a7a3-45b0-83cf-75535fe6fee4
-
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ûÚÇÚJ$a7c7a16c-20e4-4c74-9a0f-fd51a67a3eee
-€
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(†’÷DJ$e3959d85-cd9f-4e5a-9fd0-a4c876391e73
-
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ñ’à«J$6ac5b9bb-c702-4b85-b911-3fb48e0daf1d
-v
-java:S1118":Add a private constructor to hide the implicit public one.(úËëõJ$e5cd860b-28dd-4b5a-8a5c-9aa1130288de
-
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(úËëõJ$85a18481-571d-4e4c-9c9c-55fab5f571ca
-†
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¾ĞŸ•şÿÿÿÿJ$26ec9fb6-1911-426b-a979-166ff661998e
-€
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(—–³@J$e33ba550-a60b-4a7d-8067-8b5674e5101d
-
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Š™àåJ$e714631f-3fc6-4918-8dda-6a8678ddefa2
-r
-java:S6437"6Revoke and change this password, as it is compromised.(¹Ü¡øJ$5ad16964-fd80-471b-97a0-cc339c607fda
-r
-java:S6437""6Revoke and change this password, as it is compromised.(Ä¥ÂóJ$5c93b129-b214-4a18-a3f7-60ab640a8320
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(üå´ê8¬éèÏ„2J$92442e5d-9f65-45a0-bb99-3ee6313ec5d7
+}
+java:S1118":Add a private constructor to hide the implicit public one.(Ş‹ı8»éèÏ„2J$1c3b9ece-51c1-474e-ae1f-c692328681c4
+}
+java:S1118":Add a private constructor to hide the implicit public one.(û˜ÁÕ8¼éèÏ„2J$c485c033-762c-47a6-8ef8-69810e53faae
+y
+java:S6437"6Revoke and change this password, as it is compromised.(¹Ü¡ø8ÂéèÏ„2J$f84c08a4-ecb9-4a82-8896-b86226563916
+y
+java:S6437#"6Revoke and change this password, as it is compromised.(Ä¥Âó8ÄéèÏ„2J$c7bb1d1a-ab65-47c1-96d6-df457f408574

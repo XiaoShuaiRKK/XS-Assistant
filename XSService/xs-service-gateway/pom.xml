@@ -10,6 +10,30 @@
     <name>xs-service-gateway</name>
     <version>1.2.1</version>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profileActive>local</profileActive>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profileActive>dev</profileActive>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <profileActive>test</profileActive>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>com.xs.assistant</groupId>
@@ -104,6 +128,9 @@
                 <filtering>true</filtering>
                 <includes>
                     <include>application.yaml</include>
+                    <include>application-local.yaml</include>
+                    <include>application-dev.yaml</include>
+                    <include>application-test.yaml</include>
                 </includes>
             </resource>
         </resources>

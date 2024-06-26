@@ -1,0 +1,37 @@
+server:
+  port: 23577
+spring:
+  application:
+    name: xs-mail
+  rabbitmq:
+    username: xs
+    password: xs0628
+    virtual-host: /xs-assistant-virtual
+    port: 5672
+    host: 10.10.100.105
+  banner:
+    charset: UTF-8
+    location: Banner/XS-Assistant-Banner.txt
+  mail:
+    host: smtp.qq.com
+    username: 3631140949@qq.com
+    password: jjiwpxpevauvdbfe
+    default-encoding: UTF-8
+    port: 587
+    protocol: smtp
+    properties:
+      mail:
+        stmp:
+          auth: true
+          ssl:
+            enable: true
+          starttls:
+            enable: true
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://10.10.100.88:12577/eureka
+  instance:
+    prefer-ip-address: true

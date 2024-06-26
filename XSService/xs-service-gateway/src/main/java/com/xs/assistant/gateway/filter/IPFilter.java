@@ -54,7 +54,8 @@ public class IPFilter extends BaseFilter implements GlobalFilter, Ordered {
             else
                 return writeResponse(ResponseStatus.HTTP_STATUS_429, exchange.getResponse(),"登录次数太过频繁，请一分钟后重试");
         }
-        String key = REDIS_IP_KEY + ip,black = REDIS_IP_TMP_BLACK_LIST_KEY + ip;
+        String key = REDIS_IP_KEY + ip;
+        String black = REDIS_IP_TMP_BLACK_LIST_KEY + ip;
         if(!redisUtil.hasKey(key)){
             redisUtil.set(key,1,20L);
             return chain.filter(exchange);

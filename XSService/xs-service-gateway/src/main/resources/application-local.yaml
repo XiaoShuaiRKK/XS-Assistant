@@ -1,0 +1,83 @@
+server:
+  port: 20577
+spring:
+  application:
+    name: xs-service-gateway
+  banner:
+    charset: UTF-8
+    location: Banner/XS-Assistant-Banner.txt
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 5050
+      jedis:
+        pool:
+          enabled: true
+          max-active: -1
+          max-wait: 8s
+          max-idle: 100
+          min-idle: 0
+      timeout: 2400
+      password: xs0628
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+        add-to-simple-url-handler-mapping: true
+      routes:
+        - id: xs-article-search-router
+          uri:
+            lb://XS-ARTICLE-SEARCH
+          predicates:
+            - Path=/xs_assistant/search/**
+        - id: xs-area-router
+          uri:
+            lb://XS-AREA
+          predicates:
+            - Path=/xs_assistant/area/**
+        - id: xs-articles-router
+          uri:
+            lb://XS-ARTICLE
+          predicates:
+            - Path=/xs_assistant/article/**
+        - id: xs-login-router
+          uri:
+            lb://XS-LOGIN
+          predicates:
+            - Path=/xs_assistant/login/**
+        - id: xs-user-router
+          uri:
+            lb://XS-SERVICE-USER
+          predicates:
+            - Path=/xs_assistant/user/**
+        - id: xs-ip-address-router
+          uri:
+            lb://XS-ADDRESS
+          predicates:
+            - Path=/xs_assistant/ip/**
+        - id: xs-account-router
+          uri:
+            lb://XS-ACCOUNT
+          predicates:
+            - Path=/xs_assistant/**
+eureka:
+  instance:
+    hostname: xs-service-gateway
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:12577/eureka
+assistant:
+  project:
+    version: @project.version@

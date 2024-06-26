@@ -1,0 +1,14 @@
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+management:
+  zipkin:
+    tracing:
+      endpoint: http://127.0.0.1:9411/api/v2/spans
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:12577/eureka

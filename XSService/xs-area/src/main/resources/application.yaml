@@ -18,10 +18,10 @@ spring:
           min-idle: 0
       timeout: 2400
       password: xs0628
-      host: 172.16.10.88
+      host: 10.10.100.105
       port: 6379
   datasource:
-    url: jdbc:mysql://172.16.10.88:3306/xs?useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://10.10.100.105:3306/xs?useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
 #    url: jdbc:mysql://localhost:3306/xs?useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
@@ -34,10 +34,11 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://172.16.10.88:12577/eureka
+      defaultZone: http://10.10.100.88:12577/eureka
+#      defaultZone: http://127.0.0.1:12577/eureka
   instance:
     prefer-ip-address: true
-#      defaultZone: http://127.0.0.1:12577/eureka
+
 resilience4j:
   retry:
     instances:
@@ -61,7 +62,7 @@ management:
       probability: 1.0 #设置跟踪采样的概率为100%(1.0),这意味着应用程序处理的所有请求都被跟踪,如果是10%(0.1)则为10条请求只有1条跟踪
   zipkin:
     tracing:
-      endpoint: http://172.16.10.88:9411
+      endpoint: http://10.10.100.105:9411/api/v2/spans
 logging:
   pattern:
     level: ${spring.application.name:},%X{traceId:-},%X{spanId:-} #日志记录格式

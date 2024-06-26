@@ -18,7 +18,7 @@ spring:
           min-idle: 0
       timeout: 2400
       password: xs0628
-      host: 172.16.10.88
+      host: 10.10.100.105
       port: 6379
 eureka:
   client:
@@ -26,4 +26,4 @@ eureka:
     fetch-registry: true
     service-url:
 #      defaultZone: http://127.0.0.1:12577/eureka
-      defaultZone: http://172.16.10.88:12577/eureka
+      defaultZone: http://10.10.100.88:12577/eureka

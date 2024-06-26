@@ -11,8 +11,10 @@ import com.xs.assistant.account.service.remote.RemoteCodeService;
 import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.ognl.internal.Cache;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -60,7 +62,7 @@ public class RestAccountServiceImpl implements RestAccountService {
         payload.put(JWTUtil.JWTKey.ID_NUMBER_KEY,customer.getIdNumber());
         payload.put(JWTUtil.JWTKey.NAME_KEY,customer.getFirstName() + customer.getLastName());
         //生成token
-        token = JWTUtil.getToken(payload);
+        token = JWTUtil.getToken(payload, Calendar.DATE,JWTUtil.TIME_OUT_DAY);
         //存储到redis中
         redisUtil.setHash(JWTUtil.JWTKey.REDIS_KEY,customer.getIdNumber(),token,
                 Long.valueOf(JWTUtil.TIME_OUT_DAY), TimeUnit.DAYS);

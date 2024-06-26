@@ -1,3 +1,5 @@
 
 Ÿ
-java:S1128"]Remove this unused import 'org.springframework.cloud.client.discovery.EnableDiscoveryClient'.(¬Ç­D8¨Ù ¬õ1J$078c83fc-6d26-4b91-8cef-e0691978c030
+java:S1128"]Remove this unused import 'org.springframework.cloud.client.discovery.EnableDiscoveryClient'.(¬Ç­D8¨Ù ¬õ1J$ae28428b-6685-48ce-aba8-8480fad00237
+“
+java:S1128"KRemove this unused import 'org.springframework.context.annotation.Profile'.(ØÝ¥Ýøÿÿÿÿ8ó¿îÂƒ2J$f2e7e7fc-cb33-4d90-85ac-6063b1cb047f

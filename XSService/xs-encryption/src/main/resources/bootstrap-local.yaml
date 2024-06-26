@@ -1,0 +1,43 @@
+server:
+  port: 24577
+  servlet:
+    context-path: /xs_assistant
+spring:
+  application:
+    name: xs-encryption
+  banner:
+    charset: UTF-8
+    location: Banner/XS-Assistant-Banner.txt
+  cloud:
+    config:
+      name: config
+      profile: dev
+      uri: http://127.0.0.1:22577
+      label: main
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    register-with-eureka: true
+    #是否从EurekaServer中抓取已有的注册信息，默认为true，单点无所谓，集群必须设置true才能和ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:12577/eureka
+  instance:
+    prefer-ip-address: true
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://127.0.0.1:9411/api/v2/spans
+logging:
+  pattern:
+    level: ${spring.application.name},%X{traceId:-},%X{traceId:-}
+  level:
+    org.springframework.cloud.openfeign.FeignLoggerFactory: DEBUG

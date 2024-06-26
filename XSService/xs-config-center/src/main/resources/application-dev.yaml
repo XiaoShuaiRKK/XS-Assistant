@@ -1,0 +1,14 @@
+spring:
+  rabbitmq:
+    port: 5672
+    username: xsAssistant
+    password: xs-assistant
+    host: 10.10.100.105
+management:
+  zipkin:
+    tracing:
+      endpoint: http://10.10.100.105:9411
+eureka:
+  client:
+    service-url:
+      defaultZone: http://10.10.100.88:12577/eureka
