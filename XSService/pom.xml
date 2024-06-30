@@ -45,6 +45,8 @@
         <hystrix.version>2.2.10.RELEASE</hystrix.version>
         <micrometer-tracing.version>1.1.2</micrometer-tracing.version>
         <jedis.version>5.1.0</jedis.version>
+        <docker.registry.host>10.10.100.80:5000</docker.registry.host>
+        <docker.registry.name>xs-warehouse</docker.registry.name>
     </properties>
 
     <dependencyManagement>
@@ -84,7 +86,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.20</version>
+                <version>1.18.34</version>
             </dependency>
             <dependency>
                 <groupId>log4j</groupId>
@@ -122,6 +124,43 @@
         </dependencies>
     </dependencyManagement>
 
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>1.2.2</version>
+                    <executions>
+                        <execution>
+                            <id>build-image</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                                <goal>push</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <!--对应maven settings.xml 的服务节点-->
+                        <serverId>my-harbor</serverId>
+                        <imageName>${docker.registry.host}/${docker.registry.name}/${project.artifactId}-application:${project.version}</imageName>
+                        <dockerDirectory>${project.basedir}/src/main/resources/docker</dockerDirectory>
+                        <registryUrl>http://${docker.registry.host}</registryUrl>
+                        <pushImage>true</pushImage>
+                        <forceTags>true</forceTags>
+                        <resources>
+                            <resource>
+                                <targetPath>/</targetPath>
+                                <directory>${project.build.directory}</directory>
+                                <include>${project.build.finalName}.jar</include>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 <!--    <pluginRepositories>-->
 <!--        <pluginRepository>-->
 <!--            <id>spring-snapshots</id>-->

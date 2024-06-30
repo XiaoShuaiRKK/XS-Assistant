@@ -62,7 +62,7 @@
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}-application-${project.version}</finalName>
+        <finalName>${project.artifactId}-application</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -78,6 +78,12 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.2</version>
+
             </plugin>
         </plugins>
     </build>

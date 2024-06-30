@@ -71,7 +71,7 @@
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}-application-${project.version}</finalName>
+        <finalName>${project.artifactId}-application</finalName>
         <resources>
             <resource>
                 <directory>src/main/java</directory>
@@ -115,6 +115,12 @@
                         <nonFilteredFileExtension>xdb</nonFilteredFileExtension>
                     </nonFilteredFileExtensions>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.2</version>
+
             </plugin>
         </plugins>
     </build>

@@ -499,3 +499,9 @@ G.idea/sonarlint/issuestore/a/7/a7e3f5cbea0d18820d4d95c2ca9d7bbb308c4259,a/3/a3
 Q.idea/sonarlint/securityhotspotstore/4/b/4bcc6816ee91e3299dcd8a7850534e85046320d1,8/a/8a6282dab28697380ac89f5e92def1c317312bb5
 Å
 Q.idea/sonarlint/securityhotspotstore/e/c/ec326232db4320ba10e0ba07ec03a7442190eaf1,c/1/c16d8b3d4dc38a4148d324298444e94194a95693
+j
+:xs-service-gateway/src/main/resources/application-dev.yaml,7/2/725162a00af3629433693928e3a5260224f9fa0e
+l
+<xs-service-gateway/src/main/resources/application-local.yaml,c/1/c104976d7b73634225a13121fb7c7288829f0b56
+g
+7xs-service-gateway/src/main/resources/docker/Dockerfile,4/f/4f41a78c886c31c2fd1231a6e1818f07b1bdc02b

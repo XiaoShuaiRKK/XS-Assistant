@@ -10,30 +10,6 @@
     <name>xs-service-gateway</name>
     <version>1.2.1</version>
 
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <profileActive>local</profileActive>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <profileActive>dev</profileActive>
-            </properties>
-        </profile>
-        <profile>
-            <id>test</id>
-            <properties>
-                <profileActive>test</profileActive>
-            </properties>
-        </profile>
-    </profiles>
-
     <dependencies>
         <dependency>
             <groupId>com.xs.assistant</groupId>
@@ -104,7 +80,7 @@
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}-application-${project.version}</finalName>
+        <finalName>${project.artifactId}-application</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -120,6 +96,11 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.2</version>
             </plugin>
         </plugins>
         <resources>
