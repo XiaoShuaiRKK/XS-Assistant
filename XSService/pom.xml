@@ -45,7 +45,7 @@
         <hystrix.version>2.2.10.RELEASE</hystrix.version>
         <micrometer-tracing.version>1.1.2</micrometer-tracing.version>
         <jedis.version>5.1.0</jedis.version>
-        <docker.host>tcp://10.10.100.105:2375</docker.host>
+        <docker.host>http://10.10.100.105:2375</docker.host>
         <docker.registry.host>10.10.100.80:5000</docker.registry.host>
         <docker.registry.name>xs-warehouse</docker.registry.name>
     </properties>
