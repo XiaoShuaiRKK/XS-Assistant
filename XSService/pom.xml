@@ -45,6 +45,7 @@
         <hystrix.version>2.2.10.RELEASE</hystrix.version>
         <micrometer-tracing.version>1.1.2</micrometer-tracing.version>
         <jedis.version>5.1.0</jedis.version>
+        <docker.host>unix:///var/run/docker.sock</docker.host>
         <docker.registry.host>10.10.100.80:5000</docker.registry.host>
         <docker.registry.name>xs-warehouse</docker.registry.name>
     </properties>
@@ -145,6 +146,7 @@
                         <!--对应maven settings.xml 的服务节点-->
                         <serverId>my-harbor</serverId>
                         <imageName>${docker.registry.host}/${docker.registry.name}/${project.artifactId}-application:${project.version}</imageName>
+                        <dockerHost>${docker.host}</dockerHost>
                         <dockerDirectory>${project.basedir}/src/main/resources/docker</dockerDirectory>
                         <registryUrl>http://${docker.registry.host}</registryUrl>
                         <pushImage>true</pushImage>
