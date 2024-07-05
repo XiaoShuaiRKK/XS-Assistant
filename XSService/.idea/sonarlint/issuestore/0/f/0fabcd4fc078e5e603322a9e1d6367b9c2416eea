@@ -1,0 +1,5 @@
+
+	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(íêÁÖ8¥Ô†ˆ2J$13f47abf-6368-4069-a249-3e774ab0a56f
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§õÈ©úÿÿÿÿ8¦Ô†ˆ2J$45e3160f-60c5-454b-8bdc-904e287429d7
+e
+java:S1128"CRemove this unused import 'org.springframework.data.annotation.Id'.(áŠ¿¸ıÿÿÿÿ8´¿ñ†ˆ2

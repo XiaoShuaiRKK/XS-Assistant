@@ -1,0 +1,10 @@
+
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ž°„íÿÿÿÿÿJ$935efeae-dd79-4e08-a1dc-260120eca60d
+j
+java:S1172}")Remove this unused method parameter "id".(³ŠŸÆøÿÿÿÿJ$9ef93c63-9a5f-4c86-af8b-a21da7fca240
+w
+java:S1068 "6Remove this unused "DEFAULT_KEY_TIME_S" private field.(þØÃ¯ýÿÿÿÿJ$b4b8b6c7-dc59-4b75-90cf-e6fd9d778cec
+w
+java:S1144x"6Remove this unused private "systemFailHandler" method.(ŽàçŸùÿÿÿÿJ$335cb467-2ba3-4a9e-bf7e-38e0e972051f
+t
+java:S1144}"3Remove this unused private "timeoutHandler" method.(³ŠŸÆøÿÿÿÿJ$6917e139-9eae-4b07-bf45-00b926515c1c

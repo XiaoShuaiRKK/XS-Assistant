@@ -1,0 +1,8 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ØÚÄûÿÿÿÿ
+n
+java:S2139F"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾
+C
+java:S1172T"(Remove this unused method parameter "e".(Âöïôûÿÿÿÿ
+J
+java:S1144T"/Remove this unused private "failMethod" method.(Âöïôûÿÿÿÿ
