@@ -531,8 +531,6 @@ Xxs-account/src/main/java/com/xs/assistant/account/service/remote/AccountInfoSer
 Txs-account/src/main/java/com/xs/assistant/account/service/remote/AccountService.java,c/2/c27fe1da58a3ca3e64cdc53c4f5e6ae43db21220
 ˆ
 Xxs-account/src/main/java/com/xs/assistant/account/service/fallback/UserInfoFallback.java,5/e/5e406f829840a894abebcd85d2498dbed0a89946
-i
-9xs-admin/src/main/java/com/xs/admin/AdminApplication.java,e/d/edd0eb58f7d9d870d649c6b69819a93f26f0f851
 s
 Cxs-admin/src/main/java/com/xs/assistant/admin/AdminApplication.java,c/5/c56c1697a5abb8f9ee23aee19aaa4a064cbe2095
 „
@@ -555,8 +553,6 @@ Ixs-channel/src/main/java/com/xs/assistant/channel/ChannelApplication.java,3/9/
 Sxs-channel/src/main/java/com/xs/assistant/channel/controller/ChannelController.java,b/0/b0d8f633f78c46855deb09628866d8a3943386f3
 }
 Mxs-channel/src/main/java/com/xs/assistant/channel/service/ChannelService.java,c/f/cf20bf49dac14523ddc883cc7e211fe1602c873a
-…
-Uxs-channel/src/main/java/com/xs/assistant/channel/service/Impl/ChannelController.java,9/7/9729b5cff7b59691b445c038d4b0c09e08e44af4
 †
 Vxs-channel/src/main/java/com/xs/assistant/channel/service/Impl/ChannelServiceImpl.java,f/3/f39ee41d5fb254b529d8861a50c9721749a5e412
 x
