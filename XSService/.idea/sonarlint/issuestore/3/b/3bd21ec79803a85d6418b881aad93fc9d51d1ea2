@@ -1,8 +1,8 @@
 
-X	java:S125'"<This block of commented-out lines of code should be removed.(§¿ÌÌ8½ßéÎû1
-p
-java:S5843"TSimplify this regular expression to reduce its complexity from 25 to the 20 allowed.(œÂÑ8ÆßéÎû1
-N
-java:S1068",Remove this unused "IP_LOCAL" private field.(Â¨Î‚øÿÿÿÿ8ÇßéÎû1
-N
-java:S1068"1Remove this unused "IP_LOCAL_AREA" private field.(â‚“—8ÈßéÎû1
+~	java:S125'"<This block of commented-out lines of code should be removed.(§¿ÌÌ8½ßéÎû1J$78c35e98-b7ac-481a-aee8-55baea52d5df
+–
+java:S5843"TSimplify this regular expression to reduce its complexity from 25 to the 20 allowed.(œÂÑ8ÆßéÎû1J$7bd99742-2253-4318-8b88-d1e06028db2e
+t
+java:S1068",Remove this unused "IP_LOCAL" private field.(Â¨Î‚øÿÿÿÿ8ÇßéÎû1J$26b992f9-5674-405f-b7e0-94354fe4fd84
+t
+java:S1068"1Remove this unused "IP_LOCAL_AREA" private field.(â‚“—8ÈßéÎû1J$067e6b89-3546-4aac-a254-459569e95120

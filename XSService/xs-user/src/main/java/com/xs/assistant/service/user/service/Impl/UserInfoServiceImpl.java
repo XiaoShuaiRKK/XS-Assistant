@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -54,7 +55,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         }catch (Exception e){
             log.error(e.getMessage());
         }
-        return null;
+        return Collections.emptyList();
     }
 
     @Override

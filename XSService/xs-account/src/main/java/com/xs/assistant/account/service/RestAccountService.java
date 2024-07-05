@@ -11,7 +11,7 @@ public interface RestAccountService {
 
     ResponseResult<String> sendCode(String email);
 
-    ResponseResult<Integer> restRegister(String code,CustomerDO customer);
+    ResponseResult<Boolean> restRegister(String code,CustomerDO customer);
 
     ResponseResult<Boolean> checkCustomer(String email);
 }

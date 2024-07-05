@@ -6,5 +6,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserUpdateService {
-    ResponseResult<Integer> registerCustomer(CustomerDO customer);
+    ResponseResult<Boolean> registerCustomer(CustomerDO customer);
+    ResponseResult<Boolean> registerAdmin(CustomerDO customer);
 }

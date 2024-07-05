@@ -4,9 +4,8 @@ import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.assistant.login.DAO.LoginDAO;
 import com.xs.assistant.login.service.LoginService;
-import com.xs.assistant.login.service.Remote.EncryptionRemoteService;
+import com.xs.assistant.login.service.remote.EncryptionRemoteService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

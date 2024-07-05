@@ -7,4 +7,5 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserUpdateDAO {
     Integer insertCustomer(@Param("customer") CustomerDO customerDO);
+    Integer insertAdmin(@Param("customer")CustomerDO customer);
 }

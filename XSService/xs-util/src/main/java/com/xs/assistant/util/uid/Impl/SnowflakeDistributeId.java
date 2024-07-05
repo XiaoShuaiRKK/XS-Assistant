@@ -1,7 +1,9 @@
 package com.xs.assistant.util.uid.Impl;
 
 import com.xs.assistant.util.uid.IUIDGenerator;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SnowflakeDistributeId implements IUIDGenerator {
     /**
      * 开始时间戳

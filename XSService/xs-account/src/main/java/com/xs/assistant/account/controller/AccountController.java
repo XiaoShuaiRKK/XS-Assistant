@@ -69,7 +69,7 @@ public class AccountController {
      * @return 受影响的行数
      */
     @PostMapping("/register")
-    public ResponseResult<Integer> register(@NotEmpty(message = "code cannot be empty")
+    public ResponseResult<Boolean> register(@NotEmpty(message = "code cannot be empty")
                                                 @Length(max = 5,min = 5,message = "Please fill in the correct verification code")
                                                 @RequestParam("code")String code, @RequestBody CustomerDO customerDO){
         return accountService.restRegister(code,customerDO);

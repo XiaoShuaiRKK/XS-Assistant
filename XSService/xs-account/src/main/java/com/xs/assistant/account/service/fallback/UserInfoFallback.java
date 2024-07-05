@@ -38,7 +38,7 @@ public class UserInfoFallback implements AccountInfoService {
     }
 
     @Override
-    public ResponseResult<Integer> registerCustomer(CustomerDO customer) {
+    public ResponseResult<Boolean> registerCustomer(CustomerDO customer) {
         return ResponseResult.unavailable("用户信息系统正忙");
     }
 }

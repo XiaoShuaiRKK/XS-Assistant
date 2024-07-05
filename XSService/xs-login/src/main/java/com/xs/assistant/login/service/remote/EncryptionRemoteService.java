@@ -1,4 +1,4 @@
-package com.xs.assistant.login.service.Remote;
+package com.xs.assistant.login.service.remote;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

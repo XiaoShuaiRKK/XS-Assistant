@@ -4,7 +4,9 @@ import com.xs.assistant.util.AbstractCodeUtil;
 import com.xs.assistant.util.IAssistantUtil;
 import org.springframework.stereotype.Component;
 
+import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 @Component
@@ -68,6 +70,32 @@ public class UIDCodeUtil extends AbstractCodeUtil implements IAssistantUtil {
         for(int value:nums)
             sb.append(CHARS[value]);
         return sb.toString();
+    }
+
+    @FunctionalInterface
+    public interface CreateCode{
+        String createCode(long count,int size);
+    }
+
+    public enum CreateCodeType{
+        ACCOUNT,
+        ARTICLE,
+        CHANNEL
+    }
+
+    public static class CreateCodeFactory{
+        private CreateCodeFactory(){}
+        static Map<CreateCodeType,CreateCode> createCodeMap = new EnumMap<>(CreateCodeType.class);
+        static {
+            createCodeMap.put(CreateCodeType.ACCOUNT,((count, size) -> {
+                String id = DateUtil.getNowStr("yyyyMMdd");
+                return "XS" + id + "0".repeat(Math.max(0,Math.toIntExact(count) - String.valueOf(size).length() - 10)) + count;
+            }));
+            createCodeMap.put(CreateCodeType.ARTICLE,(count,size) -> {
+                String articleCount = String.valueOf(count);
+                return "XSA" + "0".repeat(Math.max(0, size - articleCount.length())) + count;
+            });
+        }
     }
 
     public String createCodeWithArticle(long articleCount){

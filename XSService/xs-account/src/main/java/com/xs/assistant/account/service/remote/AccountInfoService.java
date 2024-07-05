@@ -27,5 +27,5 @@ public interface AccountInfoService {
     @GetMapping("/user/checkCustomer")
     ResponseResult<Boolean> checkCustomer(@RequestParam("email")String email);
     @PostMapping("/user/register")
-    ResponseResult<Integer> registerCustomer(@RequestBody CustomerDO customer);
+    ResponseResult<Boolean> registerCustomer(@RequestBody CustomerDO customer);
 }

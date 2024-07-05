@@ -2,6 +2,7 @@ package com.xs.assistant.service.user.service.Impl;
 
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
+import com.xs.DAO.option.AccountLevelEnum;
 import com.xs.assistant.redis.util.RedisUtil;
 import com.xs.assistant.service.user.DAO.UserMapper;
 import com.xs.assistant.service.user.DAO.UserUpdateDAO;
@@ -42,16 +43,26 @@ public class UserUpdateServiceImpl implements UserUpdateService {
     @Override
     @Retry(name = "user-customer-register-api",fallbackMethod = "systemFailHandler")
     @Transactional(rollbackFor = Exception.class)
-    public ResponseResult<Integer> registerCustomer(CustomerDO customer) {
-        int rs;
+    public ResponseResult<Boolean> registerCustomer(CustomerDO customer) {
+        boolean rs = registerAccount(customer, AccountLevelEnum.ACCOUNT.ordinal());
+        return ResponseResult.success(rs,rs ? "注册失败" : "注册成功");
+    }
+
+    @Override
+    public ResponseResult<Boolean> registerAdmin(CustomerDO customer) {
+        boolean rs = registerAccount(customer, AccountLevelEnum.ADMIN.ordinal());
+        return ResponseResult.success(rs,rs ? "注册失败" : "注册成功");
+    }
+
+    private boolean registerAccount(CustomerDO customer,Integer level){
         long count;
+        customer.setLevel(level);
         customer.setPassword(encryptionService.getEncodePassword(customer.getPassword()));
         registerHas.hasKey(redisUtil.hasKey(REGISTER_COUNT_TODAY_KEY),((k,u) -> redisUtil.increment(k,u)))
                 .execute(REGISTER_COUNT_TODAY_KEY, userMapper.selectAllCount());
         count = redisUtil.increment(REGISTER_COUNT_TODAY_KEY);
         customer.setIdNumber(uidCodeUtil.createCode(count));
-        String msg = (rs = userUpdateDAO.insertCustomer(customer)) <= 0 ? "注册失败" : "注册成功";
-        return ResponseResult.success(rs,msg);
+        return userUpdateDAO.insertCustomer(customer) <= 0;
     }
 
     private <T extends Serializable> ResponseResult<T> systemFailHandler(Exception e){

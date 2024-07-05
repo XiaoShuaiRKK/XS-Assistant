@@ -90,10 +90,10 @@ public class RestAccountServiceImpl implements RestAccountService {
      * @return 受影响行数
      */
     @Override
-    public ResponseResult<Integer> restRegister(String code, CustomerDO customer) {
+    public ResponseResult<Boolean> restRegister(String code, CustomerDO customer) {
         ResponseResult<Boolean> rsCk = remoteCodeService.checkCode(code,customer.getEmail());
         if(Boolean.FALSE.equals(rsCk.getData()))
-            return ResponseResult.success(0,rsCk.getMessage());
+            return ResponseResult.success(false,rsCk.getMessage());
         return accountInfoService.registerCustomer(customer);
     }
 

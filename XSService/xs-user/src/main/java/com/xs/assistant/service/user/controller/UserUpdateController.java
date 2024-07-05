@@ -21,8 +21,13 @@ public class UserUpdateController {
     }
 
     @PostMapping("/register")
-    public ResponseResult<Integer> registerCustomer(@RequestBody CustomerDO customer){
+    public ResponseResult<Boolean> registerCustomer(@RequestBody CustomerDO customer){
         return userUpdateService.registerCustomer(customer);
+    }
+
+    @PostMapping("/create/admin")
+    public ResponseResult<Boolean> registerAdmin(@RequestBody CustomerDO customer){
+        return userUpdateService.registerAdmin(customer);
     }
 
 }

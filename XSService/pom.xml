@@ -28,6 +28,8 @@
         <module>xs-article-search</module>
         <module>xs-article-hot</module>
         <module>xs-elasticsearch</module>
+        <module>xs-admin</module>
+        <module>xs-channel</module>
     </modules>
     <version>1.2.1</version>
 
