@@ -1,7 +1,6 @@
 
-œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(üå´ê8öğÊ‹ˆ2J$dfd4e5d2-0231-4cc4-89b5-284c161f8ee7
-v
-java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8ñÊ‹ˆ2J$1ca91af2-896d-490f-8c0c-5a61e6b4c35c
-u
-java:S1128
-"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8ñÊ‹ˆ2J$bbe12e93-e2c3-4871-a121-7c654e618b98
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(üå´ê8²¥—êˆ2J$65554ab8-11f5-45fb-b9ce-ab9d25949242
+ƒ	java:S125!"<This block of commented-out lines of code should be removed.(ã ÇØıÿÿÿÿ8½¥—êˆ2J$b7abe187-dae8-4bc7-9a4a-67d44b7b5c0d
+~	java:S125%"<This block of commented-out lines of code should be removed.(Í¯É¯8½¥—êˆ2J$8c9fa979-d85e-41e2-b21c-ccffbe5c9237
+ƒ	java:S125/"<This block of commented-out lines of code should be removed.(¿Œ­âÿÿÿÿÿ8½¥—êˆ2J$1a056598-adab-488a-81bd-fdf4b0645906
+}	java:S125y"<This block of commented-out lines of code should be removed.(ã³ô_8Â¥—êˆ2J$18b8fefd-fc13-4b6d-8dac-860ff684d88f

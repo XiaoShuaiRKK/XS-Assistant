@@ -1,6 +1,2 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Í’¨ûÿÿÿÿ8‰ˆˆ2J$3be5ad71-31c8-4b16-a4f1-e9a748127ac7
-…
-java:S1854"=Remove this useless assignment to local variable "channelId".(¦‰¯ïûÿÿÿÿ8ˆˆ2J$821f304e-3df3-46f8-ae9f-fcb17b58cd16
-v
-java:S1481".Remove this unused "channelId" local variable.(¦‰¯ïûÿÿÿÿ8ˆˆ2J$9dd8ee8c-77c5-433f-b361-288fbf3063a6
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Í’¨ûÿÿÿÿ8ÙÀÇêˆ2J$4563dcf2-c650-4ed8-8ef6-bfe59f829d90

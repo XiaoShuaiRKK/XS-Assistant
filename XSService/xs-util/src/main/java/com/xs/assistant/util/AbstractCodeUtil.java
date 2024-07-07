@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Component
 public abstract class AbstractCodeUtil {
-    public abstract String createCode(int length);
+    public abstract String createCode(long count);
 }

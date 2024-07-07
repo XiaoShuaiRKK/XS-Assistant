@@ -54,7 +54,8 @@ public class ArticleAddServiceImpl implements ArticleAddService {
     public ResponseResult<Boolean> addArticle(ArticleContext article) {
         try {
             //根据雪花算法生成唯一ID
-            String articleId = codeUtil.createCodeWithArticle(snowflakeDistributeId.nextId(),MYSQL_DEFAULT_ID_SIZE);
+            String articleId = codeUtil.createCode(UIDCodeUtil.CreateCodeType.ARTICLE,
+                    snowflakeDistributeId.nextId(),MYSQL_DEFAULT_ID_SIZE);
             article.setId(articleId);
             article.setHot(0D);
             article.setStateId(1);

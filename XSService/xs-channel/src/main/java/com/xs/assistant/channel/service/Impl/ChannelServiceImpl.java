@@ -25,6 +25,14 @@ public class ChannelServiceImpl implements ChannelService {
 
     @Override
     public ResponseResult<Boolean> addChannel(String idNumber, String channelName) {
-        String channelId = codeUtil.createCodeWithArticle(snowflakeDistributeId.nextId(),CHANNEL_ID_COUNT);
+        String channelId = codeUtil.createCode(UIDCodeUtil.CreateCodeType.CHANNEL,
+                snowflakeDistributeId.nextId(),CHANNEL_ID_COUNT);
+        ChannelDO channel = ChannelDO.builder()
+                .creatorId(idNumber)
+                .channelName(channelName)
+                .channelId(channelId)
+                .build();
+        return channelMapper.insert(channel) >= 0 ? ResponseResult.success(false,"创建新channel失败") :
+                ResponseResult.success(true,"创建新channel成功");
     }
 }

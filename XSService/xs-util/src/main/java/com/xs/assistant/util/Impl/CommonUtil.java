@@ -10,11 +10,12 @@ import java.util.Random;
 @Component
 public class CommonUtil extends AbstractCodeUtil implements IAssistantUtil {
 
+    private final Random random = new Random();
+
     @Override
-    public String createCode(int length) {
-        Random random = new Random();
+    public String createCode(long count) {
         StringBuilder sb = new StringBuilder();
-        for(int i = 0;i < length;i++)
+        for(int i = 0;i < count;i++)
             sb.append(random.nextInt(10));
         return sb.toString();
     }
