@@ -22,8 +22,8 @@ public class ChannelServiceImpl implements ChannelService {
     final ChannelMapper channelMapper;
     final MessageChannelUtil messageChannelUtil;
 
-    public ChannelServiceImpl(SnowflakeDistributeId snowflakeDistributeId, UIDCodeUtil codeUtil, ChannelMapper channelMapper, MessageChannelUtil messageChannelUtil) {
-        this.snowflakeDistributeId = snowflakeDistributeId;
+    public ChannelServiceImpl(UIDCodeUtil codeUtil, ChannelMapper channelMapper, MessageChannelUtil messageChannelUtil) {
+        this.snowflakeDistributeId = new SnowflakeDistributeId(0,0);
         this.codeUtil = codeUtil;
         this.channelMapper = channelMapper;
         this.messageChannelUtil = messageChannelUtil;

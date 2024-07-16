@@ -64,6 +64,16 @@ spring:
             lb://XS-ADDRESS
           predicates:
             - Path=/xs_assistant/ip/**
+        - id: xs-channel-router
+          uri:
+            lb://XS-CHANNEL
+          predicates:
+            - Path=/xs_assistant/channel/**
+        - id: xs-admin-router
+          uri:
+            lb://XS-ADMIN
+          predicates:
+            - Path=/xs_assistant/admin/**
         - id: xs-account-router
           uri:
             lb://XS-ACCOUNT

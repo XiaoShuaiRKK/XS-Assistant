@@ -1,8 +1,10 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(’â£ıÿÿÿÿ8Š“‡¥÷1J$bf22e7da-7ac3-4248-a368-55570031c0bc
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(’â£ıÿÿÿÿ8Š“‡¥÷1J$642e0ec8-50f8-400e-a089-25e9cf8d63b2
 i
-java:S1170"!Make this final field static too.(õÑ€²şÿÿÿÿ8““‡¥÷1J$8e1de55e-d5a9-4873-899f-a7bfa4a70ef9
+java:S1170"!Make this final field static too.(õÑ€²şÿÿÿÿ8““‡¥÷1J$d652fb46-8151-4995-9a26-c0ef2e0b3ff2
 i
-java:S1170"!Make this final field static too.(âÍ–ùùÿÿÿÿ8““‡¥÷1J$601f75d4-82d4-46fb-9e28-82980dc529df
+java:S1170"!Make this final field static too.(âÍ–ùùÿÿÿÿ8““‡¥÷1J$19544e77-f3f7-4a4e-b309-beaea52c1550
 d
-java:S1170"!Make this final field static too.(ïê¥Ç8““‡¥÷1J$723755d3-0119-4edc-9077-364a5cff6f10
+java:S1170"!Make this final field static too.(ïê¥Ç8““‡¥÷1J$0a57c04b-e5c9-462b-8faa-a2e418bbd1cc
+`
+java:S1128"CRemove this unused import 'org.springframework.stereotype.Service'.(¼º¡Ú8ÓİØ“‰2
