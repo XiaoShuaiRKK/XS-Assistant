@@ -30,6 +30,7 @@
         <module>xs-elasticsearch</module>
         <module>xs-admin</module>
         <module>xs-channel</module>
+        <module>xs-chat</module>
     </modules>
     <version>1.2.1</version>
 
