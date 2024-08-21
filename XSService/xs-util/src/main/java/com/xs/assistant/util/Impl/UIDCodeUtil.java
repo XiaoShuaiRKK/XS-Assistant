@@ -67,7 +67,8 @@ public class UIDCodeUtil extends AbstractCodeUtil implements IAssistantUtil {
     public enum CreateCodeType{
         ACCOUNT,
         ARTICLE,
-        CHANNEL
+        CHANNEL,
+        CHAT_GROUP
     }
 
     private static class CreateCodeFactory{
@@ -81,6 +82,7 @@ public class UIDCodeUtil extends AbstractCodeUtil implements IAssistantUtil {
             }));
             createCodeMap.put(CreateCodeType.ARTICLE,(count,size) -> createSnowflakeDistributeCode("XSA",count,size));
             createCodeMap.put(CreateCodeType.CHANNEL,(count, size) -> createSnowflakeDistributeCode("XSC",count,size));
+            createCodeMap.put(CreateCodeType.CHAT_GROUP,((count, size) -> createSnowflakeDistributeCode("XSG",count,size)));
         }
         public static CreateCode getCreateCodeInstance(CreateCodeType codeType){
             return createCodeMap.get(codeType);

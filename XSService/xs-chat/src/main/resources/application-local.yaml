@@ -1,5 +1,7 @@
 server:
   port: 30577
+  servlet:
+    context-path: /xs_assistant/chat
 spring:
   application:
     name: xs-chat

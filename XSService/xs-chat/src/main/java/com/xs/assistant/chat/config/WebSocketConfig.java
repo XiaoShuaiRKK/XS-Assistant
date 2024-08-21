@@ -19,8 +19,9 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(httpAuthHandler,"ws")
+        registry.addHandler(httpAuthHandler,"public")
                 .addInterceptors(myInterceptor)
                 .setAllowedOrigins("*");
+
     }
 }

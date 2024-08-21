@@ -79,6 +79,11 @@ spring:
             lb://XS-ACCOUNT
           predicates:
             - Path=/xs_assistant/**
+        - id: xs-chat-router
+          uri:
+            lb://XS-CHAT
+          predicates:
+            - Path=/xs_assistant/**
 eureka:
   instance:
     hostname: xs-service-gateway
