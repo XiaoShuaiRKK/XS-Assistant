@@ -26,9 +26,11 @@ public class HttpAuthHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) {
         Object token = session.getAttributes().get("token");
-        if(token != null){
+        Object toToken = session.getAttributes().get("to");
+        if(token != null && toToken != null){
             String tokenStr = token.toString();
-            WeSessionManager.add(tokenStr,session);
+            String toTokenStr = toToken.toString();
+            WeSessionManager.add(tokenStr,toTokenStr,session);
             if(weSessionMessageUtil.checkHasMessages(tokenStr)){
                 weSessionMessageUtil.getMessages(tokenStr).forEach(msg -> {
                     try {
@@ -49,14 +51,15 @@ public class HttpAuthHandler extends TextWebSocketHandler {
         Object token = session.getAttributes().get("token");
         Object toToken = session.getAttributes().get("to");
         log.info("Sever : " + token + " ----- Message : " + msg);
-        weSessionMessageUtil.sendMessage(token.toString(),toToken.toString(),msg);
+        weSessionMessageUtil.sendMessage(WeSessionManager.get(toToken.toString()),token.toString(),msg);
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
         Object token = session.getAttributes().get("token");
         Object toToken = session.getAttributes().get("to");
-        weSessionMessageUtil.sendMessage(token.toString(),toToken.toString(),token + " has been taken offline");
+        weSessionMessageUtil.sendMessage(WeSessionManager.get(toToken.toString()),
+                token.toString(),token + " has been taken offline");
         WeSessionManager.remove(token.toString());
     }
 }

@@ -1,4 +1,4 @@
-package com.xs.DAO.option;
+package com.xs.DAO.option.chat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

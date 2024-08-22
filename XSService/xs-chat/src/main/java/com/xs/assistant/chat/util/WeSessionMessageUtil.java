@@ -1,6 +1,9 @@
 package com.xs.assistant.chat.util;
 
+import com.xs.DAO.DO.chat.ChatGroupMember;
+import com.xs.DAO.DO.chat.ChatMember;
 import com.xs.DAO.DTO.ChatMessageDTO;
+import com.xs.DAO.option.chat.ChatMemberSessionStatus;
 import com.xs.assistant.chat.config.WeSessionManager;
 import com.xs.assistant.util.Impl.JsonUtil;
 import jakarta.json.Json;
@@ -23,15 +26,19 @@ public class WeSessionMessageUtil {
         this.jsonUtil = jsonUtil;
     }
 
-    public void sendMessage(String sender,String to,String message) throws IOException {
-        WebSocketSession session = WeSessionManager.get(to);
-        String msg = jsonUtil.beanToJson(new ChatMessageDTO(message,sender,to, LocalDateTime.now()));
-        if (session != null){
-            session.sendMessage(new TextMessage(msg));
-        }else{
-            createMessageBox(to);
-            saveMessage(to,msg);
-        }
+    public void sendMessage(ChatMember member,String sender,String message) throws IOException {
+        String msg = jsonUtil.beanToJson(new ChatMessageDTO(message,member.getMemberId(),sender, LocalDateTime.now()));
+        if(member.getStatus() == ChatMemberSessionStatus.ON_LINE)
+            member.getSession().sendMessage(new TextMessage(msg));
+        else
+            member.getMessageBox().push(msg);
+    }
+
+    public void sendMessageByGroup(ChatGroupMember member, String message) throws IOException {
+        String msg = jsonUtil.beanToJson(new ChatMessageDTO(message, member.getMemberId(),
+                member.getGroupId(), LocalDateTime.now()));
+
+
     }
 
     public void createMessageBox(String key){

@@ -2,6 +2,7 @@ package com.xs.assistant.chat.interceptor;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpUtil;
+import com.xs.assistant.chat.config.GroupSessionManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
@@ -15,14 +16,23 @@ import java.util.Map;
 @Component
 @Slf4j
 public class GroupInterceptor implements HandshakeInterceptor {
+
+    final GroupSessionManager groupSessionManager;
+
+    public GroupInterceptor(GroupSessionManager groupSessionManager) {
+        this.groupSessionManager = groupSessionManager;
+    }
+
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
         Map<String, String> paramMap = HttpUtil.decodeParamMap(request.getURI().getQuery(), StandardCharsets.UTF_8);
         String uid = paramMap.get("token");
         String group = paramMap.get("group");
+        String groupId = paramMap.get("groupId");
         if (StrUtil.isNotBlank(uid)){
             attributes.put("token",uid);
             attributes.put("group",group);
+            attributes.put("groupId",groupId);
             log.info(uid + " :  握手成功");
             return true;
         }
