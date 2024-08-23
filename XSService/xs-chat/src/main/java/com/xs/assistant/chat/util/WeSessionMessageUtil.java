@@ -34,11 +34,15 @@ public class WeSessionMessageUtil {
             member.getMessageBox().push(msg);
     }
 
-    public void sendMessageByGroup(ChatGroupMember member, String message) throws IOException {
-        String msg = jsonUtil.beanToJson(new ChatMessageDTO(message, member.getMemberId(),
-                member.getGroupId(), LocalDateTime.now()));
-
-
+    public void sendMessageByMessageBox(ChatMember member){
+        Stack<String> messageBox = member.getMessageBox();
+        messageBox.forEach(msg -> {
+            try {
+                member.getSession().sendMessage(new TextMessage(msg));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public void createMessageBox(String key){

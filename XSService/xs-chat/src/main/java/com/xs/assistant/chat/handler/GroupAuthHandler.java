@@ -51,8 +51,10 @@ public class GroupAuthHandler extends TextWebSocketHandler {
         }
         if(!groupSessionManager.checkMemberJoined(groupId,token))
             groupSessionManager.addMember(groupId,token,session);
-        else
-            groupSessionManager.onlineMember(groupId,token);
+        else{
+            ChatGroupMember member = groupSessionManager.onlineMember(groupId, token, session);
+            sendManager.sendMessageByMessageBox(member);
+        }
     }
 
     @Override
@@ -79,8 +81,12 @@ public class GroupAuthHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        Object token = session.getAttributes().get("token");
-        Object group = session.getAttributes().get("group");
-        groupSessionManager.leaveMember(group.toString(),token.toString());
+        String token = session.getAttributes().get("token").toString();
+        String group = session.getAttributes().get("group").toString();
+        String groupId = session.getAttributes().get("groupId").toString();
+        if(StringUtil.isNullOrEmpty(groupId))
+            groupSessionManager.leaveLeader(group,token);
+        else
+            groupSessionManager.leaveMember(groupId,token);
     }
 }

@@ -19,6 +19,7 @@ public class GroupSessionManager {
     final UIDCodeUtil codeUtil;
 
     private static final ConcurrentHashMap<ChatGroup, Map<String, ChatGroupMember>> GROUP_POOL = new ConcurrentHashMap<>();
+    private static final HashMap<String,String> TEMP_ID_POOL = new HashMap<>();
 
     public GroupSessionManager(UIDCodeUtil codeUtil) {
         this.codeUtil = codeUtil;
@@ -39,6 +40,7 @@ public class GroupSessionManager {
                 .createTime(LocalDateTime.now())
                 .build();
         GROUP_POOL.put(group,new HashMap<>());
+        TEMP_ID_POOL.put(group.getGroupName(),group.getGroupId());
         addMemberByType(group.getGroupId(),leaderId,leaderSession,ChatGroupMemberTypeEnum.LEADER);
         return group;
     }
@@ -52,6 +54,18 @@ public class GroupSessionManager {
                 ChatMemberSessionStatus.ON_LINE,type,new Stack<>()));
     }
 
+    public void leaveLeader(String groupName,String memberId){
+        String groupId = TEMP_ID_POOL.get(groupName);
+        ChatGroupMember leader = getGroupMember(groupId).get(memberId);
+        try {
+            leader.getSession().close();
+            leader.setStatus(ChatMemberSessionStatus.OFF_LINE);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        TEMP_ID_POOL.remove(groupName);
+    }
+
     public void leaveMember(String groupId,String memberId){
         Map<String, ChatGroupMember> group = getGroupMember(groupId);
         ChatGroupMember member = group.get(memberId);
@@ -63,9 +77,11 @@ public class GroupSessionManager {
         }
     }
 
-    public void onlineMember(String groupId,String memberId){
-        Map<String, ChatGroupMember> group = getGroupMember(groupId);
-        group.get(memberId).setStatus(ChatMemberSessionStatus.ON_LINE);
+    public ChatGroupMember onlineMember(String groupId,String memberId,WebSocketSession session){
+        ChatGroupMember member = getGroupMember(groupId).get(memberId);
+        member.setSession(session);
+        member.setStatus(ChatMemberSessionStatus.ON_LINE);
+        return member;
     }
 
     public ChatGroupMember removeMember(String groupId,String memberId){
