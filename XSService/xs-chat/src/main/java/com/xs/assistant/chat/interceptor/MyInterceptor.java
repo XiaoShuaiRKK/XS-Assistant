@@ -1,5 +1,6 @@
 package com.xs.assistant.chat.interceptor;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,7 @@ public class MyInterceptor implements HandshakeInterceptor {
         Map<String, String> paramMap = HttpUtil.decodeParamMap(request.getURI().getQuery(), StandardCharsets.UTF_8);
         String uid = paramMap.get("token");
         String to = paramMap.get("to");
-        if (StrUtil.isNotBlank(uid)){
+        if (CharSequenceUtil.isNotBlank(uid)){
             attributes.put("token",uid);
             attributes.put("to",to);
             log.info("用户 token : " + uid + " 握手成功");

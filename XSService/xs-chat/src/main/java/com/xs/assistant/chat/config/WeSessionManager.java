@@ -11,20 +11,21 @@ import java.util.Stack;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+@Component
 @Slf4j
 public class WeSessionManager {
-    private final static ConcurrentMap<String, ChatMember> SESSION_POOL = new ConcurrentHashMap<>();
+    private static final ConcurrentMap<String, ChatMember> SESSION_POOL = new ConcurrentHashMap<>();
 
-    public static void add(String sender,String to,WebSocketSession session){
+    public void add(String sender,String to,WebSocketSession session){
         SESSION_POOL.put(sender,new ChatMember(sender,to,session,
                 ChatMemberSessionStatus.ON_LINE,new Stack<>()));
     }
 
-    public static ChatMember remove(String key){
+    public ChatMember remove(String key){
         return SESSION_POOL.remove(key);
     }
 
-    public static void removeAndClose(String key) throws IOException {
+    public void removeAndClose(String key) throws IOException {
         ChatMember member = remove(key);
         if (member != null){
             member.getSession().close();

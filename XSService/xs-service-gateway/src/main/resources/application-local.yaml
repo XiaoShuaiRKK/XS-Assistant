@@ -34,6 +34,11 @@ spring:
             allowCredentials: true
         add-to-simple-url-handler-mapping: true
       routes:
+        - id: xs-chat-router
+          uri:
+            lb:ws://XS-CHAT
+          predicates:
+            - Path=/xs_assistant/chat/**
         - id: xs-article-search-router
           uri:
             lb://XS-ARTICLE-SEARCH

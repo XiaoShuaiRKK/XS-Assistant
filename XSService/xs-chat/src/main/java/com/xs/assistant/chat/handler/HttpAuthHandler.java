@@ -17,9 +17,11 @@ import java.time.LocalDateTime;
 @Slf4j
 public class HttpAuthHandler extends TextWebSocketHandler {
 
+    final WeSessionManager weSessionManager;
     final WeSessionMessageUtil weSessionMessageUtil;
 
-    public HttpAuthHandler(WeSessionMessageUtil weSessionMessageUtil) {
+    public HttpAuthHandler(WeSessionManager weSessionManager, WeSessionMessageUtil weSessionMessageUtil) {
+        this.weSessionManager = weSessionManager;
         this.weSessionMessageUtil = weSessionMessageUtil;
     }
 
@@ -30,7 +32,7 @@ public class HttpAuthHandler extends TextWebSocketHandler {
         if(token != null && toToken != null){
             String tokenStr = token.toString();
             String toTokenStr = toToken.toString();
-            WeSessionManager.add(tokenStr,toTokenStr,session);
+            weSessionManager.add(tokenStr,toTokenStr,session);
             if(weSessionMessageUtil.checkHasMessages(tokenStr)){
                 weSessionMessageUtil.getMessages(tokenStr).forEach(msg -> {
                     try {
@@ -60,6 +62,6 @@ public class HttpAuthHandler extends TextWebSocketHandler {
         Object toToken = session.getAttributes().get("to");
         weSessionMessageUtil.sendMessage(WeSessionManager.get(toToken.toString()),
                 token.toString(),token + " has been taken offline");
-        WeSessionManager.remove(token.toString());
+        weSessionManager.remove(token.toString());
     }
 }

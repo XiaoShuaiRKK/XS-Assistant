@@ -1,5 +1,6 @@
 package com.xs.assistant.chat.interceptor;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpUtil;
 import com.xs.assistant.chat.config.GroupSessionManager;
@@ -29,7 +30,7 @@ public class GroupInterceptor implements HandshakeInterceptor {
         String uid = paramMap.get("token");
         String group = paramMap.get("group");
         String groupId = paramMap.get("groupId");
-        if (StrUtil.isNotBlank(uid)){
+        if (CharSequenceUtil.isNotBlank(uid)){
             attributes.put("token",uid);
             attributes.put("group",group);
             attributes.put("groupId",groupId);

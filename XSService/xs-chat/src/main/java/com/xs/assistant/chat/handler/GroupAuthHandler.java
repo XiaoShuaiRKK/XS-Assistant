@@ -25,6 +25,10 @@ import java.util.Stack;
 @Component
 public class GroupAuthHandler extends TextWebSocketHandler {
 
+    private static final String PARAMS_TOKEN = "token";
+    private static final String PARAMS_GROUP = "group";
+    private static final String PARAMS_GROUP_ID = "groupId";
+
     final GroupSessionManager groupSessionManager;
     final WeSessionMessageUtil sendManager;
 
@@ -35,9 +39,9 @@ public class GroupAuthHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws IOException {
-        String token = session.getAttributes().get("token").toString();
-        String group = session.getAttributes().get("group").toString();
-        String groupId = session.getAttributes().get("groupId").toString();
+        String token = session.getAttributes().get(PARAMS_TOKEN).toString();
+        String group = session.getAttributes().get(PARAMS_GROUP).toString();
+        String groupId = session.getAttributes().get(PARAMS_GROUP_ID).toString();
         if(StringUtil.isNullOrEmpty(groupId)){
             ChatGroup groupAndJoin = groupSessionManager.createGroupAndJoin(token, session, group);
             sendManager.sendMessage(new ChatMember(token,groupId,session,
@@ -59,8 +63,8 @@ public class GroupAuthHandler extends TextWebSocketHandler {
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        Object token = session.getAttributes().get("token");
-        Object group = session.getAttributes().get("groupId");
+        Object token = session.getAttributes().get(PARAMS_TOKEN);
+        Object group = session.getAttributes().get(PARAMS_GROUP_ID);
         String msg = message.getPayload();
         if(token != null && group != null){
             String groupInfo = group.toString();
@@ -81,9 +85,9 @@ public class GroupAuthHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        String token = session.getAttributes().get("token").toString();
-        String group = session.getAttributes().get("group").toString();
-        String groupId = session.getAttributes().get("groupId").toString();
+        String token = session.getAttributes().get(PARAMS_TOKEN).toString();
+        String group = session.getAttributes().get(PARAMS_GROUP).toString();
+        String groupId = session.getAttributes().get(PARAMS_GROUP_ID).toString();
         if(StringUtil.isNullOrEmpty(groupId))
             groupSessionManager.leaveLeader(group,token);
         else

@@ -1,0 +1,13 @@
+
+^
+java:S38241"HReplace this "Map.containsKey()" with a call to "Map.computeIfAbsent()".(Ô’Ä–
+[
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¦Òª³
+Z
+java:S1128"?Remove this unused import 'com.xs.DAO.DO.chat.ChatGroupMember'.(ôÑ£òýÿÿÿÿ
+e
+java:S1128"JRemove this unused import 'com.xs.assistant.chat.config.WeSessionManager'.(¤Öäÿÿÿÿÿÿ
+C
+java:S1128	".Remove this unused import 'jakarta.json.Json'.(‡Ñ¥T
+b
+java:S1128"LRemove this unused import 'org.springframework.web.socket.WebSocketSession'.(®Ÿ¿Ã

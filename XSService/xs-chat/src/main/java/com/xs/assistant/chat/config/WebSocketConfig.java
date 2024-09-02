@@ -14,14 +14,17 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
 
-    @Autowired
-    private HttpAuthHandler httpAuthHandler;
-    @Autowired
-    private MyInterceptor myInterceptor;
-    @Autowired
-    private GroupAuthHandler groupAuthHandler;
-    @Autowired
-    private GroupInterceptor groupInterceptor;
+    private final HttpAuthHandler httpAuthHandler;
+    private final MyInterceptor myInterceptor;
+    private final GroupAuthHandler groupAuthHandler;
+    private final GroupInterceptor groupInterceptor;
+
+    public WebSocketConfig(HttpAuthHandler httpAuthHandler, MyInterceptor myInterceptor, GroupAuthHandler groupAuthHandler, GroupInterceptor groupInterceptor) {
+        this.httpAuthHandler = httpAuthHandler;
+        this.myInterceptor = myInterceptor;
+        this.groupAuthHandler = groupAuthHandler;
+        this.groupInterceptor = groupInterceptor;
+    }
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
