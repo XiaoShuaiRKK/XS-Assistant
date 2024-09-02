@@ -49,7 +49,9 @@ public class UserInfoController {
      */
     @GetMapping("/checkCustomer")
     public ResponseResult<Boolean> checkCustomer(@RequestParam("email")String email){
-        return packageResult(userInfoService.hasCustomer(email));
+        return Boolean.TRUE.equals(userInfoService.hasCustomer(email)) ? ResponseResult.success(true) :
+                ResponseResult.fail(false,"无此用户");
+//        return packageResult(userInfoService.hasCustomer(email));
     }
 
     @GetMapping("/checkCustomer/byID")

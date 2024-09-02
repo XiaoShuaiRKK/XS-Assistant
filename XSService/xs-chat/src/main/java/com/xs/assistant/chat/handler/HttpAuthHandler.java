@@ -26,25 +26,28 @@ public class HttpAuthHandler extends TextWebSocketHandler {
     }
 
     @Override
-    public void afterConnectionEstablished(WebSocketSession session) {
+    public void afterConnectionEstablished(WebSocketSession session) throws IOException {
         Object token = session.getAttributes().get("token");
         Object toToken = session.getAttributes().get("to");
         if(token != null && toToken != null){
             String tokenStr = token.toString();
             String toTokenStr = toToken.toString();
-            weSessionManager.add(tokenStr,toTokenStr,session);
-            if(weSessionMessageUtil.checkHasMessages(tokenStr)){
-                weSessionMessageUtil.getMessages(tokenStr).forEach(msg -> {
-                    try {
-                        session.sendMessage(new TextMessage(msg));
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                });
+            if(!weSessionManager.containsMember(tokenStr)){
+                weSessionManager.add(tokenStr,toTokenStr,session);
+                return;
             }
+            weSessionManager.onLineMember(tokenStr,session);
+            weSessionManager.get(tokenStr).getMessageBox().forEach(msg -> {
+                try {
+                    session.sendMessage(new TextMessage(msg));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
         }
-        else
-            throw new RuntimeException("用户登录已经失效");
+        else {
+            weSessionMessageUtil.sendMessage(session,"错误访问");
+        }
     }
 
     @Override
@@ -53,15 +56,15 @@ public class HttpAuthHandler extends TextWebSocketHandler {
         Object token = session.getAttributes().get("token");
         Object toToken = session.getAttributes().get("to");
         log.info("Sever : " + token + " ----- Message : " + msg);
-        weSessionMessageUtil.sendMessage(WeSessionManager.get(toToken.toString()),token.toString(),msg);
+        weSessionMessageUtil.sendMessage(weSessionManager.get(toToken.toString()),token.toString(),msg);
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
         Object token = session.getAttributes().get("token");
         Object toToken = session.getAttributes().get("to");
-        weSessionMessageUtil.sendMessage(WeSessionManager.get(toToken.toString()),
+        weSessionMessageUtil.sendMessage(weSessionManager.get(toToken.toString()),
                 token.toString(),token + " has been taken offline");
-        weSessionManager.remove(token.toString());
+        weSessionManager.offLineMember(token.toString());
     }
 }

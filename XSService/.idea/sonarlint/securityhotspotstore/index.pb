@@ -603,3 +603,9 @@ x
 Hxs-chat/src/main/java/com/xs/assistant/chat/handler/HttpAuthHandler.java,d/3/d3d69c820e366692dd9af7d3a5529d4bb190adbe
 z
 Jxs-chat/src/main/java/com/xs/assistant/chat/util/WeSessionMessageUtil.java,1/3/1364941fd345d08d6c7cec4fb979f6347d26fb9a
+Å
+Qxs-user/src/main/java/com/xs/assistant/service/user/remote/EncryptionService.java,5/d/5d0bf43d18647538cf3ca81ed089ecdefed53305
+t
+Dxs-code/src/main/java/com/xs/assistant/code/service/CodeService.java,c/3/c35fc222b02b41875ea461cf05d65f64baad0890
+ä
+Zxs-account/src/main/java/com/xs/assistant/account/service/fallback/RemoteCodeFallback.java,8/d/8d0db74adf75feaa75968a235924aedb0616a764

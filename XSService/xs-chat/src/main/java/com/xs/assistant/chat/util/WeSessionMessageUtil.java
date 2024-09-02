@@ -26,6 +26,11 @@ public class WeSessionMessageUtil {
         this.jsonUtil = jsonUtil;
     }
 
+    public void sendMessage(WebSocketSession session,String msg) throws IOException {
+        sendMessage(new ChatMember("none","none",session,ChatMemberSessionStatus.OFF_LINE,null),
+                "Server",msg);
+    }
+
     public void sendMessage(ChatMember member,String sender,String message) throws IOException {
         String msg = jsonUtil.beanToJson(new ChatMessageDTO(message,member.getMemberId(),sender, LocalDateTime.now()));
         if(member.getStatus() == ChatMemberSessionStatus.ON_LINE)

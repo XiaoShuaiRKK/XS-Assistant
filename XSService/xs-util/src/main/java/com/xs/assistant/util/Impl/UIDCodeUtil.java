@@ -77,7 +77,11 @@ public class UIDCodeUtil extends AbstractCodeUtil implements IAssistantUtil {
         static {
             createCodeMap.put(CreateCodeType.ACCOUNT,((count, size) -> {
                 String date = DateUtil.getNowStr("yyyyMMdd");
-                String id = createSpCode((int) count);
+                //待优化 建议使用雪花算法生成
+                String id = String.valueOf(count);
+                if(count > 9999){
+                    id = createSpCode((int) count);
+                }
                 return "XS" + date + "0".repeat(Math.max(0,size - id.length() - 10)) + id;
             }));
             createCodeMap.put(CreateCodeType.ARTICLE,(count,size) -> createSnowflakeDistributeCode("XSA",count,size));

@@ -1,13 +1,11 @@
 
-^
-java:S38241"HReplace this "Map.containsKey()" with a call to "Map.computeIfAbsent()".(Ô’Ä–
-[
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¦Òª³
-Z
-java:S1128"?Remove this unused import 'com.xs.DAO.DO.chat.ChatGroupMember'.(ôÑ£òıÿÿÿÿ
-e
-java:S1128"JRemove this unused import 'com.xs.assistant.chat.config.WeSessionManager'.(¤Öäÿÿÿÿÿÿ
-C
-java:S1128	".Remove this unused import 'jakarta.json.Json'.(‡Ñ¥T
-b
-java:S1128"LRemove this unused import 'org.springframework.web.socket.WebSocketSession'.(®Ÿ¿Ã
+„
+java:S38246"HReplace this "Map.containsKey()" with a call to "Map.computeIfAbsent()".(Ô’Ä–J$9173fb5c-c39d-4ed8-98c0-d1d1ca0a73b4
+
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¦Òª³J$ee59b111-e949-4cae-ae2e-c1f917b0fbb8
+a
+java:S1128"?Remove this unused import 'com.xs.DAO.DO.chat.ChatGroupMember'.(ôÑ£òıÿÿÿÿ8ºşÈ–›2
+l
+java:S1128"JRemove this unused import 'com.xs.assistant.chat.config.WeSessionManager'.(¤Öäÿÿÿÿÿÿ8ºşÈ–›2
+J
+java:S1128	".Remove this unused import 'jakarta.json.Json'.(‡Ñ¥T8»şÈ–›2

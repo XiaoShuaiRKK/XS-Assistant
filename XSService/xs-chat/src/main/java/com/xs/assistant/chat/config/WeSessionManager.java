@@ -32,7 +32,23 @@ public class WeSessionManager {
         }
     }
 
-    public static ChatMember get(String key){
+    public void onLineMember(String token,WebSocketSession session){
+        ChatMember member = get(token);
+        member.setSession(session);
+        member.setStatus(ChatMemberSessionStatus.ON_LINE);
+    }
+
+    public void offLineMember(String token) {
+        ChatMember member = SESSION_POOL.get(token);
+        member.setSession(null);
+        member.setStatus(ChatMemberSessionStatus.OFF_LINE);
+    }
+
+    public boolean containsMember(String token){
+        return SESSION_POOL.containsKey(token);
+    }
+
+    public ChatMember get(String key){
         return SESSION_POOL.get(key);
     }
 }

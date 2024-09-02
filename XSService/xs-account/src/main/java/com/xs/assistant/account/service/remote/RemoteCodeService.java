@@ -1,6 +1,7 @@
 package com.xs.assistant.account.service.remote;
 
 import com.xs.DAO.ResponseResult;
+import com.xs.assistant.account.service.fallback.RemoteCodeFallback;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
-@FeignClient(value = "XS-CODE",path = "/xs_assistant")
+@FeignClient(value = "XS-CODE",path = "/xs_assistant",fallback = RemoteCodeFallback.class)
 public interface RemoteCodeService {
     @PostMapping("/code/send")
     ResponseResult<String> sendCode(@Valid @Email(message = "invalid email")
