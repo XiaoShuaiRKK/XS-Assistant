@@ -609,3 +609,7 @@ t
 Dxs-code/src/main/java/com/xs/assistant/code/service/CodeService.java,c/3/c35fc222b02b41875ea461cf05d65f64baad0890
 Š
 Zxs-account/src/main/java/com/xs/assistant/account/service/fallback/RemoteCodeFallback.java,8/d/8d0db74adf75feaa75968a235924aedb0616a764
+?
+xs-chat/pom.xml,3/7/37817ad45f52594c5f892e4d2e3ce843b2f3e9c2
+v
+Fxs-chat/src/main/java/com/xs/assistant/chat/remote/UserInfoRemote.java,3/c/3c091bd1a860f31ffef7076487f9dcc3560e1a23

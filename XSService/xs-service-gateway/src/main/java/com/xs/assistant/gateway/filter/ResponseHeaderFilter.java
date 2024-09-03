@@ -18,7 +18,11 @@ public class ResponseHeaderFilter extends BaseFilter implements GlobalFilter, Or
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         return chain.filter(exchange)
                 .then(Mono.fromRunnable(
-                        () -> exchange.getResponse().getHeaders().add("XS-Assistant-Project-Version",projectVersion)
+                        () -> {
+                            if(!exchange.getResponse().isCommitted()){
+                                exchange.getResponse().getHeaders().add("XS-Assistant-Project-Version",projectVersion);
+                            }
+                        }
                 ));
     }
 

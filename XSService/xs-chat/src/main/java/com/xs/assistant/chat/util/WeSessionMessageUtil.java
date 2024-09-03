@@ -20,14 +20,14 @@ public class WeSessionMessageUtil {
 
     final JsonUtil jsonUtil;
 
-    private final static Map<String,Stack<String>> MSG_BOX = new HashMap<>();
+    private static final Map<String,Stack<String>> MSG_BOX = new HashMap<>();
 
     public WeSessionMessageUtil(JsonUtil jsonUtil) {
         this.jsonUtil = jsonUtil;
     }
 
     public void sendMessage(WebSocketSession session,String msg) throws IOException {
-        sendMessage(new ChatMember("none","none",session,ChatMemberSessionStatus.OFF_LINE,null),
+        sendMessage(new ChatMember("none","none",session,ChatMemberSessionStatus.ON_LINE,null),
                 "Server",msg);
     }
 

@@ -17,6 +17,9 @@ import java.time.LocalDateTime;
 @Slf4j
 public class HttpAuthHandler extends TextWebSocketHandler {
 
+    private static final String PARAM_UID = "uid";
+    private static final String PARAM_TO_UID = "to_uid";
+
     final WeSessionManager weSessionManager;
     final WeSessionMessageUtil weSessionMessageUtil;
 
@@ -27,13 +30,14 @@ public class HttpAuthHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws IOException {
-        Object token = session.getAttributes().get("token");
-        Object toToken = session.getAttributes().get("to");
+        Object token = session.getAttributes().get(PARAM_UID);
+        Object toToken = session.getAttributes().get(PARAM_TO_UID);
         if(token != null && toToken != null){
             String tokenStr = token.toString();
             String toTokenStr = toToken.toString();
             if(!weSessionManager.containsMember(tokenStr)){
                 weSessionManager.add(tokenStr,toTokenStr,session);
+                weSessionMessageUtil.sendMessage(session, LocalDateTime.now().toString());
                 return;
             }
             weSessionManager.onLineMember(tokenStr,session);
@@ -53,16 +57,16 @@ public class HttpAuthHandler extends TextWebSocketHandler {
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         String msg = message.getPayload();
-        Object token = session.getAttributes().get("token");
-        Object toToken = session.getAttributes().get("to");
+        Object token = session.getAttributes().get(PARAM_UID);
+        Object toToken = session.getAttributes().get(PARAM_TO_UID);
         log.info("Sever : " + token + " ----- Message : " + msg);
         weSessionMessageUtil.sendMessage(weSessionManager.get(toToken.toString()),token.toString(),msg);
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        Object token = session.getAttributes().get("token");
-        Object toToken = session.getAttributes().get("to");
+        Object token = session.getAttributes().get(PARAM_UID);
+        Object toToken = session.getAttributes().get(PARAM_TO_UID);
         weSessionMessageUtil.sendMessage(weSessionManager.get(toToken.toString()),
                 token.toString(),token + " has been taken offline");
         weSessionManager.offLineMember(token.toString());

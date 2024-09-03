@@ -1,11 +1,9 @@
 
 „
-java:S38246"HReplace this "Map.containsKey()" with a call to "Map.computeIfAbsent()".(Ô’Ä–J$9173fb5c-c39d-4ed8-98c0-d1d1ca0a73b4
-
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¦Òª³J$ee59b111-e949-4cae-ae2e-c1f917b0fbb8
-a
-java:S1128"?Remove this unused import 'com.xs.DAO.DO.chat.ChatGroupMember'.(ôÑ£òıÿÿÿÿ8ºşÈ–›2
-l
-java:S1128"JRemove this unused import 'com.xs.assistant.chat.config.WeSessionManager'.(¤Öäÿÿÿÿÿÿ8ºşÈ–›2
-J
-java:S1128	".Remove this unused import 'jakarta.json.Json'.(‡Ñ¥T8»şÈ–›2
+java:S38246"HReplace this "Map.containsKey()" with a call to "Map.computeIfAbsent()".(Ô’Ä–J$5372532e-9b4f-4db1-b6c4-efbe76dbc907
+‡
+java:S1128"?Remove this unused import 'com.xs.DAO.DO.chat.ChatGroupMember'.(ôÑ£òıÿÿÿÿ8ºşÈ–›2J$a81e5775-e17f-4a39-91c8-6ec8345b3200
+’
+java:S1128"JRemove this unused import 'com.xs.assistant.chat.config.WeSessionManager'.(¤Öäÿÿÿÿÿÿ8ºşÈ–›2J$281301b0-89af-426f-954c-125869fc7239
+p
+java:S1128	".Remove this unused import 'jakarta.json.Json'.(‡Ñ¥T8»şÈ–›2J$99e9feef-0f89-4c00-9d9f-505d14143a80

@@ -5,6 +5,19 @@ server:
 spring:
   application:
     name: xs-chat
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 5050
+      jedis:
+        pool:
+          enabled: true
+          max-active: -1
+          max-wait: 8s
+          max-idle: 100
+          min-idle: 0
+      timeout: 2400
+      password: xs0628
 eureka:
   client:
     register-with-eureka: true

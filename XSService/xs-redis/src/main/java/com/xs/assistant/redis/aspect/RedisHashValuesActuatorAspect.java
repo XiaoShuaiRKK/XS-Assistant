@@ -16,7 +16,7 @@ public class RedisHashValuesActuatorAspect extends RedisHashActuatorAspect {
         KeyEntry keyEntry = getSpELKeyByRedisHash(joinPoint,redisSetHashValues);
         String realKey;
         boolean isIDNumber = checkIDNumber(keyEntry.getKey());
-        if(redisUtil.hasKey(keyEntry.getKeyName(),keyEntry.getKey())){
+        if(redisUtil.hasHashKey(keyEntry.getKeyName(),keyEntry.getKey())){
             if(isIDNumber)
                 return redisUtil.getHash(redisSetHashValues.baseKey(),keyEntry.getKey());
             realKey = (String) redisUtil.getHash(keyEntry.getKeyName(),keyEntry.getKey());

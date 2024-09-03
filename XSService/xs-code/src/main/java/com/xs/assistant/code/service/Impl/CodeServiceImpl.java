@@ -36,7 +36,7 @@ public class CodeServiceImpl implements CodeService {
     @Override
     public ResponseResult<String> sendCode(String email) {
         String code = codeUtil.createCode(5);
-        if(redisUtil.hasKey(CODE_KEY,email))
+        if(redisUtil.hasHashKey(CODE_KEY,email))
             return ResponseResult.success(null,"已发送,请稍后再试");
         redisUtil.setHash(CODE_KEY,email,code,120L);
         rabbitTemplate.convertAndSend("mailExchange","mail.code",

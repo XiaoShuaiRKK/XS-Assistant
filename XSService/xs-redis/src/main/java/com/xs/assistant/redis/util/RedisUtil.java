@@ -234,7 +234,7 @@ public class RedisUtil {
         return redisTemplate.opsForHash().multiGet(key,List.of(itemKey));
     }
 
-    public boolean hasKey(String key,String itemKey){
+    public boolean hasHashKey(String key,String itemKey){
         return redisTemplate.opsForHash().hasKey(key,itemKey);
     }
 

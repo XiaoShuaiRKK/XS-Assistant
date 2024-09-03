@@ -19,7 +19,7 @@ public class RedisHashActuatorAspect extends RedisAspect {
     @Around("@annotation(redisSetHash)")
     public Object cacheableRedisSet(ProceedingJoinPoint joinPoint, RedisSetHash redisSetHash) throws Throwable {
         KeyEntry keyEntry = getSpELKeyByRedisHash(joinPoint,redisSetHash);
-        if(redisUtil.hasKey(keyEntry.getKeyName(),keyEntry.getKey()))
+        if(redisUtil.hasHashKey(keyEntry.getKeyName(),keyEntry.getKey()))
             return redisUtil.getHash(keyEntry.getKeyName(),keyEntry.getKey());
         Object result = joinPoint.proceed();
         if(result != null)

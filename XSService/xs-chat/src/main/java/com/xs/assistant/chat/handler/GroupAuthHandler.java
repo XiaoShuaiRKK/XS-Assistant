@@ -25,7 +25,7 @@ import java.util.Stack;
 @Component
 public class GroupAuthHandler extends TextWebSocketHandler {
 
-    private static final String PARAMS_TOKEN = "token";
+    private static final String PARAMS_UID = "uid";
     private static final String PARAMS_GROUP = "group";
     private static final String PARAMS_GROUP_ID = "groupId";
 
@@ -39,7 +39,7 @@ public class GroupAuthHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws IOException {
-        String token = session.getAttributes().get(PARAMS_TOKEN).toString();
+        String token = session.getAttributes().get(PARAMS_UID).toString();
         String group = session.getAttributes().get(PARAMS_GROUP).toString();
         String groupId = session.getAttributes().get(PARAMS_GROUP_ID).toString();
         if(StringUtil.isNullOrEmpty(groupId)){
@@ -63,7 +63,7 @@ public class GroupAuthHandler extends TextWebSocketHandler {
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        Object token = session.getAttributes().get(PARAMS_TOKEN);
+        Object token = session.getAttributes().get(PARAMS_UID);
         Object group = session.getAttributes().get(PARAMS_GROUP_ID);
         String msg = message.getPayload();
         if(token != null && group != null){
@@ -85,7 +85,7 @@ public class GroupAuthHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        String token = session.getAttributes().get(PARAMS_TOKEN).toString();
+        String token = session.getAttributes().get(PARAMS_UID).toString();
         String group = session.getAttributes().get(PARAMS_GROUP).toString();
         String groupId = session.getAttributes().get(PARAMS_GROUP_ID).toString();
         if(StringUtil.isNullOrEmpty(groupId))
