@@ -4,7 +4,11 @@ import com.xs.DAO.DO.chat.ChatGroup;
 import com.xs.DAO.DO.chat.ChatGroupMember;
 import com.xs.DAO.option.chat.ChatGroupMemberTypeEnum;
 import com.xs.DAO.option.chat.ChatMemberSessionStatus;
+import com.xs.assistant.redis.util.RedisUtil;
 import com.xs.assistant.util.Impl.UIDCodeUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketSession;
 
@@ -16,12 +20,29 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class GroupSessionManager {
 
+
+    private static final Logger log = LoggerFactory.getLogger(GroupSessionManager.class);
+    final RedisUtil redisUtil;
     final UIDCodeUtil codeUtil;
 
     private static final ConcurrentHashMap<ChatGroup, Map<String, ChatGroupMember>> GROUP_POOL = new ConcurrentHashMap<>();
     private static final HashMap<String,String> TEMP_ID_POOL = new HashMap<>();
+    private static final String GROUP_POOL_KEY = "chat:group";
 
-    public GroupSessionManager(UIDCodeUtil codeUtil) {
+    /**
+     * 定时保存到redis中
+     */
+    @Scheduled(cron = "0 0/1 * * * ?")
+    public void scheduleSaveRedis(){
+        log.info("定时保存群组信息到redis中");
+        redisUtil.pipeline(connection -> {
+            GROUP_POOL.forEach((group, members) -> redisUtil.setHashMap(GROUP_POOL_KEY + ":" + group.getGroupId(), members));
+            return null;
+        });
+    }
+
+    public GroupSessionManager(RedisUtil redisUtil, UIDCodeUtil codeUtil) {
+        this.redisUtil = redisUtil;
         this.codeUtil = codeUtil;
     }
 
@@ -93,7 +114,10 @@ public class GroupSessionManager {
     }
 
     public Map<String,ChatGroupMember> getGroupMember(String groupId){
-        return GROUP_POOL.get(ChatGroup.builder().groupId(groupId).build());
+        if(GROUP_POOL.containsKey(ChatGroup.builder().groupId(groupId).build())){
+            return GROUP_POOL.get(ChatGroup.builder().groupId(groupId).build());
+        }
+        return redisUtil.getHashAll(GROUP_POOL_KEY + ":" + groupId);
     }
 
     public Map<String,ChatGroupMember> deleteGroup(String groupId){

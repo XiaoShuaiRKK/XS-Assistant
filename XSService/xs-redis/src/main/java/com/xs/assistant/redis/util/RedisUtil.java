@@ -114,15 +114,15 @@ public class RedisUtil {
         return true;
     }
 
-    public boolean setHashMap(String key,Map<String,Object> value){
+    public <T> boolean setHashMap(String key,Map<String,T> value){
         return setHashMap(key,value,DEFAULT_EXPIRE_TIME);
     }
 
-    public boolean setHashMap(String key,Map<String,Object> value,Long time){
+    public <T> boolean setHashMap(String key,Map<String,T> value,Long time){
         return setHashMap(key,value,time,TimeUnit.SECONDS);
     }
 
-    public boolean setHashMap(String key, Map<String,Object> value,Long time,TimeUnit timeUnit){
+    public <T> boolean setHashMap(String key, Map<String,T> value,Long time,TimeUnit timeUnit){
         try {
             redisTemplate.opsForHash().putAll(key,value);
             setExpire(key,time,timeUnit);
@@ -208,6 +208,10 @@ public class RedisUtil {
 
     public Long increment(String key,long delta){
         return redisTemplate.opsForValue().increment(key,delta);
+    }
+
+    public <K,V> Map<K,V> getHashAll(String key){
+        return (Map<K, V>) redisTemplate.opsForHash().entries(key);
     }
 
     public Object get(String key){
@@ -299,4 +303,7 @@ public class RedisUtil {
         ));
     }
 
+    public void pipeline(RedisCallback<?> callback){
+        redisTemplate.executePipelined(callback);
+    }
 }

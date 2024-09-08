@@ -1,10 +1,8 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñ·“şÿÿÿÿ8ê®åÚõ1J$2b947c15-98e0-4bd6-b7c2-a1cf9b6e8fd3
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñ·“şÿÿÿÿ8ê®åÚõ1J$09b45735-a31c-4644-8477-88dcb42d6747
 ‹
-java:S6355W"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8ö®åÚõ1J$f40a2bc4-fbae-43bf-bd82-0bea3501b7b2
+java:S6355V"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8ö®åÚõ1J$4fa7cae6-c4d0-42d4-90cf-836f3f9dc6bc
 x
-java:S1133X"5Do not forget to remove this deprecated code someday.(´¼Óá8ö®åÚõ1J$a6ed730f-ba36-442b-bae0-e0a973e4d37e
+java:S1133W"5Do not forget to remove this deprecated code someday.(´¼Óá8ö®åÚõ1J$02beb522-8ce4-49a9-8bdc-e6126857fa50
 k
-java:S1123X"(Add the missing @deprecated Javadoc tag.(´¼Óá8ö®åÚõ1J$97af9653-aa61-4451-b2ab-7a83aa0f5310
-›
-java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8û¯ªàõ1J$28df7af9-7805-40e7-b302-161349961aee
+java:S1123W"(Add the missing @deprecated Javadoc tag.(´¼Óá8ö®åÚõ1J$998142f4-743c-49b4-8fcf-a94be8565684

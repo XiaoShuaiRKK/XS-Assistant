@@ -8,12 +8,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.socket.WebSocketSession;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Stack;
 
 @Data
 @NoArgsConstructor
-public class ChatGroupMember extends ChatMember {
+public class ChatGroupMember extends ChatMember implements Serializable {
     private String groupId;
     private ChatGroupMemberTypeEnum memberType;
     public ChatGroupMember(String memberId, String groupId,

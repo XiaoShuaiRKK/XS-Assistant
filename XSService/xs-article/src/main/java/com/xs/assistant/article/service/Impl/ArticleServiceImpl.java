@@ -67,7 +67,7 @@ public class ArticleServiceImpl implements ArticleService {
     @CircuitBreaker(name = "article-mongodb",fallbackMethod = "mongodbFail")
     @Transactional(rollbackFor = Exception.class)
     public ResponseResult<ArticleVO> findArticleByArticleId(String articleId) {
-        if (redisUtil.hasKey(REDIS_ARTICLE_ID_KEY,articleId))
+        if (redisUtil.hasHashKey(REDIS_ARTICLE_ID_KEY,articleId))
             return ResponseResult.success((ArticleVO) redisUtil.getHash(REDIS_ARTICLE_ID_KEY,articleId));
         Optional<ArticleContext> article = articleRepository.findById(articleId);
         return article.map(articleMongoDO -> findArticleById(articleMongoDO)

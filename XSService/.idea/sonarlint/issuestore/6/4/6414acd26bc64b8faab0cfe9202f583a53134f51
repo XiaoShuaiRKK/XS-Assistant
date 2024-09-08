@@ -1,0 +1,14 @@
+
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§İ¯üÿÿÿÿJ$460f7e4d-6b09-4d11-ab27-e5d7b9f120f8
+€
+java:S2259""DA "NullPointerException" could be thrown; "member" is nullable here.(ßÏ¼‡J$8807ba2d-6e2e-481b-b504-5f8f6f5172c9
+Œ
+java:S1206"PThis class overrides "equals()" and should therefore also override "hashCode()".(ÜÑãJ$522beb0f-3dd7-4085-ad59-0f972315be20
+Œ
+java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(¿ëûıJ$66ff40e1-b31a-4477-8fba-9a590a234fdf
+[
+java:S2097"Add a type test to this method.(ÜÑãJ$1234ea85-c243-4276-81ef-b85ecbbcb4c6
+w
+java:S1128"6Remove this unused import 'lombok.AllArgsConstructor'.(´œ¾öùÿÿÿÿJ$5f006334-fa16-4eb9-b5f4-1619f862efcf
+g
+java:S1128"+Remove this unused import 'lombok.Builder'.(§’ĞßJ$4af0dc84-7e69-4672-b0be-9d5e3b00c473

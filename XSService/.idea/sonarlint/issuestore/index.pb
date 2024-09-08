@@ -613,3 +613,7 @@ Zxs-account/src/main/java/com/xs/assistant/account/service/fallback/RemoteCodeFa
 xs-chat/pom.xml,3/7/37817ad45f52594c5f892e4d2e3ce843b2f3e9c2
 v
 Fxs-chat/src/main/java/com/xs/assistant/chat/remote/UserInfoRemote.java,3/c/3c091bd1a860f31ffef7076487f9dcc3560e1a23
+†
+Vxs-article/src/main/java/com/xs/assistant/article/service/Impl/ArticleServiceImpl.java,0/8/08ae3792053ce53057a07b118ec20ed258abbda1
+m
+=xs-bean/src/main/java/com/xs/DAO/DO/chat/ChatGroupMember.java,6/4/6414acd26bc64b8faab0cfe9202f583a53134f51

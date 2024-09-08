@@ -44,7 +44,7 @@ public class LikedServiceImpl extends AbstractLikedService implements LikedServi
     @CircuitBreaker(name = "liked-api",fallbackMethod = "fallLiked")
     public ResponseResult<Integer> likedByArticleId(String articleId, String accountId) {
         String key = LIKED_KEY + articleId;
-        if(redisUtil.hasKey(key, accountId))
+        if(redisUtil.hasHashKey(key, accountId))
             return hasLikedByAccount();
         if(Boolean.FALSE.equals(accountService.checkCustomerByID(accountId).getData()))
             return userNotExist();
@@ -65,7 +65,7 @@ public class LikedServiceImpl extends AbstractLikedService implements LikedServi
     @CircuitBreaker(name = "liked-api",fallbackMethod = "fallLiked")
     public ResponseResult<Integer> unLikedByArticleId(String articleId, String accountId) {
         String key = LIKED_KEY + articleId;
-        if(!redisUtil.hasKey(key,accountId))
+        if(!redisUtil.hasHashKey(key,accountId))
             return hasUnLikedByAccount();
         if(Boolean.FALSE.equals(articleHotRemoteService.cancelLiked(articleId)))
             return fallLiked(new RuntimeException());
