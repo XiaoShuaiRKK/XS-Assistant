@@ -6,11 +6,13 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication(scanBasePackages = "com.xs.assistant")
 @EnableMongoRepositories//要使用该注解开启对MongoRepositories的支持
 @EnableFeignClients
 @EnableElasticsearchRepositories(basePackages = "com.xs.assistant.article")
+@EnableAsync
 public class ArticleApplication {
     public static void main(String[] args) {
         SpringApplication.run(ArticleApplication.class,args);

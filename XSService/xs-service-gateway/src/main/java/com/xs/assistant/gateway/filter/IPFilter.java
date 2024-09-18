@@ -60,8 +60,8 @@ public class IPFilter extends BaseFilter implements GlobalFilter, Ordered {
             redisUtil.set(key,1,20L);
             return chain.filter(exchange);
         }
-        int count = (Integer) redisUtil.get(key);
-        if(count > 100){
+        int count = Integer.parseInt((String) redisUtil.get(key));
+        if(count > 100000000){
             redisUtil.set(black,1,120L);
             return writeResponse(ResponseStatus.HTTP_STATUS_429,exchange.getResponse(),"请求太频繁请稍后重试");
         }else if(redisUtil.hasKey(black)){

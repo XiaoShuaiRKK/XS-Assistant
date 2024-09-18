@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
 @RestController
 @RequestMapping("/insert")
 @Validated
@@ -26,6 +31,23 @@ public class ArticleInsertController {
      */
     @PostMapping("/addArticle")
     public ResponseResult<Boolean> addArticle(@RequestBody ArticleContext article){
-        return addArticle.addArticle(article);
+        try {
+            return addArticle.addArticle(article).get() ? ResponseResult.success(true,"success")
+                    : ResponseResult.error(false,"error");
+        } catch (Exception e) {
+            return ResponseResult.error(false,e.getMessage());
+        }
+    }
+
+    @PostMapping("/batch/add/articles")
+    public ResponseResult<Boolean> batchAddArticle(@RequestBody List<ArticleContext> articles) throws ExecutionException, InterruptedException {
+        List<Future<Boolean>> futures = new ArrayList<>();
+        articles.forEach(articleContext -> futures.add(addArticle.addArticle(articleContext)));
+        for (Future<Boolean> future : futures) {
+            if (Boolean.FALSE.equals(future.get())) {
+                return ResponseResult.error(false,"error");
+            }
+        }
+        return ResponseResult.success(true,"success");
     }
 }

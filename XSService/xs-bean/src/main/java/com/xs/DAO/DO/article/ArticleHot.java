@@ -23,6 +23,6 @@ public class ArticleHot implements Serializable {
     private Long commentNum;
     private Long starNum;
     private Long likedNum;
-    @TableField("CreateTime")
+    @TableField("create_time")
     private Date createTime;
 }

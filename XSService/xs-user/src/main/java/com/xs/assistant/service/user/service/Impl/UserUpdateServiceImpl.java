@@ -41,7 +41,7 @@ public class UserUpdateServiceImpl implements UserUpdateService {
     }
 
     @Override
-//    @Retry(name = "user-customer-register-api",fallbackMethod = "systemFailHandler")
+    @Retry(name = "user-customer-register-api",fallbackMethod = "systemFailHandler")
     @Transactional(rollbackFor = Exception.class)
     public ResponseResult<Boolean> registerCustomer(CustomerDO customer) {
         boolean rs = registerAccount(customer, AccountLevelEnum.ACCOUNT.ordinal());

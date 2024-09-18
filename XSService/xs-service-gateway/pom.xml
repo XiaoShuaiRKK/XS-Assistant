@@ -15,6 +15,12 @@
             <groupId>com.xs.assistant</groupId>
             <artifactId>xs-bean</artifactId>
             <version>1.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.xs.assistant</groupId>
