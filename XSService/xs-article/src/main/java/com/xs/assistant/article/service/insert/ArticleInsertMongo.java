@@ -1,41 +1,32 @@
-package com.xs.assistant.article.service.Impl;
+package com.xs.assistant.article.service.insert;
 
+import com.xs.DAO.DO.article.Article;
 import com.xs.DAO.DO.article.ArticleContext;
-import com.xs.DAO.factory.ArticleFactory;
-import com.xs.assistant.article.DAO.ArticleDAO;
 import com.xs.assistant.article.DAO.ArticleMongodbRepository;
-import com.xs.assistant.article.service.ArticleAddAsyncService;
+import com.xs.assistant.article.service.Impl.ArticleAmqp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.concurrent.Future;
 
+@Service("articleInsertMongo")
 @Slf4j
-@Service
-public class ArticleAddAsyncServiceImpl implements ArticleAddAsyncService {
+public class ArticleInsertMongo implements ArticleInsert,ArticleBatchInsert {
+
     final ArticleAmqp articleAmqp;
     final ArticleMongodbRepository articleRepository;
-    final ArticleDAO articleDAO;
 
-    public ArticleAddAsyncServiceImpl(ArticleAmqp articleAmqp, ArticleMongodbRepository articleRepository, ArticleDAO articleDAO) {
+    public ArticleInsertMongo(ArticleAmqp articleAmqp, ArticleMongodbRepository articleRepository) {
         this.articleAmqp = articleAmqp;
         this.articleRepository = articleRepository;
-        this.articleDAO = articleDAO;
     }
 
+    @Override
     @Async("articleInsertAsyncExecutor")
-    public Future<Boolean> insertArticleMysql(ArticleContext article){
-        long startTime = System.currentTimeMillis();
-        boolean result = articleDAO.insertArticle(ArticleFactory.defaultArticle(article.getAuthorId(),article.getId())) > 0;
-        //mysql
-        log.info("Insert Mysql Spend Time:" + (System.currentTimeMillis() - startTime));
-        return AsyncResult.forValue(result);
-    }
-
-    @Async("articleInsertAsyncExecutor")
-    public Future<Boolean> insertArticleMongo(ArticleContext article){
+    public Future<Boolean> insertArticle(ArticleContext article) {
         long startTime = System.currentTimeMillis();
         //mongodb
         articleRepository.insert(article);
@@ -50,5 +41,12 @@ public class ArticleAddAsyncServiceImpl implements ArticleAddAsyncService {
         articleAmqp.uploadArticle(article);
         //添加文章对应的热度表
         articleAmqp.insertHotArticle(article.getId());
+    }
+
+    @Override
+    @Async("articleInsertAsyncExecutor")
+    public Future<Boolean> batchInsert(List<ArticleContext> articles) {
+        articles.forEach(this::insertArticle);
+        return AsyncResult.forValue(true);
     }
 }

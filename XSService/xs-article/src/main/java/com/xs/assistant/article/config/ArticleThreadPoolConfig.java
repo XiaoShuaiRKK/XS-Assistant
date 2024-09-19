@@ -13,11 +13,11 @@ public class ArticleThreadPoolConfig {
     private final int insertMaxPoolSize = 500;
     private final int keepAliveTime = 600;
     private final int queueCapacity = 500;
-    private final String insertNamePrefix = "ArticleInsertThreadPool";
+    private final String insertNamePrefix = "A-I-Thread";
 
     private final int corePoolSize = 20;
     private final int maxPoolSize = 200;
-    private final String namePrefix = "ArticleThreadPool";
+    private final String namePrefix = "A-Thread";
 
 
     @Bean(name = "articleAsyncExecutor")
