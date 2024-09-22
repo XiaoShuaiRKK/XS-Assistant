@@ -43,17 +43,18 @@ public class ArticleInsertController {
 
     @PostMapping("/batch/add/articles")
     public ResponseResult<Boolean> batchAddArticle(@RequestBody List<ArticleContext> articles) throws ExecutionException, InterruptedException {
-        List<Future<Boolean>> futures = new ArrayList<>();
-        long start = System.currentTimeMillis();
-        articles.forEach(articleContext -> futures.add(addArticle.addArticle(articleContext)));
-        log.info("Batch Add Spend: " + (System.currentTimeMillis() - start));
-        start = System.currentTimeMillis();
-        for (Future<Boolean> future : futures) {
-            if (Boolean.FALSE.equals(future.get())) {
-                return ResponseResult.error(false,"error");
-            }
-        }
-        log.info("Get Result Spend: " + (System.currentTimeMillis() - start));
-        return ResponseResult.success(true,"success");
+//        List<Future<Boolean>> futures = new ArrayList<>();
+//        long start = System.currentTimeMillis();
+//        articles.forEach(articleContext -> futures.add(addArticle.addArticle(articleContext)));
+//        log.info("Batch Add Spend: " + (System.currentTimeMillis() - start));
+//        start = System.currentTimeMillis();
+//        for (Future<Boolean> future : futures) {
+//            if (Boolean.FALSE.equals(future.get())) {
+//                return ResponseResult.error(false,"error");
+//            }
+//        }
+//        log.info("Get Result Spend: " + (System.currentTimeMillis() - start));
+        Future<Boolean> booleanFuture = addArticle.batchAddArticle(articles);
+        return booleanFuture.get() ? ResponseResult.success(true,"success") : ResponseResult.fail(false,"fail");
     }
 }

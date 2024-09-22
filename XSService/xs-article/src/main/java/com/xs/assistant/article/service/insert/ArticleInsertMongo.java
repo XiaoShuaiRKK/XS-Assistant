@@ -14,7 +14,7 @@ import java.util.concurrent.Future;
 
 @Service("articleInsertMongo")
 @Slf4j
-public class ArticleInsertMongo implements ArticleInsert,ArticleBatchInsert {
+public class ArticleInsertMongo implements ArticleInsert {
 
     final ArticleAmqp articleAmqp;
     final ArticleMongodbRepository articleRepository;

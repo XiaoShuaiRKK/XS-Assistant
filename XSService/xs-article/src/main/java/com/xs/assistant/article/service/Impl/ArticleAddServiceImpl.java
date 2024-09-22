@@ -9,9 +9,7 @@ import com.xs.assistant.article.DAO.ArticleMongodbRepository;
 import com.xs.assistant.article.DAO.ArticleSearchRepository;
 import com.xs.assistant.article.service.ArticleAddAsyncService;
 import com.xs.assistant.article.service.ArticleAddService;
-import com.xs.assistant.article.service.insert.ArticleBatchInsert;
-import com.xs.assistant.article.service.insert.ArticleInsert;
-import com.xs.assistant.article.service.insert.ArticleInsertMongo;
+import com.xs.assistant.article.service.insert.*;
 import com.xs.assistant.util.Impl.UIDCodeUtil;
 import com.xs.assistant.util.uid.Impl.SnowflakeDistributeId;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -25,7 +23,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Future;
 
@@ -41,12 +38,12 @@ public class ArticleAddServiceImpl implements ArticleAddService {
     final UIDCodeUtil codeUtil;
     final ArticleSearchRepository articleSearchRepository;
     final SnowflakeDistributeId snowflakeDistributeId;
-    final ArticleInsertMongo mongoInsertService;
-    final ArticleBatchInsert mysqlBatchInsertService;
+    final ArticleInsert mongoInsertService;
+    final ArticleInsert mysqlBatchInsertService;
 
     public ArticleAddServiceImpl(UIDCodeUtil codeUtil, ArticleSearchRepository articleSearchRepository,
-                                 @Qualifier("articleInsertMongo") ArticleInsertMongo mongoInsertService,
-                                 @Qualifier("articleBatchInsertMysql") ArticleBatchInsert mysqlBatchInsertService) {
+                                 @Qualifier("articleInsertMongo") ArticleInsert mongoInsertService,
+                                 @Qualifier("articleInsertMysql") ArticleInsert mysqlBatchInsertService) {
         this.codeUtil = codeUtil;
         this.articleSearchRepository = articleSearchRepository;
         this.mongoInsertService = mongoInsertService;
@@ -72,7 +69,7 @@ public class ArticleAddServiceImpl implements ArticleAddService {
             article.setId(articleId);
             article.setHot(0D);
             article.setStateId(1);
-            Future<Boolean> rsMysql = mysqlBatchInsertService.batchInsert(List.of(article));
+            Future<Boolean> rsMysql = mysqlBatchInsertService.insertArticle(article);
             Future<Boolean> rsMongo = mongoInsertService.insertArticle(article);
             boolean rs = rsMysql.get() && rsMongo.get();
             log.info("Article Add Spend Time: " + (System.currentTimeMillis() - startTime));
@@ -85,11 +82,13 @@ public class ArticleAddServiceImpl implements ArticleAddService {
     }
 
     @Override
+    @CircuitBreaker(name = "article-mongodb",fallbackMethod = "failMethod")
+    @Transactional(rollbackFor = Exception.class)
+    @Async("articleAsyncExecutor")
     public Future<Boolean> batchAddArticle(List<ArticleContext> articles) {
         long startTime = System.currentTimeMillis();
         try {
             articles.forEach(article -> {
-                //根据雪花算法生成唯一ID
                 String articleId = codeUtil.createCode(UIDCodeUtil.CreateCodeType.ARTICLE,
                         snowflakeDistributeId.nextId(),MYSQL_DEFAULT_ID_SIZE);
                 article.setId(articleId);

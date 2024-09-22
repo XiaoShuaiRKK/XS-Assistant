@@ -9,6 +9,8 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Future;
 
 @Service("articleInsertMysql")
@@ -29,5 +31,14 @@ public class ArticleInsertMysql implements ArticleInsert {
         //mysql
         log.info("Insert Mysql Spend Time:" + (System.currentTimeMillis() - startTime));
         return AsyncResult.forValue(result);
+    }
+
+    @Override
+    @Async("articleInsertAsyncExecutor")
+    public Future<Boolean> batchInsert(List<ArticleContext> articles) {
+        List<Article> articleList = new ArrayList<>();
+        articles.forEach(article -> articleList.add(ArticleFactory.defaultArticle(article.getAuthorId(),article.getId())));
+        boolean rs = articleDAO.insertArticleBatch(articleList) > 0;
+        return new AsyncResult<>(rs);
     }
 }
