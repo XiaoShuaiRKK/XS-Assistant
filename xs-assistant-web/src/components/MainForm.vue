@@ -14,24 +14,25 @@ import ProductCardWidget from "@/components/Components/Widget/ProductCardWidget.
           <img src="../assets/Img/Logo/XS-LOGO.png" alt="">
         </div>
         <div class="nav-header-btn">
-          <div class="nav-header-btn_inner">
+          <div class="nav-header-btn_inner" id="nav-header-btn-line-box" @click="lineAnimal">
             <div/>
             <div/>
           </div>
         </div>
         <div class="nav-header-share">
-          <a v-if="userInfo.idNumber === ''" @click="$router.push('login')" class="link-line">
+          <a v-if="this.userInfo.idNumber === ''" @click="$router.push('login')" class="link-line">
             <p>
               Join us
             </p>
           </a>
-          <a id="main-account-info" v-if="userInfo.idNumber !== ''">
-            <span>{{userInfo.firstName}}</span>
-            <span>{{userInfo.lastName}}</span>
+          <a id="main-account-info" v-if="this.userInfo.idNumber !== ''">
+            <p>{{userInfo.firstName}}</p>
+            <br/>
+            <p>{{userInfo.lastName}}</p>
           </a>
         </div>
       </el-aside>
-      <el-container class="main-main-box">
+      <div class="main-main-box">
         <div class="circle-box"/>
         <BackgroundComponent/>
         <div class="main-title">
@@ -56,7 +57,7 @@ import ProductCardWidget from "@/components/Components/Widget/ProductCardWidget.
 
           </div>
         </div>
-      </el-container>
+      </div>
     </el-container>
   </div>
 </template>
@@ -66,7 +67,10 @@ import store from "@/static/js/Util/store.js";
 
 export default {
   setup(){
+  },
+  created(){
     this.userInfo = store.getters.getUser
+    console.log(this.userInfo)
   },
   data(){
     return{
@@ -79,6 +83,11 @@ export default {
         idNumber:'',
         areaId:0
       }
+    }
+  },
+  methods: {
+    lineAnimal(){
+      document.getElementById('nav-header-btn-line-box').classList.toggle('animate')
     }
   }
 }

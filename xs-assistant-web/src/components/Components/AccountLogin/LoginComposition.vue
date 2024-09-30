@@ -4,27 +4,28 @@
 
 <template>
 <div class="composition-login-box">
-  <div class="composition-login-ele email">
-    <p>电子邮箱</p>
-    <input v-model="loginParams.email" type="text"
-           class="login-input" placeholder="Your Email"/>
+  <div class="login-out-box">
+    <el-text class="login-box-title">Email</el-text>
+    <el-input v-model="this.loginParams.email" 
+      placeholder="Please input Email"
+      class="login-box login-email"/>
   </div>
-  <div class="composition-login-ele password">
-    <p>密码</p>
-    <input v-model="loginParams.password" type="text"
-           class="login-input" placeholder="Your Password"/>
+  <div class="login-out-box">
+    <el-text class="login-box-title">Password</el-text>
+    <el-input v-model="this.loginParams.password" 
+      placeholder="Please input password"
+      show-password
+      class="login-box login-email"/>
   </div>
-  <div class="composition-login-ele button">
-    <div class="login-button login" @click="login()">
-      <span>
-        现在登录
-      </span>
-    </div>
-    <div class="login-button register">
-      <span>
-        还没有账户？注册
-      </span>
-    </div>
+  <div class="login-out-box login-button-box">
+    <el-button type="primary"
+      @click="login"
+      class="login-button" round>
+      登录
+    </el-button>
+    <el-button class="login-button" round>
+      没有账号?现在注册
+    </el-button>
   </div>
 </div>
 </template>
@@ -33,55 +34,33 @@
 .composition-login-box{
   margin-top: 5%;
 }
-.composition-login-ele{
-  margin: 10% 0;
+.login-box{
+  width: 100%;
+  font-size: large;
+  padding: 20px 0;
 }
-.composition-login-ele p{
+.login-box-title{
   font-size: 26px;
-  color: #ffffff;
-  font-weight: bolder;
-  margin-left: 5%;
+  color: #fff;
 }
-.login-input{
-  outline: none;
-  font-size: 36px;
-  border-radius: 36px;
-  padding: 2% 5%;
+.login-out-box{
+  width: 100%;
+  margin: 20px auto;
 }
-.button{
-  display: flex;
-  justify-content: space-between;
-  margin-top: 25%;
-  .login-button{
-    padding: 2% 5%;
-    background: #ffffff;
-    border: none;
-    border-radius: 30px;
-    span{
-      font-weight: bolder;
-      font-size: 26px;
-      color: #000000;
-    }
-  }
+.login-button-box{
+  margin-top: 30px;
 }
-.register{
-  background: #000000 !important;
-  border: #ffffff 1px solid !important;
-  span{
-    color: #ffffff !important;
-  }
-}
-.login:hover{
-  background: #e5e5e5 !important;
-}
-.register:hover{
-  background: #383838 !important;
+.login-button{
+  font-size: 26px;
+  padding: 20px 30px !important;
 }
 </style>
 
 <script>
 import { accountLogin } from "@/static/js/Api/LoginApi.js";
 import router from "@/static/js/route.js";
+import { ElMessage } from "element-plus";
+import store from "@/static/js/Util/store.js";
 export default {
   name: 'Login',
   data(){
@@ -100,23 +79,27 @@ export default {
         nameOrEmail: this.loginParams.email,
         password: this.loginParams.password
       }).then(res => {
+        console.log("Login")
         let code = res.data.status
         console.log(code)
         console.log(res.data)
         if(code == 200){
-          console.log("ok")
+          ElMessage.success('登录成功')
           let data = res.data.data
           let token = data.token
           let user = data.customer
           _this.$store.commit('SET_TOKEN',token)
           _this.$store.commit('SET_USER_ID_NUMBER',user.idNumber)
           _this.$store.commit('SET_USER_INFO',user)
+          console.log(user.idNumber)
           router.push({
             name: 'WelcomeForm'
           })
         }else{
-          alert(res.data.message)
+          ElMessage.warning(res.data.message)
         }
+      }).catch(error => {
+        ElMessage.warning(error.message)
       })
     }
   }

@@ -4,6 +4,8 @@ import App from './App.vue'
 import router from "@/static/js/route.js";
 import axios from "axios";
 import store from "@/static/js/Util/store.js";
+import ElementPlus from 'element-plus'
+import 'element-plus/theme-chalk/index.css'
 
 axios.defaults.baseURL = "http://10.211.55.4:20577/xs_assistant"
 
@@ -21,10 +23,10 @@ router.beforeEach((to,from,next)=>{
                 query: {redirect:to.fullPath}
             })
         }
-    }else{
+    }else{  
         next()
     }
 })
 
-app.use(store).use(router).mount('#app');
+app.use(store).use(router).use(ElementPlus).mount('#app');
 
