@@ -20,10 +20,14 @@
   <div class="login-out-box login-button-box">
     <el-button type="primary"
       @click="login"
-      class="login-button" round>
+      class="login-button"
+      :loading="this.isLoginLoading"
+      round>
       登录
     </el-button>
-    <el-button class="login-button" round>
+    <el-button class="login-button"
+      @click="$router.push('register')" 
+      round>
       没有账号?现在注册
     </el-button>
   </div>
@@ -69,13 +73,15 @@ export default {
         email: '',
         password: ''
       },
-      responseResult: []
+      responseResult: [],
+      isLoginLoading: false
     }
   },
   methods:{
-    login(){
+    async login(){
+      this.isLoginLoading = true
       let _this = this;
-      accountLogin({
+      await accountLogin({
         nameOrEmail: this.loginParams.email,
         password: this.loginParams.password
       }).then(res => {
@@ -101,6 +107,7 @@ export default {
       }).catch(error => {
         ElMessage.warning(error.message)
       })
+      this.isLoginLoading = false
     }
   }
 }

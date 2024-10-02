@@ -23,7 +23,7 @@ import LoginComposition from "@/components/Components/AccountLogin/LoginComposit
         </p>
       </div>
       <div class="login-right-container">
-        <LoginComposition/>
+        <router-view/>
       </div>
     </div>
   </div>

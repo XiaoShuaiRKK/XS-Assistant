@@ -20,7 +20,7 @@ import ProductCardWidget from "@/components/Components/Widget/ProductCardWidget.
           </div>
         </div>
         <div class="nav-header-share">
-          <a v-if="this.userInfo.idNumber === ''" @click="$router.push('login')" class="link-line">
+          <a v-if="this.userInfo.idNumber === ''" @click="$router.push('login/login')" class="link-line">
             <p>
               Join us
             </p>
@@ -69,8 +69,10 @@ export default {
   setup(){
   },
   created(){
-    this.userInfo = store.getters.getUser
-    console.log(this.userInfo)
+    if(store.getters.getUser !== null){
+      this.userInfo = store.getters.getUser
+      console.log(this.userInfo)  
+    }
   },
   data(){
     return{
