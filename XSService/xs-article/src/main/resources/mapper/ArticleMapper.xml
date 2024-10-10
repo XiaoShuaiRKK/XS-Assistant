@@ -5,16 +5,18 @@
     <insert id="insertArticle" parameterType="com.xs.DAO.DO.article.Article">
         INSERT INTO
             note
+            (id,background,image,logo,author_id,article_id,state_id,style_id,update_time,create_time)
         VALUES
-            (NULL,#{article.background},#{article.image},#{article.logo},#{article.authorId},#{article.articleId},now(),1,0)
+            (NULL,#{article.background},#{article.image},#{article.logo},#{article.authorId},#{article.articleId},#{article.stateId},#{article.styleId},now(),now())
     </insert>
 
     <insert id="insertArticleBatch" parameterType="java.util.List">
         INSERT INTO
             note
+            (id,background,image,logo,author_id,article_id,state_id,style_id,update_time,create_time)
         VALUES
         <foreach collection="articles" item="article" separator=",">
-            (NULL,#{article.background},#{article.image},#{article.logo},#{article.authorId},#{article.articleId},now(),1,0)
+            (NULL,#{article.background},#{article.image},#{article.logo},#{article.authorId},#{article.articleId},#{article.stateId},#{article.styleId},now(),now())
         </foreach>
     </insert>
 
@@ -36,7 +38,7 @@
 
     <select id="selectArticleByArticleId" resultType="com.xs.DAO.DO.article.Article">
         SELECT
-            Id,Background,Image,Logo,AuthorId,ArticleId
+            id,background,image,logo,author_id,article_id,state_id,style_id,update_time,create_time
         FROM
             note
         WHERE
@@ -45,7 +47,7 @@
 
     <select id="selectArticlesByArticleId" resultType="com.xs.DAO.DO.article.Article">
         SELECT
-            Id,Background,Image,Logo,AuthorId,ArticleId
+            id,background,image,logo,author_id,article_id,state_id,style_id,update_time,create_time
         FROM
             note
         WHERE

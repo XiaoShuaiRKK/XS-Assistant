@@ -1,5 +1,7 @@
 package com.xs.assistant.hot.service.Impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.xs.DAO.DO.article.ArticleHot;
 import com.xs.assistant.hot.DAO.ArticleHotInsertMapper;
 import com.xs.assistant.hot.service.ArticleHotInsertService;
@@ -54,5 +56,12 @@ public class ArticleHotInsertServiceImpl implements ArticleHotInsertService {
     public Boolean insertHasValueHot(ArticleHot articleHot) {
         int result = articleHotInsertMapper.insert(articleHot);
         return result > 0;
+    }
+
+    @Override
+    public Integer deleteHot(String articleId) {
+        LambdaQueryWrapper<ArticleHot> wrapper = Wrappers.lambdaQuery();
+        wrapper.eq(ArticleHot::getArticleId, articleId);
+        return articleHotInsertMapper.delete(wrapper);
     }
 }

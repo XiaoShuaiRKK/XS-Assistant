@@ -113,4 +113,11 @@ public class ESSearchServiceImpl extends ESService implements ESSearchService {
         return ToList.apply(hits);
     }
 
+    @Override
+    public List<ArticleContext> searchArticlesOrderByHot(int page, int size) {
+        List<Hit<ArticleContext>> hits = elasticsearchUtil.searchDocumentsSortQueryFields(ElasticRepositoryKeyEnum.ES_ARTICLE_KEY.getKey(),
+                ElasticRepositoryKeyEnum.ES_ARTICLE_COLUMN_HOT_KEY.getKey(),SortOrder.Desc,page,size,ArticleContext.class);
+        return ToList.apply(hits);
+    }
+
 }

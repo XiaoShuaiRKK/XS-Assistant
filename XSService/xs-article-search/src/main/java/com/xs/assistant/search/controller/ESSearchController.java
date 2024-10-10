@@ -1,11 +1,14 @@
 package com.xs.assistant.search.controller;
 
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.xs.DAO.DO.article.ArticleContext;
 import com.xs.assistant.search.service.ESSearchService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/query")
 public class ESSearchController {
@@ -95,6 +98,10 @@ public class ESSearchController {
     public List<ArticleContext> getArticleByTargetOrderHot(@RequestParam("target")String target,
                                                           @RequestParam("page")Integer page,
                                                           @RequestParam("size")Integer size){
-        return esSearchService.searchArticlesByTargetOrderByHot(page,size,target);
+        log.error("===============Search Article=================");
+        if(StringUtils.isNotEmpty(target)){
+            return esSearchService.searchArticlesByTargetOrderByHot(page,size,target);
+        }
+        return esSearchService.searchArticlesOrderByHot(page,size);
     }
 }

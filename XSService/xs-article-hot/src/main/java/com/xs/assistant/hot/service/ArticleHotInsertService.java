@@ -6,4 +6,5 @@ public interface ArticleHotInsertService {
     Boolean insertDefaultHot(String articleId);
     Boolean insertHasValueHot(String articleId,Long comment,Long star,Long liked);
     Boolean insertHasValueHot(ArticleHot articleHot);
+    Integer deleteHot(String articleId);
 }

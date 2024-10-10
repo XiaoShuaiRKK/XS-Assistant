@@ -21,6 +21,7 @@ public class BaseFilter {
             case "/xs_assistant/account/sendCode",
                     "/xs_assistant/account/register" -> 1;
             case "/xs_assistant/admin/create/admin" -> 2;
+            case "/xs_assistant/search/query/get/orderHot" -> 3;
             default -> -1;
         };
     }

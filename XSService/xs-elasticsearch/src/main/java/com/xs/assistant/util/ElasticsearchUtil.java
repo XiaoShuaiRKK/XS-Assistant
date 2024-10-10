@@ -352,6 +352,19 @@ public class ElasticsearchUtil {
         return Collections.emptyList();
     }
 
+    public <T> List<Hit<T>> searchDocumentsSortQueryFields(String index,String orderField,
+                                                           SortOrder sortOrder,int page,int size,Class<T> tClass){
+        SearchRequest.Builder documentsSearch = RequestBuilder.getDocumentsSearch(index, page, size);
+        documentsSearch = RequestBuilder.addOrderBy(documentsSearch,sortOrder,orderField);
+        try {
+            SearchResponse<T> searchResponse = client.search(documentsSearch.build(),tClass);
+            return searchResponse.hits().hits();
+        }catch (IOException e) {
+            log.error(e.getMessage());
+        }
+        return Collections.emptyList();
+    }
+
 
     /**
      * 查询
@@ -484,6 +497,10 @@ public class ElasticsearchUtil {
             return new SearchRequest.Builder().index(index).query(
                     q -> q.multiMatch(m -> m.fields(target,fields).query(target))
             ).from(page).size(size);
+        }
+
+        private static SearchRequest.Builder getDocumentsSearch(String index,int page,int size){
+            return new SearchRequest.Builder().index(index).from(page).size(size);
         }
 
         /**

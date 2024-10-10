@@ -1,3 +1,15 @@
 spring:
   profiles:
     active: local
+resilience4j:
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 1s
+        enable-exponential-backoff: false
+        randomized-wait-factor: 0.5
+    instances:
+      mongoRollbackRetry:
+        base-config: default
+        wait-duration: 2s

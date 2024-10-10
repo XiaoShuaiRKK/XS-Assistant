@@ -25,4 +25,11 @@ public class ArticleHotInsertListener {
     private void insertDefaultHot(String articleId){
         articleHotInsertService.insertDefaultHot(articleId);
     }
+
+    @RabbitListener(bindings = @QueueBinding(value = @Queue,
+            exchange = @Exchange(value = "articleHotValueExchange",type = "topic"),
+            key = "article.hot.value.delete"))
+    private void deleteHot(String articleId){
+        articleHotInsertService.deleteHot(articleId);
+    }
 }

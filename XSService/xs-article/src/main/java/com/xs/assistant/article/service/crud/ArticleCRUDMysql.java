@@ -1,4 +1,4 @@
-package com.xs.assistant.article.service.insert;
+package com.xs.assistant.article.service.crud;
 
 import com.xs.DAO.DO.article.Article;
 import com.xs.DAO.DO.article.ArticleContext;
@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
 
-@Service("articleInsertMysql")
+@Service("articleCRUDMysql")
 @Slf4j
-public class ArticleInsertMysql implements ArticleInsert {
+public class ArticleCRUDMysql implements CRUDOperate<ArticleContext> {
 
     final ArticleDAO articleDAO;
 
-    public ArticleInsertMysql(ArticleDAO articleDAO) {
+    public ArticleCRUDMysql(ArticleDAO articleDAO) {
         this.articleDAO = articleDAO;
     }
 
@@ -40,5 +40,55 @@ public class ArticleInsertMysql implements ArticleInsert {
         articles.forEach(article -> articleList.add(ArticleFactory.defaultArticle(article.getAuthorId(),article.getId())));
         boolean rs = articleDAO.insertArticleBatch(articleList) > 0;
         return new AsyncResult<>(rs);
+    }
+
+    @Override
+    public Future<Boolean> deleteArticle(ArticleContext entity) {
+        return null;
+    }
+
+    @Override
+    public Future<Boolean> deleteArticles(List<ArticleContext> entities) {
+        return null;
+    }
+
+    @Override
+    public Future<Boolean> updateArticle(ArticleContext entity) {
+        return null;
+    }
+
+    @Override
+    public Future<Boolean> updateArticles(List<ArticleContext> entities) {
+        return null;
+    }
+
+    @Override
+    public Future<Boolean> rollbackInsert(ArticleContext entity) {
+        return deleteArticle(entity);
+    }
+
+    @Override
+    public Future<Boolean> rollbackBatchInsert(List<ArticleContext> entities) {
+        return deleteArticles(entities);
+    }
+
+    @Override
+    public Future<Boolean> rollbackDelete(ArticleContext entity) {
+        return null;
+    }
+
+    @Override
+    public Future<Boolean> rollbackDeletes(List<ArticleContext> entities) {
+        return null;
+    }
+
+    @Override
+    public Future<Boolean> rollbackUpdate(ArticleContext entity) {
+        return null;
+    }
+
+    @Override
+    public Future<Boolean> rollbackUpdates(List<ArticleContext> entities) {
+        return null;
     }
 }

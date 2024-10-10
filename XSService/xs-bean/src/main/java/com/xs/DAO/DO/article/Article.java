@@ -20,7 +20,9 @@ public class Article implements Serializable,Comparable<Article> {
     String image;
     String logo;
     Date createTime;
+    Date updateTime;
     Integer stateId;
+    Integer styleId;
 
     @Override
     public int compareTo(Article o) {
