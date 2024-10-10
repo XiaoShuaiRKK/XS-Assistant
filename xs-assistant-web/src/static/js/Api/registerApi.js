@@ -11,7 +11,7 @@ export function register(data){
 export function registerSendCode(params){
     return request({
         url: '/account/sendCode',
-         method: 'post',
-         params: params
+        method: 'post',
+        params: params
     })
 }

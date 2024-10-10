@@ -11,7 +11,8 @@ import MainForm from "@/components/MainForm.vue";
       <SIcon/>
     </div>
     <div class="form-box">
-      <MainForm id="main-form"/>
+      <!-- <MainForm id="main-form"/> -->
+      <router-view/>
     </div>
   </div>
 </template>

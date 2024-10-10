@@ -4,6 +4,7 @@ import router from "@/static/js/route.js";
 
 const service = axios.create({
     baseURL: "http://127.0.0.1:20577/xs_assistant"
+    
 })
 
 service.interceptors.request.use(

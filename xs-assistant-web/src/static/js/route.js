@@ -4,17 +4,33 @@ import LoginForm from "@/components/LoginForm.vue";
 import Welcome from "@/components/Welcome.vue";
 import LoginComponent from "@/components/Components/AccountLogin/LoginComposition.vue"
 import RegisterComponent from "@/components/Components/AccountLogin/RegisterComposition.vue"
+import MainHomeForm from "@/components/MainHomeForm.vue"
 
 const routes = [
     {
         path: '/',
-        redirect: '/home'
+        redirect: '/home/main'
     },
     {
         path: '/home',
         name: 'WelcomeForm',
         component: Welcome,
-        props: true
+        props: true,
+        children: [
+            {
+                path: '',
+                name: 'MainForm',
+                component: MainForm,
+                props: true,
+                children: [
+                    {
+                        path: 'main',
+                        name: 'MainHomeForm',
+                        component: MainHomeForm
+                    }
+                ]
+            }
+        ]
     },
     {
         path: '/login',

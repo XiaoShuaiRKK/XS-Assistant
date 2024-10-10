@@ -41,47 +41,7 @@ import ProductCardWidget from "@/components/Components/Widget/ProductCardWidget.
       <div class="main-main-box">
         <div class="circle-box"/>
         <BackgroundComponent/>
-        <div class="main-title">
-          <p>XS-Assistant</p>
-        </div>
-        <div class="main-container product">
-          <div class="main-container-title">
-            <span>P</span>
-            <span>r</span>
-            <span>o</span>
-            <span>d</span>
-            <span>u</span>
-            <span>c</span>
-            <span>t</span>
-          </div>
-          <div class="main-container card">
-            <ProductCardWidget logo="../../assets/Img/icon/apple-fill-bk.png" title="XS-Assistant-IOS" class="main-container-widget-card"/>
-            <ProductCardWidget class="main-container-widget-card"/>
-            <ProductCardWidget class="main-container-widget-card"/>
-          </div>
-        </div>
-        <div class="main-container empty">
-
-        </div>
-        <div class="main-container assistant">
-          <el-row :gutter="14" style="height: 20%;">
-            <el-col :span="10">
-              <div class="main-container-card">
-
-              </div>
-            </el-col>
-            <el-col :span="4">
-              <div class="main-container-card-title">
-                <p>
-                  Assistant
-                </p>
-                <span>
-                  一款能帮助，监督你的学习笔记助手
-                </span>
-              </div>
-            </el-col>
-          </el-row>
-        </div>
+        <router-view/>
       </div>
     </el-container>
   </div>
