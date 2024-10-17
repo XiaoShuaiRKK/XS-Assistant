@@ -10,11 +10,11 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface ArticleHotMapper extends BaseMapper<ArticleHot> {
-    @Select("SELECT hot_id,article_id,comment_num,star_num,liked_num,note.CreateTime FROM article_hot,note " +
-            "WHERE article_hot.article_id = note.articleId AND article_hot.article_id = #{articleId}")
+    @Select("SELECT hot_id,article_hot.article_id,comment_num,star_num,liked_num,note.create_time FROM article_hot,note" +
+            " WHERE article_hot.article_id = note.article_id AND article_hot.article_id = #{articleId}")
     ArticleHot selectByArticleId(@Param("articleId")String articleId);
-    @Select("SELECT hot_id,article_id,comment_num,star_num,liked_num,note.CreateTime FROM article_hot,note " +
-            "WHERE article_hot.article_id = note.articleId")
+    @Select("SELECT hot_id,article_hot.article_id,comment_num,star_num,liked_num,note.create_time FROM article_hot,note" +
+            " WHERE article_hot.article_id = note.article_id")
     IPage<ArticleHot> selectPageAll(Page<?> page);
     @Select("SELECT comment_num FROM article_hot WHERE article_id = #{articleId}")
     Long selectCommentNumByArticleId(@Param("articleId") String articleId);

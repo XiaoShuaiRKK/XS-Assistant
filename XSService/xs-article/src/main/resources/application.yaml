@@ -1,6 +1,22 @@
+server:
+  servlet:
+    context-path: /xs_assistant/article
 spring:
+  application:
+    name: xs-article
   profiles:
     active: local
+  datasource:
+    hikari:
+      connection-timeout: 10000
+      validation-timeout: 3000
+      idle-timeout: 60000
+      login-timeout: 5
+      max-lifetime: 60000
+      maximum-pool-size: 30
+      minimum-idle: 15
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
 resilience4j:
   retry:
     configs:

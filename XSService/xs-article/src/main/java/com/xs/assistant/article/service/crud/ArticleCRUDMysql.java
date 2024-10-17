@@ -36,9 +36,11 @@ public class ArticleCRUDMysql implements CRUDOperate<ArticleContext> {
     @Override
     @Async("articleInsertAsyncExecutor")
     public Future<Boolean> batchInsert(List<ArticleContext> articles) {
+        long startTime = System.currentTimeMillis();
         List<Article> articleList = new ArrayList<>();
         articles.forEach(article -> articleList.add(ArticleFactory.defaultArticle(article.getAuthorId(),article.getId())));
         boolean rs = articleDAO.insertArticleBatch(articleList) > 0;
+        log.info("=== Mysql Articles Batch Insert : " + (System.currentTimeMillis() - startTime) + " ===");
         return new AsyncResult<>(rs);
     }
 

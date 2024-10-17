@@ -26,8 +26,9 @@ public class ArticleHotInsertServiceImpl implements ArticleHotInsertService {
      */
     @Override
     public Boolean insertDefaultHot(String articleId) {
+        Date now = new Date(System.currentTimeMillis());
         int result = articleHotInsertMapper.insert(new ArticleHot(null,articleId,
-                0L,0L,0L,new Date(System.currentTimeMillis())));
+                0L,0L,0L,now,now));
         return result > 0;
     }
 
@@ -41,9 +42,11 @@ public class ArticleHotInsertServiceImpl implements ArticleHotInsertService {
      */
     @Override
     public Boolean insertHasValueHot(String articleId, Long comment, Long star, Long liked) {
+        Date now = new Date(System.currentTimeMillis());
         int result = articleHotInsertMapper.insert(ArticleHot.builder().articleId(articleId)
                 .commentNum(comment).starNum(star).likedNum(liked)
-                .createTime(new Date(System.currentTimeMillis())).build());
+                .createTime(now)
+                .updateTime(now).build());
         return result > 0;
     }
 

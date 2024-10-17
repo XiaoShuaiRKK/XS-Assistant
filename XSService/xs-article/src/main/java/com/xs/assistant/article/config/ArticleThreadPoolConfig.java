@@ -13,7 +13,7 @@ public class ArticleThreadPoolConfig {
     private final int insertMaxPoolSize = 500;
     private final int keepAliveTime = 600;
     private final int queueCapacity = 500;
-    private final String insertNamePrefix = "A-I-Thread";
+    private final String insertNamePrefix = "A-MYSQL-I-Thread";
 
     private final int corePoolSize = 20;
     private final int maxPoolSize = 200;

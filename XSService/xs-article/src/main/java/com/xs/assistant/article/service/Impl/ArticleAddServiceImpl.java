@@ -103,7 +103,6 @@ public class ArticleAddServiceImpl implements ArticleAddService {
     @Override
     @CircuitBreaker(name = "article-mongodb", fallbackMethod = "failMethod")
     @Transactional(rollbackFor = Exception.class)
-    @Async("articleAsyncExecutor")
     public Future<Boolean> batchAddArticle(List<ArticleContext> articles) {
         long startTime = System.currentTimeMillis();
         try {
@@ -116,10 +115,7 @@ public class ArticleAddServiceImpl implements ArticleAddService {
             });
             Future<Boolean> rsMysql = mysqlBatchInsertService.batchInsert(articles);
             Future<Boolean> rsMongo = mongoInsertService.batchInsert(articles);
-            articles.forEach(article -> {
-                articleElasticsearchAmqp.uploadArticle(article);
-                articleHotAmqp.insertHotArticle(article.getId());
-            });
+            addArticleAmqp(articles);
             boolean rs = rsMysql.get() && rsMongo.get();
             if (!rs)
                 throw new Exception();
@@ -129,15 +125,23 @@ public class ArticleAddServiceImpl implements ArticleAddService {
             log.error(e.getMessage());
             mysqlBatchInsertService.rollbackBatchInsert(articles);
             mongoInsertService.rollbackBatchInsert(articles);
-            articles.forEach(article -> {
-                articleHotAmqp.deleteHotArticle(article.getId());
-                articleElasticsearchAmqp.deleteArticle(article.getId());
-            });
+
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return AsyncResult.forValue(false);
         }
     }
 
+    @Async("articleAsyncExecutor")
+    public void addArticleAmqp(List<ArticleContext> articles) {
+        try {
+            articles.forEach(article -> {
+                articleHotAmqp.deleteHotArticle(article.getId());
+                articleElasticsearchAmqp.deleteArticle(article.getId());
+            });
+        }catch (Exception e) {
+            log.error(e.getMessage());
+        }
+    }
 
     private Future<Boolean> failMethod(Exception e) {
         return AsyncResult.forValue(false);

@@ -19,10 +19,16 @@ import java.sql.Date;
 public class ArticleHot implements Serializable {
     @Id
     private Long hotId;
+    @TableField("article_id")
     private String articleId;
+    @TableField("comment_num")
     private Long commentNum;
+    @TableField("star_num")
     private Long starNum;
+    @TableField("liked_num")
     private Long likedNum;
     @TableField("create_time")
     private Date createTime;
+    @TableField("update_time")
+    private Date updateTime;
 }

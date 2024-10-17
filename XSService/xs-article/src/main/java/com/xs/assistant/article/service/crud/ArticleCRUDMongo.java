@@ -37,7 +37,9 @@ public class ArticleCRUDMongo implements CRUDOperate<ArticleContext> {
     @Override
     @Async("articleInsertAsyncExecutor")
     public Future<Boolean> batchInsert(List<ArticleContext> articles) {
+        long startTime = System.currentTimeMillis();
         articleRepository.insert(articles);
+        log.info("====Mongo Article Batch Insert : " + (System.currentTimeMillis() - startTime) + " ===");
         return AsyncResult.forValue(true);
     }
 
