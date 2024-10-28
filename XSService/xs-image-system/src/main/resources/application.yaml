@@ -1,0 +1,12 @@
+server:
+  port: 23567
+  servlet:
+    context-path: /xs_assistant/image
+spring:
+  banner:
+    charset: UTF-8
+    location: Banner/XS-Assistant-Banner.txt
+  application:
+    name: xs-image-system
+  profiles:
+    active: local

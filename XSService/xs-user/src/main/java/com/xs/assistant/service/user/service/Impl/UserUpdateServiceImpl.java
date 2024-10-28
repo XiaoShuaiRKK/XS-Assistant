@@ -8,6 +8,7 @@ import com.xs.assistant.service.user.DAO.UserMapper;
 import com.xs.assistant.service.user.DAO.UserUpdateDAO;
 import com.xs.assistant.service.user.remote.EncryptionService;
 import com.xs.assistant.service.user.service.UserUpdateService;
+import com.xs.assistant.service.user.service.remote.ImageFileService;
 import com.xs.assistant.util.function.RedisKeyFunction;
 import com.xs.assistant.util.Impl.UIDCodeUtil;
 import io.github.resilience4j.retry.annotation.Retry;
@@ -15,6 +16,7 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
 
@@ -27,6 +29,7 @@ public class UserUpdateServiceImpl implements UserUpdateService {
     final UserUpdateDAO userUpdateDAO;
     final UserMapper userMapper;
     final EncryptionService encryptionService;
+    final ImageFileService imageFileService;
     @Resource
     RedisUtil redisUtil;
     @Resource
@@ -34,10 +37,11 @@ public class UserUpdateServiceImpl implements UserUpdateService {
 
     private final RedisKeyFunction<String,Long> registerHas = (key,value) -> redisUtil.increment(key,1L);
 
-    public UserUpdateServiceImpl(UserUpdateDAO userUpdateDAO, UserMapper userMapper, EncryptionService encryptionService) {
+    public UserUpdateServiceImpl(UserUpdateDAO userUpdateDAO, UserMapper userMapper, EncryptionService encryptionService, ImageFileService imageFileService) {
         this.userUpdateDAO = userUpdateDAO;
         this.userMapper = userMapper;
         this.encryptionService = encryptionService;
+        this.imageFileService = imageFileService;
     }
 
     @Override
@@ -52,6 +56,19 @@ public class UserUpdateServiceImpl implements UserUpdateService {
     public ResponseResult<Boolean> registerAdmin(CustomerDO customer) {
         boolean rs = registerAccount(customer, AccountLevelEnum.ADMIN.ordinal());
         return ResponseResult.success(rs,rs ? "注册失败" : "注册成功");
+    }
+
+    @Override
+    public Boolean uploadIcon(MultipartFile file, String idNumber) {
+        log.info(idNumber + " : upload icon");
+        ResponseResult<String> uploadRes = imageFileService.uploadFile(file);
+        String fileName = uploadRes.getData();
+        if(fileName == null){
+            return false;
+        }
+        ResponseResult<String> previewedRes = imageFileService.previewFile(fileName);
+        Integer rs = userUpdateDAO.uploadIcon(previewedRes.getData(), idNumber);
+        return rs > 0;
     }
 
     private boolean registerAccount(CustomerDO customer,Integer level){

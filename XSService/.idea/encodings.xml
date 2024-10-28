@@ -37,6 +37,8 @@
     <file url="file://$PROJECT_DIR$/xs-elasticsearch/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-encryption/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-encryption/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-image-system/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-image-system/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-jwt/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-jwt/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-login/src/main/java" charset="UTF-8" />

@@ -4,14 +4,14 @@
 <mapper namespace="com.xs.assistant.service.user.DAO.UserInfoDAO">
     <select id="getAllCustomer" resultType="com.xs.DAO.DO.customer.CustomerDO">
         SELECT
-            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId,Level
+            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId,Level,icon_path
         FROM
             customer
     </select>
 
     <select id="selectCustomer" parameterType="java.lang.Integer" resultType="com.xs.DAO.DO.customer.CustomerDO">
         SELECT
-            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId,Level
+            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId,Level,icon_path
         FROM
             customer
         WHERE
@@ -20,7 +20,7 @@
 
     <select id="selectCustomerByNumberId" parameterType="java.lang.String" resultType="com.xs.DAO.DO.customer.CustomerDO">
         SELECT
-            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId,Level
+            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId,Level,icon_path
         FROM
             customer
         WHERE
@@ -29,7 +29,7 @@
 
     <select id="selectCustomerInfoByEmail" parameterType="java.lang.String" resultType="com.xs.DAO.DO.customer.CustomerDO">
         SELECT
-            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId,Level
+            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId,Level,icon_path
         FROM
             customer
         WHERE

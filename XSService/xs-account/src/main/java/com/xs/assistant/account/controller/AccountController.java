@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
@@ -73,5 +74,11 @@ public class AccountController {
                                                 @Length(max = 5,min = 5,message = "Please fill in the correct verification code")
                                                 @RequestParam("code")String code, @RequestBody CustomerDO customerDO){
         return accountService.restRegister(code,customerDO);
+    }
+
+    @PostMapping("/upload/icon")
+    public ResponseResult<Boolean> uploadIconWithCustomer(@RequestParam("icon") MultipartFile file,
+                                                          @RequestParam("idNumber") String idNumber){
+        return accountService.uploadIconWithCustomer(file,idNumber);
     }
 }

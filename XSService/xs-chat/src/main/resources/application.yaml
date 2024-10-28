@@ -1,3 +1,6 @@
 spring:
   profiles:
     active: local
+  banner:
+    charset: UTF-8
+    location: Banner/XS-Assistant-Banner.txt

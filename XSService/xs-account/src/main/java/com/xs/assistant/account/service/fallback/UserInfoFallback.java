@@ -4,6 +4,7 @@ import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.assistant.account.service.remote.AccountInfoService;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -39,6 +40,11 @@ public class UserInfoFallback implements AccountInfoService {
 
     @Override
     public ResponseResult<Boolean> registerCustomer(CustomerDO customer) {
+        return ResponseResult.unavailable("用户信息系统正忙");
+    }
+
+    @Override
+    public ResponseResult<Boolean> uploadIconWithCustomer(MultipartFile file, String idNumber) {
         return ResponseResult.unavailable("用户信息系统正忙");
     }
 }

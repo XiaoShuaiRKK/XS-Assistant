@@ -3,12 +3,11 @@ package com.xs.assistant.account.service.remote;
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.assistant.account.service.fallback.UserInfoFallback;
+import jakarta.ws.rs.core.MediaType;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -28,4 +27,7 @@ public interface AccountInfoService {
     ResponseResult<Boolean> checkCustomer(@RequestParam("email")String email);
     @PostMapping("/user/register")
     ResponseResult<Boolean> registerCustomer(@RequestBody CustomerDO customer);
+    @PostMapping(value = "/user/upload/icon",consumes = MediaType.MULTIPART_FORM_DATA)
+    ResponseResult<Boolean> uploadIconWithCustomer(@RequestParam("icon") MultipartFile file,
+                                                          @RequestParam("idNumber") String idNumber);
 }

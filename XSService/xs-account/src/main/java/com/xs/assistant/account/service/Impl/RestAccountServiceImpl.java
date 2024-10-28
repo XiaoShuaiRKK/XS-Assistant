@@ -13,6 +13,7 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.ognl.internal.Cache;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -105,6 +106,11 @@ public class RestAccountServiceImpl implements RestAccountService {
     @Override
     public ResponseResult<Boolean> checkCustomer(String email) {
         return accountInfoService.checkCustomer(email);
+    }
+
+    @Override
+    public ResponseResult<Boolean> uploadIconWithCustomer(MultipartFile file, String idOfNumber) {
+        return accountInfoService.uploadIconWithCustomer(file,idOfNumber);
     }
 
     /**

@@ -42,4 +42,5 @@ public class CustomerDO implements Serializable {
     Integer areaId;
     Integer stateId;
     Integer level;
+    String iconPath;
 }
