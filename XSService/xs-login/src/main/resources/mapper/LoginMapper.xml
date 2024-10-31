@@ -2,24 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xs.assistant.login.DAO.LoginDAO">
-    <select id="login" resultType="com.xs.DAO.DO.customer.CustomerDO">
+    <resultMap id="customerMap" type="com.xs.DAO.DO.customer.CustomerDO">
+        <id property="id" column="id"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="email" column="email"/>
+        <result property="password" column="password"/>
+        <result property="birth" column="birth"/>
+        <result property="idNumber" column="id_number"/>
+        <result property="areaId" column="area_id"/>
+        <result property="stateId" column="state_id"/>
+        <result property="level" column="level"/>
+        <result property="iconPath" column="icon_path"/>
+    </resultMap>
+
+    <select id="login" resultMap="customerMap">
         SELECT
-            Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId
+            id,first_name,last_name,email,birth,id_number,area_id,state_id,level,icon_path
         FROM
             customer
         WHERE
-            Email = #{nameOrEmail}
+            email = #{nameOrEmail}
         OR
-            IdNumber = #{nameOrEmail}
+            id_number = #{nameOrEmail}
     </select>
 
     <select id="getCustomerPassword" resultType="java.lang.String">
         SELECT
-            Password
+            password
         FROM
             customer
         WHERE
-            Email = #{email}
+            email = #{email}
     </select>
 
 </mapper>

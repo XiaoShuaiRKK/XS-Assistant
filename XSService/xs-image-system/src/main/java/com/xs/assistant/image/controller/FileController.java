@@ -19,9 +19,8 @@ public class FileController {
         this.prop = prop;
     }
 
-
     @PostMapping("/upload")
-    public ResponseResult<String> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseResult<String> uploadFile(@RequestPart("icon") MultipartFile file) {
         String fileName = minioUtil.upload(file).orElse(null);
         return ResponseResult.success(fileName);
     }
@@ -29,5 +28,10 @@ public class FileController {
     @GetMapping("/preview")
     public ResponseResult<String> previewFile(@RequestParam("fileName") String fileName) {
         return ResponseResult.success(minioUtil.preview(fileName).orElse(null));
+    }
+
+    @GetMapping("/other/preview")
+    public ResponseResult<String> previewOtherBucketFile(@RequestParam("bucket")String bucket, @RequestParam("fileName") String fileName) {
+        return ResponseResult.success(minioUtil.previewFile(bucket,fileName).orElse(null));
     }
 }

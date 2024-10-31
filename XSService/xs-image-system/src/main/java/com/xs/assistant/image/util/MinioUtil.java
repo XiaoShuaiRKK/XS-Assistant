@@ -133,6 +133,26 @@ public class MinioUtil {
     }
 
     /**
+     * 预览图片
+     * @param fileName
+     * @return
+     */
+    public Optional<String> previewFile(String bucket,String fileName){
+        GetPresignedObjectUrlArgs build = GetPresignedObjectUrlArgs.builder()
+                .bucket(bucket)
+                .object(fileName)
+                .method(Method.GET).build();
+        String url;
+        try {
+            url = minioClient.getPresignedObjectUrl(build);
+        }catch (Exception e) {
+            log.error(e.getMessage());
+            return Optional.empty();
+        }
+        return Optional.of(url);
+    }
+
+    /**
      * 文件下载
      * @param fileName
      * @param res

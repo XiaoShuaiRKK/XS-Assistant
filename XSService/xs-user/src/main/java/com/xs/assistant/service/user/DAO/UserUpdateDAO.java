@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 public interface UserUpdateDAO {
     Integer insertCustomer(@Param("customer") CustomerDO customerDO);
     Integer insertAdmin(@Param("customer")CustomerDO customer);
-    Integer uploadIcon(@Param("icon")String iconPath,@Param("idOfNumber")String idOfNumber);
+    Integer uploadIcon(@Param("iconPath")String iconPath,@Param("idOfNumber")String idOfNumber);
 }

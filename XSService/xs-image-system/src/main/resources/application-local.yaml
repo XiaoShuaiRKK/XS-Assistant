@@ -1,6 +1,6 @@
 minio:
   bucket: xs-assistant-bucket
-  endpoint: http://10.10.100.120:9090
+  endpoint: http://120.24.88.92:9090
   access-key: minioadmin
   secret-key: minioadmin
 eureka:

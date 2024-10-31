@@ -28,6 +28,6 @@ public interface AccountInfoService {
     @PostMapping("/user/register")
     ResponseResult<Boolean> registerCustomer(@RequestBody CustomerDO customer);
     @PostMapping(value = "/user/upload/icon",consumes = MediaType.MULTIPART_FORM_DATA)
-    ResponseResult<Boolean> uploadIconWithCustomer(@RequestParam("icon") MultipartFile file,
+    ResponseResult<Boolean> uploadIconWithCustomer(@RequestPart("icon") MultipartFile file,
                                                           @RequestParam("idNumber") String idNumber);
 }
