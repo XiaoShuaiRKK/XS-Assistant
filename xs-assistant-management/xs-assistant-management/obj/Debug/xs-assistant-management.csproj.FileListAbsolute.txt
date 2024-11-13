@@ -30,3 +30,5 @@ E:\Project\XSAssistant\xs-assistant-management\xs-assistant-management\xs-assist
 E:\Project\XSAssistant\xs-assistant-management\xs-assistant-management\xs-assistant-management\obj\Debug\xs-assistant-management.exe.config
 E:\Project\XSAssistant\xs-assistant-management\xs-assistant-management\xs-assistant-management\obj\Debug\xs-assis.14D60423.Up2Date
 E:\Project\XSAssistant\xs-assistant-management\xs-assistant-management\xs-assistant-management\obj\Debug\xs_assistant_management.HomeForm.resources
+E:\Project\XSAssistant\xs-assistant-management\xs-assistant-management\xs-assistant-management\obj\Debug\xs_assistant_management.ArticleInfoForm.resources
+E:\Project\XSAssistant\xs-assistant-management\xs-assistant-management\xs-assistant-management\obj\Debug\xs_assistant_management.AuthorInfoForm.resources

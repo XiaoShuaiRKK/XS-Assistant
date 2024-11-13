@@ -37,7 +37,7 @@ namespace xs_assistant_management
             login_password_tb.Text = "";
             Result<LoginData> customer = await loginService.login(username, password);
             if (customer == null) {
-                MessageBox.Show(customer.Message);
+                return;
             }
             if (customer.Data.Customer.Level <= 1)
             {

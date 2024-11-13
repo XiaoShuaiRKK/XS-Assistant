@@ -14,20 +14,23 @@ namespace xs_assistant_management.Data.POJO
         string title;
         string subTitle;
         string authorId;
-        int stateId;
+        string authorName;
+        string stateName;
         string image;
         string background;
         string description;
 
         public Article(string id, string context, string title, string subTitle,
-            string authorId, int stateId, string image, string background, string description)
+            string authorId, string authorName, string stateName,
+            string image, string background, string description)
         {
             this.id = id;
             this.context = context;
             this.title = title;
             this.subTitle = subTitle;
             this.authorId = authorId;
-            this.stateId = stateId;
+            this.authorName = authorName;
+            this.StateName = stateName;
             this.image = image;
             this.background = background;
             this.description = description;
@@ -43,13 +46,15 @@ namespace xs_assistant_management.Data.POJO
         public string SubTitle { get => subTitle; set => subTitle = value; }
         [JsonPropertyName("authorId")]
         public string AuthorId { get => authorId; set => authorId = value; }
-        [JsonPropertyName("stateId")]
-        public int StateId { get => stateId; set => stateId = value; }
         [JsonPropertyName("image")]
         public string Image { get => image; set => image = value; }
         [JsonPropertyName("background")]
         public string Background { get => background; set => background = value; }
         [JsonPropertyName("description")]
         public string Description { get => description; set => description = value; }
+        [JsonPropertyName("authorName")]
+        public string AuthorName { get => authorName; set => authorName = value; }
+        [JsonPropertyName("stateName")]
+        public string StateName { get => stateName; set => stateName = value; }
     }
 }

@@ -43,6 +43,7 @@ namespace xs_assistant_management.Service.Impl
             Result<LoginData> result = JsonUtil.jsonToBean<Result<LoginData>>(json);
             if (!result.Status.Equals("200"))
             {
+                MessageBox.Show(result.Message,result.Status,MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return null;
             }
             HttpUtil.addDafaultHeaders(new KeyValuePair<string, string>("token", result.Data.Token));

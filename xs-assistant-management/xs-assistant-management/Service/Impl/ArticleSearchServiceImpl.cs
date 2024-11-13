@@ -34,8 +34,14 @@ namespace xs_assistant_management.Service.Impl
         {
             string url = AssistantProjectData.baseUrl + $"/article/search/get/page?page={page}&size={size}";
             string json = await HttpUtil.get(url);
+            Console.WriteLine(json);
             Result<List<Article>> articles = JsonUtil.jsonToBean<Result<List<Article>>>(json);
             return articles;
+        }
+
+        public Task<Result<List<Article>>> GetArticlesByIdNumber(string idNumber)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -7,10 +7,8 @@ using xs_assistant_management.Data.POJO;
 
 namespace xs_assistant_management.Service
 {
-    public interface IArticleSearchService
+    public interface ICustomerService
     {
-        Task<Result<List<Article>>> GetArticlesAsync(int page, int size);
-
-        Task<Result<List<Article>>> GetArticlesByIdNumber(string idNumber);
+        Task<Customer> GetCustomer(string idNumber);
     }
 }

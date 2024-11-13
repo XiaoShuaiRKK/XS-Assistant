@@ -33,9 +33,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Home_login_out_Menu = new System.Windows.Forms.ToolStripMenuItem();
             this.Home_Articles_dvg = new System.Windows.Forms.DataGridView();
+            this.Home_Page_Num = new System.Windows.Forms.NumericUpDown();
+            this.Home_Page_Right = new System.Windows.Forms.Label();
+            this.Home_Page_Left = new System.Windows.Forms.Label();
+            this.Home_Check_Article_Menu = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.Home_Icon_Image)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Home_Articles_dvg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Home_Page_Num)).BeginInit();
             this.SuspendLayout();
             // 
             // Home_Name_txt
@@ -59,10 +64,11 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Home_login_out_Menu});
+            this.Home_login_out_Menu,
+            this.Home_Check_Article_Menu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(970, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(955, 25);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -81,12 +87,51 @@
             this.Home_Articles_dvg.RowTemplate.Height = 23;
             this.Home_Articles_dvg.Size = new System.Drawing.Size(929, 378);
             this.Home_Articles_dvg.TabIndex = 3;
+            this.Home_Articles_dvg.SelectionChanged += new System.EventHandler(this.Home_Articles_dvg_SelectionChanged);
+            // 
+            // Home_Page_Num
+            // 
+            this.Home_Page_Num.Location = new System.Drawing.Point(696, 57);
+            this.Home_Page_Num.Name = "Home_Page_Num";
+            this.Home_Page_Num.Size = new System.Drawing.Size(45, 21);
+            this.Home_Page_Num.TabIndex = 4;
+            this.Home_Page_Num.ValueChanged += new System.EventHandler(this.Home_Page_Num_ValueChanged);
+            // 
+            // Home_Page_Right
+            // 
+            this.Home_Page_Right.AutoSize = true;
+            this.Home_Page_Right.Location = new System.Drawing.Point(757, 61);
+            this.Home_Page_Right.Name = "Home_Page_Right";
+            this.Home_Page_Right.Size = new System.Drawing.Size(11, 12);
+            this.Home_Page_Right.TabIndex = 5;
+            this.Home_Page_Right.Text = ">";
+            this.Home_Page_Right.Click += new System.EventHandler(this.Home_Page_Right_Click);
+            // 
+            // Home_Page_Left
+            // 
+            this.Home_Page_Left.AutoSize = true;
+            this.Home_Page_Left.Location = new System.Drawing.Point(670, 61);
+            this.Home_Page_Left.Name = "Home_Page_Left";
+            this.Home_Page_Left.Size = new System.Drawing.Size(11, 12);
+            this.Home_Page_Left.TabIndex = 6;
+            this.Home_Page_Left.Text = "<";
+            this.Home_Page_Left.Click += new System.EventHandler(this.Home_Page_Left_Click);
+            // 
+            // Home_Check_Article_Menu
+            // 
+            this.Home_Check_Article_Menu.Name = "Home_Check_Article_Menu";
+            this.Home_Check_Article_Menu.Size = new System.Drawing.Size(68, 21);
+            this.Home_Check_Article_Menu.Text = "查看文章";
+            this.Home_Check_Article_Menu.Click += new System.EventHandler(this.Home_Check_Article_Menu_Click);
             // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(970, 499);
+            this.ClientSize = new System.Drawing.Size(955, 482);
+            this.Controls.Add(this.Home_Page_Left);
+            this.Controls.Add(this.Home_Page_Right);
+            this.Controls.Add(this.Home_Page_Num);
             this.Controls.Add(this.Home_Articles_dvg);
             this.Controls.Add(this.Home_Icon_Image);
             this.Controls.Add(this.Home_Name_txt);
@@ -94,11 +139,14 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "HomeForm";
             this.Text = "Home";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HomeForm_FormClosed);
             this.Load += new System.EventHandler(this.HomeForm_Load);
+            this.Resize += new System.EventHandler(this.HomeForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.Home_Icon_Image)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Home_Articles_dvg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Home_Page_Num)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,5 +159,9 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem Home_login_out_Menu;
         private System.Windows.Forms.DataGridView Home_Articles_dvg;
+        private System.Windows.Forms.NumericUpDown Home_Page_Num;
+        private System.Windows.Forms.Label Home_Page_Right;
+        private System.Windows.Forms.Label Home_Page_Left;
+        private System.Windows.Forms.ToolStripMenuItem Home_Check_Article_Menu;
     }
 }
