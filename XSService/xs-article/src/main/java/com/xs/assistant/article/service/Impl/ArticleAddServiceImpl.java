@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
 
@@ -111,7 +112,7 @@ public class ArticleAddServiceImpl implements ArticleAddService {
                         snowflakeDistributeId.nextId(), MYSQL_DEFAULT_ID_SIZE);
                 article.setId(articleId);
                 article.setHot(0D);
-                article.setStateId(1);
+                article.setStateId(ArticleStateEnum.WAITING_FOR_REVIEW.ordinal());
             });
             Future<Boolean> rsMysql = mysqlBatchInsertService.batchInsert(articles);
             Future<Boolean> rsMongo = mongoInsertService.batchInsert(articles);
@@ -134,10 +135,10 @@ public class ArticleAddServiceImpl implements ArticleAddService {
     @Async("articleAsyncExecutor")
     public void addArticleAmqp(List<ArticleContext> articles) {
         try {
-            articles.forEach(article -> {
-                articleHotAmqp.deleteHotArticle(article.getId());
-                articleElasticsearchAmqp.deleteArticle(article.getId());
-            });
+            List<String> ids = new ArrayList<>();
+            articles.forEach(article -> ids.add(article.getId()));
+            articleHotAmqp.batchInsertHotArticle(ids);
+            articleElasticsearchAmqp.batchUploadArticle(articles);
         }catch (Exception e) {
             log.error(e.getMessage());
         }

@@ -27,7 +27,7 @@ public class ArticleCRUDMysql implements CRUDOperate<ArticleContext> {
     @Async("articleInsertAsyncExecutor")
     public Future<Boolean> insertArticle(ArticleContext article) {
         long startTime = System.currentTimeMillis();
-        boolean result = articleDAO.insertArticle(ArticleFactory.defaultArticle(article.getAuthorId(),article.getId())) > 0;
+        boolean result = articleDAO.insertArticle(ArticleFactory.defaultArticle(article.getAuthorId(),article.getId(),article.getStateId())) > 0;
         //mysql
         log.info("Insert Mysql Spend Time:" + (System.currentTimeMillis() - startTime));
         return AsyncResult.forValue(result);
@@ -38,7 +38,7 @@ public class ArticleCRUDMysql implements CRUDOperate<ArticleContext> {
     public Future<Boolean> batchInsert(List<ArticleContext> articles) {
         long startTime = System.currentTimeMillis();
         List<Article> articleList = new ArrayList<>();
-        articles.forEach(article -> articleList.add(ArticleFactory.defaultArticle(article.getAuthorId(),article.getId())));
+        articles.forEach(article -> articleList.add(ArticleFactory.defaultArticle(article.getAuthorId(),article.getId(),article.getStateId())));
         boolean rs = articleDAO.insertArticleBatch(articleList) > 0;
         log.info("=== Mysql Articles Batch Insert : " + (System.currentTimeMillis() - startTime) + " ===");
         return new AsyncResult<>(rs);

@@ -38,7 +38,7 @@ public class ESSearchController {
     @GetMapping("/get")
     public List<ArticleContext> getArticlesByPage(@RequestParam("page")Integer page,
                                                   @RequestParam("size")Integer size){
-        return esSearchService.searchArticlesAll(page,size);
+        return esSearchService.searchArticlesAll(backFrom(page,size),size);
     }
 
     /**
@@ -54,7 +54,7 @@ public class ESSearchController {
                                                  @RequestParam("size")Integer size,
                                                  @RequestParam("field")String field,
                                                  @RequestParam("target")String target){
-        return esSearchService.searchArticlesQuery(field, target, page, size);
+        return esSearchService.searchArticlesQuery(field, target, backFrom(page,size), size);
     }
 
     /**
@@ -68,7 +68,7 @@ public class ESSearchController {
     public List<ArticleContext> getArticleAllQuery(@RequestParam("target")String target,
                                                    @RequestParam("page")Integer page,
                                                    @RequestParam("size")Integer size){
-        return esSearchService.searchArticlesAllQuery(target,page,size);
+        return esSearchService.searchArticlesAllQuery(target,backFrom(page,size),size);
     }
 
     /**
@@ -84,7 +84,7 @@ public class ESSearchController {
                                                      @RequestParam("target")String target,
                                                      @RequestParam("page")Integer page,
                                                      @RequestParam("size")Integer size){
-        return esSearchService.searchArticlesScoreQuery(field,target,page,size);
+        return esSearchService.searchArticlesScoreQuery(field,target,backFrom(page,size),size);
     }
 
     /**
@@ -100,8 +100,19 @@ public class ESSearchController {
                                                           @RequestParam("size")Integer size){
         log.error("===============Search Article=================");
         if(StringUtils.isNotEmpty(target)){
-            return esSearchService.searchArticlesByTargetOrderByHot(page,size,target);
+            return esSearchService.searchArticlesByTargetOrderByHot(backFrom(page,size),size,target);
         }
-        return esSearchService.searchArticlesOrderByHot(page,size);
+        return esSearchService.searchArticlesOrderByHot(backFrom(page,size),size);
+    }
+
+    @GetMapping("/get/target/authorId")
+    public List<ArticleContext> getArticlesByTargetFindAuthorId(@RequestParam("author_id")String authorId,
+                                                                @RequestParam("page")Integer page,
+                                                                @RequestParam("size")Integer size){
+        return esSearchService.searchArticlesByIdNumber(authorId,backFrom(page,size),size);
+    }
+
+    private int backFrom(int page,int size){
+        return (page - 1) * size;
     }
 }

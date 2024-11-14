@@ -2,6 +2,7 @@ package com.xs.assistant.account.service.Impl;
 
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
+import com.xs.DAO.ResponseStatus;
 import com.xs.assistant.redis.util.RedisUtil;
 import com.xs.assistant.util.Impl.JWTUtil;
 import com.xs.assistant.account.service.remote.AccountInfoService;
@@ -50,9 +51,10 @@ public class RestAccountServiceImpl implements RestAccountService {
         String token;
         Map<String,Object> result = new HashMap<>();
         ResponseResult<CustomerDO> customerPack = accountService.accountLogin(name,password);
+        if(!customerPack.getStatus().equals(ResponseStatus.HTTP_STATUS_200.getResponseCode())){
+            return ResponseResult.error(null,customerPack.getMessage());
+        }
         CustomerDO customer = customerPack.getData();
-        if(customer == null)
-            return ResponseResult.success(null,customerPack.getMessage());
         //检查用户是否已经的登录过且有未过期的token
         //如果存在则直接返回此token和用户信息
         Optional<Object> tokenOptional = checkAccountHasToken(customer.getIdNumber());

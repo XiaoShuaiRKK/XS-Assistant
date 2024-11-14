@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -77,19 +78,39 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    @RedisSetHashValues(baseKey = REDIS_CUSTOMER_KEY,keyName = REDIS_CUSTOMER_ID_NUMBER_KEY,
-            key = "#numberID",time = DEFAULT_KEY_TIME_M,timeStyle = TimeUnit.MINUTES)
+//    @RedisSetHashValues(baseKey = REDIS_CUSTOMER_KEY,keyName = REDIS_CUSTOMER_ID_NUMBER_KEY,
+//            key = "#numberID",time = DEFAULT_KEY_TIME_M,timeStyle = TimeUnit.MINUTES)
     @Transactional(rollbackFor = Exception.class)
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
     public CustomerDO getCustomer(String numberID) {
-        return userInfoDAO.selectCustomerByNumberId(numberID);
+        Map.Entry<Object, Object> entry = redisUtil.fuzzySearchHashKeys(REDIS_CUSTOMER_KEY, REDIS_CUSTOMER_ID_NUMBER_KEY + numberID);
+        if(entry != null){
+            return (CustomerDO) entry.getValue();
+        }
+        CustomerDO customerDO = userInfoDAO.selectCustomerByNumberId(numberID);
+        if(customerDO != null){
+            redisUtil.setHash(REDIS_CUSTOMER_KEY,
+                    REDIS_CUSTOMER_ID_NUMBER_KEY + customerDO.getIdNumber() + REDIS_CUSTOMER_EMAIL_KEY + customerDO.getEmail(),
+                    customerDO,3L, TimeUnit.MINUTES);
+        }
+        return customerDO;
     }
 
     @Override
-    @RedisSetHashValues(baseKey = REDIS_CUSTOMER_KEY,keyName = REDIS_CUSTOMER_EMAIL_KEY,
-            key = "#email",time = DEFAULT_KEY_TIME_M,timeStyle = TimeUnit.MINUTES)
+//    @RedisSetHashValues(baseKey = REDIS_CUSTOMER_KEY,keyName = REDIS_CUSTOMER_EMAIL_KEY,
+//            key = "#email",time = DEFAULT_KEY_TIME_M,timeStyle = TimeUnit.MINUTES)
     public CustomerDO getCustomerByEmail(String email) {
-        return userInfoDAO.selectCustomerInfoByEmail(email);
+        Map.Entry<Object, Object> entry = redisUtil.fuzzySearchHashKeys(REDIS_CUSTOMER_KEY, REDIS_CUSTOMER_EMAIL_KEY + email);
+        if(entry != null){
+            return (CustomerDO) entry.getValue();
+        }
+        CustomerDO customerDO = userInfoDAO.selectCustomerInfoByEmail(email);
+        if(customerDO != null){
+            redisUtil.setHash(REDIS_CUSTOMER_KEY,
+                    REDIS_CUSTOMER_ID_NUMBER_KEY + customerDO.getIdNumber() + REDIS_CUSTOMER_EMAIL_KEY + customerDO.getEmail(),
+                    customerDO,3L,TimeUnit.MINUTES);
+        }
+        return customerDO;
     }
 
     /**

@@ -25,7 +25,9 @@ public class ArticleContextVO implements Serializable {
     @NotEmpty(message = "author id cannot be empty")
     @Length(min = 14,max = 14,message = "The id format is incorrect")
     private String authorId;
+    private String authorName;
     private Integer stateId;
+    private String stateName;
     private String image;
     private String background;
     private String description;

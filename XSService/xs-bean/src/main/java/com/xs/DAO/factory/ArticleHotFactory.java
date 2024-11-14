@@ -3,6 +3,7 @@ package com.xs.DAO.factory;
 import com.xs.DAO.DO.article.ArticleHot;
 import lombok.Getter;
 
+import java.sql.Date;
 import java.util.Optional;
 
 public class ArticleHotFactory {
@@ -29,5 +30,10 @@ public class ArticleHotFactory {
             }
         }
         return Optional.empty();
+    }
+
+    public static ArticleHot getDefaultArticleHot(String articleId){
+        Date now = new Date(System.currentTimeMillis());
+        return ArticleHot.builder().articleId(articleId).createTime(now).updateTime(now).build();
     }
 }

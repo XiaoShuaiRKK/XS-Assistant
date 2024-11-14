@@ -17,10 +17,10 @@ public interface ArticleContextMapper {
     ArticleContextMapper INSTANCE = Mappers.getMapper(ArticleContextMapper.class);
     @Mappings({
             @Mapping(source = "articleContext.id",target = "id"),
-            @Mapping(source = "article.authorId",target = "authorId",defaultValue = "XS0"),
+            @Mapping(source = "articleContext.authorId",target = "authorId"),
             @Mapping(source = "article.image",target = "image",defaultValue = "Illustration 1"),
             @Mapping(source = "article.background",target = "background",defaultValue = "Background 1"),
-            @Mapping(source = "article.stateId",target = "stateId",defaultValue = "1"),
+            @Mapping(source = "articleContext.stateId",target = "stateId"),
             @Mapping(source = "articleContext.description",target = "description",defaultValue = "This good article")
     })
     ArticleContextVO articleToArticleContextVO(ArticleContext articleContext, Article article);

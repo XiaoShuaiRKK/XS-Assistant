@@ -50,6 +50,7 @@ public class AccountController {
                                      @RequestParam("password")
                                      @NotEmpty(message = LOGIN_FAIL_MSG)
                                      @Length(max = 20,message = LOGIN_FAIL_MSG) String password){
+        log.info(name + " Logging....");
         return accountService.restLogin(name,password);
     }
 

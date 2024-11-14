@@ -6,6 +6,8 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("articleESAmqp")
 public class ArticleElasticsearchAmqp implements ArticleAmqp {
 
@@ -29,6 +31,10 @@ public class ArticleElasticsearchAmqp implements ArticleAmqp {
      */
     public void uploadArticle(ArticleContext article){
         rabbitTemplate.convertAndSend(RABBITMQ_EXCHANGE_NAME_ARTICLE,"article.single",jsonUtil.beanToJson(article));
+    }
+
+    public void batchUploadArticle(List<ArticleContext> articles){
+        rabbitTemplate.convertAndSend(RABBITMQ_EXCHANGE_NAME_ARTICLE,"article.batch.add",jsonUtil.beanToJson(articles));
     }
 
     public void deleteArticle(String articleId){

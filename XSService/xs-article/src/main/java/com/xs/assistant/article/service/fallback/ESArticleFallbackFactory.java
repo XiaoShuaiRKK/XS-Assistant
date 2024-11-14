@@ -20,27 +20,32 @@ public class ESArticleFallbackFactory implements FallbackFactory<ESArticleRemote
 
         @Override
         public List<ArticleContext> getArticlesAll() {
-            return null;
+            return List.of();
         }
 
         @Override
         public List<ArticleContext> getArticlesByPage(Integer page, Integer size) {
-            return null;
+            return List.of();
         }
 
         @Override
         public List<ArticleContext> getArticlesQuery(Integer page, Integer size, String field, String target) {
-            return null;
+            return List.of();
         }
 
         @Override
         public List<ArticleContext> getArticleAllQuery(String target, Integer page, Integer size) {
-            return null;
+            return List.of();
         }
 
         @Override
         public List<ArticleContext> getArticleScoreQuery(String field, String target, Integer page, Integer size) {
-            return null;
+            return List.of();
+        }
+
+        @Override
+        public List<ArticleContext> getArticlesByTargetFindAuthorId(String authorId, Integer page, Integer size) {
+            return List.of();
         }
     };
 

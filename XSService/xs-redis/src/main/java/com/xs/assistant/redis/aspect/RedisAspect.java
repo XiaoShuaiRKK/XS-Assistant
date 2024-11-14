@@ -14,6 +14,13 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 public abstract class RedisAspect {
     private final SpelExpressionParser parser = new SpelExpressionParser();
 
+    /**
+     * 使用Spel来获取传入的参数
+     * @param joinPoint
+     * @param keyExpression
+     * @return
+     * @throws RedisKeyNullException
+     */
     public String getSpELKey(ProceedingJoinPoint joinPoint,String keyExpression) throws RedisKeyNullException{
         if(keyExpression.isBlank())
             throw new RedisKeyNullException();

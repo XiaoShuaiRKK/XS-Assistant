@@ -3,7 +3,6 @@ package com.xs.assistant.image.util;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.xs.assistant.image.config.MinioConfig;
 import io.minio.*;
-import io.minio.errors.*;
 import io.minio.http.Method;
 import io.minio.messages.Bucket;
 import io.minio.messages.Item;
@@ -14,9 +13,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.FastByteArrayOutputStream;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 @Component
@@ -181,16 +177,28 @@ public class MinioUtil {
         }
     }
 
+    public List<String> listObjectsName(){
+        return listObjectsName(prop.getBucket());
+    }
+
     /**
      * 查看文件对象
      * @return 存储bucket内文件对象信息
      */
-    public List<Item> listiObjects(){
-        Iterable<Result<Item>> results = minioClient.listObjects(ListObjectsArgs.builder().bucket(prop.getBucket()).build());
-        List<Item> items = new ArrayList<>();
+    public List<String> listObjectsName(String bucket){
+        return listObjects(ListObjectsArgs.builder().bucket(bucket).build());
+    }
+
+    public List<String> listObjectsFolderName(String bucket,String folder){
+        return listObjects(ListObjectsArgs.builder().bucket(bucket).prefix(folder).build());
+    }
+
+    private List<String> listObjects(ListObjectsArgs args) {
+        Iterable<Result<Item>> results = minioClient.listObjects(args);
+        List<String> items = new ArrayList<>();
         try {
             for(Result<Item> result : results) {
-                items.add(result.get());
+                items.add(result.get().objectName());
             }
         }catch (Exception e) {
             log.error(e.getMessage());
@@ -198,6 +206,7 @@ public class MinioUtil {
         }
         return items;
     }
+
 
     /**
      * 删除

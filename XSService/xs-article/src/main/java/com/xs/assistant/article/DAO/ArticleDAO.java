@@ -12,4 +12,5 @@ public interface ArticleDAO {
     Integer insertArticleBatch(@Param("articles")List<Article> articles);
     Integer selectArticleByArticleId(@Param("articleId")String articleId);
     Long count();
+    String getArticleState(@Param("status_id")Integer statusId);
 }

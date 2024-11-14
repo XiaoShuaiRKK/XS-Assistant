@@ -21,8 +21,8 @@ spring:
 #      host: 10.10.100.105
 #      port: 6379
   datasource:
-#    url: jdbc:mysql://10.10.100.105:3306/xs?useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
-    url: jdbc:mysql://localhost:3306/xs?useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
+#    url: jdbc:mysql://10.10.100.105:3306/xs?useUnicode=true&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://localhost:3306/xs?useUnicode=true&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: xiaoshuai0628

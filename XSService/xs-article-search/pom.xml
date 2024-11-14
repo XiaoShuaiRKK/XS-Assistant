@@ -26,6 +26,11 @@
             <artifactId>xs-elasticsearch</artifactId>
             <version>1.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.xs.assistant</groupId>
+            <artifactId>xs-redis</artifactId>
+            <version>1.2.1</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>

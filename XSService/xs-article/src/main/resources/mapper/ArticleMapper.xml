@@ -42,7 +42,7 @@
         FROM
             note
         WHERE
-            ArticleId = #{articleId}
+            article_id = #{articleId}
     </select>
 
     <select id="selectArticlesByArticleId" resultType="com.xs.DAO.DO.article.Article">
@@ -51,9 +51,18 @@
         FROM
             note
         WHERE
-            ArticleId IN
+            article_id IN
         <foreach collection="articleIds" item="articleId" open="(" close=")" separator=",">
             #{articleId}
         </foreach>
+    </select>
+
+    <select id="getArticleState" resultType="java.lang.String">
+        SELECT
+            stateName
+        FROM
+            article_state
+        WHERE
+            id = #{status_id}
     </select>
 </mapper>

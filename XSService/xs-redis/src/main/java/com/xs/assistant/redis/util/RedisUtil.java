@@ -2,29 +2,26 @@ package com.xs.assistant.redis.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.ReturnType;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ZSetOperations;
+import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.scripting.support.ResourceScriptSource;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Component
 @Slf4j
 public class RedisUtil {
-    final RedisTemplate<Object,Object> redisTemplate;
+    final RedisTemplate<String,Object> redisTemplate;
 
     public static final long DEFAULT_EXPIRE_TIME = 60L;
 
-    public RedisUtil(RedisTemplate<Object, Object> redisTemplate) {
+    public RedisUtil(@Qualifier("myRedisTemplate") RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
@@ -53,21 +50,31 @@ public class RedisUtil {
         return true;
     }
 
+    public boolean setForever(String key,Object value){
+        try {
+            redisTemplate.opsForValue().set(key,value);
+        }catch (Exception e){
+            log.error(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
     /**
      * The data set in redis in form of a List
      * @param key key
      * @param value value
      * @return boolean
      */
-    public boolean setList(String key,List<?> value){
-        return setList(key,value,DEFAULT_EXPIRE_TIME);
+    public boolean rightPushList(String key,List<?> value){
+        return rightPushList(key,value,DEFAULT_EXPIRE_TIME);
     }
 
-    public boolean setList(String key,List<?> value,Long time){
-        return setList(key,value,time,TimeUnit.SECONDS);
+    public boolean rightPushList(String key,List<?> value,Long time){
+        return rightPushList(key,value,time,TimeUnit.SECONDS);
     }
 
-    public boolean setList(String key, List<?> value,Long time,TimeUnit timeUnit){
+    public boolean rightPushList(String key, List<?> value,Long time,TimeUnit timeUnit){
         try {
             redisTemplate.opsForList().rightPushAll(key,value);
             setExpire(key,time,timeUnit);
@@ -98,6 +105,7 @@ public class RedisUtil {
             redisTemplate.opsForHash().put(key,itemKey,value);
             setExpire(key,time,timeUnit);
         }catch (Exception e){
+            log.error("=========setHash() Error=========");
             log.error(e.getMessage());
             return false;
         }
@@ -210,6 +218,16 @@ public class RedisUtil {
         return redisTemplate.opsForValue().increment(key,delta);
     }
 
+    public Long incrementByExpire(String key,long time,TimeUnit timeUnit){
+        return incrementByExpire(key,1L,time,timeUnit);
+    }
+
+    public Long incrementByExpire(String key,long delta,long time,TimeUnit timeUnit){
+        long result = increment(key,delta);
+        setExpire(key,time,timeUnit);
+        return result;
+    }
+
     public <K,V> Map<K,V> getHashAll(String key){
         return (Map<K, V>) redisTemplate.opsForHash().entries(key);
     }
@@ -258,6 +276,11 @@ public class RedisUtil {
         return redisTemplate.opsForHash().entries(key);
     }
 
+    public void getHashByCursor(String key,int count){
+        Cursor<Map.Entry<Object, Object>> scan = redisTemplate.opsForHash().scan(key, ScanOptions.scanOptions().count(count).build());
+
+    }
+
     public Long deleteHash(String key,String itemKey) {
         return redisTemplate.opsForHash().delete(key,itemKey);
     }
@@ -285,12 +308,12 @@ public class RedisUtil {
         return true;
     }
 
-    public <T> T scriptLua(String scriptPath,Class<T> clz,String[] key,String args){
-        DefaultRedisScript<T> redisScript = new DefaultRedisScript<>();
-        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource(scriptPath)));
-        redisScript.setResultType(clz);
-        return redisTemplate.execute(redisScript, Collections.singletonList(key),args);
-    }
+//    public <T> T scriptLua(String scriptPath,Class<T> clz,String[] key,String args){
+//        DefaultRedisScript<T> redisScript = new DefaultRedisScript<>();
+//        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource(scriptPath)));
+//        redisScript.setResultType(clz);
+//        return redisTemplate.execute(redisScript, Collections.singletonList(key),args);
+//    }
 
     public <T> T scriptLua(String script,String key,String field,int incrementBy){
         return redisTemplate.execute((RedisCallback<? extends T>) connection -> (T)connection.eval(
@@ -303,7 +326,59 @@ public class RedisUtil {
         ));
     }
 
-    public void pipeline(RedisCallback<?> callback){
-        redisTemplate.executePipelined(callback);
+//    public List<Object> pipeline(RedisCallback<?> callback){
+//        return redisTemplate.executePipelined(callback);
+//    }
+
+    public List<Object> pipeline(SessionCallback<?> callback){
+        return redisTemplate.executePipelined(callback);
+    }
+
+    public Map.Entry<Object,Object> fuzzySearchHashKeys(String hashKey,String pattern){
+        Map.Entry<Object,Object> result = null;
+        try(Cursor<Map.Entry<Object, Object>> scan = redisTemplate.opsForHash().scan(hashKey, ScanOptions.scanOptions().match(pattern).build())){
+            while (scan.hasNext()){
+                result = scan.next();
+            }
+        }catch (Exception e){
+            log.error("=========fuzzySearchHashKeys Error=================");
+            log.error(e.getMessage());
+        }
+        return result;
+    }
+
+
+    public static class SessionCallbackFactory{
+        public enum OperationsEnum{
+            SET,SET_FOREVER,SET_IF_PRESENT,SET_IF_PRESENT_FOREVER,DELETE
+        }
+
+        @FunctionalInterface
+        public interface SessionOperationsNoReturn{
+            void execute(RedisOperations<Object,Object> operations,String key,Object value,long time,TimeUnit timeUnit);
+        }
+
+        private static Map<OperationsEnum,SessionOperationsNoReturn> operationsMap = new EnumMap<>(OperationsEnum.class);
+
+        static {
+            operationsMap.put(OperationsEnum.SET, (operations, key, value, time, timeUnit) -> operations.opsForValue().set(key,value,time,timeUnit));
+            operationsMap.put(OperationsEnum.SET_FOREVER, (operations, key, value, time, timeUnit) -> operations.opsForValue().set(key,value));
+            operationsMap.put(OperationsEnum.SET_IF_PRESENT, (operations, key, value, time, timeUnit) -> operations.opsForValue().setIfPresent(key,value,time,timeUnit));
+            operationsMap.put(OperationsEnum.SET_IF_PRESENT_FOREVER, (operations, key, value, time, timeUnit) -> operations.opsForValue().setIfPresent(key,value));
+            operationsMap.put(OperationsEnum.DELETE, (operations, key, value, time, timeUnit) -> operations.delete(key));
+        }
+
+
+        public static SessionCallback<Object> batchOperationsNoReturn(Map<String,Object> itemMap,long time,TimeUnit timeUnit,OperationsEnum operationsEnum){
+            return new SessionCallback<>() {
+                @Override
+                public <K, V> Object execute(RedisOperations<K, V> operations) throws DataAccessException {
+                    SessionOperationsNoReturn sessionOperationsNoReturn = operationsMap.get(operationsEnum);
+                    itemMap.forEach((k,v) -> sessionOperationsNoReturn.execute((RedisOperations<Object, Object>) operations,k,v,time,timeUnit));
+                    return null;
+                }
+            };
+        }
+
     }
 }

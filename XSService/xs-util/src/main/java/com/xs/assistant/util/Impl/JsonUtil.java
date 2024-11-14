@@ -6,6 +6,7 @@ import com.xs.assistant.util.IAssistantUtil;
 import com.xs.assistant.util.config.LocalDateTimeAdapter;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 
 @Component
@@ -20,6 +21,10 @@ public class JsonUtil implements IAssistantUtil {
 
     public <T> T jsonToBean(String json,Class<T> clz){
         return gson.fromJson(json,clz);
+    }
+
+    public <T> T jsonToBean(String json, Type type){
+        return gson.fromJson(json,type);
     }
 
 }

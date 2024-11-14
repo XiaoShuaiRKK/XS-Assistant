@@ -37,10 +37,11 @@ public class LoginServiceImpl implements LoginService {
             Optional<String> encodedPassword = Optional.ofNullable(loginDAO.getCustomerPassword(name));
             //比对原文和加密值是否一致
             if (encodedPassword.isPresent()){
-                if(Boolean.TRUE.equals(encryptionService.checkEncodePassword(password,encodedPassword.get())))
+                if(Boolean.TRUE.equals(encryptionService.checkEncodePassword(password,encodedPassword.get()))){
                     return ResponseResult.success(loginDAO.login(name),"登录成功");
+                }
             }
-            result = ResponseResult.success(null,"登录失败");
+            result = ResponseResult.error(null,"登录失败");
         }catch (Exception e){
             log.error(e.getMessage());
             result = ResponseResult.fail("server error");

@@ -12,22 +12,25 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @Service
-@FeignClient(value = "XS-SERVICE-USER",path = "/xs_assistant",fallback = UserInfoFallback.class)
+@FeignClient(value = "XS-SERVICE-USER",path = "/xs_assistant/user",fallback = UserInfoFallback.class)
 public interface AccountInfoService {
-    @GetMapping("/user/getCustomers")
+    @GetMapping("/getCustomers")
     ResponseResult<List<CustomerDO>> getCustomers(@RequestParam("page")Integer page,
                                                           @RequestParam("size")Integer size);
-    @GetMapping("/user/getCustomer")
+    @GetMapping("/getCustomer")
     ResponseResult<CustomerDO> getCustomer(@RequestParam("id")Integer id);
-    @GetMapping("/user/getCustomer/byNumberID")
+    @GetMapping("/getCustomer/byNumberID")
     ResponseResult<CustomerDO> getCustomerByNumberId(@RequestParam("ID")String id);
-    @GetMapping("/user/getCustomer/byEmail")
+    @GetMapping("/getCustomer/byEmail")
     ResponseResult<CustomerDO> getCustomerByEmail(@RequestParam("email")String email);
-    @GetMapping("/user/checkCustomer")
+    @GetMapping("/checkCustomer")
     ResponseResult<Boolean> checkCustomer(@RequestParam("email")String email);
-    @PostMapping("/user/register")
+    @GetMapping("/getCustomer/name")
+    ResponseResult<String> getCustomerName(@RequestParam("idNumber")String idNumber);
+    @PostMapping("/register")
     ResponseResult<Boolean> registerCustomer(@RequestBody CustomerDO customer);
-    @PostMapping(value = "/user/upload/icon",consumes = MediaType.MULTIPART_FORM_DATA)
+    @PostMapping(value = "/upload/icon",consumes = MediaType.MULTIPART_FORM_DATA)
     ResponseResult<Boolean> uploadIconWithCustomer(@RequestPart("icon") MultipartFile file,
                                                           @RequestParam("idNumber") String idNumber);
+
 }

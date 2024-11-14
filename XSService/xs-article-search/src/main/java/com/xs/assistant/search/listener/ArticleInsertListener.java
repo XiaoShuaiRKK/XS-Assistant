@@ -1,5 +1,6 @@
 package com.xs.assistant.search.listener;
 
+import com.google.common.reflect.TypeToken;
 import com.xs.DAO.DO.article.ArticleContext;
 import com.xs.assistant.search.service.ESInsertService;
 import com.xs.assistant.search.service.ESUpdateService;
@@ -9,6 +10,7 @@ import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
+import java.util.*;
 
 @Service
 public class ArticleInsertListener {
@@ -31,6 +33,13 @@ public class ArticleInsertListener {
             key = "article.single"))
     private void addSingleArticle(String articleJson){
         esInsertService.insert(jsonUtil.jsonToBean(articleJson, ArticleContext.class));
+    }
+
+    @RabbitListener(bindings = @QueueBinding(value = @Queue,
+            exchange = @Exchange(name = "articleChange",type = "topic"),
+            key = "article.batch.add"))
+    private void batchAddArticles(String articleJson){
+        esInsertService.insert((List<ArticleContext>) jsonUtil.jsonToBean(articleJson,new TypeToken<List<ArticleContext>>(){}.getType()));
     }
 
     @RabbitListener(bindings = @QueueBinding(value = @Queue,

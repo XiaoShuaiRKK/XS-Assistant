@@ -37,4 +37,9 @@ public interface ESArticleRemoteService {
                                               @RequestParam("target")String target,
                                               @RequestParam("page")Integer page,
                                               @RequestParam("size")Integer size);
+
+    @GetMapping("/query/get/target/authorId")
+    List<ArticleContext> getArticlesByTargetFindAuthorId(@RequestParam("author_id")String authorId,
+                                                                @RequestParam("page")Integer page,
+                                                                @RequestParam("size")Integer size);
 }

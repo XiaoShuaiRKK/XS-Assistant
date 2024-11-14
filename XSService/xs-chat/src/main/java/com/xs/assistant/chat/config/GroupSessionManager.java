@@ -35,10 +35,10 @@ public class GroupSessionManager {
     @Scheduled(cron = "0 0/1 * * * ?")
     public void scheduleSaveRedis(){
         log.info("定时保存群组信息到redis中");
-        redisUtil.pipeline(connection -> {
-            GROUP_POOL.forEach((group, members) -> redisUtil.setHashMap(GROUP_POOL_KEY + ":" + group.getGroupId(), members));
-            return null;
-        });
+//        redisUtil.pipeline(connection -> {
+//            GROUP_POOL.forEach((group, members) -> redisUtil.setHashMap(GROUP_POOL_KEY + ":" + group.getGroupId(), members));
+//            return null;
+//        });
     }
 
     public GroupSessionManager(RedisUtil redisUtil, UIDCodeUtil codeUtil) {

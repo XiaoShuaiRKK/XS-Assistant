@@ -60,4 +60,11 @@ public class ArticleSearchController {
                                                                             @RequestParam("size")Integer size){
         return esArticleService.getArticlesByScore(field,target,page,size);
     }
+
+    @GetMapping("/get/by/idNumber")
+    public ResponseResult<List<ArticleContextVO>> searchArticleByTargetFindIdNumber(@RequestParam("id_number")String idNumber,
+                                                                                    @RequestParam("page")Integer page,
+                                                                                    @RequestParam("size")Integer size){
+        return ResponseResult.success(esArticleService.getArticlesByTargetFindIdNumber(idNumber, page, size));
+    }
 }

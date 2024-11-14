@@ -5,15 +5,15 @@
 
     <insert id="insertCustomer" parameterType="com.xs.DAO.DO.customer.CustomerDO">
         INSERT INTO
-            customer (Id,FirstName,LastName,Email,Password,Birth,IdNumber,AreaId,StateId,Level,update_time,icon_path)
+            customer (id,first_name,last_name,email,password,birth,id_number,area_id,state_id,icon_path,create_time,level,update_time)
         VALUES
             (NULL,#{customer.firstName},#{customer.lastName},#{customer.email},
-             #{customer.password},#{customer.birth},#{customer.idNumber},#{customer.areaId},0,now(),#{customer.level},#{customer.iconPath})
+             #{customer.password},#{customer.birth},#{customer.idNumber},#{customer.areaId},0,#{customer.iconPath},now(),#{customer.level},now())
     </insert>
 
     <update id="uploadIcon">
         UPDATE customer
         SET icon_path = #{iconPath}
-        WHERE IdNumber = #{idOfNumber}
+        WHERE id_number = #{idOfNumber}
     </update>
 </mapper>

@@ -3,6 +3,7 @@ package com.xs.assistant.search.service.Impl;
 import co.elastic.clients.elasticsearch._types.SortOrder;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import com.xs.DAO.DO.article.ArticleContext;
+import com.xs.DAO.option.article.ArticleColumnKeyEnum;
 import com.xs.DAO.repository.ElasticRepositoryKeyEnum;
 import com.xs.assistant.search.service.ESSearchService;
 import com.xs.assistant.search.service.ESService;
@@ -46,9 +47,16 @@ public class ESSearchServiceImpl extends ESService implements ESSearchService {
      * @return 文章列表
      */
     @Override
-    public List<ArticleContext> searchArticlesAll(int page, int size) {
+    public List<ArticleContext> searchArticlesAll(int from, int size) {
         return ToList.apply(elasticsearchUtil.searchDocuments(ElasticRepositoryKeyEnum.ES_ARTICLE_KEY.getKey(),
-                page,size, ArticleContext.class));
+                from,size, ArticleContext.class));
+    }
+
+    @Override
+    public List<ArticleContext> searchArticlesByIdNumber(String idNumber,int from, int size) {
+        List<Hit<ArticleContext>> hits = elasticsearchUtil.searchDocumentsMultiQuery(ElasticRepositoryKeyEnum.ES_ARTICLE_KEY.getKey(),
+                idNumber, from, size, ArticleContext.class, ArticleColumnKeyEnum.ARTICLE_COLUMN_KEY_AUTHOR_ID.getName());
+        return ToList.apply(hits);
     }
 
     /**
@@ -60,9 +68,9 @@ public class ESSearchServiceImpl extends ESService implements ESSearchService {
      * @return 文章列表
      */
     @Override
-    public List<ArticleContext> searchArticlesQuery(String field, String target, int page, int size) {
+    public List<ArticleContext> searchArticlesQuery(String field, String target, int from, int size) {
         return ToList.apply(elasticsearchUtil.searchDocumentsQuery(ElasticRepositoryKeyEnum.ES_ARTICLE_KEY.getKey(),
-                field,target,page,size, ArticleContext.class));
+                field,target,from,size, ArticleContext.class));
     }
 
     /**
@@ -73,9 +81,9 @@ public class ESSearchServiceImpl extends ESService implements ESSearchService {
      * @return 文章列表
      */
     @Override
-    public List<ArticleContext> searchArticlesAllQuery(String target, int page, int size) {
+    public List<ArticleContext> searchArticlesAllQuery(String target, int from, int size) {
         return ToList.apply(elasticsearchUtil.searchDocumentsMultiQuery(ElasticRepositoryKeyEnum.ES_ARTICLE_KEY.getKey(),
-                target,page,size, ArticleContext.class,
+                target,from,size, ArticleContext.class,
                 ElasticRepositoryKeyEnum.ES_ARTICLE_COLUMN_CONTEXT_KEY.getKey(),
                 ElasticRepositoryKeyEnum.ES_ARTICLE_COLUMN_TITLE_KEY.getKey(),
                 ElasticRepositoryKeyEnum.ES_ARTICLE_COLUMN_SUB_TITLE_KEY.getKey(),
@@ -91,9 +99,9 @@ public class ESSearchServiceImpl extends ESService implements ESSearchService {
      * @return 文章列表
      */
     @Override
-    public List<ArticleContext> searchArticlesScoreQuery(String field, String target, int page, int size) {
+    public List<ArticleContext> searchArticlesScoreQuery(String field, String target, int from, int size) {
         return ToList.apply(elasticsearchUtil.searchDocumentsMaxScore(ElasticRepositoryKeyEnum.ES_ARTICLE_KEY.getKey(),
-                field, page,size, ArticleContext.class));
+                field, from,size, ArticleContext.class));
     }
 
     /**
@@ -104,9 +112,9 @@ public class ESSearchServiceImpl extends ESService implements ESSearchService {
      * @return 文章列表
      */
     @Override
-    public List<ArticleContext> searchArticlesByTargetOrderByHot(int page, int size, String target) {
+    public List<ArticleContext> searchArticlesByTargetOrderByHot(int from, int size, String target) {
         List<Hit<ArticleContext>> hits = elasticsearchUtil.searchDocumentsMultiOrderSortQueryFields(ElasticRepositoryKeyEnum.ES_ARTICLE_KEY.getKey(),
-                ElasticRepositoryKeyEnum.ES_ARTICLE_COLUMN_HOT_KEY.getKey(), SortOrder.Desc, target, page, size, ArticleContext.class,
+                ElasticRepositoryKeyEnum.ES_ARTICLE_COLUMN_HOT_KEY.getKey(), SortOrder.Desc, target, from, size, ArticleContext.class,
                 ElasticRepositoryKeyEnum.ES_ARTICLE_COLUMN_TITLE_KEY.getKey(),
                 ElasticRepositoryKeyEnum.ES_ARTICLE_COLUMN_SUB_TITLE_KEY.getKey(),
                 ElasticRepositoryKeyEnum.ES_ARTICLE_COLUMN_CONTEXT_KEY.getKey());
@@ -114,9 +122,9 @@ public class ESSearchServiceImpl extends ESService implements ESSearchService {
     }
 
     @Override
-    public List<ArticleContext> searchArticlesOrderByHot(int page, int size) {
+    public List<ArticleContext> searchArticlesOrderByHot(int from, int size) {
         List<Hit<ArticleContext>> hits = elasticsearchUtil.searchDocumentsSortQueryFields(ElasticRepositoryKeyEnum.ES_ARTICLE_KEY.getKey(),
-                ElasticRepositoryKeyEnum.ES_ARTICLE_COLUMN_HOT_KEY.getKey(),SortOrder.Desc,page,size,ArticleContext.class);
+                ElasticRepositoryKeyEnum.ES_ARTICLE_COLUMN_HOT_KEY.getKey(),SortOrder.Desc,from,size,ArticleContext.class);
         return ToList.apply(hits);
     }
 

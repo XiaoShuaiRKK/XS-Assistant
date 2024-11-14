@@ -54,6 +54,12 @@ public class UserInfoController {
 //        return packageResult(userInfoService.hasCustomer(email));
     }
 
+    @GetMapping("/getCustomer/name")
+    public ResponseResult<String> getCustomerName(@RequestParam("idNumber")String idNumber){
+        CustomerDO customer = userInfoService.getCustomer(idNumber);
+        return ResponseResult.success(customer.getFirstName() + " " + customer.getLastName());
+    }
+
     @GetMapping("/checkCustomer/byID")
     public ResponseResult<Boolean> checkCustomerByID(@RequestParam("accountId")String accountId){
         return packageResult(userInfoService.hashCustomerByID(accountId));

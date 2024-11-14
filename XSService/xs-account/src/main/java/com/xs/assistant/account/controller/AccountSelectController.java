@@ -2,6 +2,7 @@ package com.xs.assistant.account.controller;
 
 import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.DAO.ResponseResult;
+import com.xs.DAO.ResponseStatus;
 import com.xs.assistant.account.service.RestAccountInfoService;
 import com.xs.assistant.account.service.remote.AccountInfoService;
 import com.xs.assistant.account.service.remote.AccountService;
@@ -49,7 +50,7 @@ public class AccountSelectController {
      */
     @GetMapping("/byNumberId")
     public ResponseResult<CustomerDO> getAccountById(@Length(min = 14,max = 14,message = "The Number ID format error")
-                                                         @RequestParam("ID")String id){
+                                                         @RequestParam("id")String id){
         return accountInfoService.getCustomerByNumberId(id);
     }
 
@@ -62,5 +63,10 @@ public class AccountSelectController {
     public ResponseResult<CustomerDO> getAccountByEmail(@Email(message = "invalid email")
                                                             @RequestParam("email")String email){
         return accountInfoService.getCustomerByEmail(email);
+    }
+
+    @GetMapping("/name/byNumberId")
+    public ResponseResult<String> getAccountNameById(@RequestParam("id")String id){
+        return accountInfoService.getCustomerName(id);
     }
 }

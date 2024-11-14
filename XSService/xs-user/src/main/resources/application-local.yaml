@@ -9,7 +9,7 @@ spring:
     charset: UTF-8
     location: Banner/XS-Assistant-Banner.txt
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/xs?useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/xs?useUnicode=true&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: xiaoshuai0628
@@ -24,7 +24,7 @@ spring:
           max-wait: 8s
           max-idle: 100
           min-idle: 0
-      timeout: 2400
+      timeout: 120000
       password: xs0628
   devtools:
     restart:

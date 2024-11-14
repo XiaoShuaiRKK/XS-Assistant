@@ -22,7 +22,7 @@ public class RedisListActuatorAspect extends RedisAspect{
         if(redisUtil.hasKey(key))
             return redisUtil.getList(key);
         List<?> result = (List<?>) joinPoint.proceed();
-        redisUtil.setList(key,result,redisSetList.time(),redisSetList.timeStyle());
+        redisUtil.rightPushList(key,result,redisSetList.time(),redisSetList.timeStyle());
         return result;
     }
 

@@ -2,4 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xs.assistant.hot.DAO.ArticleHotMapper">
+    <insert id="batchInsertHot" parameterType="java.util.List">
+        INSERT INTO
+            article_hot (hot_id,article_id,comment_num,star_num,liked_num,create_time,update_time)
+        VALUES
+        <foreach collection="hots" item="hot" separator=",">
+            (null,#{hot.articleId},0,0,0,#{hot.createTime},#{hot.updateTime})
+        </foreach>
+    </insert>
 </mapper>

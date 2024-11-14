@@ -15,6 +15,7 @@ import reactor.core.publisher.Mono;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.util.concurrent.TimeUnit;
 
 @Component
 @Slf4j
@@ -45,13 +46,8 @@ public class IPFilter extends BaseFilter implements GlobalFilter, Ordered {
         String ip = getRealIpAddress(exchange.getRequest());
         if(checkReleasePath(exchange.getRequest().getURI().getPath()) == 0){
             String key = REDIS_IP_LOGIN_KEY + ip;
-            Integer count = (Integer) redisUtil.get(key);
-            if(count == null)
-                redisUtil.set(key,1);
-            else if(count < 5){
-                redisUtil.setIfPresent(key,count + 1);
-            }
-            else
+            Long count = redisUtil.incrementByExpire(key,60L, TimeUnit.SECONDS);
+            if(count > 50)
                 return writeResponse(ResponseStatus.HTTP_STATUS_429, exchange.getResponse(),"登录次数太过频繁，请一分钟后重试");
         }
         String key = REDIS_IP_KEY + ip;
@@ -60,7 +56,7 @@ public class IPFilter extends BaseFilter implements GlobalFilter, Ordered {
             redisUtil.set(key,1,20L);
             return chain.filter(exchange);
         }
-        int count = Integer.parseInt((String) redisUtil.get(key));
+        int count = (int) redisUtil.get(key);
         if(count > 100000000){
             redisUtil.set(black,1,120L);
             return writeResponse(ResponseStatus.HTTP_STATUS_429,exchange.getResponse(),"请求太频繁请稍后重试");

@@ -5,6 +5,8 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("articleHotAmqp")
 public class ArticleHotAmqp implements ArticleAmqp {
     private final RabbitTemplate rabbitTemplate;
@@ -26,6 +28,10 @@ public class ArticleHotAmqp implements ArticleAmqp {
      */
     public void insertHotArticle(String articleId){
         rabbitTemplate.convertAndSend(RABBITMQ_EXCHANGE_NAME_ARTICLE_HOT_VALUE,"article.hot.value.default",articleId);
+    }
+
+    public void batchInsertHotArticle(List<String> articleId){
+        rabbitTemplate.convertAndSend(RABBITMQ_EXCHANGE_NAME_ARTICLE_HOT_VALUE,"article.hot.batch.values",jsonUtil.beanToJson(articleId));
     }
 
     /**

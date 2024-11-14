@@ -4,9 +4,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xs.DAO.DO.article.ArticleHot;
-import io.lettuce.core.dynamic.annotation.Param;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 @Mapper
 public interface ArticleHotMapper extends BaseMapper<ArticleHot> {
@@ -23,4 +25,5 @@ public interface ArticleHotMapper extends BaseMapper<ArticleHot> {
     @Select("SELECT liked_num FROM article_hot WHERE article_id = #{articleId}")
     Long selectLikedNumByArticleId(@Param("articleId") String articleId);
 //    Long incrementCommentNum(@Param("articleId") String articleId, @Param("version")Long version);
+    Integer batchInsertHot(@Param("hots") List<ArticleHot> articleHotList);
 }
