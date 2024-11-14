@@ -14,6 +14,9 @@ namespace xs_assistant_management.Service.Impl
         private ArticleSearchServiceImpl(){}
         private static IArticleSearchService instance;
         static readonly object lockObject = new object();
+
+        private string baseUrl = "/article/search";
+
         public static IArticleSearchService Instance()
         {
             if(instance != null)
@@ -32,16 +35,19 @@ namespace xs_assistant_management.Service.Impl
         }
         public async Task<Result<List<Article>>> GetArticlesAsync(int page, int size)
         {
-            string url = AssistantProjectData.baseUrl + $"/article/search/get/page?page={page}&size={size}";
+            string url = AssistantProjectData.baseUrl + this.baseUrl + $"/get/page?page={page}&size={size}";
             string json = await HttpUtil.get(url);
-            Console.WriteLine(json);
             Result<List<Article>> articles = JsonUtil.jsonToBean<Result<List<Article>>>(json);
+            List<Article> result = ResultMessageUtil.CheckData(articles);
             return articles;
         }
 
-        public Task<Result<List<Article>>> GetArticlesByIdNumber(string idNumber)
+        public async Task<List<Article>> GetArticlesByIdNumber(string idNumber,int page, int size)
         {
-            throw new NotImplementedException();
+            string url = AssistantProjectData.baseUrl + this.baseUrl + $"/get/by/idNumber?id_number={idNumber}&page={page}&size={size}";
+            string json = await HttpUtil.get(url);
+            return ResultMessageUtil.GetData<List<Article>>(json);
         }
+
     }
 }

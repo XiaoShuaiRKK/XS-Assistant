@@ -36,14 +36,7 @@ namespace xs_assistant_management.Service.Impl
         {
             string url = AssistantProjectData.baseUrl + this.baseUrl + $"/byNumberId?id={idNumber}";
             string json = await HttpUtil.get(url);
-            Console.WriteLine(json);
-            Result<Customer> result = JsonUtil.jsonToBean<Result<Customer>>(json);
-            if (!result.Status.Equals("200"))
-            {
-                MessageBox.Show(result.Message, result.Status,MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-            return result.Data;
-
+            return ResultMessageUtil.GetData<Customer>(json);
         }
     }
 }

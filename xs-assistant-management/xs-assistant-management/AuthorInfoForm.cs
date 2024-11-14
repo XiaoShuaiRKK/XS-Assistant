@@ -29,6 +29,7 @@ namespace xs_assistant_management
         }
 
         ICustomerService customerService = CustomerServiceImpl.Instance();
+        IArticleSearchService articleSearchService = ArticleSearchServiceImpl.Instance();
         private Customer customer;
 
         private AuthorInfoForm(string idNumber)
@@ -41,6 +42,7 @@ namespace xs_assistant_management
         {
             this.Text = AssistantProjectData.projectName + $" - {this.Text}";
             loadAuthorData();
+            loadArticles();
         }
 
         private async void loadAuthorData()
@@ -52,6 +54,17 @@ namespace xs_assistant_management
             this.Author_Id_lbl.Text = customer.IdNumber;
             this.Author_Area_lbl.Text = customer.AreaId.ToString();
             this.Author_Birth_lbl.Text = customer.Birth.ToString();
+        }
+
+        private async void loadArticles()
+        {
+            List<Article> articles = await articleSearchService.GetArticlesByIdNumber(this.idNumber,1,10);
+            this.Author_Articles_dvg.ReadOnly = true;
+            this.Author_Articles_dvg.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.Author_Articles_dvg.MultiSelect = false;
+            this.Author_Articles_dvg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            this.Author_Articles_dvg.RowHeadersVisible = false;
+            this.Author_Articles_dvg.DataSource = articles;
         }
 
         private void AuthorInfoForm_FormClosed(object sender, FormClosedEventArgs e)

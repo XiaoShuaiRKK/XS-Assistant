@@ -3,80 +3,124 @@
   "WorkspaceRootPath": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\impl\\articlesearchserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\impl\\articlesearchserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\articleexamineform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\articleexamineform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\iarticlesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\iarticlesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\iarticleexamineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\iarticleexamineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\authorinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\authorinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\authorinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\authorinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\articleinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\articleinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\articleexamineform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\articleexamineform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\articleinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\articleinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\impl\\customerserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\impl\\customerserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\icustomerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\icustomerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\util\\fileutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\util\\fileutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\util\\httputil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\util\\httputil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\util\\jsonutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\util\\jsonutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\data\\assistantprojectdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\data\\assistantprojectdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\authorinfoform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\authorinfoform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\impl\\loginserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\impl\\loginserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\data\\pojo\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\data\\pojo\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\impl\\customerserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\impl\\customerserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\util\\resultmessageutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\util\\resultmessageutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\util\\httputil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\util\\httputil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\util\\fileutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\util\\fileutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\iarticlesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\iarticlesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\icustomerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\icustomerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\iloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\iloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\articleexamineform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\articleexamineform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\articleinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\articleinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\impl\\articleexamineserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\impl\\articleexamineserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\articleinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\articleinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\impl\\articlesearchserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\impl\\articlesearchserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\data\\pojo\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\data\\pojo\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\data\\enum\\articlestateenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\data\\enum\\articlestateenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\data\\pojo\\logindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\data\\pojo\\logindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\service\\iloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\service\\iloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\data\\pojo\\articlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\data\\pojo\\articlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\data\\pojo\\articleexamine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\data\\pojo\\articleexamine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\data\\pojo\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\data\\pojo\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\authorinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\authorinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\authorinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\authorinfoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\authorinfoform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\authorinfoform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\data\\assistantprojectdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\data\\assistantprojectdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
@@ -87,15 +131,7 @@
       "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\data\\pojo\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\data\\pojo\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\data\\pojo\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|e:\\project\\xsassistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\articleinfoform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\articleinfoform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7C95C94E-FD70-4A88-BCB3-742C7F5EB347}|xs-assistant-management\\xs-assistant-management.csproj|solutionrelative:xs-assistant-management\\articleinfoform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -121,109 +157,38 @@
           "SelectedChildIndex": 7,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthorInfoForm.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\AuthorInfoForm.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\AuthorInfoForm.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\AuthorInfoForm.cs",
-              "RelativeToolTip": "xs-assistant-management\\AuthorInfoForm.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAmwCkAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T08:26:15.325Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IArticleSearchService.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\IArticleSearchService.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\Service\\IArticleSearchService.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\IArticleSearchService.cs",
-              "RelativeToolTip": "xs-assistant-management\\Service\\IArticleSearchService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABLAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "CustomerServiceImpl.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\CustomerServiceImpl.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Service\\Impl\\CustomerServiceImpl.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\CustomerServiceImpl.cs",
+              "RelativeToolTip": "xs-assistant-management\\Service\\Impl\\CustomerServiceImpl.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAxwA4AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T10:47:35.151Z",
+              "WhenOpened": "2024-11-13T08:34:31.006Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "ArticleInfoForm.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleInfoForm.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\ArticleInfoForm.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleInfoForm.cs",
-              "RelativeToolTip": "xs-assistant-management\\ArticleInfoForm.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAA6wCsAAAA/AAAAAAAAAA==",
+              "Title": "ResultMessageUtil.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Util\\ResultMessageUtil.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Service\\Util\\ResultMessageUtil.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Util\\ResultMessageUtil.cs",
+              "RelativeToolTip": "xs-assistant-management\\Service\\Util\\ResultMessageUtil.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAQwA4AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T12:22:24.945Z",
+              "WhenOpened": "2024-11-14T00:28:52.361Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthorInfoForm.cs [\u8BBE\u8BA1]",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\AuthorInfoForm.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\AuthorInfoForm.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\AuthorInfoForm.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "xs-assistant-management\\AuthorInfoForm.cs [\u8BBE\u8BA1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T08:26:07.211Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ArticleInfoForm.cs [\u8BBE\u8BA1]",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleInfoForm.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\ArticleInfoForm.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleInfoForm.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "xs-assistant-management\\ArticleInfoForm.cs [\u8BBE\u8BA1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T12:22:18.023Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "HomeForm.cs [\u8BBE\u8BA1]",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\HomeForm.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "xs-assistant-management\\HomeForm.cs [\u8BBE\u8BA1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T07:58:14.082Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HomeForm.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\HomeForm.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs",
-              "RelativeToolTip": "xs-assistant-management\\HomeForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKoAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T07:58:19.066Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ArticleSearchServiceImpl.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\ArticleSearchServiceImpl.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\Service\\Impl\\ArticleSearchServiceImpl.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\ArticleSearchServiceImpl.cs",
-              "RelativeToolTip": "xs-assistant-management\\Service\\Impl\\ArticleSearchServiceImpl.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAIwCoAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T11:21:08.537Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "FileUtil.cs",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Util\\FileUtil.cs",
               "RelativeDocumentMoniker": "xs-assistant-management\\Service\\Util\\FileUtil.cs",
@@ -236,46 +201,110 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 8,
               "Title": "HttpUtil.cs",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Util\\HttpUtil.cs",
               "RelativeDocumentMoniker": "xs-assistant-management\\Service\\Util\\HttpUtil.cs",
               "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Util\\HttpUtil.cs",
               "RelativeToolTip": "xs-assistant-management\\Service\\Util\\HttpUtil.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAwwBYAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAkwCIAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-05T02:32:54.64Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 4,
               "Title": "JsonUtil.cs",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Util\\JsonUtil.cs",
               "RelativeDocumentMoniker": "xs-assistant-management\\Service\\Util\\JsonUtil.cs",
               "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Util\\JsonUtil.cs",
               "RelativeToolTip": "xs-assistant-management\\Service\\Util\\JsonUtil.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAEwA4AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-05T07:20:51.63Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "AssistantProjectData.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\AssistantProjectData.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\Data\\AssistantProjectData.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\AssistantProjectData.cs",
-              "RelativeToolTip": "xs-assistant-management\\Data\\AssistantProjectData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "HomeForm.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\HomeForm.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs",
+              "RelativeToolTip": "xs-assistant-management\\HomeForm.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAADgv6cAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T02:22:26.134Z",
+              "WhenOpened": "2024-11-05T07:58:19.066Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
+              "Title": "ArticleExamineForm.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleExamineForm.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\ArticleExamineForm.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleExamineForm.cs",
+              "RelativeToolTip": "xs-assistant-management\\ArticleExamineForm.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAowEEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T02:44:31.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ArticleExamineForm.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleExamineForm.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\ArticleExamineForm.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleExamineForm.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "xs-assistant-management\\ArticleExamineForm.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T02:44:29.37Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IArticleExamineService.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\IArticleExamineService.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Service\\IArticleExamineService.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\IArticleExamineService.cs",
+              "RelativeToolTip": "xs-assistant-management\\Service\\IArticleExamineService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T03:02:29.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginServiceImpl.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\LoginServiceImpl.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Service\\Impl\\LoginServiceImpl.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\LoginServiceImpl.cs",
+              "RelativeToolTip": "xs-assistant-management\\Service\\Impl\\LoginServiceImpl.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAIwCoAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T02:47:33.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IArticleSearchService.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\IArticleSearchService.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Service\\IArticleSearchService.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\IArticleSearchService.cs",
+              "RelativeToolTip": "xs-assistant-management\\Service\\IArticleSearchService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T10:47:35.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "ICustomerService.cs",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\ICustomerService.cs",
               "RelativeDocumentMoniker": "xs-assistant-management\\Service\\ICustomerService.cs",
@@ -288,72 +317,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CustomerServiceImpl.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\CustomerServiceImpl.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\Service\\Impl\\CustomerServiceImpl.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\CustomerServiceImpl.cs",
-              "RelativeToolTip": "xs-assistant-management\\Service\\Impl\\CustomerServiceImpl.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAA4wCIAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T08:34:31.006Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "LoginServiceImpl.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\LoginServiceImpl.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\Service\\Impl\\LoginServiceImpl.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\LoginServiceImpl.cs",
-              "RelativeToolTip": "xs-assistant-management\\Service\\Impl\\LoginServiceImpl.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAIwC0AAABoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T02:47:33.151Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AuthorInfoForm.Designer.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\AuthorInfoForm.Designer.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\AuthorInfoForm.Designer.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\AuthorInfoForm.Designer.cs",
-              "RelativeToolTip": "xs-assistant-management\\AuthorInfoForm.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T09:02:41.772Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Customer.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\Customer.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\Data\\POJO\\Customer.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\Customer.cs",
-              "RelativeToolTip": "xs-assistant-management\\Data\\POJO\\Customer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T07:23:51.106Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "LoginData.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\LoginData.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\Data\\POJO\\LoginData.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\LoginData.cs",
-              "RelativeToolTip": "xs-assistant-management\\Data\\POJO\\LoginData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwsAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T08:40:40.249Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 12,
               "Title": "ILoginService.cs",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\ILoginService.cs",
               "RelativeDocumentMoniker": "xs-assistant-management\\Service\\ILoginService.cs",
@@ -366,7 +330,223 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ArticleExamineForm.Designer.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleExamineForm.Designer.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\ArticleExamineForm.Designer.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleExamineForm.Designer.cs",
+              "RelativeToolTip": "xs-assistant-management\\ArticleExamineForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T02:51:19.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ArticleExamineServiceImpl.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\ArticleExamineServiceImpl.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Service\\Impl\\ArticleExamineServiceImpl.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\ArticleExamineServiceImpl.cs",
+              "RelativeToolTip": "xs-assistant-management\\Service\\Impl\\ArticleExamineServiceImpl.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAkwCkAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T06:42:54.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ArticleInfoForm.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleInfoForm.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\ArticleInfoForm.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleInfoForm.cs",
+              "RelativeToolTip": "xs-assistant-management\\ArticleInfoForm.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAkwDYAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T12:22:24.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ArticleInfoForm.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleInfoForm.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\ArticleInfoForm.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleInfoForm.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "xs-assistant-management\\ArticleInfoForm.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T12:22:18.023Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ArticleSearchServiceImpl.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\ArticleSearchServiceImpl.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Service\\Impl\\ArticleSearchServiceImpl.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Service\\Impl\\ArticleSearchServiceImpl.cs",
+              "RelativeToolTip": "xs-assistant-management\\Service\\Impl\\ArticleSearchServiceImpl.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAzwDIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T11:21:08.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Article.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\Article.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Data\\POJO\\Article.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\Article.cs",
+              "RelativeToolTip": "xs-assistant-management\\Data\\POJO\\Article.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAIwD4AAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T11:10:17.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 19,
+              "Title": "ArticleStateEnum.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\Enum\\ArticleStateEnum.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Data\\Enum\\ArticleStateEnum.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\Enum\\ArticleStateEnum.cs",
+              "RelativeToolTip": "xs-assistant-management\\Data\\Enum\\ArticleStateEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwgAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T07:53:14.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "LoginData.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\LoginData.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Data\\POJO\\LoginData.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\LoginData.cs",
+              "RelativeToolTip": "xs-assistant-management\\Data\\POJO\\LoginData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T08:40:40.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ArticleState.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\ArticleState.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Data\\POJO\\ArticleState.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\ArticleState.cs",
+              "RelativeToolTip": "xs-assistant-management\\Data\\POJO\\ArticleState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T06:57:56.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ArticleExamine.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\ArticleExamine.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Data\\POJO\\ArticleExamine.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\ArticleExamine.cs",
+              "RelativeToolTip": "xs-assistant-management\\Data\\POJO\\ArticleExamine.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAmwCgAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T03:03:14.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\Customer.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Data\\POJO\\Customer.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\Customer.cs",
+              "RelativeToolTip": "xs-assistant-management\\Data\\POJO\\Customer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T07:23:51.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "HomeForm.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\HomeForm.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "xs-assistant-management\\HomeForm.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T07:58:14.082Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AuthorInfoForm.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\AuthorInfoForm.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\AuthorInfoForm.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\AuthorInfoForm.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "xs-assistant-management\\AuthorInfoForm.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T08:26:07.211Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AuthorInfoForm.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\AuthorInfoForm.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\AuthorInfoForm.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\AuthorInfoForm.cs",
+              "RelativeToolTip": "xs-assistant-management\\AuthorInfoForm.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAqwDsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T08:26:15.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "LoginForm.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\LoginForm.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\LoginForm.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\LoginForm.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "xs-assistant-management\\LoginForm.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T02:21:17.26Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AuthorInfoForm.Designer.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\AuthorInfoForm.Designer.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\AuthorInfoForm.Designer.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\AuthorInfoForm.Designer.cs",
+              "RelativeToolTip": "xs-assistant-management\\AuthorInfoForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T09:02:41.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "AssistantProjectData.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\AssistantProjectData.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\Data\\AssistantProjectData.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\AssistantProjectData.cs",
+              "RelativeToolTip": "xs-assistant-management\\Data\\AssistantProjectData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T02:22:26.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
               "Title": "App.config",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\App.config",
               "RelativeDocumentMoniker": "xs-assistant-management\\App.config",
@@ -379,7 +559,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 31,
               "Title": "Result.cs",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\Result.cs",
               "RelativeDocumentMoniker": "xs-assistant-management\\Data\\POJO\\Result.cs",
@@ -387,37 +567,11 @@
               "RelativeToolTip": "xs-assistant-management\\Data\\POJO\\Result.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T07:18:41.215Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-05T07:18:41.215Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "LoginForm.cs [\u8BBE\u8BA1]",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\LoginForm.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\LoginForm.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\LoginForm.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "xs-assistant-management\\LoginForm.cs [\u8BBE\u8BA1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T02:21:17.26Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Article.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\Article.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\Data\\POJO\\Article.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Data\\POJO\\Article.cs",
-              "RelativeToolTip": "xs-assistant-management\\Data\\POJO\\Article.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAywC8AAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T11:10:17.246Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 32,
               "Title": "ArticleInfoForm.Designer.cs",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleInfoForm.Designer.cs",
               "RelativeDocumentMoniker": "xs-assistant-management\\ArticleInfoForm.Designer.cs",
@@ -430,7 +584,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 33,
               "Title": "HomeForm.Designer.cs",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.Designer.cs",
               "RelativeDocumentMoniker": "xs-assistant-management\\HomeForm.Designer.cs",
@@ -443,7 +597,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 34,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\Program.cs",
               "RelativeDocumentMoniker": "xs-assistant-management\\Program.cs",
@@ -451,12 +605,11 @@
               "RelativeToolTip": "xs-assistant-management\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAEwAwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T02:19:09.436Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-05T02:19:09.436Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 35,
               "Title": "LoginForm.cs",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\LoginForm.cs",
               "RelativeDocumentMoniker": "xs-assistant-management\\LoginForm.cs",

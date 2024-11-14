@@ -75,6 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleExamineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArticleExamineForm.Designer.cs">
+      <DependentUpon>ArticleExamineForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ArticleInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,7 +94,10 @@
       <DependentUpon>AuthorInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\AssistantProjectData.cs" />
+    <Compile Include="Data\Enum\ArticleStateEnum.cs" />
     <Compile Include="Data\POJO\Article.cs" />
+    <Compile Include="Data\POJO\ArticleExamine.cs" />
+    <Compile Include="Data\POJO\ArticleState.cs" />
     <Compile Include="Data\POJO\Customer.cs" />
     <Compile Include="Data\POJO\LoginData.cs" />
     <Compile Include="Data\POJO\Result.cs" />
@@ -106,15 +115,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\IArticleExamineService.cs" />
     <Compile Include="Service\IArticleSearchService.cs" />
     <Compile Include="Service\ICustomerService.cs" />
     <Compile Include="Service\ILoginService.cs" />
+    <Compile Include="Service\Impl\ArticleExamineServiceImpl.cs" />
     <Compile Include="Service\Impl\ArticleSearchServiceImpl.cs" />
     <Compile Include="Service\Impl\CustomerServiceImpl.cs" />
     <Compile Include="Service\Impl\LoginServiceImpl.cs" />
     <Compile Include="Service\Util\FileUtil.cs" />
     <Compile Include="Service\Util\HttpUtil.cs" />
     <Compile Include="Service\Util\JsonUtil.cs" />
+    <Compile Include="Service\Util\ResultMessageUtil.cs" />
+    <EmbeddedResource Include="ArticleExamineForm.resx">
+      <DependentUpon>ArticleExamineForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ArticleInfoForm.resx">
       <DependentUpon>ArticleInfoForm.cs</DependentUpon>
     </EmbeddedResource>

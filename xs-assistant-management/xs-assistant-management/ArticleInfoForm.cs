@@ -37,12 +37,22 @@ namespace xs_assistant_management
             this.Article_Author_Linklbl.Text = article.AuthorName;
             this.Article_content_richTextBox.Text = article.Context;
             this.Article_State_lbl.Text = article.StateName;
+            if(article.StateId != 6)
+            {
+                this.Article_Examine_bt.Visible = false;
+                this.Article_Examine_bt.Enabled = false;
+            }
         }
 
         private void Article_Author_Linklbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             AuthorInfoForm authorInfo = AuthorInfoForm.Instance(article.AuthorId);
             authorInfo.Show();
+        }
+
+        private void Article_Examine_bt_Click(object sender, EventArgs e)
+        {
+            new ArticleExamineForm(article).ShowDialog();
         }
     }
 }

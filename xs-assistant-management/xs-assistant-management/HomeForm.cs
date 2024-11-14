@@ -147,6 +147,10 @@ namespace xs_assistant_management
         {
             int page = (int)this.Home_Page_Num.Value;
             List<Article> articles = await changeLoadDvg(page, 10);
+            if(articles.Count == 0)
+            {
+                this.Home_Page_Num.Value -= 1;
+            }
             this.Home_Articles_dvg.DataSource = articles;
         }
 
@@ -162,7 +166,6 @@ namespace xs_assistant_management
             if (Home_Articles_dvg.SelectedRows.Count > 0)
             {
                 this.Home_Check_Article_Menu.Enabled = true;
-                
             }
         }
 

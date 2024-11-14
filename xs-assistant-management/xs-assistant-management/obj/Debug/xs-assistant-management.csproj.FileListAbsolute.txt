@@ -32,3 +32,4 @@ E:\Project\XSAssistant\xs-assistant-management\xs-assistant-management\xs-assist
 E:\Project\XSAssistant\xs-assistant-management\xs-assistant-management\xs-assistant-management\obj\Debug\xs_assistant_management.HomeForm.resources
 E:\Project\XSAssistant\xs-assistant-management\xs-assistant-management\xs-assistant-management\obj\Debug\xs_assistant_management.ArticleInfoForm.resources
 E:\Project\XSAssistant\xs-assistant-management\xs-assistant-management\xs-assistant-management\obj\Debug\xs_assistant_management.AuthorInfoForm.resources
+E:\Project\XSAssistant\xs-assistant-management\xs-assistant-management\xs-assistant-management\obj\Debug\xs_assistant_management.ArticleExamineForm.resources

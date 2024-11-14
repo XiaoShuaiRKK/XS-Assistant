@@ -34,6 +34,7 @@
             this.Article_content_richTextBox = new System.Windows.Forms.RichTextBox();
             this.Article_State_lbl = new System.Windows.Forms.Label();
             this.Article_Author_Linklbl = new System.Windows.Forms.LinkLabel();
+            this.Article_Examine_bt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Article_Title_lbl
@@ -97,11 +98,22 @@
             this.Article_Author_Linklbl.Text = "AuthorName";
             this.Article_Author_Linklbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Article_Author_Linklbl_LinkClicked);
             // 
+            // Article_Examine_bt
+            // 
+            this.Article_Examine_bt.Location = new System.Drawing.Point(507, 73);
+            this.Article_Examine_bt.Name = "Article_Examine_bt";
+            this.Article_Examine_bt.Size = new System.Drawing.Size(72, 19);
+            this.Article_Examine_bt.TabIndex = 8;
+            this.Article_Examine_bt.Text = "审核";
+            this.Article_Examine_bt.UseVisualStyleBackColor = true;
+            this.Article_Examine_bt.Click += new System.EventHandler(this.Article_Examine_bt_Click);
+            // 
             // ArticleInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Article_Examine_bt);
             this.Controls.Add(this.Article_Author_Linklbl);
             this.Controls.Add(this.Article_State_lbl);
             this.Controls.Add(this.Article_content_richTextBox);
@@ -124,5 +136,6 @@
         private System.Windows.Forms.RichTextBox Article_content_richTextBox;
         private System.Windows.Forms.Label Article_State_lbl;
         private System.Windows.Forms.LinkLabel Article_Author_Linklbl;
+        private System.Windows.Forms.Button Article_Examine_bt;
     }
 }
