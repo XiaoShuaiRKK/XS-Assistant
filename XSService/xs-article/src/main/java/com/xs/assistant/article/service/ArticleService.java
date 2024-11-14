@@ -13,6 +13,5 @@ public interface ArticleService {
     ResponseResult<List<ArticleVO>> findArticlesByArticleIds(@Nullable List<String> articleIds);
     ResponseResult<List<ArticleVO>> findArticleByTitle(@Nullable String title,int page, int size);
     ResponseResult<List<ArticleVO>> findArticleBySubTitle(String title,int page,int size);
-    ResponseResult<List<ArticleVO>> findArticleByTitleOrSubTilte(String title,int page,int size);
-
+    ResponseResult<List<ArticleVO>> findArticleByTitleOrSubTitle(String title,int page,int size);
 }

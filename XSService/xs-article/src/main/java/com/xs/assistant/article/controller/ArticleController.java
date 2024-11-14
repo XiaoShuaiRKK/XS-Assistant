@@ -78,7 +78,7 @@ public class ArticleController {
     public ResponseResult<List<ArticleVO>> findArticleByTitleOrSubTitle(@RequestParam("title")String title,
                                                               @RequestParam("page")Integer page,
                                                               @RequestParam("size")Integer size){
-        return articleService.findArticleByTitleOrSubTilte(title,page,size);
+        return articleService.findArticleByTitleOrSubTitle(title,page,size);
     }
 
     /**

@@ -6,6 +6,7 @@ import com.xs.DAO.ResponseResult;
 import com.xs.DAO.VO.article.ArticleContextVO;
 import com.xs.assistant.article.DAO.ArticleDAO;
 import com.xs.assistant.article.aspect.annotation.ResultPackage;
+import com.xs.assistant.article.service.ArticleStateService;
 import com.xs.assistant.article.service.ESArticleService;
 import com.xs.assistant.article.service.remote.AccountInfoService;
 import com.xs.assistant.article.service.remote.ESArticleRemoteService;
@@ -19,12 +20,12 @@ import java.util.List;
 public class ESArticleServiceImpl implements ESArticleService {
     final ESArticleRemoteService esArticleRemoteService;
     final AccountInfoService accountInfoService;
-    final ArticleDAO articleDAO;
+    final ArticleStateService articleStateService;
 
-    public ESArticleServiceImpl(ESArticleRemoteService esArticleRemoteService, AccountInfoService accountInfoService, ArticleDAO articleDAO) {
+    public ESArticleServiceImpl(ESArticleRemoteService esArticleRemoteService, AccountInfoService accountInfoService, ArticleStateService articleStateService) {
         this.esArticleRemoteService = esArticleRemoteService;
         this.accountInfoService = accountInfoService;
-        this.articleDAO = articleDAO;
+        this.articleStateService = articleStateService;
     }
 
     /**
@@ -40,7 +41,7 @@ public class ESArticleServiceImpl implements ESArticleService {
                 .map(a -> ArticleContextMapper.INSTANCE.articleToArticleContextVO(a, new Article())).toList();
         list.forEach(vo -> {
             vo.setAuthorName(accountInfoService.getCustomerName(vo.getAuthorId()).getData());
-            vo.setStateName(articleDAO.getArticleState(vo.getStateId()));
+            vo.setStateName(articleStateService.findById(vo.getStateId()).getStateName());
         });
         return ResponseResult.success(list);
     }
@@ -59,7 +60,7 @@ public class ESArticleServiceImpl implements ESArticleService {
                 .map(a -> ArticleContextMapper.INSTANCE.articleToArticleContextVO(a, new Article())).toList();
         list.forEach(vo -> {
             vo.setAuthorName(accountInfoService.getCustomerName(vo.getAuthorId()).getData());
-            vo.setStateName(articleDAO.getArticleState(vo.getStateId()));
+            vo.setStateName(articleStateService.findById(vo.getStateId()).getStateName());
         });
         return ResponseResult.none(list);
     }
@@ -86,7 +87,7 @@ public class ESArticleServiceImpl implements ESArticleService {
                 .map(a -> ArticleContextMapper.INSTANCE.articleToArticleContextVO(a, new Article())).toList();
         articleContextVOS.forEach(vo -> {
             vo.setAuthorName(accountInfoService.getCustomerName(vo.getAuthorId()).getData());
-            vo.setStateName(articleDAO.getArticleState(vo.getStateId()));
+            vo.setStateName(articleStateService.findById(vo.getStateId()).getStateName());
         });
         return articleContextVOS;
     }

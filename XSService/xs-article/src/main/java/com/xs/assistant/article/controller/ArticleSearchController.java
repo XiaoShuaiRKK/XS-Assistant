@@ -1,7 +1,9 @@
 package com.xs.assistant.article.controller;
 
+import com.xs.DAO.DO.article.ArticleState;
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.VO.article.ArticleContextVO;
+import com.xs.assistant.article.service.ArticleStateService;
 import com.xs.assistant.article.service.ESArticleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +16,11 @@ import java.util.List;
 @RequestMapping("/search")
 public class ArticleSearchController {
     final ESArticleService esArticleService;
+    final ArticleStateService articleStateService;
 
-    public ArticleSearchController(ESArticleService esArticleService) {
+    public ArticleSearchController(ESArticleService esArticleService, ArticleStateService articleStateService) {
         this.esArticleService = esArticleService;
+        this.articleStateService = articleStateService;
     }
 
     /**
@@ -66,5 +70,10 @@ public class ArticleSearchController {
                                                                                     @RequestParam("page")Integer page,
                                                                                     @RequestParam("size")Integer size){
         return ResponseResult.success(esArticleService.getArticlesByTargetFindIdNumber(idNumber, page, size));
+    }
+
+    @GetMapping("/get/allState")
+    public ResponseResult<List<ArticleState>> getAllState(){
+        return ResponseResult.success(articleStateService.findAll());
     }
 }

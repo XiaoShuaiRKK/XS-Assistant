@@ -57,12 +57,10 @@
         </foreach>
     </select>
 
-    <select id="getArticleState" resultType="java.lang.String">
-        SELECT
-            stateName
-        FROM
-            article_state
-        WHERE
-            id = #{status_id}
-    </select>
+    <update id="changeArticleState">
+        UPDATE
+            note
+        SET state_id = #{state}
+        WHERE article_id = #{article_id}
+    </update>
 </mapper>

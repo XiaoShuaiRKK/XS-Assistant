@@ -140,7 +140,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @return 文章列表
      */
     @Override
-    public ResponseResult<List<ArticleVO>> findArticleByTitleOrSubTilte(String title, int page, int size) {
+    public ResponseResult<List<ArticleVO>> findArticleByTitleOrSubTitle(String title, int page, int size) {
         PageRequest pageRequest = pageSet(page,size);
         Page<ArticleContext> articles = articleRepository.findByTitleOrSubTitleContainingIgnoreCase(title,pageRequest);
         return articleCollectionResult(articles);
