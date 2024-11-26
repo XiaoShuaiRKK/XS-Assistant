@@ -1,0 +1,40 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "welcome_title",
+      "value": "感谢使用XS-Assistant"
+    },
+    {
+      "name": "welcome_span_zero",
+      "value": "这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,这是XS-Assistant用户条款,"
+    },
+    {
+      "name": "welcome_span_one",
+      "value": "为了更好的保护你的权益，我们制定了"
+    },
+    {
+      "name": "welcome_span_two",
+      "value": "帮助您了解我们的收集、使用、存储和共享个人信息"
+    },
+    {
+      "name": "xs_assistant_term_one",
+      "value": "《xs-assistant社区条款》"
+    },
+    {
+      "name": "xs_assistant_term_two",
+      "value": "《xs-assistant用户条款》"
+    }
+  ]
+}
