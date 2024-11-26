@@ -157,6 +157,10 @@
           "SelectedChildIndex": 7,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "CustomerServiceImpl.cs",
@@ -227,11 +231,24 @@
               "Title": "HomeForm.cs",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs",
               "RelativeDocumentMoniker": "xs-assistant-management\\HomeForm.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs*",
-              "RelativeToolTip": "xs-assistant-management\\HomeForm.cs*",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs",
+              "RelativeToolTip": "xs-assistant-management\\HomeForm.cs",
               "ViewState": "AgIAAIUAAAAAAAAAAADgv6cAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-05T07:58:19.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ArticleExamineForm.cs",
+              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleExamineForm.cs",
+              "RelativeDocumentMoniker": "xs-assistant-management\\ArticleExamineForm.cs",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleExamineForm.cs",
+              "RelativeToolTip": "xs-assistant-management\\ArticleExamineForm.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAowEEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T02:44:31.989Z",
               "EditorCaption": ""
             },
             {
@@ -245,19 +262,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-14T02:44:29.37Z",
               "EditorCaption": " [\u8BBE\u8BA1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ArticleExamineForm.cs",
-              "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleExamineForm.cs",
-              "RelativeDocumentMoniker": "xs-assistant-management\\ArticleExamineForm.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\ArticleExamineForm.cs",
-              "RelativeToolTip": "xs-assistant-management\\ArticleExamineForm.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAgwEQAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T02:44:31.989Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -310,10 +314,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-13T08:33:25.842Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
             },
             {
               "$type": "Document",
@@ -476,8 +476,8 @@
               "Title": "HomeForm.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs",
               "RelativeDocumentMoniker": "xs-assistant-management\\HomeForm.cs",
-              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs [\u8BBE\u8BA1]*",
-              "RelativeToolTip": "xs-assistant-management\\HomeForm.cs [\u8BBE\u8BA1]*",
+              "ToolTip": "E:\\Project\\XSAssistant\\xs-assistant-management\\xs-assistant-management\\xs-assistant-management\\HomeForm.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "xs-assistant-management\\HomeForm.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-05T07:58:14.082Z",
               "EditorCaption": " [\u8BBE\u8BA1]"
