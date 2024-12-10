@@ -17,6 +17,7 @@ namespace xs_assistant_management
 {
     public partial class HomeForm : Form
     {
+        private bool isSetTag = false;
         private float X;
         private float Y;
 
@@ -45,6 +46,7 @@ namespace xs_assistant_management
                     setTag(item);
                 }
             }
+            isSetTag = true;
         }
 
         private void setControls(float newx, float newy,Control cons)
@@ -109,7 +111,10 @@ namespace xs_assistant_management
             this.Home_Articles_dvg.MultiSelect = false;
             this.Home_Articles_dvg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.Home_Articles_dvg.RowHeadersVisible = false;
-            this.Home_Articles_dvg.DataSource = articles;
+            if (articles != null)
+            {
+                this.Home_Articles_dvg.DataSource = articles;
+            }
         }
 
         private async Task<List<Article>> changeLoadDvg(int page,int size)
@@ -122,7 +127,10 @@ namespace xs_assistant_management
         {
             float newx = (this.Width) / X;
             float newy = (this.Height) / Y;
-            setControls(newx, newy, this);
+            if (isSetTag)
+            {
+                setControls(newx, newy, this);
+            }
         }
 
         private void Home_Page_Right_Click(object sender, EventArgs e)
@@ -147,6 +155,10 @@ namespace xs_assistant_management
         {
             int page = (int)this.Home_Page_Num.Value;
             List<Article> articles = await changeLoadDvg(page, 10);
+            if(articles == null)
+            {
+                return;
+            }
             if(articles.Count == 0)
             {
                 this.Home_Page_Num.Value -= 1;
@@ -172,6 +184,11 @@ namespace xs_assistant_management
         private void HomeForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void 我的设备ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new MyForm().Show();
         }
     }
 }

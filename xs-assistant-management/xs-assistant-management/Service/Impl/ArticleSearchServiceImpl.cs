@@ -36,9 +36,17 @@ namespace xs_assistant_management.Service.Impl
         public async Task<Result<List<Article>>> GetArticlesAsync(int page, int size)
         {
             string url = AssistantProjectData.baseUrl + this.baseUrl + $"/get/page?page={page}&size={size}";
-            string json = await HttpUtil.get(url);
-            Result<List<Article>> articles = JsonUtil.jsonToBean<Result<List<Article>>>(json);
-            List<Article> result = ResultMessageUtil.CheckData(articles);
+            Result<List<Article>> articles;
+            try
+            {
+                string json = await HttpUtil.get(url);
+                articles = JsonUtil.jsonToBean<Result<List<Article>>>(json);
+                List<Article> result = ResultMessageUtil.CheckData(articles);
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                articles = Result<List<Article>>.error();
+            }
             return articles;
         }
 

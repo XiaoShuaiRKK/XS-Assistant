@@ -8,7 +8,7 @@ namespace xs_assistant_management.Data
 {
     public static class AssistantProjectData
     {
-        public static readonly string baseUrl = "http://127.0.0.1:20577/xs_assistant";
+        public static readonly string baseUrl = "http://172.16.10.109:20577/xs_assistant";
         public static readonly string projectName = "XS_ASSISTANT_MANAGEMENT";
     }
 }

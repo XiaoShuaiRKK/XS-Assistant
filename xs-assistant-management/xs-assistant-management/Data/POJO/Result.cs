@@ -25,5 +25,10 @@ namespace xs_assistant_management.Data.POJO
         public string Status { get => status; set => status = value; }
         public string Message { get => message; set => message = value; }
         public T Data { get => data; set => data = value; }
+
+        public static Result<T> error()
+        {
+            return new Result<T>(0, "500", "error", default);
+        }
     }
 }

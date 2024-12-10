@@ -44,7 +44,7 @@ namespace xs_assistant_management
 
         private async void loadExamineHistory()
         {
-            List<ArticleExamine> examines = await articleExamineService.GetArticleExamines(article.ArticleId);
+            List<ArticleExamine> examines = await articleExamineService.GetArticleExamines(article.Id);
             this.Examine_History_dvg.DataSource = examines;
         }
 
@@ -60,7 +60,7 @@ namespace xs_assistant_management
 
         private async void sendExamine(ArticleStateEnum articleState)
         {
-            string articleId = article.ArticleId;
+            string articleId = article.Id;
             string description = this.Examine_Descripiton_richtxt.Text;
             bool isSuccess = await articleExamineService.addArticleExamine(articleId, (int)articleState, description);
             if (isSuccess)
