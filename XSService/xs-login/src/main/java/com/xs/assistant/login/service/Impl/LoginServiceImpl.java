@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class LoginServiceImpl implements LoginService {
+public class  LoginServiceImpl implements LoginService {
 
     final LoginDAO loginDAO;
     final EncryptionRemoteService encryptionService;

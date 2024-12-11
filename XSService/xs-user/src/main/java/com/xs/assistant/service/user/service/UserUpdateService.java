@@ -10,4 +10,5 @@ public interface UserUpdateService {
     ResponseResult<Boolean> registerCustomer(CustomerDO customer);
     ResponseResult<Boolean> registerAdmin(CustomerDO customer);
     Boolean uploadIcon(MultipartFile file,String idNumber);
+    Boolean updateCustomer(MultipartFile icon,CustomerDO customer);
 }

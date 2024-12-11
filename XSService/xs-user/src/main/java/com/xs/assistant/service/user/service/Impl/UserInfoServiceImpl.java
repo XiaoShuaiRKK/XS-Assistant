@@ -96,19 +96,27 @@ public class UserInfoServiceImpl implements UserInfoService {
         return customerDO;
     }
 
+    /**
+     *根据key段中的模糊查询查询 redis中所在的地方
+     * @param email
+     * @return
+     */
     @Override
 //    @RedisSetHashValues(baseKey = REDIS_CUSTOMER_KEY,keyName = REDIS_CUSTOMER_EMAIL_KEY,
-//            key = "#email",time = DEFAULT_KEY_TIME_M,timeStyle = TimeUnit.MINUTES)
+//            key = "#email",time = DEFAULT_KEY_TIME_M,timeStyle = TimeUnit.MINUTES
     public CustomerDO getCustomerByEmail(String email) {
+        //redis模糊查询
         Map.Entry<Object, Object> entry = redisUtil.fuzzySearchHashKeys(REDIS_CUSTOMER_KEY, REDIS_CUSTOMER_EMAIL_KEY + email);
         if(entry != null){
             return (CustomerDO) entry.getValue();
         }
+        //mysql
         CustomerDO customerDO = userInfoDAO.selectCustomerInfoByEmail(email);
+        //redis set
         if(customerDO != null){
             redisUtil.setHash(REDIS_CUSTOMER_KEY,
                     REDIS_CUSTOMER_ID_NUMBER_KEY + customerDO.getIdNumber() + REDIS_CUSTOMER_EMAIL_KEY + customerDO.getEmail(),
-                    customerDO,3L,TimeUnit.MINUTES);
+                    customerDO,3L,TimeUnit.DAYS);
         }
         return customerDO;
     }

@@ -71,6 +71,11 @@ public class UserUpdateServiceImpl implements UserUpdateService {
         return rs > 0;
     }
 
+    @Override
+    public Boolean updateCustomer(MultipartFile icon, CustomerDO customer) {
+        return null;
+    }
+
     private boolean registerAccount(CustomerDO customer,Integer level){
         long count;
         customer.setLevel(level);

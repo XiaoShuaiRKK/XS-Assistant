@@ -35,4 +35,9 @@ public class UserUpdateController {
         return ResponseResult.success(result,result ? "上传成功" : "上传失败");
     }
 
+    public ResponseResult<Boolean> uploadCutomerInfo(@RequestPart("icon") MultipartFile file,
+                                                     @RequestBody CustomerDO customer){
+        return ResponseResult.fail("功能未开发");
+    }
+
 }

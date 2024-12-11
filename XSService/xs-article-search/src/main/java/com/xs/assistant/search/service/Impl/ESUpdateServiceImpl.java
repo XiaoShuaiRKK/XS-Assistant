@@ -17,4 +17,9 @@ public class ESUpdateServiceImpl extends ESService implements ESUpdateService {
     public boolean updateArticle(ArticleContext context) {
         return false;
     }
+
+    @Override
+    public boolean updateArticleState(String articleId, Integer state) {
+        return true;
+    }
 }

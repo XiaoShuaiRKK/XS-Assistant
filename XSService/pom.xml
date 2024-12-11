@@ -32,6 +32,7 @@
         <module>xs-channel</module>
         <module>xs-chat</module>
         <module>xs-image-system</module>
+        <module>xs-system-management</module>
     </modules>
     <version>1.2.1</version>
 

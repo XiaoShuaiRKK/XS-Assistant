@@ -77,9 +77,5 @@ public class AccountController {
         return accountService.restRegister(code,customerDO);
     }
 
-    @PostMapping("/upload/icon")
-    public ResponseResult<Boolean> uploadIconWithCustomer(@RequestPart("icon") MultipartFile file,
-                                                          @RequestParam("idNumber") String idNumber){
-        return accountService.uploadIconWithCustomer(file,idNumber);
-    }
+
 }

@@ -26,6 +26,7 @@ public class ArticleContextVO implements Serializable {
     @Length(min = 14,max = 14,message = "The id format is incorrect")
     private String authorId;
     private String authorName;
+    private String articleId;
     private Integer stateId;
     private String stateName;
     private String image;

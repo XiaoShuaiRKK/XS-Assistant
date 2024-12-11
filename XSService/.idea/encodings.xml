@@ -50,6 +50,8 @@
     <file url="file://$PROJECT_DIR$/xs-service-gateway/scr/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-service-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-service-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-system-management/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xs-system-management/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-user/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-user/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xs-util/src/main/java" charset="UTF-8" />
