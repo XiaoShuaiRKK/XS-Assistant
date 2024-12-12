@@ -30,13 +30,31 @@ namespace xs_assistant_management.Service.Impl
             return instance;
         }
 
-        private string baseUrl = "/query";
+        private readonly string customerBaseUrl = "/query";
+        private readonly string deviceBaseUrl = "/device";
 
         public async Task<Customer> GetCustomer(string idNumber)
         {
-            string url = AssistantProjectData.baseUrl + this.baseUrl + $"/byNumberId?id={idNumber}";
+            string url = AssistantProjectData.baseUrl + this.customerBaseUrl + $"/byNumberId?id={idNumber}";
             string json = await HttpUtil.get(url);
+            Console.WriteLine(json);
             return ResultMessageUtil.GetData<Customer>(json);
+        }
+
+        public async Task<bool> uploadDevice(SystemInfo systemInfo)
+        {
+            try
+            {
+                string url = AssistantProjectData.baseUrl + this.deviceBaseUrl + $"/add";
+                string json = await HttpUtil.postByJson<SystemInfo>(url, systemInfo);
+                Console.WriteLine(json);
+                return ResultMessageUtil.GetData<bool>(json);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return false;
         }
     }
 }

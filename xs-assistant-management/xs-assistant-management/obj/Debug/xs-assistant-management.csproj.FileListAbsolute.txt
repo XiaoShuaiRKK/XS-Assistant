@@ -68,3 +68,4 @@ F:\XS-Assistant\xs-assistant-management\XS-Assistant\xs-assistant-management\xs-
 F:\XS-Assistant\xs-assistant-management\XS-Assistant\xs-assistant-management\xs-assistant-management\obj\Debug\xs-assistant-management.exe
 F:\XS-Assistant\xs-assistant-management\XS-Assistant\xs-assistant-management\xs-assistant-management\obj\Debug\xs-assistant-management.pdb
 F:\XS-Assistant\xs-assistant-management\XS-Assistant\xs-assistant-management\xs-assistant-management\obj\Debug\xs_assistant_management.MyForm.resources
+E:\Project\XSAssistant\xs-assistant-management\xs-assistant-management\xs-assistant-management\obj\Debug\xs_assistant_management.MyForm.resources

@@ -42,5 +42,22 @@ namespace xs_assistant_management.Service.Util
             }
             return json;
         }
+
+        public static async Task<string> postByJson<T>(string url,T obj)
+        {
+            string json = "";
+            try
+            {
+                string paramsJson = JsonUtil.beanToJson(obj);
+                StringContent content = new StringContent(paramsJson,Encoding.UTF8,"application/json");
+                HttpResponseMessage reponse = await client.PostAsync(url, content);
+                json = await reponse.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return json;
+        }
     }
 }

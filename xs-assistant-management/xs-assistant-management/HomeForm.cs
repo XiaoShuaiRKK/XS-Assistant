@@ -12,6 +12,7 @@ using xs_assistant_management.Data;
 using xs_assistant_management.Data.POJO;
 using xs_assistant_management.Service;
 using xs_assistant_management.Service.Impl;
+using xs_assistant_management.Service.Util;
 
 namespace xs_assistant_management
 {
@@ -22,6 +23,7 @@ namespace xs_assistant_management
         private float Y;
 
         private IArticleSearchService articleSearchService = ArticleSearchServiceImpl.Instance();
+        private ICustomerService customerService = CustomerServiceImpl.Instance();
         private Customer customer;
         private LoginForm loginForm;
         private List<Article> nowPageArticles;
@@ -89,6 +91,7 @@ namespace xs_assistant_management
             setAutoForm();
             loadArticles();
             loadHomeControlr();
+            loadDevice();
         }
 
         private void Home_login_out_Menu_Click(object sender, EventArgs e)
@@ -117,6 +120,12 @@ namespace xs_assistant_management
             }
         }
 
+        private async void loadDevice()
+        {
+            SystemInfo systemInfo = new SystemInfo(customer.IdNumber,ManagementUtil.GetOSInfo().Platform.ToString(),
+                ManagementUtil.GetComputerName(),null,new DateTime(),0);
+            await customerService.uploadDevice(systemInfo);
+        }
         private async Task<List<Article>> changeLoadDvg(int page,int size)
         {
             Result<List<Article>> articles = await articleSearchService.GetArticlesAsync(page, size);
@@ -186,9 +195,9 @@ namespace xs_assistant_management
             Application.Exit();
         }
 
-        private void 我的设备ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Home_My_Device_Menu_Click(object sender, EventArgs e)
         {
-            new MyForm().Show();
+            MyForm.Instance(customer.IdNumber).Show();
         }
     }
 }
