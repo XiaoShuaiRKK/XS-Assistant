@@ -35,6 +35,7 @@ namespace xs_assistant_management
             this.My_Name_lbl = new System.Windows.Forms.Label();
             this.My_Id_Number_lbl = new System.Windows.Forms.Label();
             this.My_Email_lbl = new System.Windows.Forms.Label();
+            this.My_Level_Progress_Bar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.My_Icon_Img)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,11 +92,19 @@ namespace xs_assistant_management
             this.My_Email_lbl.TabIndex = 7;
             this.My_Email_lbl.Text = "Email";
             // 
+            // My_Level_Progress_Bar
+            // 
+            this.My_Level_Progress_Bar.Location = new System.Drawing.Point(217, 22);
+            this.My_Level_Progress_Bar.Name = "My_Level_Progress_Bar";
+            this.My_Level_Progress_Bar.Size = new System.Drawing.Size(413, 23);
+            this.My_Level_Progress_Bar.TabIndex = 8;
+            // 
             // MyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 399);
+            this.Controls.Add(this.My_Level_Progress_Bar);
             this.Controls.Add(this.My_Email_lbl);
             this.Controls.Add(this.My_Id_Number_lbl);
             this.Controls.Add(this.My_Name_lbl);
@@ -120,5 +129,6 @@ namespace xs_assistant_management
         private System.Windows.Forms.Label My_Name_lbl;
         private System.Windows.Forms.Label My_Id_Number_lbl;
         private System.Windows.Forms.Label My_Email_lbl;
+        private System.Windows.Forms.ProgressBar My_Level_Progress_Bar;
     }
 }

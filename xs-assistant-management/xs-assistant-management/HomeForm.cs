@@ -122,7 +122,7 @@ namespace xs_assistant_management
 
         private async void loadDevice()
         {
-            SystemInfo systemInfo = new SystemInfo(customer.IdNumber,ManagementUtil.GetOSInfo().Platform.ToString(),
+            SystemInfo systemInfo = new SystemInfo(customer.IdNumber,ManagementUtil.GetOSInfo(),
                 ManagementUtil.GetComputerName(),null,new DateTime(),0);
             await customerService.uploadDevice(systemInfo);
         }

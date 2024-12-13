@@ -56,5 +56,21 @@ namespace xs_assistant_management.Service.Impl
             }
             return false;
         }
+
+        public async Task<List<SystemInfo>> systemInfos(string idNumber)
+        {
+            try
+            {
+                string url = AssistantProjectData.baseUrl + this.deviceBaseUrl + $"/list?customer_id={idNumber}";
+                string json = await HttpUtil.get(url);
+                Console.WriteLine(json);
+                return ResultMessageUtil.GetData<List<SystemInfo>>(json);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return new List<SystemInfo>();
+        }
     }
 }

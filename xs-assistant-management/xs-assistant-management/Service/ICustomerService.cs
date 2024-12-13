@@ -10,7 +10,7 @@ namespace xs_assistant_management.Service
     public interface ICustomerService
     {
         Task<Customer> GetCustomer(string idNumber);
-
         Task<bool> uploadDevice(SystemInfo systemInfo);
+        Task<List<SystemInfo>> systemInfos(string idNumber);
     }
 }

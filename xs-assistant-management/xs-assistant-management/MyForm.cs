@@ -53,21 +53,29 @@ namespace xs_assistant_management
         //    customer = .Result;
         //}
 
-        private void loadDevices()
+        private async void loadDevices()
         {
+            List<SystemInfo> systemInfos = await customerService.systemInfos(this.idNumber);
             My_FLow_Layout_Panel.AutoScroll = true;
-            My_FLow_Layout_Panel.FlowDirection = FlowDirection.BottomUp;
+            My_FLow_Layout_Panel.FlowDirection = FlowDirection.TopDown;
             int baseHeignt = My_FLow_Layout_Panel.Height;
             int baseWidth = My_FLow_Layout_Panel.Width;
-            for (int i = 0; i < 5; i++)
+            int i = 0;
+            foreach (SystemInfo systemInfo in systemInfos)
             {
                 Button b = new Button();
                 b.Height = baseHeignt - 100;
                 b.Width = baseWidth - 100;
-                b.Text = i.ToString();
+                b.Text = $"{systemInfo.ComputerName}\n{systemInfo.System}\n\n\n{systemInfo.LastTime}";
                 b.Location = new Point(32, 20 + i * 150);
                 My_FLow_Layout_Panel.Controls.Add(b);
+                i++;
             }
+        }
+
+        private void loadLevel()
+        {
+            
         }
 
         private void MyForm_FormClosed(object sender, FormClosedEventArgs e)
