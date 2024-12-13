@@ -7,22 +7,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @TableName("system_info")
-public class SystemInfo {
+public class SystemInfo implements Serializable {
     @TableId("customer_id")
     private String customerId;
-    @TableField("system")
+    @TableField("`system`")
     private String system;
     @TableField("computer_name")
     private String computerName;
     @TableField("sys_id")
     private String sysId;
     @TableField("last_time")
-    private Date lastTime;
+    private Timestamp lastTime;
     @TableField("version")
     private Integer version;
 }

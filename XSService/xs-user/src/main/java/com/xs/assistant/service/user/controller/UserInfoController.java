@@ -33,7 +33,7 @@ public class UserInfoController {
     }
 
     @GetMapping("/getCustomer/byNumberID")
-    public ResponseResult<CustomerDO> getCustomerByNumberId(@RequestParam("ID")String id){
+    public ResponseResult<CustomerDO> getCustomerByNumberId(@RequestParam("id")String id){
         return packageResult(userInfoService.getCustomer(id));
     }
 

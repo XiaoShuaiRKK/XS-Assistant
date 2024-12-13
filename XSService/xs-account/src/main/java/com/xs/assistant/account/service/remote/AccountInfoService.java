@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @Service
-@FeignClient(value = "XS-SERVICE-USER",path = "/xs_assistant/user",fallback = UserInfoFallback.class)
+@FeignClient(value = "XS-SERVICE-USER",path = "/xs_assistant/api/{v}/user",fallback = UserInfoFallback.class)
 public interface AccountInfoService {
     @GetMapping("/getCustomers")
     ResponseResult<List<CustomerDO>> getCustomers(@RequestParam("page")Integer page,
@@ -20,7 +20,7 @@ public interface AccountInfoService {
     @GetMapping("/getCustomer")
     ResponseResult<CustomerDO> getCustomer(@RequestParam("id")Integer id);
     @GetMapping("/getCustomer/byNumberID")
-    ResponseResult<CustomerDO> getCustomerByNumberId(@RequestParam("ID")String id);
+    ResponseResult<CustomerDO> getCustomerByNumberId(@RequestParam("id")String id);
     @GetMapping("/getCustomer/byEmail")
     ResponseResult<CustomerDO> getCustomerByEmail(@RequestParam("email")String email);
     @GetMapping("/checkCustomer")

@@ -7,6 +7,7 @@ import com.xs.assistant.redis.util.RedisUtil;
 import com.xs.assistant.service.user.DAO.UserMapper;
 import com.xs.assistant.service.user.DAO.UserUpdateDAO;
 import com.xs.assistant.service.user.remote.EncryptionService;
+import com.xs.assistant.service.user.service.PointsLevelService;
 import com.xs.assistant.service.user.service.UserUpdateService;
 import com.xs.assistant.service.user.service.remote.ImageFileService;
 import com.xs.assistant.util.function.RedisKeyFunction;
@@ -30,6 +31,7 @@ public class UserUpdateServiceImpl implements UserUpdateService {
     final UserMapper userMapper;
     final EncryptionService encryptionService;
     final ImageFileService imageFileService;
+    final PointsLevelService pointsLevelService;
     @Resource
     RedisUtil redisUtil;
     @Resource
@@ -37,11 +39,12 @@ public class UserUpdateServiceImpl implements UserUpdateService {
 
     private final RedisKeyFunction<String,Long> registerHas = (key,value) -> redisUtil.increment(key,1L);
 
-    public UserUpdateServiceImpl(UserUpdateDAO userUpdateDAO, UserMapper userMapper, EncryptionService encryptionService, ImageFileService imageFileService) {
+    public UserUpdateServiceImpl(UserUpdateDAO userUpdateDAO, UserMapper userMapper, EncryptionService encryptionService, ImageFileService imageFileService, PointsLevelService pointsLevelService) {
         this.userUpdateDAO = userUpdateDAO;
         this.userMapper = userMapper;
         this.encryptionService = encryptionService;
         this.imageFileService = imageFileService;
+        this.pointsLevelService = pointsLevelService;
     }
 
     @Override
@@ -84,6 +87,8 @@ public class UserUpdateServiceImpl implements UserUpdateService {
                 .execute(REGISTER_COUNT_TODAY_KEY, userMapper.selectAllCount());
         count = redisUtil.increment(REGISTER_COUNT_TODAY_KEY);
         customer.setIdNumber(uidCodeUtil.createCode(count));
+        String pointsLevel = pointsLevelService.createPointsLevel(customer.getIdNumber());
+        customer.setPointsLevelId(pointsLevel);
         return userUpdateDAO.insertCustomer(customer) <= 0;
     }
 

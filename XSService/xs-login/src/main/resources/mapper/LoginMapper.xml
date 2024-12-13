@@ -13,12 +13,13 @@
         <result property="areaId" column="area_id"/>
         <result property="stateId" column="state_id"/>
         <result property="level" column="level"/>
+        <result property="pointsLevelId" column="points_level_id"/>
         <result property="iconPath" column="icon_path"/>
     </resultMap>
 
     <select id="login" resultMap="customerMap">
         SELECT
-            id,first_name,last_name,email,birth,id_number,area_id,state_id,level,icon_path
+            id,first_name,last_name,email,birth,id_number,area_id,state_id,level,points_level_id,icon_path
         FROM
             customer
         WHERE

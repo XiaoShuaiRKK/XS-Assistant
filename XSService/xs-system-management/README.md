@@ -38,35 +38,38 @@ CREATE TABLE `system_info_log` (
 ## 触发器
 insert trigger
 ```sql
-CREATE TRIGGER tri_insert_system_info 
-after insert on system_info for each row
+CREATE TRIGGER tri_insert_system_info
+    after insert on system_info for each row
 begin
-	insert into system_info_log (system_id, create_time, update_time,operate_type,old_id,new_id) 
-	VALUES(new.sys_id, now(), now(),1,null,null);
+    insert into system_info_log (system_id, create_time, update_time,operate_type,old_id,new_id)
+    VALUES(new.sys_id, now(), now(),1,null,new.sys_id);
 end;
 ```
 update trigger
 ```sql
 CREATE trigger tri_update_system_info
-after update on system_info 
-for each row
+    BEFORE update on system_info
+    for each row
 begin
-	declare history_id varchar(20) DEFAULT '';
+    declare history_id varchar(20) DEFAULT '';
 	declare update_count int default 0;
-	
-	select count(*) 
-	into update_count 
-	from system_info_log 
-	where system_id = old.sys_id
-		and update_time >= CURDATE() 
-		and update_time < CURDATE() + INTERVAL 1 DAY;
-	 
-	set history_id = CONCAT('XSSH',DATE_FORMAT(CURDATE(),'%Y%m%d'),LPAD(update_count + 1,4,'0'));
-	insert into system_info_history (id,`system`,computer_name,version)
-	VALUES(history_id,old.system,old.computer_name,old.version);
-	
-	insert into system_info_log (system_id, create_time, update_time,operate_type,old_id,new_id) 
-	VALUES(new.sys_id, now(), now(),2,history_id,new.sys_id);
+	IF
+    (old.system != new.system) OR (old.computer_name != new.computer_name) OR (old.version != new.version)
+		THEN
+    select count(*)
+    into update_count
+    from system_info_log
+    where system_id = old.sys_id
+      and update_time >= CURDATE()
+      and update_time < CURDATE() + INTERVAL 1 DAY;
+
+    set history_id = CONCAT('XSSH',DATE_FORMAT(CURDATE(),'%Y%m%d'),LPAD(update_count + 1,4,'0'));
+    insert into system_info_history (id,`system`,computer_name,version)
+    VALUES(history_id,old.system,old.computer_name,old.version);
+
+    insert into system_info_log (system_id, create_time, update_time,operate_type,old_id,new_id)
+    VALUES(new.sys_id, now(), now(),2,history_id,new.sys_id);
+END IF;
 end;
 ```
 delete trigger

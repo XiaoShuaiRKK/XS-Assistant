@@ -1,6 +1,6 @@
-package com.xs.DAO.DO.customer;
+package com.xs.DAO.VO.customer;
 
-import com.baomidou.mybatisplus.annotation.TableField;
+import com.xs.DAO.DO.customer.PointsLevel;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Past;
@@ -8,17 +8,15 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
 import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
 import java.sql.Date;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Accessors(chain = false)
-public class CustomerDO implements Serializable {
+@AllArgsConstructor
+public class CustomerVO implements Serializable {
     Integer id;
     @NotEmpty(message = "FirstName could not be empty")
     @Length(min = 1,max = 20,message = "FirstName must be no less than one and more characters")
@@ -43,6 +41,6 @@ public class CustomerDO implements Serializable {
     Integer areaId;
     Integer stateId;
     Integer level;
-    String pointsLevelId;
+    PointsLevel pointsLevel;
     String iconPath;
 }

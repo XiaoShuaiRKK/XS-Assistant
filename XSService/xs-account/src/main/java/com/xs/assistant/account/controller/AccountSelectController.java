@@ -2,14 +2,10 @@ package com.xs.assistant.account.controller;
 
 import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.DAO.ResponseResult;
-import com.xs.DAO.ResponseStatus;
-import com.xs.assistant.account.service.RestAccountInfoService;
 import com.xs.assistant.account.service.remote.AccountInfoService;
-import com.xs.assistant.account.service.remote.AccountService;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

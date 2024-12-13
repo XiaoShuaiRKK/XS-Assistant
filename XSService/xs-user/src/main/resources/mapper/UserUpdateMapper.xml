@@ -5,10 +5,11 @@
 
     <insert id="insertCustomer" parameterType="com.xs.DAO.DO.customer.CustomerDO">
         INSERT INTO
-            customer (id,first_name,last_name,email,password,birth,id_number,area_id,state_id,icon_path,create_time,level,update_time)
+            customer (id,first_name,last_name,email,password,birth,id_number,area_id,state_id,icon_path,create_time,level,points_level_id,update_time)
         VALUES
             (NULL,#{customer.firstName},#{customer.lastName},#{customer.email},
-             #{customer.password},#{customer.birth},#{customer.idNumber},#{customer.areaId},0,#{customer.iconPath},now(),#{customer.level},now())
+             #{customer.password},#{customer.birth},#{customer.idNumber},#{customer.areaId},0,#{customer.iconPath},now(),
+             #{customer.level},#{customer.pointsLevelId},now())
     </insert>
 
     <update id="uploadIcon">
