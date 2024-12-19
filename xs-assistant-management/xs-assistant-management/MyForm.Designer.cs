@@ -36,6 +36,9 @@ namespace xs_assistant_management
             this.My_Id_Number_lbl = new System.Windows.Forms.Label();
             this.My_Email_lbl = new System.Windows.Forms.Label();
             this.My_Level_Progress_Bar = new System.Windows.Forms.ProgressBar();
+            this.My_Level_lbl = new System.Windows.Forms.Label();
+            this.My_Level_Name_lbl = new System.Windows.Forms.Label();
+            this.My_Clock_In_bt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.My_Icon_Img)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,16 +97,47 @@ namespace xs_assistant_management
             // 
             // My_Level_Progress_Bar
             // 
-            this.My_Level_Progress_Bar.Location = new System.Drawing.Point(217, 22);
+            this.My_Level_Progress_Bar.Location = new System.Drawing.Point(316, 22);
             this.My_Level_Progress_Bar.Name = "My_Level_Progress_Bar";
-            this.My_Level_Progress_Bar.Size = new System.Drawing.Size(413, 23);
+            this.My_Level_Progress_Bar.Size = new System.Drawing.Size(314, 23);
             this.My_Level_Progress_Bar.TabIndex = 8;
+            // 
+            // My_Level_lbl
+            // 
+            this.My_Level_lbl.AutoSize = true;
+            this.My_Level_lbl.Location = new System.Drawing.Point(583, 68);
+            this.My_Level_lbl.Name = "My_Level_lbl";
+            this.My_Level_lbl.Size = new System.Drawing.Size(35, 12);
+            this.My_Level_lbl.TabIndex = 9;
+            this.My_Level_lbl.Text = "Level";
+            // 
+            // My_Level_Name_lbl
+            // 
+            this.My_Level_Name_lbl.AutoSize = true;
+            this.My_Level_Name_lbl.Location = new System.Drawing.Point(461, 68);
+            this.My_Level_Name_lbl.Name = "My_Level_Name_lbl";
+            this.My_Level_Name_lbl.Size = new System.Drawing.Size(65, 12);
+            this.My_Level_Name_lbl.TabIndex = 10;
+            this.My_Level_Name_lbl.Text = "Level Name";
+            // 
+            // My_Clock_In_bt
+            // 
+            this.My_Clock_In_bt.Location = new System.Drawing.Point(316, 63);
+            this.My_Clock_In_bt.Name = "My_Clock_In_bt";
+            this.My_Clock_In_bt.Size = new System.Drawing.Size(75, 23);
+            this.My_Clock_In_bt.TabIndex = 11;
+            this.My_Clock_In_bt.Text = "签到";
+            this.My_Clock_In_bt.UseVisualStyleBackColor = true;
+            this.My_Clock_In_bt.Click += new System.EventHandler(this.My_Clock_In_bt_Click);
             // 
             // MyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 399);
+            this.Controls.Add(this.My_Clock_In_bt);
+            this.Controls.Add(this.My_Level_Name_lbl);
+            this.Controls.Add(this.My_Level_lbl);
             this.Controls.Add(this.My_Level_Progress_Bar);
             this.Controls.Add(this.My_Email_lbl);
             this.Controls.Add(this.My_Id_Number_lbl);
@@ -130,5 +164,8 @@ namespace xs_assistant_management
         private System.Windows.Forms.Label My_Id_Number_lbl;
         private System.Windows.Forms.Label My_Email_lbl;
         private System.Windows.Forms.ProgressBar My_Level_Progress_Bar;
+        private System.Windows.Forms.Label My_Level_lbl;
+        private System.Windows.Forms.Label My_Level_Name_lbl;
+        private System.Windows.Forms.Button My_Clock_In_bt;
     }
 }

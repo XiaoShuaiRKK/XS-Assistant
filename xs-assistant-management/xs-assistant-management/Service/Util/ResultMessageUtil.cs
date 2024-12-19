@@ -29,5 +29,12 @@ namespace xs_assistant_management.Service.Util
             T data = CheckData(result);
             return data;
         }
+
+        public static T GetDataAndSendMessageBox<T>(string json)
+        {
+            Result<T> result = JsonToResult<T>(json);
+            MessageBox.Show(result.Status, result.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return result.Data;
+        }
     }
 }

@@ -45,7 +45,9 @@ namespace xs_assistant_management
             this.My_Name_lbl.Text = customer.FirstName + " " + customer.LastName;
             this.My_Email_lbl.Text = customer.Email;
             this.My_Id_Number_lbl.Text = customer.IdNumber;
+            loadClockIn();
             loadDevices();
+            loadLevel();
         }
 
         //private void loadCustomer(string idNumber)
@@ -75,12 +77,30 @@ namespace xs_assistant_management
 
         private void loadLevel()
         {
-            
+            My_Level_lbl.Text = $"{customer.PointsLevel.Points}/{customer.PointsLevel.NextPoints}";
+            My_Level_Name_lbl.Text = $"Level.{customer.PointsLevel.PointsLevelId} {customer.PointsLevel.PointsLevelName}";
+            My_Level_Progress_Bar.Maximum = customer.PointsLevel.NextPoints;
+            My_Level_Progress_Bar.Minimum = customer.PointsLevel.MinPoints;
+            My_Level_Progress_Bar.Value = customer.PointsLevel.Points;
+        }
+
+        private async void loadClockIn()
+        {
+            bool isClock = await customerService.customerClockInCheck(idNumber);
+            My_Clock_In_bt.Enabled = !isClock;
+            My_Clock_In_bt.Text = isClock ? "今日已签到" : "签到";
         }
 
         private void MyForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             instance = null;
         }
+
+        private async void My_Clock_In_bt_Click(object sender, EventArgs e)
+        {
+            await customerService.customerClockIn(idNumber);
+            loadClockIn();
+        }
+
     }
 }

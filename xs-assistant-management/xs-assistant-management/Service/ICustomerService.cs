@@ -12,5 +12,7 @@ namespace xs_assistant_management.Service
         Task<Customer> GetCustomer(string idNumber);
         Task<bool> uploadDevice(SystemInfo systemInfo);
         Task<List<SystemInfo>> systemInfos(string idNumber);
+        Task<bool> customerClockIn(string idNumber);
+        Task<bool> customerClockInCheck(string idNumber);
     }
 }

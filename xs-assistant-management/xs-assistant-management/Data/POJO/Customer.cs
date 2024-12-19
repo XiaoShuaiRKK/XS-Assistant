@@ -19,10 +19,11 @@ namespace xs_assistant_management.Data.POJO
         int stateId;
         int level;
         string iconPath;
+        PointsLevel pointsLevel;
 
-        public Customer(int id, string firstName, string lastName,
-            string email, DateTime birth, string idNumber,
-            int areaId, int stateId, int level, string iconPath)
+        public Customer(int id, string firstName, string lastName, string email,
+            DateTime birth, string idNumber, int areaId,
+            int stateId, int level, string iconPath, PointsLevel pointsLevel)
         {
             this.id = id;
             this.firstName = firstName;
@@ -30,10 +31,11 @@ namespace xs_assistant_management.Data.POJO
             this.email = email;
             this.birth = birth;
             this.idNumber = idNumber;
-            this.AreaId = areaId;
+            this.areaId = areaId;
             this.stateId = stateId;
             this.level = level;
             this.iconPath = iconPath;
+            this.PointsLevel = pointsLevel;
         }
 
         [JsonPropertyName("id")]
@@ -56,5 +58,7 @@ namespace xs_assistant_management.Data.POJO
         public string IconPath { get => iconPath; set => iconPath = value; }
         [JsonPropertyName("areaId")]
         public int AreaId { get => areaId; set => areaId = value; }
+        [JsonPropertyName("pointsLevel")]
+        public PointsLevel PointsLevel { get => pointsLevel; set => pointsLevel = value; }
     }
 }

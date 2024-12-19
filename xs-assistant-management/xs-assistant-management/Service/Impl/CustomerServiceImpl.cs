@@ -30,12 +30,13 @@ namespace xs_assistant_management.Service.Impl
             return instance;
         }
 
-        private readonly string customerBaseUrl = "/query";
-        private readonly string deviceBaseUrl = "/device";
+        private readonly string customerBaseURL = "/query";
+        private readonly string deviceBaseURL = "/device";
+        private readonly string pointsBaseURL = "/account/points";
 
         public async Task<Customer> GetCustomer(string idNumber)
         {
-            string url = AssistantProjectData.baseUrl + this.customerBaseUrl + $"/byNumberId?id={idNumber}";
+            string url = AssistantProjectData.baseUrl + this.customerBaseURL + $"/byNumberId?id={idNumber}";
             string json = await HttpUtil.get(url);
             Console.WriteLine(json);
             return ResultMessageUtil.GetData<Customer>(json);
@@ -45,7 +46,7 @@ namespace xs_assistant_management.Service.Impl
         {
             try
             {
-                string url = AssistantProjectData.baseUrl + this.deviceBaseUrl + $"/add";
+                string url = AssistantProjectData.baseUrl + this.deviceBaseURL + $"/add";
                 string json = await HttpUtil.postByJson<SystemInfo>(url, systemInfo);
                 Console.WriteLine(json);
                 return ResultMessageUtil.GetData<bool>(json);
@@ -61,7 +62,7 @@ namespace xs_assistant_management.Service.Impl
         {
             try
             {
-                string url = AssistantProjectData.baseUrl + this.deviceBaseUrl + $"/list?customer_id={idNumber}";
+                string url = AssistantProjectData.baseUrl + this.deviceBaseURL + $"/list?customer_id={idNumber}";
                 string json = await HttpUtil.get(url);
                 Console.WriteLine(json);
                 return ResultMessageUtil.GetData<List<SystemInfo>>(json);
@@ -71,6 +72,39 @@ namespace xs_assistant_management.Service.Impl
                 Console.WriteLine(e);
             }
             return new List<SystemInfo>();
+        }
+
+        public async Task<bool> customerClockIn(string idNumber)
+        {
+            bool result = false;
+            try
+            {
+                string url = AssistantProjectData.baseUrl + this.pointsBaseURL + $"/clock/in?id_number={idNumber}";
+                string json = await HttpUtil.get(url);
+                result = ResultMessageUtil.GetDataAndSendMessageBox<bool>(json);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"{e.Message}");
+            }
+            return result;
+        }
+
+        public async Task<bool> customerClockInCheck(string idNumber)
+        {
+            bool result = false;
+            try
+            {
+                string url = AssistantProjectData.baseUrl + this.pointsBaseURL + $"/clock/check?id_number={idNumber}";
+                string json = await HttpUtil.get(url);
+                result = ResultMessageUtil.GetData<bool>(json);
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return result;
         }
     }
 }

@@ -102,6 +102,7 @@
     <Compile Include="Data\POJO\ArticleState.cs" />
     <Compile Include="Data\POJO\Customer.cs" />
     <Compile Include="Data\POJO\LoginData.cs" />
+    <Compile Include="Data\POJO\PointsLevel.cs" />
     <Compile Include="Data\POJO\Result.cs" />
     <Compile Include="Data\POJO\SystemInfo.cs" />
     <Compile Include="HomeForm.cs">
