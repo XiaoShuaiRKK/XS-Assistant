@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @Service
-@FeignClient(value = "XS-SERVICE-USER",path = "/xs_assistant/api/{v}/user",fallback = UserInfoFallback.class)
+@FeignClient(value = "XS-SERVICE-USER",path = "/xs_assistant/user",fallback = UserInfoFallback.class)
 public interface AccountInfoService {
     @GetMapping("/getCustomers")
     ResponseResult<List<CustomerDO>> getCustomers(@RequestParam("page")Integer page,
@@ -27,10 +27,17 @@ public interface AccountInfoService {
     ResponseResult<Boolean> checkCustomer(@RequestParam("email")String email);
     @GetMapping("/getCustomer/name")
     ResponseResult<String> getCustomerName(@RequestParam("idNumber")String idNumber);
+    @GetMapping("/getCustomer/points_id")
+    ResponseResult<String> getPointsLevelIdNumber(@RequestParam("id_number")String idNumber);
     @PostMapping("/register")
     ResponseResult<Boolean> registerCustomer(@RequestBody CustomerDO customer);
     @PostMapping(value = "/upload/icon",consumes = MediaType.MULTIPART_FORM_DATA)
     ResponseResult<Boolean> uploadIconWithCustomer(@RequestPart("icon") MultipartFile file,
                                                           @RequestParam("idNumber") String idNumber);
+    @GetMapping("/clock/in")
+    ResponseResult<Boolean> customerClockInByIdNumber(@RequestParam("id")String idNumber);
+
+    @GetMapping("/clock/check")
+    ResponseResult<Boolean> checkCustomerIsClockIn(@RequestParam("id")String idNumber);
 
 }

@@ -22,6 +22,12 @@
 
         <dependency>
             <groupId>com.xs.assistant</groupId>
+            <artifactId>xs-kafka</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xs.assistant</groupId>
             <artifactId>xs-util</artifactId>
             <version>1.2.1</version>
         </dependency>

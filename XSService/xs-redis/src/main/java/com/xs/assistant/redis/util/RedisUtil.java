@@ -218,12 +218,32 @@ public class RedisUtil {
         return redisTemplate.opsForValue().increment(key,delta);
     }
 
+    public Long incrementForHash(String key,String value){
+        return redisTemplate.opsForHash().increment(key,value,1L);
+    }
+
+    public Long incrementForHash(String key,String value,long delta){
+        return redisTemplate.opsForHash().increment(key,value,delta);
+    }
+
     public Long incrementByExpire(String key,long time,TimeUnit timeUnit){
         return incrementByExpire(key,1L,time,timeUnit);
     }
 
     public Long incrementByExpire(String key,long delta,long time,TimeUnit timeUnit){
         long result = increment(key,delta);
+        setExpire(key,time,timeUnit);
+        return result;
+    }
+
+    public Long incrementForHashByExpire(String key,String itemKey,long time,TimeUnit timeUnit){
+        long result = incrementForHash(key,itemKey);
+        setExpire(key,time,timeUnit);
+        return result;
+    }
+
+    public Long incrementForHashByExpire(String key,String itemKey,long delta,long time,TimeUnit timeUnit){
+        long result = incrementForHash(key,itemKey,delta);
         setExpire(key,time,timeUnit);
         return result;
     }
@@ -281,8 +301,32 @@ public class RedisUtil {
 
     }
 
+    public Boolean delete(String key){
+        return redisTemplate.delete(key);
+    }
+
     public Long deleteHash(String key,String itemKey) {
         return redisTemplate.opsForHash().delete(key,itemKey);
+    }
+
+    public Long deleteHash(String key){
+        return redisTemplate.opsForHash().delete(key);
+    }
+
+    public Long hyperLogLogAdd(String key,Object value){
+        return redisTemplate.opsForHyperLogLog().add(key,value);
+    }
+
+    public Long hyperLogLogCount(String key){
+        return redisTemplate.opsForHyperLogLog().size(key);
+    }
+
+    public boolean setBit(String key,Integer index,boolean value){
+        return redisTemplate.opsForValue().setBit(key,index,value);
+    }
+
+    public boolean containsBit(String key,Integer index){
+        return redisTemplate.opsForValue().getBit(key,index);
     }
 
     /**
@@ -379,6 +423,5 @@ public class RedisUtil {
                 }
             };
         }
-
     }
 }

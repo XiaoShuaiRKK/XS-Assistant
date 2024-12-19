@@ -44,12 +44,27 @@ public class UserInfoFallback implements AccountInfoService {
     }
 
     @Override
+    public ResponseResult<String> getPointsLevelIdNumber(String idNumber) {
+        return ResponseResult.unavailable("用户信息系统正忙");
+    }
+
+    @Override
     public ResponseResult<Boolean> registerCustomer(CustomerDO customer) {
         return ResponseResult.unavailable("用户信息系统正忙");
     }
 
     @Override
     public ResponseResult<Boolean> uploadIconWithCustomer(MultipartFile file, String idNumber) {
+        return ResponseResult.unavailable("用户信息系统正忙");
+    }
+
+    @Override
+    public ResponseResult<Boolean> customerClockInByIdNumber(String idNumber) {
+        return ResponseResult.unavailable("用户信息系统正忙");
+    }
+
+    @Override
+    public ResponseResult<Boolean> checkCustomerIsClockIn(String idNumber) {
         return ResponseResult.unavailable("用户信息系统正忙");
     }
 }

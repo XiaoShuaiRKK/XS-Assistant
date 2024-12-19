@@ -6,4 +6,5 @@ public interface PointsLevelService {
     String createPointsLevel(String customerId);
     PointsLevel getPointsLevel(String pointsLevelId);
     Boolean updatePointsLevel(String pointsLevelId, Integer points);
+    Boolean increasePointsLevel(String pointsLevelId, Integer points);
 }

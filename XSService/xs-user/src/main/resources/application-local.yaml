@@ -31,6 +31,8 @@ spring:
       enabled: true
   freemarker:
     cache: false #页面不加载缓存，修改即时生效
+  kafka:
+    bootstrap-servers: localhost:9092
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
 eureka:
@@ -97,3 +99,6 @@ resilience4j:
 logging:
   pattern:
     level: ${spring.application.name:},%X{traceId:-},%X{spanId:-} #日志记录格式
+my:
+  topics:
+    xs-kfk-topic-1

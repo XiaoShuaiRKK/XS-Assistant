@@ -2,6 +2,7 @@ package com.xs.assistant.service.user.controller;
 
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
+import com.xs.assistant.service.user.service.UserClockInService;
 import com.xs.assistant.service.user.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +17,11 @@ import java.util.List;
 @Slf4j
 public class UserInfoController {
     final UserInfoService userInfoService;
+    final UserClockInService userClockInService;
 
-    public UserInfoController(UserInfoService userInfoService) {
+    public UserInfoController(UserInfoService userInfoService, UserClockInService userClockInService) {
         this.userInfoService = userInfoService;
+        this.userClockInService = userClockInService;
     }
 
     @GetMapping("/getCustomers")
@@ -65,8 +68,23 @@ public class UserInfoController {
         return packageResult(userInfoService.hashCustomerByID(accountId));
     }
 
+    @GetMapping("/getCustomer/points_id")
+    public ResponseResult<String> getPointsLevelIdNumber(@RequestParam("id_number")String idNumber){
+        return packageResult(userInfoService.getCustomer(idNumber).getPointsLevelId());
+    }
+
+    @GetMapping("/clock/in")
+    public ResponseResult<Boolean> customerClockInByIdNumber(@RequestParam("id")String idNumber){
+        return packageResult(userClockInService.clockInUser(idNumber));
+    }
+
+    @GetMapping("/clock/check")
+    public ResponseResult<Boolean> checkCustomerIsClockIn(@RequestParam("id")String idNumber){
+        boolean isClockIn = userClockInService.clockInUser(idNumber);
+        return ResponseResult.success(isClockIn,isClockIn ? "今日已签到" : "今日未签到");
+    }
+
     private <T> ResponseResult<T> packageResult(T data){
         return data == null ? ResponseResult.fail(null,"无查询结果") : ResponseResult.success(data);
     }
-
 }

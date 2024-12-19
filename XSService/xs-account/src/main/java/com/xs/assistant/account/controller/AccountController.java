@@ -76,6 +76,4 @@ public class AccountController {
                                                 @RequestParam("code")String code, @RequestBody CustomerDO customerDO){
         return accountService.restRegister(code,customerDO);
     }
-
-
 }

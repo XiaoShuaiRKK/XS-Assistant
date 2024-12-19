@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/api/{v}/user")
+@RequestMapping("/user")
 @Slf4j
 public class UserUpdateController {
 

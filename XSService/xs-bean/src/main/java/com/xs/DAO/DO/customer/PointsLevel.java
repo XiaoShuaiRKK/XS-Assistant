@@ -15,6 +15,9 @@ public class PointsLevel {
     private String pointsId;
     @TableField("points_level")
     private Integer pointsLevel;
+    private String pointsLevelName;
+    private Integer minPoints;
+    private Integer nextPoints;
     @TableField("points")
     private Integer points;
 }

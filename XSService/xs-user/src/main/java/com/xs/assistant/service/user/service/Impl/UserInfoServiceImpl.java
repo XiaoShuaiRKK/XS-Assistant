@@ -6,10 +6,13 @@ import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.assistant.redis.aspect.Annotation.RedisSetHash;
 import com.xs.assistant.redis.aspect.Annotation.RedisSetHashValues;
+import com.xs.assistant.redis.filter.FilterFactory;
+import com.xs.assistant.redis.filter.RedisFilter;
 import com.xs.assistant.redis.util.RedisUtil;
 import com.xs.assistant.service.user.DAO.UserInfoDAO;
 import com.xs.assistant.service.user.DAO.UserMapper;
 import com.xs.assistant.service.user.service.UserInfoService;
+import com.xs.assistant.service.user.service.handle.UserFilterHandler;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,11 +39,13 @@ public class UserInfoServiceImpl implements UserInfoService {
     final UserInfoDAO userInfoDAO;
     final UserMapper userMapper;
     final RedisUtil redisUtil;
+    final UserFilterHandler userFilterHandler;
 
-    public UserInfoServiceImpl(UserInfoDAO userInfoDAO, UserMapper userMapper, RedisUtil redisUtil) {
+    public UserInfoServiceImpl(UserInfoDAO userInfoDAO, UserMapper userMapper, RedisUtil redisUtil, UserFilterHandler userFilterHandler) {
         this.userInfoDAO = userInfoDAO;
         this.userMapper = userMapper;
         this.redisUtil = redisUtil;
+        this.userFilterHandler = userFilterHandler;
     }
 
     @Qualifier("userInfoService")
@@ -83,6 +88,9 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Transactional(rollbackFor = Exception.class)
     @CircuitBreaker(name = "user-breaker-api",fallbackMethod = "systemFailHandler")
     public CustomerDO getCustomer(String numberID) {
+        if(!userFilterHandler.checkIfUserExistsByIdNumber(numberID)){
+            return null;
+        }
         Map.Entry<Object, Object> entry = redisUtil.fuzzySearchHashKeys(REDIS_CUSTOMER_KEY, REDIS_CUSTOMER_ID_NUMBER_KEY + numberID);
         if(entry != null){
             return (CustomerDO) entry.getValue();
@@ -105,6 +113,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 //    @RedisSetHashValues(baseKey = REDIS_CUSTOMER_KEY,keyName = REDIS_CUSTOMER_EMAIL_KEY,
 //            key = "#email",time = DEFAULT_KEY_TIME_M,timeStyle = TimeUnit.MINUTES
     public CustomerDO getCustomerByEmail(String email) {
+        if(!userFilterHandler.checkIfUserExistsByEmail(email)){
+            return null;
+        }
         //redis模糊查询
         Map.Entry<Object, Object> entry = redisUtil.fuzzySearchHashKeys(REDIS_CUSTOMER_KEY, REDIS_CUSTOMER_EMAIL_KEY + email);
         if(entry != null){

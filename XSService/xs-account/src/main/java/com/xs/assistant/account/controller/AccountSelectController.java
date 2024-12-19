@@ -1,8 +1,12 @@
 package com.xs.assistant.account.controller;
 
 import com.xs.DAO.DO.customer.CustomerDO;
+import com.xs.DAO.DO.customer.PointsLevel;
 import com.xs.DAO.ResponseResult;
+import com.xs.DAO.VO.customer.CustomerVO;
+import com.xs.DAO.mapper.CustomerMapper;
 import com.xs.assistant.account.service.remote.AccountInfoService;
+import com.xs.assistant.account.service.remote.AccountPointsLevelService;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import org.hibernate.validator.constraints.Length;
@@ -20,9 +24,12 @@ import java.util.List;
 public class AccountSelectController {
 
     final AccountInfoService accountInfoService;
+    final AccountPointsLevelService pointsLevelService;
+    final CustomerMapper customerMapper = CustomerMapper.INSTANCE;
 
-    public AccountSelectController(AccountInfoService accountInfoService) {
+    public AccountSelectController(AccountInfoService accountInfoService, AccountPointsLevelService pointsLevelService) {
         this.accountInfoService = accountInfoService;
+        this.pointsLevelService = pointsLevelService;
     }
 
     /**
@@ -45,9 +52,11 @@ public class AccountSelectController {
      * @return 用户
      */
     @GetMapping("/byNumberId")
-    public ResponseResult<CustomerDO> getAccountById(@Length(min = 14,max = 14,message = "The Number ID format error")
+    public ResponseResult<CustomerVO> getAccountById(@Length(min = 14,max = 14,message = "The Number ID format error")
                                                          @RequestParam("id")String id){
-        return accountInfoService.getCustomerByNumberId(id);
+        CustomerDO data = accountInfoService.getCustomerByNumberId(id).getData();
+        PointsLevel pointsLevel = pointsLevelService.getPointsLevel(data.getPointsLevelId()).getData();
+        return ResponseResult.success(customerMapper.toCustomerVO(data, pointsLevel));
     }
 
     /**

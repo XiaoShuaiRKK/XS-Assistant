@@ -4,7 +4,6 @@ import com.xs.DAO.DO.system.SystemInfo;
 import com.xs.DAO.ResponseResult;
 import com.xs.assistant.account.service.remote.SystemInfoService;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Component

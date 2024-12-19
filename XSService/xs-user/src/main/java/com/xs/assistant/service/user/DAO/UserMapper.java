@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface UserMapper extends BaseMapper<CustomerDO> {
-    @Select("SELECT Id,FirstName,LastName,Email,Birth,IdNumber,AreaId,StateId,Level FROM customer")
+    @Select("SELECT id,first_name,last_name,email,birth,id_number,area_id,state_id,level,icon_path,points_level_id FROM customer")
     IPage<CustomerDO> selectPage(Page<CustomerDO> page);
     @Select("SELECT count(*) FROM customer")
     Long selectAllCount();
