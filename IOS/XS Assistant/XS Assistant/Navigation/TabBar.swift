@@ -65,7 +65,7 @@ struct TabBar: View {
     
     var overlayBackground: some View{
         HStack {
-            if selectedTab == .LIBRARY {Spacer()}
+            if selectedTab == .CHAT {Spacer()}
             if selectedTab == .EXPLORE {Spacer()}
             if selectedTab == .CREATE {
                 Spacer()
@@ -89,7 +89,7 @@ struct TabBar: View {
     
     var background: some View{
         HStack {
-            if selectedTab == .LIBRARY {Spacer()}
+            if selectedTab == .CHAT {Spacer()}
             if selectedTab == .EXPLORE {Spacer()}
             if selectedTab == .CREATE {
                 Spacer()

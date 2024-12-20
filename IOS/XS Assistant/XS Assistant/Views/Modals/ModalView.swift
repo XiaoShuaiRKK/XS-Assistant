@@ -23,8 +23,8 @@ struct ModalView: View {
             GeometryReader{ proxy in
                 Group{
                     switch model.selectedModal{
-                    case .signUp: SignUpView()
-                    case .signIn: SignInView()
+                        case .signUp: SignUpView()
+                        case .signIn: SignInView()
                     }
                 }
                 .rotationEffect(.degrees(viewState.width / 40))
@@ -44,6 +44,7 @@ struct ModalView: View {
                         .allowsHitTesting(false)
                         .accessibility(hidden: true)
                 )
+                
             }
             Button {
                 dismissModal()

@@ -19,14 +19,14 @@ var tabItems = [
     TabItem(text: "Home", icon: "house", tab: .HOME,color: .teal),
     TabItem(text: "Explore", icon: "magnifyingglass", tab: .EXPLORE, color: .blue),
     TabItem(text: "Create", icon: "pencil.circle.fill", tab: .CREATE, color: .red),
-    TabItem(text: "Library", icon: "rectangle.stack", tab: .LIBRARY, color: .pink)
+    TabItem(text: "Chat", icon: "bubble.fill", tab: .CHAT, color: .pink)
 ]
 
 enum Tab: String{
     case HOME
     case EXPLORE
     case CREATE
-    case LIBRARY
+    case CHAT
 }
 
 struct TabPreferenceKey: PreferenceKey{

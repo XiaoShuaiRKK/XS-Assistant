@@ -30,8 +30,8 @@ struct ContentView: View{
                 ExploreView()
             case .CREATE:
                 CreateView()
-            case .LIBRARY:
-                AccountView()
+            case .CHAT:
+                ChatView()
             }
             TabBar()
                 .offset(y: model.showDetail ? 200 : 0)

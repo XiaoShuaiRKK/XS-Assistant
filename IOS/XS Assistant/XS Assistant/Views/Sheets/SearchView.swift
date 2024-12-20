@@ -26,14 +26,8 @@ struct SearchView: View {
         }
     }
     
-    var suggestions: [Suggestion]{
-        if text.isEmpty{
-            return suggestionsData
-        }else{
-            return suggestionsData.filter{
-                $0.text.contains(text)
-            }
-        }
+    var suggestions: [CardInfo]{
+        return cardModel.getSearch(target: text)
     }
     
     var body: some View {
@@ -44,7 +38,7 @@ struct SearchView: View {
             }
         }
         .searchable(text: $text){
-            ForEach(suggestions){ suggestion in
+            ForEach(cardModel.searchCards){ suggestion in
                 Button{
                     text = suggestion.text
                 }label: {

@@ -47,6 +47,11 @@ class CardInfoModel: ObservableObject{
         }
     }
     
+    @MainActor func getSearch(target: String) -> [CardInfo]{
+        searchCardsLoad(target: target)
+        return searchCards
+    }
+    
     @MainActor
     func cardsLoad() async{
         let path = "/article/search/get/page?page=0&size=10"

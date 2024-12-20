@@ -64,6 +64,8 @@ struct SignInView: View {
                         if (await UserManger.shared.loginUser(email: email, password: password)) != nil{
                             model.dismissModal.toggle()
                             isLogged = true
+                        }else{
+                            
                         }
                     }
                 }label: {
