@@ -2,6 +2,7 @@ package com.xs.assistant.search.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.xs.DAO.DO.article.ArticleContext;
+import com.xs.DAO.ResponseResult;
 import com.xs.assistant.search.service.ESSearchService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -88,6 +89,7 @@ public class ESSearchController {
     }
 
     /**
+     * 特殊待归位接口
      * 根据关键字来查询，并根据article中的热度值来进行排序
      * @param target 关键字
      * @param page 页数
@@ -96,8 +98,8 @@ public class ESSearchController {
      */
     @GetMapping("/get/orderHot")
     public List<ArticleContext> getArticleByTargetOrderHot(@RequestParam("target")String target,
-                                                          @RequestParam("page")Integer page,
-                                                          @RequestParam("size")Integer size){
+                                                                          @RequestParam("page")Integer page,
+                                                                          @RequestParam("size")Integer size){
         log.error("===============Search Article=================");
         if(StringUtils.isNotEmpty(target)){
             return esSearchService.searchArticlesByTargetOrderByHot(backFrom(page,size),size,target);

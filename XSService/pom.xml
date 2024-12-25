@@ -149,47 +149,54 @@
                 <artifactId>jedis</artifactId>
                 <version>${jedis.version}</version>
             </dependency>
+
+<!--            springdoc openapi-->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>2.3.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>com.spotify</groupId>
-                    <artifactId>docker-maven-plugin</artifactId>
-                    <version>1.2.2</version>
-                    <executions>
-                        <execution>
-                            <id>build-image</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>build</goal>
-                                <goal>push</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <!--对应maven settings.xml 的服务节点-->
-                        <serverId>my-harbor</serverId>
-                        <imageName>${docker.registry.host}/${docker.registry.name}/${project.artifactId}-application:${project.version}</imageName>
-                        <dockerHost>${docker.host}</dockerHost>
-                        <dockerDirectory>${project.basedir}/src/main/resources/docker</dockerDirectory>
-                        <registryUrl>http://${docker.registry.host}</registryUrl>
-                        <pushImage>true</pushImage>
-                        <forceTags>true</forceTags>
-                        <resources>
-                            <resource>
-                                <targetPath>/</targetPath>
-                                <directory>${project.build.directory}</directory>
-                                <include>${project.build.finalName}.jar</include>
-                            </resource>
-                        </resources>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+<!--    <build>-->
+<!--        <pluginManagement>-->
+<!--            <plugins>-->
+<!--                <plugin>-->
+<!--                    <groupId>com.spotify</groupId>-->
+<!--                    <artifactId>docker-maven-plugin</artifactId>-->
+<!--                    <version>1.2.2</version>-->
+<!--                    <executions>-->
+<!--                        <execution>-->
+<!--                            <id>build-image</id>-->
+<!--                            <phase>package</phase>-->
+<!--                            <goals>-->
+<!--                                <goal>build</goal>-->
+<!--                                <goal>push</goal>-->
+<!--                            </goals>-->
+<!--                        </execution>-->
+<!--                    </executions>-->
+<!--                    <configuration>-->
+<!--                        &lt;!&ndash;对应maven settings.xml 的服务节点&ndash;&gt;-->
+<!--                        <serverId>my-harbor</serverId>-->
+<!--                        <imageName>${docker.registry.host}/${docker.registry.name}/${project.artifactId}-application:${project.version}</imageName>-->
+<!--                        <dockerHost>${docker.host}</dockerHost>-->
+<!--                        <dockerDirectory>${project.basedir}/src/main/resources/docker</dockerDirectory>-->
+<!--                        <registryUrl>http://${docker.registry.host}</registryUrl>-->
+<!--                        <pushImage>true</pushImage>-->
+<!--                        <forceTags>true</forceTags>-->
+<!--                        <resources>-->
+<!--                            <resource>-->
+<!--                                <targetPath>/</targetPath>-->
+<!--                                <directory>${project.build.directory}</directory>-->
+<!--                                <include>${project.build.finalName}.jar</include>-->
+<!--                            </resource>-->
+<!--                        </resources>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
+<!--            </plugins>-->
+<!--        </pluginManagement>-->
+<!--    </build>-->
 <!--    <pluginRepositories>-->
 <!--        <pluginRepository>-->
 <!--            <id>spring-snapshots</id>-->

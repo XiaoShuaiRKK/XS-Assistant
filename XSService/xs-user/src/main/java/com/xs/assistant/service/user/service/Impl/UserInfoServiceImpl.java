@@ -157,7 +157,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
 
-    private <T extends Serializable> ResponseResult<T> systemFailHandler(Exception e){
+    public  <T extends Serializable> ResponseResult<T> systemFailHandler(Exception e){
         log.error(e.getMessage());
         return ResponseResult.error("系统错误,请联系管理员");
     }

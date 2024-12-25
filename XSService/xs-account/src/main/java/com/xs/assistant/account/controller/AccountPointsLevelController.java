@@ -1,8 +1,10 @@
 package com.xs.assistant.account.controller;
 
 import com.xs.DAO.ResponseResult;
+import com.xs.assistant.account.controller.api.AccountPointsLevelApi;
 import com.xs.assistant.account.service.remote.AccountInfoService;
 import com.xs.assistant.account.service.remote.AccountPointsLevelService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/account/points")
-public class AccountPointsLevelController {
+public class AccountPointsLevelController implements AccountPointsLevelApi {
     final AccountPointsLevelService accountPointsLevelService;
     final AccountInfoService accountInfoService;
 
-    public AccountPointsLevelController(AccountPointsLevelService accountPointsLevelService, AccountInfoService accountInfoService) {
+    public AccountPointsLevelController(@Qualifier("userPointsLevelRemote") AccountPointsLevelService accountPointsLevelService, AccountInfoService accountInfoService) {
         this.accountPointsLevelService = accountPointsLevelService;
         this.accountInfoService = accountInfoService;
     }

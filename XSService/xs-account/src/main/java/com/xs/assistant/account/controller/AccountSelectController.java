@@ -5,11 +5,14 @@ import com.xs.DAO.DO.customer.PointsLevel;
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.VO.customer.CustomerVO;
 import com.xs.DAO.mapper.CustomerMapper;
+import com.xs.assistant.account.controller.api.AccountSelectApi;
 import com.xs.assistant.account.service.remote.AccountInfoService;
 import com.xs.assistant.account.service.remote.AccountPointsLevelService;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,13 +24,13 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping("/query")
-public class AccountSelectController {
+public class AccountSelectController implements AccountSelectApi {
 
     final AccountInfoService accountInfoService;
     final AccountPointsLevelService pointsLevelService;
     final CustomerMapper customerMapper = CustomerMapper.INSTANCE;
 
-    public AccountSelectController(AccountInfoService accountInfoService, AccountPointsLevelService pointsLevelService) {
+    public AccountSelectController(AccountInfoService accountInfoService, @Qualifier("userPointsLevelRemote") AccountPointsLevelService pointsLevelService) {
         this.accountInfoService = accountInfoService;
         this.pointsLevelService = pointsLevelService;
     }

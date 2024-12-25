@@ -2,6 +2,7 @@ package com.xs.assistant.account.controller;
 
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
+import com.xs.assistant.account.controller.api.AccountApi;
 import com.xs.assistant.account.service.RestAccountService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
@@ -18,10 +19,7 @@ import java.util.Map;
 @Slf4j
 @Validated
 @RequestMapping("/account")
-public class AccountController {
-
-    private static final String LOGIN_FAIL_MSG = "账号或者密码错误";
-
+public class AccountController implements AccountApi {
     final RestAccountService accountService;
 
     public AccountController(RestAccountService accountService) {

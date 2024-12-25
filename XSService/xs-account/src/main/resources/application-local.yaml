@@ -2,6 +2,12 @@ server:
   port: 11577
   servlet:
     context-path: /xs_assistant
+  tomcat:
+    accept-count: 100
+    max-connections: 10000
+    threads:
+      max: 200
+      min-spare: 10
 spring:
   application:
     name: xs-account
@@ -60,4 +66,8 @@ logging:
     level: ${spring.application.name:},%X{traceId:-},%X{spanId:-} #日志记录格式
 springdoc:
   swagger-ui:
-    path: /swagger
+    path: /swagger-ui/index.html
+    enabled: true
+  api-docs:
+    path: /v3/api-docs
+    enabled: true

@@ -72,6 +72,13 @@ public class ArticleSearchController {
         return ResponseResult.success(esArticleService.getArticlesByTargetFindIdNumber(idNumber, page, size));
     }
 
+    @GetMapping("/get/orderHot")
+    public ResponseResult<List<ArticleContextVO>> searchArticleByTargetOrderHot(@RequestParam("target")String target,
+                                                                                @RequestParam("page")Integer page,
+                                                                                @RequestParam("size")Integer size){
+        return ResponseResult.success(esArticleService.getArticleByTargetOrderHot(target, page, size));
+    }
+
     @GetMapping("/get/allState")
     public ResponseResult<List<ArticleState>> getAllState(){
         return ResponseResult.success(articleStateService.findAll());

@@ -1,5 +1,6 @@
 package com.xs.assistant.article.service.remote;
 
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.xs.DAO.DO.article.ArticleContext;
 import com.xs.assistant.article.service.fallback.ESArticleFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -37,6 +38,11 @@ public interface ESArticleRemoteService {
                                               @RequestParam("target")String target,
                                               @RequestParam("page")Integer page,
                                               @RequestParam("size")Integer size);
+
+    @GetMapping("/query/get/orderHot")
+    List<ArticleContext> getArticleByTargetOrderHot(@RequestParam("target")String target,
+                                                           @RequestParam("page")Integer page,
+                                                           @RequestParam("size")Integer size);
 
     @GetMapping("/query/get/target/authorId")
     List<ArticleContext> getArticlesByTargetFindAuthorId(@RequestParam("author_id")String authorId,

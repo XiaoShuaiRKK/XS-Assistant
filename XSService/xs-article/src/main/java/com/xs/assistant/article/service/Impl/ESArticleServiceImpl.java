@@ -91,4 +91,15 @@ public class ESArticleServiceImpl implements ESArticleService {
         });
         return articleContextVOS;
     }
+
+    @Override
+    public List<ArticleContextVO> getArticleByTargetOrderHot(String target, int page, int size) {
+        List<ArticleContextVO> articleContextVOS = esArticleRemoteService.getArticleByTargetOrderHot(target, page, size).stream()
+                .map(a -> ArticleContextMapper.INSTANCE.articleToArticleContextVO(a, new Article())).toList();
+        articleContextVOS.forEach(vo -> {
+            vo.setAuthorName(accountInfoService.getCustomerName(vo.getAuthorId()).getData());
+            vo.setStateName(articleStateService.findById(vo.getStateId()).getStateName());
+        });
+        return articleContextVOS;
+    }
 }

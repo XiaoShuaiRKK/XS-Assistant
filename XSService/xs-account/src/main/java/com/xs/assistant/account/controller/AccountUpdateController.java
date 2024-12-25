@@ -2,6 +2,7 @@ package com.xs.assistant.account.controller;
 
 import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.DAO.ResponseResult;
+import com.xs.assistant.account.controller.api.AccountUpdateApi;
 import com.xs.assistant.account.service.RestAccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -12,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 @Validated
 @RequestMapping("/account/upload")
-public class AccountUpdateController {
+public class AccountUpdateController implements AccountUpdateApi {
 
     final RestAccountService accountService;
 

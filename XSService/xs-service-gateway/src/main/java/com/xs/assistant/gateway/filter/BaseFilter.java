@@ -22,6 +22,7 @@ public class BaseFilter {
                     "/xs_assistant/account/register" -> 1;
             case "/xs_assistant/admin/create/admin" -> 2;
             case "/xs_assistant/search/query/get/orderHot" -> 3;
+            case "/swagger-ui.html" -> 4;
             default -> -1;
         };
     }

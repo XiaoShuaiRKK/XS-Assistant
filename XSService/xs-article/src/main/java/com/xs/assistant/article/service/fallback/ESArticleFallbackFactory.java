@@ -44,6 +44,11 @@ public class ESArticleFallbackFactory implements FallbackFactory<ESArticleRemote
         }
 
         @Override
+        public List<ArticleContext> getArticleByTargetOrderHot(String target, Integer page, Integer size) {
+            return List.of();
+        }
+
+        @Override
         public List<ArticleContext> getArticlesByTargetFindAuthorId(String authorId, Integer page, Integer size) {
             return List.of();
         }

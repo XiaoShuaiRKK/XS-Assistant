@@ -1,8 +1,12 @@
 package com.xs.assistant.account.service.Impl;
 
+import com.xs.DAO.DO.customer.PointsLevel;
 import com.xs.DAO.ResponseResult;
 import com.xs.DAO.DO.customer.CustomerDO;
 import com.xs.DAO.ResponseStatus;
+import com.xs.DAO.VO.customer.CustomerVO;
+import com.xs.DAO.mapper.CustomerMapper;
+import com.xs.assistant.account.service.remote.AccountPointsLevelService;
 import com.xs.assistant.redis.util.RedisUtil;
 import com.xs.assistant.util.Impl.JWTUtil;
 import com.xs.assistant.account.service.remote.AccountInfoService;
@@ -13,6 +17,7 @@ import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.ognl.internal.Cache;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,6 +32,8 @@ import java.util.concurrent.TimeUnit;
 public class RestAccountServiceImpl implements RestAccountService {
 
     final RemoteCodeService remoteCodeService;
+    final AccountPointsLevelService accountPointsLevelService;
+    final CustomerMapper customerMapper = CustomerMapper.INSTANCE;
     @Resource
     AccountService accountService;
     @Resource
@@ -34,8 +41,9 @@ public class RestAccountServiceImpl implements RestAccountService {
     @Resource
     RedisUtil redisUtil;
 
-    public RestAccountServiceImpl(RemoteCodeService remoteCodeService) {
+    public RestAccountServiceImpl(RemoteCodeService remoteCodeService,@Qualifier("userPointsLevelRemote") AccountPointsLevelService accountPointsLevelService) {
         this.remoteCodeService = remoteCodeService;
+        this.accountPointsLevelService = accountPointsLevelService;
     }
 
     /**
@@ -49,27 +57,32 @@ public class RestAccountServiceImpl implements RestAccountService {
     @Retry(name = "login-api", fallbackMethod = "systemFallback")
     public ResponseResult<Map<String,Object>> restLogin(String name, String password) {
         String token;
+        CustomerDO customerDO;
+        CustomerVO customerVO;
         Map<String,Object> result = new HashMap<>();
         ResponseResult<CustomerDO> customerPack = accountService.accountLogin(name,password);
         if(!customerPack.getStatus().equals(ResponseStatus.HTTP_STATUS_200.getResponseCode())){
             return ResponseResult.error(null,customerPack.getMessage());
         }
-        CustomerDO customer = customerPack.getData();
+        customerDO = customerPack.getData();
+        //获取points level 将DO 转 VO
+        PointsLevel pointsLevel = accountPointsLevelService.getPointsLevel(customerDO.getPointsLevelId()).getData();
+        customerVO = customerMapper.toCustomerVO(customerDO, pointsLevel);
         //检查用户是否已经的登录过且有未过期的token
         //如果存在则直接返回此token和用户信息
-        Optional<Object> tokenOptional = checkAccountHasToken(customer.getIdNumber());
+        Optional<Object> tokenOptional = checkAccountHasToken(customerDO.getIdNumber());
         if(tokenOptional.isPresent())
-            return loginSuccess(result,customer,tokenOptional.get().toString());
+            return loginSuccess(result,customerVO,tokenOptional.get().toString());
         //根据用户id和名字来生成唯一token
         Map<String,String> payload = new HashMap<>();
-        payload.put(JWTUtil.JWTKey.ID_NUMBER_KEY,customer.getIdNumber());
-        payload.put(JWTUtil.JWTKey.NAME_KEY,customer.getFirstName() + customer.getLastName());
+        payload.put(JWTUtil.JWTKey.ID_NUMBER_KEY,customerDO.getIdNumber());
+        payload.put(JWTUtil.JWTKey.NAME_KEY,customerDO.getFirstName() + customerDO.getLastName());
         //生成token
         token = JWTUtil.getToken(payload, Calendar.DATE,JWTUtil.TIME_OUT_DAY);
         //存储到redis中
-        redisUtil.setHash(JWTUtil.JWTKey.REDIS_KEY,customer.getIdNumber(),token,
+        redisUtil.setHash(JWTUtil.JWTKey.REDIS_KEY,customerDO.getIdNumber(),token,
                 Long.valueOf(JWTUtil.TIME_OUT_DAY), TimeUnit.DAYS);
-        return loginSuccess(result,customer,token);
+        return loginSuccess(result,customerVO,token);
     }
 
     /**
@@ -132,7 +145,7 @@ public class RestAccountServiceImpl implements RestAccountService {
      * @return 用户信息和token
      * @param <T> 结果
      */
-    private <T extends Map<String,Object>> ResponseResult<T> loginSuccess(T result,CustomerDO customer,String token){
+    private <T extends Map<String,Object>> ResponseResult<T> loginSuccess(T result,CustomerVO customer,String token){
         result.put("customer",customer);
         result.put("token",token);
         return ResponseResult.success(result,"登录成功");

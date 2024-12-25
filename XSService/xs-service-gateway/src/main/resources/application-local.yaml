@@ -94,10 +94,21 @@ eureka:
     hostname: xs-service-gateway
     prefer-ip-address: true
   client:
-    fetch-registry: true
+    fetch-registry:
+      true
     register-with-eureka: true
     service-url:
       defaultZone: http://127.0.0.1:12577/eureka
 assistant:
   project:
     version: @project.version@
+springdoc:
+  swagger-ui:
+    path: /swagger-ui/index.html
+    enabled: true
+    urls:
+      - name: xs-account
+        url: /xs_assistant/v3/api-docs  # 聚合XS-ACCOUNT的API文档
+  api-docs:
+    path: /v3/api-docs
+    enabled: true

@@ -3,6 +3,7 @@ package com.xs.assistant.account.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.xs.DAO.DO.system.SystemInfo;
 import com.xs.DAO.ResponseResult;
+import com.xs.assistant.account.controller.api.AccountDeviceApi;
 import com.xs.assistant.account.service.remote.SystemInfoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -12,8 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/device")
-@Tag(name = "设备信息接口",description = "cadada")
-public class AccountDeviceController {
+public class AccountDeviceController implements AccountDeviceApi {
     final SystemInfoService systemInfoService;
 
     public AccountDeviceController(SystemInfoService systemInfoService) {
@@ -26,6 +26,7 @@ public class AccountDeviceController {
         return systemInfoService.addSystemInfo(systemInfo);
     }
 
+    @Operation(summary = "用户设备列表接口")
     @GetMapping("/list")
     public ResponseResult<List<SystemInfo>> getAllSystemInfo(@RequestParam("customer_id") String customerId) {
         return systemInfoService.getAllSystemInfo(customerId);
