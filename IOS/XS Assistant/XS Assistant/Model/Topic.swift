@@ -18,3 +18,8 @@ var topics = [
     Topic(title: "UI Design", icon: "eyedropper"),
     Topic(title: "Web Development", icon: "laptopcomputer")
 ]
+
+var myInfoTopics = [
+    Topic(title: "My Star", icon: "star.fill"),
+    Topic(title: "My Liked", icon: "heart.fill")
+]

@@ -10,6 +10,7 @@ import Foundation
 class ArticleManger: ObservableObject{
     static let shared = ArticleManger()
     @Published var message: String = ""
+    @Published var result: Result<Bool> = Result<Bool>(timestamp: 0, status: "", message: "", data: false)
     
     func createArticle(title: String,subTitle: String,description: String,context: String){
         let article = CardInfo(id: "", title: title, subTitle: subTitle, context: context, authorId: UserManger.shared.currentAccount.idNumber, description: description,stateId: 0)
@@ -24,7 +25,7 @@ class ArticleManger: ObservableObject{
             if error == nil{
                 do{
                     let data = try JSONDecoder().decode(Result<Bool>.self, from: data!)
-                    self.message = data.message
+                    self.result = data
                 }catch{
                     print("Article Insert error")
                     print(error)

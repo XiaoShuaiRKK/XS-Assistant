@@ -122,7 +122,7 @@ struct CourseView: View {
                         )
                     )
                     .strokeStyle(cornerRadius: 18)
-                Text(course.authorId)
+                Text(course.authorName!)
                     .font(.footnote)
             }
             .opacity(appear[0] ? 1 : 0)

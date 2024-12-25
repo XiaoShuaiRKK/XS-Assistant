@@ -12,23 +12,25 @@ struct SearchView: View {
     @State var showCourse = false
     @State var selectedIndex = 0
     @State var selectedCourse = courses[0]
+    @State var searchCourses: [CardInfo] = []
     @Namespace var namespace
+    @AppStorage("isLogged") var isLogged = false
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var cardModel = CardInfoModel()
     
-    var results: [CardInfo]{
-        if text.isEmpty{
-            return courses
-        }else{
-            return courses.filter{
-                $0.title.contains(text)
-            }
-        }
-    }
+//    var results: [CardInfo]{
+//        if text.isEmpty{
+//            return courses
+//        }else{
+//            return courses.filter{
+//                $0.title.contains(text)
+//            }
+//        }
+//    }
     
-    var suggestions: [CardInfo]{
-        return cardModel.getSearch(target: text)
-    }
+//    var suggestions: [CardInfo]{
+//        return cardModel.getSearch(target: text)
+//    }
     
     var body: some View {
         NavigationView{
@@ -37,14 +39,10 @@ struct SearchView: View {
                 Spacer()
             }
         }
-        .searchable(text: $text){
-            ForEach(cardModel.searchCards){ suggestion in
-                Button{
-                    text = suggestion.text
-                }label: {
-                    Text(suggestion.text)
-                }
-                .searchCompletion(suggestion.text)
+        .searchable(text: $text)
+        .onChange(of: text) { newText in
+            Task{
+                await loadSearchArticle()
             }
         }
 //        NavigationView {
@@ -83,16 +81,16 @@ struct SearchView: View {
 //            } label: {
 //                Text("Done").bold()
 //            })
-//            .sheet(isPresented: $show) {
-//                CourseView(namespace: namespace,course: courses[selectedIndex] ,show: $show)
+//            .sheet(isPresented: $showCourse) {
+//                CourseView(namespace: namespace,course: courses[selectedIndex] ,show: $showCourse)
 //            }
 //        }
     }
     
     var content: some View{
         VStack{
-            ForEach(Array(results.enumerated()),id: \.offset){ index, course in
-                if index != 0 { Divider() }
+            ForEach(cardModel.searchCards){ course in
+//                if index != 0 { Divider() }
                 Button{
                     showCourse = true
                     selectedCourse = course
@@ -101,7 +99,7 @@ struct SearchView: View {
                 }
                 .buttonStyle(.plain)
             }
-            if results.isEmpty{
+            if cardModel.searchCards.isEmpty{
                 Text("No results found")
             }
         }
@@ -124,6 +122,15 @@ struct SearchView: View {
         )
         .sheet(isPresented: $showCourse){
             CourseView(namespace: namespace, course: selectedCourse, show: $showCourse)
+        }
+    }
+    
+    func loadSearchArticle() async{
+        if isLogged {
+            await cardModel.searchCardsLoad(target: text)
+            DispatchQueue.main.async{
+                searchCourses = cardModel.searchCards
+            }
         }
     }
     

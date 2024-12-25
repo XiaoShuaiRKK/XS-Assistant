@@ -21,6 +21,7 @@ struct TitleView: View{
 struct ContentView: View{
     @AppStorage("selectedTab") var selectedTab: Tab = .HOME
     @EnvironmentObject var model: Model
+    @State var showBar: Bool = true
     var body: some View{
         ZStack(alignment: .bottom) {
             switch selectedTab {
@@ -29,12 +30,14 @@ struct ContentView: View{
             case .EXPLORE:
                 ExploreView()
             case .CREATE:
-                CreateView()
+                MyInfoView(showBar: $showBar)
             case .CHAT:
                 ChatView()
             }
-            TabBar()
-                .offset(y: model.showDetail ? 200 : 0)
+            if showBar{
+                TabBar()
+                    .offset(y: model.showDetail ? 200 : 0)
+            }
             if model.showModal{
                 ModalView()
                     .zIndex(1)

@@ -9,11 +9,12 @@ import SwiftUI
 
 struct AvatarView: View {
     @AppStorage("isLogged") var isLogged = false
+    @State var iconPath = "https://picsum.photos/200"
     
     var body: some View {
         Group {
             if isLogged{
-                AsyncImage(url: URL(string: "https://picsum.photos/200"),transaction: Transaction(animation: .easeOut)){
+                AsyncImage(url: URL(string: iconPath),transaction: Transaction(animation: .easeOut)){
                     phase in
                     switch phase{
                     case .success(let image):

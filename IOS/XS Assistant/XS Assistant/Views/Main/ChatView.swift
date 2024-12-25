@@ -14,8 +14,9 @@ struct ChatView: View {
             Text("Coming soon")
                 .font(.title)
                 .bold()
-        } 
+        }
     }
+    
 }
 
 #Preview {

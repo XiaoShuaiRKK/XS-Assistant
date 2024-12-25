@@ -17,16 +17,21 @@ struct HomeView: View {
     @State var selectedIndex = 0
     @State var selectedCourse: CardInfo = CardInfoModel().emptyCard
     @State var showCourses: [CardInfo] = []
+    @State var isLoad = false
+    //控制是否正在加载更多
+    @State var isLoadingMore = false
+    
     @EnvironmentObject var model: Model
     @ObservedObject var cardInfoModel = CardInfoModel()
     @AppStorage("isLogged") var isLogged = false
+    var userMange: UserManger = UserManger.shared
     
     var body: some View {
         ZStack {
             Color("Background").ignoresSafeArea()
-            if model.showDetail{
-                detail
-            }
+//            if model.showDetail{
+//                detail
+//            }
             ScrollView {
                 scrollDetection
                 featured
@@ -35,34 +40,23 @@ struct HomeView: View {
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity,alignment: .leading)
                     .padding(.horizontal,20)
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 300),spacing: 20)],spacing: 20) {
-                    if !show{
+                if isLoad {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 300),spacing: 20)],spacing: 20) {
                         cards
-                    }else{
-                        ForEach(cardInfoModel.cards) { course in
-                            Rectangle()
-                                .fill(.white)
-                                .frame(height: 300)
-                                .cornerRadius(30)
-                                .shadow(color: Color("Shadow"), radius: 20,x: 0,y: 10)
-                                .opacity(0.3)
-                                .padding(.horizontal,30)
-                        }
                     }
+                    .padding(.horizontal,20)
                 }
-                .padding(.horizontal,20)
+                else{
+                    ProgressView("Loading...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
             }
-            .task { 
-                if isLogged{
-                    await cardInfoModel.cardsLoad()
-                    showCourses = cardInfoModel.cards
-                }
+            .task {
+                await loadCourses()
             }
             .refreshable {
-                if isLogged{
-                    await cardInfoModel.cardsLoad()
-                    showCourses = cardInfoModel.cards
-                }
+                await loadCourses()
             }
             .coordinateSpace(name: "scroll")
             .safeAreaInset(edge: .top, content: {
@@ -74,9 +68,9 @@ struct HomeView: View {
             .background(
                 Image("Blob 1").offset(x: 200,y: -100)
             )
-            if show{
-                detail
-            }
+//            if show{
+//                detail
+//            }
         }
         .statusBar(hidden: !showStatusBar)
         .onChange(of: showCourse){ newValue in
@@ -89,8 +83,6 @@ struct HomeView: View {
             }
         }
     }
-    
-    
     
     var scrollDetection: some View{
         GeometryReader { proxy in
@@ -154,18 +146,46 @@ struct HomeView: View {
                         selectedCourse = course
                     }
             }
+                .onAppear{
+                    if course.id == showCourses.last?.id && !isLoadingMore {
+                        Task{
+                            await addPageCardLoad()
+                        }
+                    }
+                }
         }
         
     }
     
+    //点击后出现的course页面
     var detail: some View{
-        ForEach(showCourses) { course in
+        ForEach(cardInfoModel.cards) { course in
             if course.id == selectedID {
                 CourseView(namespace: namespace, course: course, show: $show)
                     .zIndex(1)
                     .transition(.asymmetric(
                         insertion: .opacity.animation(.easeInOut(duration: 0.1)),
                     removal: .opacity.animation(.easeInOut(duration: 0.3).delay(0.2))))
+            }
+        }
+    }
+    
+    private func loadCourses() async {
+        if isLogged {
+            await cardInfoModel.cardsLoad()
+            DispatchQueue.main.async {
+                showCourses = cardInfoModel.cards
+                isLoad = true
+            }
+        }
+    }
+    
+    private func addPageCardLoad() async {
+        if isLogged {
+            await cardInfoModel.addPageCardsLoad()
+            DispatchQueue.main.async {
+                showCourses = cardInfoModel.cards
+                isLoad = true
             }
         }
     }

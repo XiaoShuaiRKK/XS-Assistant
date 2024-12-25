@@ -13,6 +13,7 @@ struct CardInfo: Identifiable,Codable{
     var title: String
     var subTitle: String
     var context: String
+    var authorName: String?
     var authorId: String
     var image: String?
     var background: String?
@@ -22,60 +23,158 @@ struct CardInfo: Identifiable,Codable{
 
 class CardInfoModel: ObservableObject{
     var emptyCard: CardInfo = CardInfo(id: "", title: "", subTitle: "", context: "", authorId: "", image: "", background: "", description: "")
+    var page: Int = 0
+    var size: Int = 10
+    var myPage: Int = 0
+    var mySize: Int = 10
+    var searchPage: Int = 1
+    var searchSize: Int = 5
     @Published var cards: [CardInfo] = []
     
     @Published var searchCards: [CardInfo] = []
+    @Published var myCards: [CardInfo] = []
     
     @MainActor
-    func searchCardsLoad(target: String){
-        let path = "/search/query/get/orderHot"
+    func searchCardsLoad(target: String) async{
+        let path = "/article/search/get/orderHot?target=\(target)&page=\(searchPage)&size=\(searchSize)"
         let url = URL(string: ServerHttp.shared.getPath(path: path))!
         var request = URLRequest(url: url)
         request.addValue(UserManger.shared.currentToken!, forHTTPHeaderField: "token")
         request.httpMethod = "GET"
-        _ = URLSession.shared.dataTask(with: request){ data, response, error in
-            DispatchQueue.main.async{
-                do{
-                    print(String(decoding: data!, as: UTF8.self))
-                    let data = try JSONDecoder().decode(Result<[CardInfo]>.self, from: data!)
-                    self.searchCards = data.data
-                }catch{
-                    print("Search Article Error")
-                    print(error)
-                }
-            }
+        do{
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let dataResponse = try JSONDecoder().decode(Result<[CardInfo]>.self, from: data)
+            print("Data == ")
+            print(dataResponse)
+            self.searchCards = dataResponse.data
+        }catch{
+            print("Search Article Error")
+            print(error)
         }
+//        _ = URLSession.shared.dataTask(with: request){ data, response, error in
+//            DispatchQueue.main.async{
+//                
+//            }
+//        }
     }
     
-    @MainActor func getSearch(target: String) -> [CardInfo]{
-        searchCardsLoad(target: target)
+    @MainActor func getSearch(target: String) async -> [CardInfo]{
+        await searchCardsLoad(target: target)
         return searchCards
     }
     
     @MainActor
     func cardsLoad() async{
-        let path = "/article/search/get/page?page=0&size=10"
+        if page == 0 {
+            page = 1
+        }
+        let path = "/article/search/get/page?page=\(page)&size=\(size)"
         let url = URL(string: ServerHttp.shared.getPath(path: path))!
         var request = URLRequest(url: url)
         request.addValue(UserManger.shared.currentToken!, forHTTPHeaderField: "token")
         request.httpMethod = "GET"
-        //请求主线程异步的请求方式 因为不建议除主线程外的其他线程修改UI
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            DispatchQueue.main.async{
-                if error == nil{
-                    do{
-                        let data = try JSONDecoder().decode(Result<[CardInfo]>.self, from: data!)
-                        self.cards = data.data
-                        print("load all..")
-                    }catch{
-                        print("ArticleLoad error")
-                        print(error)
-                    }
-                }
-            }
+        do{
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let dataResponse = try JSONDecoder().decode(Result<[CardInfo]>.self, from: data)
+            self.cards = dataResponse.data
+            print("load all..")
+        }catch{
+            print("ArticleLoad error")
+            print(error)
         }
-        task.resume()
+        //请求主线程异步的请求方式 因为不建议除主线程外的其他线程修改UI
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//            DispatchQueue.main.async{
+//                if error == nil{
+//                    do{
+//                        let data = try JSONDecoder().decode(Result<[CardInfo]>.self, from: data!)
+//                        self.cards = data.data
+//                        print("load all..")
+//                    }catch{
+//                        print("ArticleLoad error")
+//                        print(error)
+//                    }
+//                }
+//            }
+//        }
+//        task.resume()
     }
+    
+    @MainActor
+    func addPageCardsLoad() async {
+        page += 1
+        let path = "/article/search/get/page?page=\(page)&size=\(size)"
+        let url = URL(string: ServerHttp.shared.getPath(path: path))!
+        var request = URLRequest(url: url)
+        request.addValue(UserManger.shared.currentToken!, forHTTPHeaderField: "token")
+        request.httpMethod = "GET"
+        do{
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let dataResponse = try JSONDecoder().decode(Result<[CardInfo]>.self, from: data)
+            if dataResponse.data.isEmpty {
+                page -= 1
+            }else{
+                self.cards += dataResponse.data
+                print("load all..")
+            }
+        }catch{
+            print("ArticleLoad error")
+            print(error)
+        }
+        //请求主线程异步的请求方式 因为不建议除主线程外的其他线程修改UI
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//            DispatchQueue.main.async{
+//                if error == nil{
+//                    do{
+//                        let data = try JSONDecoder().decode(Result<[CardInfo]>.self, from: data!)
+//                        self.cards = data.data
+//                        print("load all..")
+//                    }catch{
+//                        print("ArticleLoad error")
+//                        print(error)
+//                    }
+//                }
+//            }
+//        }
+//        task.resume()
+    }
+    
+    @MainActor
+    func myCardsLoadByIdNumber(idNumber: String) async {
+        myPage += 1
+        let path = "/article/search/get/by/idNumber?id_number=\(idNumber)&page=\(myPage)&size=\(mySize)"
+        let url = URL(string: ServerHttp.shared.getPath(path: path))!
+        var request = URLRequest(url: url)
+        request.addValue(UserManger.shared.currentToken!, forHTTPHeaderField: "token")
+        request.httpMethod = "GET"
+        do{
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let dataResponse = try JSONDecoder().decode(Result<[CardInfo]>.self, from: data)
+            if dataResponse.data.isEmpty {
+                myPage -= 1
+            }else{
+                self.myCards += dataResponse.data
+                print("MyArticles load all..")
+            }
+        }catch{
+            print("My Articles　Load error")
+            print(error)
+        }
+        //请求主线程异步的请求方式 因为不建议除主线程外的其他线程修改UI
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//            DispatchQueue.main.async{
+//                if error == nil{
+//
+//                }
+//            }
+//        }
+//        task.resume()
+    }
+    
+    func resetMyCardPage(){
+        myPage = 0
+    }
+    
 }
 
 var courses = [

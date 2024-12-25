@@ -17,4 +17,7 @@ struct Account: Codable{
     var idNumber: String
     var areaId: Int?
     var stateId: Int?
+    var level: Int?
+    var iconPath: String?
+    var pointsLevel: PointLevel?
 }

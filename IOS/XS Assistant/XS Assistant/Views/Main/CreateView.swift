@@ -12,10 +12,16 @@ struct CreateView: View {
     @State var subTitle = ""
     @State var description = ""
     @State var context = ""
-    @State var showAlert = false
     @State var isSuccess = false
+    //是否显示提示框
+    @State var showAlert = false
+    @State var showAlertType = AlertType.WARNING
+    @State var showAlertMessage = ""
     @AppStorage("isLogged") var isLogged = false
     @ObservedObject var articleManger = ArticleManger.shared
+    //用户返回上一级页面
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ZStack{
             Color("Background").ignoresSafeArea()
@@ -39,9 +45,16 @@ struct CreateView: View {
                     .font(.title)
                     .bold()
             }
-            
+            if showAlert {
+                VStack{
+                    CustomAlertView(showAlert: $showAlert, alertType: showAlertType,message: showAlertMessage)
+                        .transition(.scale)
+                        .padding(.top, 20)
+                    Spacer()
+                }
+                
+            }
         }
-
     }
     
     var titleBox: some View{
@@ -151,6 +164,10 @@ struct CreateView: View {
         .coordinateSpace(name: "container")
     }
     
+    
+    /**
+     创建按钮
+     */
     var createButton: some View{
         Button{
             Task{
@@ -160,13 +177,12 @@ struct CreateView: View {
                 subTitle = ""
                 description = ""
                 context = ""
+                createArticleResult()
+                createShowAlert()
             }
         }label: {
             Text("Create")
                 .frame(maxWidth: .infinity)
-        }
-        .alert(isPresented: $showAlert){
-            return Alert(title: Text(articleManger.message),dismissButton: .default(Text("OK")))
         }
         .font(.headline)
         .blendMode(.overlay)
@@ -181,6 +197,30 @@ struct CreateView: View {
         GeometryReader{ proxy in
             Color.clear.preference(key: CirclePreferenceKey.self,value: proxy.frame(in: .named("container")).minY)
         }
+    }
+    
+    func createShowAlert() {
+        showAlert = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+            withAnimation {
+                showAlert = false
+                if showAlertType == AlertType.SUCCESS{
+                    dismiss()
+                }
+            }
+        }
+    }
+    
+    func createArticleResult(){
+        switch ArticleManger.shared.result.status{
+        case "200":
+            showAlertType = AlertType.SUCCESS
+        case "500":
+            showAlertType = AlertType.ERROR
+        default:
+            showAlertType = AlertType.WARNING
+        }
+        showAlertMessage = ArticleManger.shared.result.message
     }
 }
 

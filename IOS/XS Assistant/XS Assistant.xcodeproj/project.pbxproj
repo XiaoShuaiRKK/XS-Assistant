@@ -57,6 +57,11 @@
 		15E8D71D2BCF5F1600497D7A /* UserManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E8D71C2BCF5F1600497D7A /* UserManger.swift */; };
 		15F054172C0FED8300950A1A /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F054162C0FED8300950A1A /* CreateView.swift */; };
 		15F0541B2C1014F800950A1A /* ArticleManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F0541A2C1014F800950A1A /* ArticleManger.swift */; };
+		333B967B2D18253400350442 /* PointLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B967A2D18253400350442 /* PointLevel.swift */; };
+		333B967D2D183E9500350442 /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B967C2D183E9500350442 /* MyInfoView.swift */; };
+		333B967F2D18FA6000350442 /* FloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B967E2D18FA6000350442 /* FloatingActionButton.swift */; };
+		333B96822D18FDDA00350442 /* ScrollOffsetKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B96812D18FDDA00350442 /* ScrollOffsetKey.swift */; };
+		333B96852D1AA3D900350442 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B96842D1AA3D900350442 /* CustomAlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +117,11 @@
 		15E8D71C2BCF5F1600497D7A /* UserManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManger.swift; sourceTree = "<group>"; };
 		15F054162C0FED8300950A1A /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		15F0541A2C1014F800950A1A /* ArticleManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManger.swift; sourceTree = "<group>"; };
+		333B967A2D18253400350442 /* PointLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointLevel.swift; sourceTree = "<group>"; };
+		333B967C2D183E9500350442 /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
+		333B967E2D18FA6000350442 /* FloatingActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButton.swift; sourceTree = "<group>"; };
+		333B96812D18FDDA00350442 /* ScrollOffsetKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffsetKey.swift; sourceTree = "<group>"; };
+		333B96842D1AA3D900350442 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +184,7 @@
 				15A4551D2B2051DE00772EED /* ExploreView.swift */,
 				15F054162C0FED8300950A1A /* CreateView.swift */,
 				15A566C72C1FC090004276D9 /* ChatView.swift */,
+				333B967C2D183E9500350442 /* MyInfoView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -216,6 +227,7 @@
 				15A4552E2B205E2A00772EED /* Graphics */,
 				15A4550D2B20016600772EED /* AvatarView.swift */,
 				15A455172B201B4E00772EED /* SectionRow.swift */,
+				333B967E2D18FA6000350442 /* FloatingActionButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -252,6 +264,7 @@
 		15ABAB582B14395000FF4301 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				333B96832D1AA3BD00350442 /* Alert */,
 				15A4552C2B205DDA00772EED /* Items */,
 				15A4552D2B205DFE00772EED /* Buttons */,
 			);
@@ -261,6 +274,7 @@
 		15ABAB592B14399A00FF4301 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				333B96772D1824F900350442 /* User */,
 				15ABAB502B141D2800FF4301 /* Tab.swift */,
 				15A63E552B0DEB6500270B34 /* CardData.swift */,
 				15E011472B147517005797DF /* PreferenceKeys.swift */,
@@ -271,7 +285,6 @@
 				15A455152B201AAA00772EED /* CourseSection.swift */,
 				15A455212B20571A00772EED /* Handbook.swift */,
 				15A455252B205B6100772EED /* Topic.swift */,
-				15BA0D052BCE8A1800E1F735 /* Account.swift */,
 				15C869972BD0A5EF004979C1 /* Result.swift */,
 				15836C4A2BD0FB8F005ACA90 /* ResultAccount.swift */,
 				15911E132BF7256E0045E1A8 /* ServerHttp.swift */,
@@ -287,6 +300,7 @@
 				154BF10F2B16DA2A00C7DAC5 /* Animations.swift */,
 				153C52162B1DB9EA00F1D95C /* AngularButtonStyle.swift */,
 				15AFE3EC2B1F07A300E6052E /* InputStyle.swift */,
+				333B96812D18FDDA00350442 /* ScrollOffsetKey.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -309,6 +323,23 @@
 				15F0541A2C1014F800950A1A /* ArticleManger.swift */,
 			);
 			name = Manager;
+			sourceTree = "<group>";
+		};
+		333B96772D1824F900350442 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				15BA0D052BCE8A1800E1F735 /* Account.swift */,
+				333B967A2D18253400350442 /* PointLevel.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		333B96832D1AA3BD00350442 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				333B96842D1AA3D900350442 /* CustomAlertView.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				153C52172B1DB9EA00F1D95C /* AngularButtonStyle.swift in Sources */,
+				333B967B2D18253400350442 /* PointLevel.swift in Sources */,
 				15A455262B205B6100772EED /* Topic.swift in Sources */,
 				15A455142B2018FF00772EED /* CircularView.swift in Sources */,
 				15A63E562B0DEB6500270B34 /* CardData.swift in Sources */,
@@ -402,13 +434,17 @@
 				15A455102B20096300772EED /* Address.swift in Sources */,
 				15A455122B200AAA00772EED /* Coin.swift in Sources */,
 				15A455282B205BFF00772EED /* ListTypeRow.swift in Sources */,
+				333B967D2D183E9500350442 /* MyInfoView.swift in Sources */,
 				15ABAB532B14338100FF4301 /* HomeView.swift in Sources */,
 				15BA0D062BCE8A1800E1F735 /* Account.swift in Sources */,
+				333B967F2D18FA6000350442 /* FloatingActionButton.swift in Sources */,
 				15A4551C2B201D3400772EED /* SectionView.swift in Sources */,
 				15A4550E2B20016600772EED /* AvatarView.swift in Sources */,
 				15A455222B20571A00772EED /* Handbook.swift in Sources */,
 				15F0541B2C1014F800950A1A /* ArticleManger.swift in Sources */,
+				333B96852D1AA3D900350442 /* CustomAlertView.swift in Sources */,
 				15ABAB4F2B10F17C00FF4301 /* TabBar.swift in Sources */,
+				333B96822D18FDDA00350442 /* ScrollOffsetKey.swift in Sources */,
 				154BF10E2B16D06E00C7DAC5 /* CourseView.swift in Sources */,
 				154BF1122B1718CD00C7DAC5 /* Model.swift in Sources */,
 				15A455242B20577D00772EED /* HandBookItem.swift in Sources */,

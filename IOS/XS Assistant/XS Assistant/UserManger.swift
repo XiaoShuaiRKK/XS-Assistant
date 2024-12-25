@@ -53,8 +53,9 @@ class UserManger{
             if error == nil{
                 do{
                     let data = try JSONDecoder().decode(Result<ResultAccount>.self, from: data!)
-                    self.currentAccount = data.data.customer
-                    self.currentToken = data.data.token
+                    UserManger.shared.currentAccount = data.data.customer
+                    UserManger.shared.currentToken = data.data.token
+                    print(UserManger.shared.currentAccount ?? "user nil")
                 }catch{
                     print("Login error")
                     print(error)

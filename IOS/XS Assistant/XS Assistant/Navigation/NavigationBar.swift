@@ -15,6 +15,7 @@ struct NavigationBar: View {
     @EnvironmentObject var model: Model
     @AppStorage("showModal") var showModal = false
     @AppStorage("isLogged") var isLogged = false
+    @State var iconPath = "https://picsum.photos/200"
     
     var body: some View {
         ZStack {
@@ -59,7 +60,7 @@ struct NavigationBar: View {
                         }
                     }
                 } label: {
-                    AvatarView()
+                    AvatarView(iconPath: UserManger.shared.currentAccount?.iconPath ?? iconPath)
                 }
                 .sheet(isPresented: $showAccount) {
                     AccountView()
