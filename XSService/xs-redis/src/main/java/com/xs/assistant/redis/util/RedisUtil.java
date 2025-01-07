@@ -370,6 +370,10 @@ public class RedisUtil {
         ));
     }
 
+    public <T> T scriptLua(String script,Class<T> resultType,List<String> keys,Object... value){
+        return redisTemplate.execute(new DefaultRedisScript<>(script,resultType),keys,value);
+    }
+
 //    public List<Object> pipeline(RedisCallback<?> callback){
 //        return redisTemplate.executePipelined(callback);
 //    }
